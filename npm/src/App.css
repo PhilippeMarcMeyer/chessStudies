@@ -3,35 +3,7 @@
   text-align: left;
 }
 
-.App-logo {
-  padding:10px;
-  height:15vmin;
-  width:15vmin;
-  pointer-events: none;
-  display:inline-block;
-}
 
-.App-title {
-  position:absolute;
-  display:inline-block;
-  margin-left:18vmin;
-  display:block;
-  pointer-events: none;
-  margin-top:12vmin;
-  color:"#C3B69C";
-
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: left;
-  justify-content: left;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
 
 .App-link {
   color: #61dafb;
