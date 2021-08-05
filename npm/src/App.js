@@ -1,18 +1,14 @@
-import logo from './logo.png';
+
+  
+import React from 'react';
+
 import './App.css';
+import Header from './components/header/header.component';
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <div className="App-title">
-          Chess Studies
-        </div>
-      </header>
-      <game>
-        
-      </game>
+      <Header/>
     </div>
   );
 }
