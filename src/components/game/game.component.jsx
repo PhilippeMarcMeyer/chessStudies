@@ -17,8 +17,9 @@ class Game extends React.Component {
               "pawn" : "p",
               "black": "B",
               "white": "W",
-              "blackColor" : "#000",
-              "whiteColor" : "#fff"
+              "blackColor" : "dark-square",
+              "whiteColor" : "light-square",
+              "nrSquaresPerside" : 8 // in case we want to change the rules !!!
         };
       }
       setNewGame = () => {
@@ -62,13 +63,14 @@ class Game extends React.Component {
             "move":{"number":0,"side":"w"}
            }
         });
+        this.setNewGame();
       }
-
+     
     render() {
       return (
         <div className="game">
           <div className="game-board">
-            <Board key={1} data={this.state} />
+            <Board key={1} data={this.state.data} nrSquaresPerside={this.state.nrSquaresPerside} infos={this.state.infos} />
           </div>
           <div className="game-info">
             <div>{/* status */}</div>
