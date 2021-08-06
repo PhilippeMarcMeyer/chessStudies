@@ -1,0 +1,24 @@
+.board-zone{
+    position:relative;
+    padding:10px;
+    
+}
+
+.square{
+    width : 12%;
+    height:12%; 
+    border: 1px solid white;
+    display:inline-block;
+}
+
+.square-right{
+    display:block ;
+}
+
+.board-title{
+    color:whitesmoke;
+}
+
+.board-zone{
+    padding: 0 0 0 20px;;
+}

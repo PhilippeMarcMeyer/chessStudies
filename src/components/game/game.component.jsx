@@ -21,6 +21,7 @@ class Game extends React.Component {
               "whiteColor" : "light-square",
               "nrSquaresPerside" : 8 // in case we want to change the rules !!!
         };
+        this.setNewGame();
       }
       setNewGame = () => {
         let data = [];
@@ -63,14 +64,13 @@ class Game extends React.Component {
             "move":{"number":0,"side":"w"}
            }
         });
-        this.setNewGame();
       }
      
     render() {
       return (
         <div className="game">
           <div className="game-board">
-            <Board key={1} data={this.state.data} nrSquaresPerside={this.state.nrSquaresPerside} infos={this.state.infos} />
+            <Board key={1} game={this.state} />
           </div>
           <div className="game-info">
             <div>{/* status */}</div>

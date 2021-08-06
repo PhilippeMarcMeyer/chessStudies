@@ -1,0 +1,10 @@
+.game{
+width:100%;
+    background-color: #282c34;
+    padding:10px;
+
+}
+.game-board{
+    margin :0;
+    padding:0;
+}

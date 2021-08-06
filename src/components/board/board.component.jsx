@@ -1,18 +1,20 @@
 import React from 'react';
 import './board.styles.css';
 
-const Board = (key,data,nrSquaresPerside,infos) => (
+const Board = (props) => {
+  return(
   <div className='board-zone'>
-   <h1 className='title'>{infos.toUpperCase()}</h1>
+   <h3 className='board-title'>{props.game.infos}</h3>
    <div className='board'>
-   {data
+   {
+    props.game.data
       .map((x,i) => (
-        <Square className="square {x.squareColor} {i+1 % nrSquaresPerside == 0 ? 'square-right' : ''}/>"
+        <div className={`square ${x.squareColor} ${(i+1) % props.game.nrSquaresPerside === 0} ? "square-right" : ""}`}/>
       ))
     }
    </div>
    </div>
-      
- )
+  )
+   }
   export default Board;
 
