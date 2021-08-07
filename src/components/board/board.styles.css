@@ -1,13 +1,24 @@
 .board-zone{
     position:relative;
-    padding:10px;
-    
+    padding-left:10px;
+    width : 90%;
+}
+
+.board{
+    position:relative;
+    width : 75vmin;
+    height: 75vmin; 
+    max-width: 420px;
+    max-height:420px;
+    min-width: 320px;
+    min-height:320px;
+    overflow:hidden;
 }
 
 .square{
-    width : 6vmin;
-    height: 6vmin; 
-    font-size:4.5vmin;
+    width : 12.5%;
+    height: 12.5%;
+    font-size:6vmin;
     text-align: center;
     display:inline-block;
     user-select: none;
@@ -20,7 +31,6 @@
 .dark-square{
     background-color: #769656;
 }
-
 
 .square-right{
     display:block;
@@ -45,3 +55,6 @@
     line-height: 0;
     margin:0;
 }
+
+
+ 

@@ -1,10 +1,20 @@
 .game{
-width:100%;
+    width:100%;
     background-color: #282c34;
-    padding:10px;
 
 }
 .game-board{
     margin :0;
     padding:0;
+    display:inline-block;
+
+}
+
+.game-info{
+    vertical-align:top;
+    display:inline-block;   
+    margin-top:-10px;
+    position:relative;
+    width : 50vmin;
+    overflow:hidden;
 }

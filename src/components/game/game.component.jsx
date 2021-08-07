@@ -1,6 +1,7 @@
 import React from 'react';
 import './game.styles.css';
 import Board from '../board/board.component';
+import Info from '../info/info.component';
 
 class Game extends React.Component {
     constructor(){
@@ -99,8 +100,7 @@ class Game extends React.Component {
             <Board key={1} game={this.state} />
           </div>
           <div className="game-info">
-            <div>{/* status */}</div>
-            <ol>{/* TODO */}</ol>
+            <Info key={1} game={this.state}></Info>
           </div>
         </div>
       );
