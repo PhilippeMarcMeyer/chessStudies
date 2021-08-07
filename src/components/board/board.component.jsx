@@ -9,7 +9,11 @@ const Board = (props) => {
    {
     props.game.data
       .map((x,i) => (
-        <div className={`square ${x.squareColor} ${(i+1) % props.game.nrSquaresPerside === 0} ? "square-right" : ""}`}/>
+        <React.Fragment>
+        <br className={(i) % props.game.nrSquaresPerside === 0 ? '' : 'hidden'}/>
+  
+        <div className={ 'square '+x.squareColor}>{i}</div>
+        </React.Fragment>
       ))
     }
    </div>

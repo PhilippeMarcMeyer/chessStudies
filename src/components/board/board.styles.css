@@ -5,14 +5,23 @@
 }
 
 .square{
-    width : 12%;
-    height:12%; 
+    width : 60px;
+    height: 60px; 
     border: 1px solid white;
     display:inline-block;
 }
 
+.light-square{
+    background-color: #EEEED2;
+}
+
+.dark-square{
+    background-color: #769656;
+}
+
+
 .square-right{
-    display:block ;
+    display:block;
 }
 
 .board-title{
@@ -21,4 +30,8 @@
 
 .board-zone{
     padding: 0 0 0 20px;;
+}
+
+.hidden{
+    display:none;
 }

@@ -21,8 +21,11 @@ class Game extends React.Component {
               "whiteColor" : "light-square",
               "nrSquaresPerside" : 8 // in case we want to change the rules !!!
         };
-        this.setNewGame();
+        
       }
+      componentWillMount() {
+        this.setNewGame();
+    }
       setNewGame = () => {
         let data = [];
         let positions =  [];
@@ -31,12 +34,19 @@ class Game extends React.Component {
         let black =  this.state.black;
         let white =  this.state.white;
 
-        let currentColor = blackColor;
+        let currentColor;
         let i = 0;
+        let previousColor = whiteColor;
         this.state.columns.forEach((col) =>{
           this.state.rows.forEach((row) =>{
             i++;
-            currentColor = i % 2 === 1 ? blackColor : whiteColor;
+            if(i % 8 === 1){
+              currentColor = previousColor;
+            }else{
+              currentColor = previousColor === blackColor? whiteColor : blackColor;
+              previousColor = currentColor;
+            }
+            
             data.push({"row":row,"column":col,"squareColor":currentColor,"mob":null,"side":null});
           })
         })
