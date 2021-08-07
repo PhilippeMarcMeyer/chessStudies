@@ -13,17 +13,31 @@ class Game extends React.Component {
               "positions":[],
               "columns" : "a,b,c,d,e,f,g,h".split(","),
               "rows" : "1,2,3,4,5,6,7,8".split(","),
-              "figures" : "R,K,B,Q,K,B,K,R".split(","),
+              "figures" : "R,N,B,Q,K,B,N,R".split(","),
               "pawn" : "p",
               "black": "B",
               "white": "W",
               "blackColor" : "dark-square",
               "whiteColor" : "light-square",
-              "nrSquaresPerside" : 8 // in case we want to change the rules !!!
+              "nrSquaresPerside" : 8, // in case we want to change the rules !!!
+              "figCodes":{
+                "KB":"&#9818;",
+                "QB":"&#9819;",
+                "RB":"&#9820;",
+                "BB":"&#9821;",
+                "NB":"&#9822;",
+                "pB":"&#9823;",
+                "KW":"&#9812;",
+                "QW":"&#9813;",
+                "RW":"&#9814;",
+                "BW":"&#9815;",
+                "NW":"&#9816;",
+                "pW":"&#9817;",
+              }
         };
         
       }
-      componentWillMount() {
+      UNSAFE_componentWillMount() {
         this.setNewGame();
     }
       setNewGame = () => {
@@ -34,11 +48,15 @@ class Game extends React.Component {
         let black =  this.state.black;
         let white =  this.state.white;
 
-        let currentColor;
-        let i = 0;
-        let previousColor = whiteColor;
-        this.state.columns.forEach((col) =>{
-          this.state.rows.forEach((row) =>{
+        var currentColor;
+        var previousColor = whiteColor;
+        var row = 0;
+        let col = 0;
+        var i = 0;
+        for(var r = 7;r>=0;r--){
+          row = this.state.rows[r];
+          for(var c = 0;c<8;c++){
+            col = this.state.columns[c];
             i++;
             if(i % 8 === 1){
               currentColor = previousColor;
@@ -46,27 +64,25 @@ class Game extends React.Component {
               currentColor = previousColor === blackColor? whiteColor : blackColor;
               previousColor = currentColor;
             }
-            
-            data.push({"row":row,"column":col,"squareColor":currentColor,"mob":null,"side":null});
-          })
-        })
-  
+            data.push({"row":row,"column":col,"squareColor":currentColor,"fig":null});
+           }
+        }
+      
         this.state.figures.forEach((fig,i) =>{
-          positions.push({"row":this.state.rows[0],"column":this.state.columns[i],"mob":fig,"side":white});
-          positions.push({"row":this.state.rows[1],"column":this.state.columns[i],"mob":this.state.pawn,"side":white});
-          positions.push({"row":this.state.rows[6],"column":this.state.columns[i],"mob":this.state.pawn,"side":black});
-          positions.push({"row":this.state.rows[7],"column":this.state.columns[i],"mob":fig,"side":white});
+          positions.push({"row":this.state.rows[0],"column":this.state.columns[i],"fig":fig+white});
+          positions.push({"row":this.state.rows[1],"column":this.state.columns[i],"fig":this.state.pawn+white});
+          positions.push({"row":this.state.rows[6],"column":this.state.columns[i],"fig":this.state.pawn+black});
+          positions.push({"row":this.state.rows[7],"column":this.state.columns[i],"fig":fig+black});
         });
-
         data.forEach((sqr)=>{
             let check = positions.filter((pos)=>{
               return pos.row === sqr.row && pos.column === sqr.column;
             });
             if(check.length===1){
-              sqr.mob = check[0].mob;
-              sqr.side = check[0].side;
+              sqr.fig = check[0].fig;
             }
         });
+
         this.setState((prevState,prevProps) => {
           return {
             "data": data,

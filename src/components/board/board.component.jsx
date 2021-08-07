@@ -10,9 +10,9 @@ const Board = (props) => {
     props.game.data
       .map((x,i) => (
         <React.Fragment>
-        <br className={(i) % props.game.nrSquaresPerside === 0 ? '' : 'hidden'}/>
+        <br className={(i) % props.game.nrSquaresPerside === 0 ? 'cr' : 'hidden'}/>
   
-        <div className={ 'square '+x.squareColor}>{i}</div>
+        <div key={i} data-pos={i} className={ 'square '+x.squareColor} dangerouslySetInnerHTML={{__html: props.game.figCodes[x.fig] ?props.game.figCodes[x.fig]:'&nbsp;' }} />
         </React.Fragment>
       ))
     }

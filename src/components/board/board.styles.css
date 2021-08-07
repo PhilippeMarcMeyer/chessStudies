@@ -5,10 +5,12 @@
 }
 
 .square{
-    width : 60px;
-    height: 60px; 
-    border: 1px solid white;
+    width : 6vmin;
+    height: 6vmin; 
+    font-size:4.5vmin;
+    text-align: center;
     display:inline-block;
+    user-select: none;
 }
 
 .light-square{
@@ -29,9 +31,17 @@
 }
 
 .board-zone{
-    padding: 0 0 0 20px;;
+    padding: 0 0 0 20px;
 }
 
 .hidden{
     display:none;
+}
+
+.cr{
+    height:0;
+    font-size:1px;
+    padding:0;
+    line-height: 0;
+    margin:0;
 }
