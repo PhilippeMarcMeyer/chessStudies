@@ -8,6 +8,7 @@ class Game extends React.Component {
         super();
         this.state = {
               "infos":"New Game",
+              "pgnOn":false,
               "msg":"White to play",
               "data":[],
               "move":{"number":0,"side":"w"},

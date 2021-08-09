@@ -1,0 +1,16 @@
+.game-input{
+    font-size: 12px;
+    line-height: 1.25;
+    transition: all .1s;
+    margin-top: 0px; 
+    margin-bottom: 0px; 
+    width:100%;
+    height: 307px;
+}
+
+button{
+  float:right;
+
+  padding:4px 8px ;
+
+}
