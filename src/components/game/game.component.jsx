@@ -11,6 +11,7 @@ class Game extends React.Component {
               "pgnOn":false,
               "msg":"White to play",
               "data":[],
+              "pgnHistory":"",
               "move":{"number":0,"side":"w"},
               "positions":[],
               "columns" : "a,b,c,d,e,f,g,h".split(","),
@@ -41,8 +42,14 @@ class Game extends React.Component {
       }
       UNSAFE_componentWillMount() {
         this.setNewGame();
-    }
+      }
+
       setNewGame = () => {
+        let pgn = "";
+        if(localStorage.getItem("pgnHistory")!== null){
+          pgn = localStorage.getItem("pgnHistory");
+        }
+
         let data = [];
         let positions =  [];
         let blackColor = this.state.blackColor;
@@ -89,7 +96,8 @@ class Game extends React.Component {
           return {
             "data": data,
             "positions":positions,
-            "move":{"number":0,"side":"w"}
+            "move":{"number":0,"side":"w"},
+            "pgnHistory": pgn
            }
         });
       }
