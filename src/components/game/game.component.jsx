@@ -44,6 +44,17 @@ class Game extends React.Component {
         this.setNewGame();
       }
 
+      savePGN = () => {
+        let textArea = document.getElementById("game-input");
+        if(textArea!=null){
+          let pgn = textArea.value;
+          if(pgn !== ""){ // todo check validity !
+            localStorage.setItem("pgnHistory",pgn);
+            this.setState({"pgnOn":true});
+          }
+        }
+      }
+
       setNewGame = () => {
         let pgn = "";
         if(localStorage.getItem("pgnHistory")!== null){
@@ -83,6 +94,7 @@ class Game extends React.Component {
           positions.push({"row":this.state.rows[6],"column":this.state.columns[i],"fig":this.state.pawn+black});
           positions.push({"row":this.state.rows[7],"column":this.state.columns[i],"fig":fig+black});
         });
+
         data.forEach((sqr)=>{
             let check = positions.filter((pos)=>{
               return pos.row === sqr.row && pos.column === sqr.column;
@@ -109,7 +121,7 @@ class Game extends React.Component {
             <Board key={1} game={this.state} />
           </div>
           <div className="game-info">
-            <Info key={1} game={this.state}></Info>
+            <Info key={1} game={this.state} savePGN={this.savePGN} ></Info>
           </div>
         </div>
       );
