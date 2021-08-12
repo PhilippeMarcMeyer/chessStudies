@@ -26,5 +26,13 @@ button{
   color: #fff;
   background-color: #3c475f;
   border-color:  #282c34;
-  
+}
+
+.infosMessage{
+  font-size: 14px;
+  color: #fff;
+}
+
+.board-title{
+  font-weight: 400;
 }

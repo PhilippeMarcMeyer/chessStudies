@@ -6,9 +6,18 @@ import Info from '../info/info.component';
 class Game extends React.Component {
     constructor(){
         super();
+         // off, loaded, inerror, ready
+        this.gameStatus = {
+            "off":0,
+            "loaded":1,
+            "inerror":2,
+            "ready":3
+        };
+
         this.state = {
-              "infos":"New Game",
-              "pgnOn":false,
+              "status":this.gameStatus.off,
+              "infosTitle":"",
+              "infosMessage":"",
               "msg":"White to play",
               "data":[],
               "pgnHistory":"",
@@ -38,8 +47,8 @@ class Game extends React.Component {
                 "pW":"&#9817;",
               }
         };
-        
       }
+
       UNSAFE_componentWillMount() {
         this.setNewGame();
       }
@@ -50,9 +59,42 @@ class Game extends React.Component {
           let pgn = textArea.value;
           if(pgn !== ""){ // todo check validity !
             localStorage.setItem("pgnHistory",pgn);
-            this.setState({"pgnOn":true});
+            this.setState((prevState,prevProps) => {
+              return {
+                "status": this.gameStatus.loaded,
+               }
+            },() => {
+              this.setGameInfos();
+          });
           }
         }
+      }
+
+      setGameInfos = () => {
+        let infos = ""
+        switch (this.state.status) {
+          case this.gameStatus.off:
+            infos = {"title":"Please enter a game in PGN format","message":""};
+            break;
+          case this.gameStatus.loaded:
+            infos = {"title":"Game loaded","message":"analysing game...(WIP)"};
+           break;
+           case this.gameStatus.inerror:
+            infos = {"title":"Error !","message":"the game can't be analysed..."};
+           break;
+           case this.gameStatus.ready:
+            infos = {"title":"Game reay","message":""};
+           break;
+          default:
+            infos = {"title":"Error !","message":"the program is in error..."};
+        }
+
+        this.setState((prevState,prevProps) => {
+          return {
+            "infosTitle":infos.title,
+            "infosMessage":infos.message
+           }
+        });
       }
 
       setNewGame = () => {
@@ -112,6 +154,7 @@ class Game extends React.Component {
             "pgnHistory": pgn
            }
         });
+        this.setGameInfos();
       }
      
     render() {
@@ -121,11 +164,12 @@ class Game extends React.Component {
             <Board key={1} game={this.state} />
           </div>
           <div className="game-info">
-            <Info key={1} game={this.state} savePGN={this.savePGN} ></Info>
+            <Info key={1} game={this.state} savePGN={this.savePGN} statuses={this.gameStatus}></Info>
           </div>
         </div>
       );
     }
   }
+
   export default Game;
 
