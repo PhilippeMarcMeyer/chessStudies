@@ -8,7 +8,7 @@ I'd like to master Reactjs which is useful in my field of knowledge and activity
 
 So in order to learn it why not code a simple game reader ?
 
-Chess games are described thru PGN notation which is very human friendly :
+Chess games are described thru PGN notation (PWN stands for 'Portable Game Notation') which is very human friendly :
 
 PGN have two parts separated by an empty line 
 
@@ -33,6 +33,51 @@ example :
 example :
 
 1. d4 d5 2. Nf3 g6 3. g3 Bg7 4. Bg2 Nf6 5. c4 c6 6. O-O O-O 7. Qb3 Be6 8. Nbd2 b6 9. Ne5 dxc4 10. Qa4 Qxd4 11. Nxc6 Nxc6 12. Bxc6 Rac8 13. Bb7 Rc5 14. Nf3 Qd7 15. Qxa7 Nd5 16. Rd1 Ra5 17. Rxd5 Bxd5 18. Qxb6 Qa4 19. Bxd5 Qd1+ 20. Kg2 Qxd5 21. Bd2 Rb5 22. Qe3 e5 23. Bc3 e4 24. Bxg7 exf3+ 25. exf3 Kxg7 26. Qc3+ Kg8 27. a4 Rb3 28. Qc2 Qd3 29. Qxd3 cxd3 30. Rd1 Rd8 31. a5 Rxb2 32. a6 d2 33. a7 Ra8 0-1
+
+Each number is a turn with first the white's move and second the black's move
+
+1. d4 d5 means that the first whites' move put the d2 pawn on d4 square and that the blacks' response was symetrical : a7 to a5 (King's opening)
+
+How do we know a4 pawn comes from a2 ?
+
+Because we know every white pawn stands on the 2nd row at the beginning of the game
+
+so we'll have to teach it to the computer : according to the moves allowed to pawns, (move forward, take diagonnaly) the pawn on a4 can only come from the a2 square so the board should move the a2 pawn to the a4 square.
+
+Pawns are not named : d4 and d5 are pawn moves because only the destination square is given
+
+Figures are given by the letter in uppercase : 
+
+K : King
+
+Q : Queen
+
+B : Bishop
+
+N : Knight (the K is already taken !)
+
+R : Rook
+
+2. Nf3 ... shows that the King's white knight moved to the f3 square : how do we know it was the king's side Knight ? According to the knight's allowed moved the king's side knight is the only figure able to move from the game's starting position to f3 !
+
+12. Bxc6 ... Means a white bishop took something on c6 square. to kown more about we need to know the positions after the 11th turn.
+
+Here's the algorithm we'll have to code.
+
+### What about the app ?
+
+The first step is to be able to import a PGN game, save it to the localStorage, show a board with it's figures and pawn at their right starting positions
+
+board on the left and an information block beside it on the right.
+
+the info block with show a texteara and a button and after the PGN is saved an analyse will list the turns, allowing the user to click on the different moves to show the position on the board.
+
+to be continued...
+
+## You can help me by learning React with me, or if you are a saisonned React dev, by ginving advices/
+
+Remember : I'm learning React, so this WIP is probably not the best code and should not be considered as an example to follow (well not yet !) :)
+
 
 ---
 
