@@ -22,6 +22,8 @@ class Game extends React.Component {
               "data":[],
               "pgnHistory":"",
               "move":{"number":0,"side":"w"},
+              "pgnResume":[],
+              "pgnGame":[],
               "positions":[],
               "columns" : "a,b,c,d,e,f,g,h".split(","),
               "rows" : "1,2,3,4,5,6,7,8".split(","),
@@ -65,7 +67,38 @@ class Game extends React.Component {
                }
             },() => {
               this.setGameInfos();
-          });
+              let turns = [];
+              let turn = 1;
+              let limitBetweenGameParts =/\n\n/.exec(pgn).index;
+              let pgnGame = pgn.substring(limitBetweenGameParts, pgn.length).replace(/\r\n?|\n/g, " ").trim();
+              let infos = pgn.substring(0, limitBetweenGameParts).replace(/\r\n?|\n/g, ",").trim().split(",");
+              let turnPrevPosition =  pgnGame.indexOf(turn+".");
+              let turnNextPosition = 0;
+              let currentTurnData;
+              while (turnPrevPosition !== -1 && turnNextPosition !== -1){
+                turnNextPosition =  pgnGame.indexOf((turn+1)+".");
+                if(turnNextPosition !==-1){
+                  currentTurnData = pgnGame.substring(turnPrevPosition, turnNextPosition).replace(turn+".","").trim();
+                  let moves = currentTurnData.split(" ");
+                  let turnInfo = {"w":moves[0]};
+                  if(moves.length === 2){
+                    turnInfo.b = moves[1];
+                  }
+                  turns.push(turnInfo);
+                  turnPrevPosition = turnNextPosition;
+                }
+                turn++;
+              } 
+              this.setState((prevState,prevProps) => {
+                return {
+                  "pgnResume": infos,
+                  "pgnGame":turns,
+                  "status": this.gameStatus.ready
+                 }
+              },() => {
+                this.setGameInfos();
+              });
+            });
           }
         }
       }
@@ -83,7 +116,7 @@ class Game extends React.Component {
             infos = {"title":"Error !","message":"the game can't be analysed..."};
            break;
            case this.gameStatus.ready:
-            infos = {"title":"Game reay","message":""};
+            infos = {"title":"Game ready","message":"Let's read it !"};
            break;
           default:
             infos = {"title":"Error !","message":"the program is in error..."};

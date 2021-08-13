@@ -1,10 +1,10 @@
 import React from 'react';
 import './info.styles.css';
+import Resume from '../resume/resume.component';
 
 const Info = (props) => {
   let status = props.game.status;
   let pgn = props.game.pgnHistory
-  
 
   if(status === props.statuses.off){
       return(
@@ -20,6 +20,15 @@ const Info = (props) => {
         <div className='board-zone'>
           <h3 className='board-title'>{props.game.infosTitle}</h3>
           <p className='infosMessage'>{props.game.infosMessage}</p>
+
+        </div>
+      )
+    } else if (status === props.statuses.ready) {
+      return(
+        <div className='board-zone'>
+          <h3 className='board-title'>{props.game.infosTitle}</h3>
+          <p className='infosMessage'>{props.game.infosMessage}</p>
+          <Resume resume={props.game.pgnResume} />
         </div>
       )
     } else{
