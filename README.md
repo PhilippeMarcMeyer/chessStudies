@@ -14,6 +14,18 @@ PGN have two parts separated by an empty line
 
 1. General information : when did it take place, who were the players ? Who won ? and so on... these are equivalent of comments made in a code. these bits of onformation are enclosed in brackets : [...]
 
+example :
+
+[Event "Live Chess"]
+[Site "Chess.com"]
+[Date "2021.07.31"]
+[White "James"]
+[Black "Fred"]
+[Result "0-1"]
+
+---
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
