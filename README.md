@@ -74,7 +74,7 @@ the info block with show a texteara and a button and after the PGN is saved and 
 
 to be continued...
 
-## You can help me by learning React with me, or if you are a saisonned React dev, by ginving advices
+## You can help me by learning React with me, or if you are a saisonned React dev, by providing advices
 
 Remember : I'm learning React, so this WIP code is probably not the best possible one ! And should not be considered as an example to follow (well not yet !) :)
 
