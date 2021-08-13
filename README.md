@@ -1,3 +1,19 @@
+# Chess studies
+
+## What is it about ?
+
+I enjoy playing Chess and I enjoy coding
+
+I'd like to master Reactjs which is useful in my field of knowledge and activity
+
+So in order to learn it why not code a simple game reader ?
+
+Chess games are described thru PGN notation which is very human friendly :
+
+PGN have two parts separated by an empty line 
+
+1. General information : when did it take place, who were the players ? Who won ? and so on... these are equivalent of comments made in a code. these bits of onformation are enclosed in brackets : [...]
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
