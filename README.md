@@ -32,12 +32,7 @@ example :
 
 example :
 
-1. d4 d5 2. Nf3 g6 3. g3 Bg7 4. Bg2 Nf6 5. c4 c6 6. O-O O-O 7. Qb3 Be6 8. Nbd2
-b6 9. Ne5 dxc4 10. Qa4 Qxd4 11. Nxc6 Nxc6 12. Bxc6 Rac8 13. Bb7 Rc5 14. Nf3 Qd7
-15. Qxa7 Nd5 16. Rd1 Ra5 17. Rxd5 Bxd5 18. Qxb6 Qa4 19. Bxd5 Qd1+ 20. Kg2 Qxd5
-21. Bd2 Rb5 22. Qe3 e5 23. Bc3 e4 24. Bxg7 exf3+ 25. exf3 Kxg7 26. Qc3+ Kg8 27.
-a4 Rb3 28. Qc2 Qd3 29. Qxd3 cxd3 30. Rd1 Rd8 31. a5 Rxb2 32. a6 d2 33. a7 Ra8
-0-1
+1. d4 d5 2. Nf3 g6 3. g3 Bg7 4. Bg2 Nf6 5. c4 c6 6. O-O O-O 7. Qb3 Be6 8. Nbd2 b6 9. Ne5 dxc4 10. Qa4 Qxd4 11. Nxc6 Nxc6 12. Bxc6 Rac8 13. Bb7 Rc5 14. Nf3 Qd7 15. Qxa7 Nd5 16. Rd1 Ra5 17. Rxd5 Bxd5 18. Qxb6 Qa4 19. Bxd5 Qd1+ 20. Kg2 Qxd5 21. Bd2 Rb5 22. Qe3 e5 23. Bc3 e4 24. Bxg7 exf3+ 25. exf3 Kxg7 26. Qc3+ Kg8 27. a4 Rb3 28. Qc2 Qd3 29. Qxd3 cxd3 30. Rd1 Rd8 31. a5 Rxb2 32. a6 d2 33. a7 Ra8 0-1
 
 ---
 
