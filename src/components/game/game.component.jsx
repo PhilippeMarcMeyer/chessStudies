@@ -55,6 +55,19 @@ class Game extends React.Component {
         this.setNewGame();
       }
 
+      cleanRawInfo = (raw) => {
+        //[Event \"Live Chess\"]
+        let clean = raw.replace(/\\|[|]|"/g, "");
+        let pos = clean.indexOf(" ");
+        if(pos !== -1){
+          let key = clean.substring(0,pos-1);
+          let value = clean.substring(pos+1,clean.length);
+          let result = {};
+          result[key] = value;
+          return result;
+        }else return null;
+      }
+
       savePGN = () => {
         let textArea = document.getElementById("game-input");
         if(textArea!=null){
@@ -75,10 +88,15 @@ class Game extends React.Component {
               let turnPrevPosition =  pgnGame.indexOf(turn+".");
               let turnNextPosition = 0;
               let currentTurnData;
+              let end;
               while (turnPrevPosition !== -1 && turnNextPosition !== -1){
                 turnNextPosition =  pgnGame.indexOf((turn+1)+".");
                 if(turnNextPosition !==-1){
-                  currentTurnData = pgnGame.substring(turnPrevPosition, turnNextPosition).replace(turn+".","").trim();
+                  end = turnNextPosition;
+                }else{
+                  end = turnPrevPosition + 100;
+                }
+                  currentTurnData = pgnGame.substring(turnPrevPosition, end).replace(turn+".","").trim();
                   let moves = currentTurnData.split(" ");
                   let turnInfo = {"w":moves[0]};
                   if(moves.length === 2){
@@ -86,12 +104,21 @@ class Game extends React.Component {
                   }
                   turns.push(turnInfo);
                   turnPrevPosition = turnNextPosition;
-                }
                 turn++;
               } 
+              let infosClean = {};
+              infos.forEach(function(raw){
+                let clean = raw.replace(/\\|\[|\]|"/g, "");
+                let pos = clean.indexOf(" ");
+                if(pos !== -1){
+                  let key = clean.substring(0,pos);
+                  let value = clean.substring(pos+1,clean.length);
+                  infosClean[key] = value;
+                }
+              });
               this.setState((prevState,prevProps) => {
                 return {
-                  "pgnResume": infos,
+                  "pgnResume": infosClean,
                   "pgnGame":turns,
                   "status": this.gameStatus.ready
                  }

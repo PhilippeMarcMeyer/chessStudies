@@ -1,6 +1,6 @@
 import React from 'react';
 import './info.styles.css';
-import Resume from '../resume/resume.component';
+import Turns from '../turns/turns.component';
 
 const Info = (props) => {
   let status = props.game.status;
@@ -8,7 +8,7 @@ const Info = (props) => {
 
   if(status === props.statuses.off){
       return(
-        <div className='board-zone'>
+        <div className='info-zone'>
           <h3 className='board-title'>{props.game.infosTitle}</h3>
           <textarea id="game-input" className="game-input" name="pgn">{pgn}</textarea>
           <button onClick={props.savePGN}>Go</button>
@@ -17,7 +17,7 @@ const Info = (props) => {
   }
   else if (status === props.statuses.loaded) {
       return(
-        <div className='board-zone'>
+        <div className='info-zone'>
           <h3 className='board-title'>{props.game.infosTitle}</h3>
           <p className='infosMessage'>{props.game.infosMessage}</p>
 
@@ -25,15 +25,15 @@ const Info = (props) => {
       )
     } else if (status === props.statuses.ready) {
       return(
-        <div className='board-zone'>
+        <div className='turns-zone'>
           <h3 className='board-title'>{props.game.infosTitle}</h3>
-          <p className='infosMessage'>{props.game.infosMessage}</p>
-          <Resume resume={props.game.pgnResume} />
+          <p className='infosMessage'>{props.game.pgnResume.Date} {props.game.pgnResume.Date} vs {props.game.pgnResume.Black} {props.game.pgnResume.Result}</p>
+          <Turns turnsList = {props.game.pgnGame} />
         </div>
       )
     } else{
       return(
-        <div className='board-zone'>
+        <div className='info-zone'>
           <h3 className='board-title'>404</h3>
           <p className='infosMessage'>Sorry Buddy, I'm afraid we are lost !</p>
         </div>

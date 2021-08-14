@@ -5,11 +5,9 @@ const Resume = (props) => {
     console.log(props.resume);
     return(
         <div className="game-resume">
-        <ul>
-
-
-        </ul>
-           
+            <div>{props.resume.Date}</div>
+            <div>{props.resume.White} vs {props.resume.Black}</div>
+            <div>{props.resume.Result}</div>               
         </div>
     )
 }
