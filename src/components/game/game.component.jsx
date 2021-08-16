@@ -68,8 +68,58 @@ class Game extends React.Component {
         }else return null;
       }
 
+      getMoveOffset = (move) => {
+        return move.number === 0 ? 0 : ((move.number-1)*2) + (move.side === "w" ? 1 : 2);
+      }
+
+      getAskedMove = (elem) => {
+        let turn = 0;
+        let side = "w";
+        let askedMove = null;
+        if(elem.hasAttribute("data-turn") && elem.hasAttribute("data-side")){
+          turn = parseInt(elem.getAttribute("data-turn"));
+          if(isNaN(turn)){
+            turn = 0;
+          }
+          side = elem.getAttribute("data-side")
+        }
+        if(turn>0){
+          askedMove={"number":turn,"side":side};
+        }
+        return askedMove;
+      }
+
+      moveGameTo(move){
+        console.log("move to " + move.number +" "+move.side +" side");
+      }
+
       movePGN= (e) => {
-        console.log(e.currentTarget)
+        let elem = e.currentTarget;
+
+        let askedMove= this.getAskedMove(elem);
+        let askedMoveOffset = this.getMoveOffset(askedMove);
+        let currentMove = this.state.move;
+        let currentMoveOffset = this.getMoveOffset(currentMove);
+
+        if(askedMoveOffset !== currentMoveOffset){
+          if(askedMoveOffset > currentMoveOffset){
+          // move from currentMove to askedMove
+          this.moveGameTo(askedMove);
+          }else{
+            // reset currentMove to 0 and move to askedMove
+            this.setState((prevState,prevProps) => {
+              return {
+                "move":{"number":0,"side":"w"}
+               }
+            },() => {
+              this.moveGameTo(askedMove);
+            });
+          }
+        }
+
+
+        
+
       }
 
       savePGN = () => {
