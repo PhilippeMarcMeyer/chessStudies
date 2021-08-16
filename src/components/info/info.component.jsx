@@ -1,7 +1,7 @@
 import React from 'react';
 import './info.styles.css';
 import Turns from '../turns/turns.component';
-
+import Resume from '../resume/resume.component';
 const Info = (props) => {
   let status = props.game.status;
   let pgn = props.game.pgnHistory
@@ -26,9 +26,8 @@ const Info = (props) => {
     } else if (status === props.statuses.ready) {
       return(
         <div className='turns-zone'>
-          <h3 className='board-title'>{props.game.infosTitle}</h3>
-          <p className='infosMessage'>{props.game.pgnResume.Date} {props.game.pgnResume.Date} vs {props.game.pgnResume.Black} {props.game.pgnResume.Result}</p>
-          <Turns turnsList = {props.game.pgnGame} />
+          <Resume resume = {props.game.pgnResume}/>
+          <Turns turnsList = {props.game.pgnGame} movePGN = {props.movePGN}/>
         </div>
       )
     } else{

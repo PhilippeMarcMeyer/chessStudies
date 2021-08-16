@@ -68,6 +68,10 @@ class Game extends React.Component {
         }else return null;
       }
 
+      movePGN= (e) => {
+        console.log(e.currentTarget)
+      }
+
       savePGN = () => {
         let textArea = document.getElementById("game-input");
         if(textArea!=null){
@@ -224,7 +228,7 @@ class Game extends React.Component {
             <Board key={1} game={this.state} />
           </div>
           <div className="game-info">
-            <Info key={1} game={this.state} savePGN={this.savePGN} statuses={this.gameStatus}></Info>
+            <Info key={1} game={this.state} movePGN={this.movePGN} savePGN={this.savePGN} statuses={this.gameStatus}></Info>
           </div>
         </div>
       );

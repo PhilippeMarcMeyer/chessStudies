@@ -8,8 +8,8 @@ const Turns = (props) => {
                 {
                     props.turnsList.map((turn, index) => 
                         <li key={index}>
-                            <span className="turn-w">{turn.w}</span>
-                            <span className="turn-b">{turn.b}</span>
+                            <span onClick={props.movePGN} data-turn={index+1} className="turn-w">{turn.w}</span>
+                            <span onClick={props.movePGN} data-turn={index+1} className="turn-b">{turn.b}</span>
                         </li>
                     )
                 }
