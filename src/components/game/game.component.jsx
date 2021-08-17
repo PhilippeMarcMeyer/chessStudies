@@ -2,10 +2,11 @@ import React from 'react';
 import './game.styles.css';
 import Board from '../board/board.component';
 import Info from '../info/info.component';
+import {getMoveOffset,getAskedMove} from '../../movesLogic.js';
 
 class Game extends React.Component {
     constructor(){
-        super();
+        super();        
          // off, loaded, inerror, ready
         this.gameStatus = {
             "off":0,
@@ -15,13 +16,14 @@ class Game extends React.Component {
         };
 
         this.state = {
+              "gameIsReady" :false,
               "status":this.gameStatus.off,
               "infosTitle":"",
               "infosMessage":"",
               "msg":"White to play",
               "data":[],
               "pgnHistory":"",
-              "move":{"number":0,"side":"w"},
+              "move":{"number":0,"side":"b"},
               "pgnResume":[],
               "pgnGame":[],
               "positions":[],
@@ -49,11 +51,40 @@ class Game extends React.Component {
                 "pW":"&#9817;",
               }
         };
+
+        
       }
 
-      UNSAFE_componentWillMount() {
-        this.setNewGame();
-      }
+
+     moveGameTo = (askedMove) => {
+        //let currentMove = this.state.move;
+        let currentMove = this.state.move;
+
+        let askedMoveOffset = getMoveOffset(askedMove);
+        let currentMoveOffset = getMoveOffset(currentMove);
+        if(askedMoveOffset > currentMoveOffset){
+          let nextMoveOffset = currentMoveOffset === 0 ? currentMoveOffset = 1 : currentMoveOffset+1;
+          let nextMovePosition = {}
+          if(nextMoveOffset % 2 === 1){
+            nextMovePosition.number = Math.trunc(currentMoveOffset/2)+1;
+            nextMovePosition.side = "w";
+          }else{
+            nextMovePosition.number = currentMoveOffset/2;
+            nextMovePosition.side = "b";
+          }
+          
+          let nextMove = this.state.pgnGame[nextMovePosition.number][nextMovePosition.side];
+
+          console.log(nextMove);
+          // will update the board positions
+          // update the state
+          // recurse on moveGameTo = (askedMove)
+        }
+    }
+
+    componentDidMount() {
+      this.setNewGame();
+    }
 
       cleanRawInfo = (raw) => {
         //[Event \"Live Chess\"]
@@ -68,38 +99,13 @@ class Game extends React.Component {
         }else return null;
       }
 
-      getMoveOffset = (move) => {
-        return move.number === 0 ? 0 : ((move.number-1)*2) + (move.side === "w" ? 1 : 2);
-      }
-
-      getAskedMove = (elem) => {
-        let turn = 0;
-        let side = "w";
-        let askedMove = null;
-        if(elem.hasAttribute("data-turn") && elem.hasAttribute("data-side")){
-          turn = parseInt(elem.getAttribute("data-turn"));
-          if(isNaN(turn)){
-            turn = 0;
-          }
-          side = elem.getAttribute("data-side")
-        }
-        if(turn>0){
-          askedMove={"number":turn,"side":side};
-        }
-        return askedMove;
-      }
-
-      moveGameTo(move){
-        console.log("move to " + move.number +" "+move.side +" side");
-      }
-
       movePGN= (e) => {
         let elem = e.currentTarget;
 
-        let askedMove= this.getAskedMove(elem);
-        let askedMoveOffset = this.getMoveOffset(askedMove);
+        let askedMove= getAskedMove(elem);
+        let askedMoveOffset = getMoveOffset(askedMove);
         let currentMove = this.state.move;
-        let currentMoveOffset = this.getMoveOffset(currentMove);
+        let currentMoveOffset = getMoveOffset(currentMove);
 
         if(askedMoveOffset !== currentMoveOffset){
           if(askedMoveOffset > currentMoveOffset){
@@ -116,10 +122,6 @@ class Game extends React.Component {
             });
           }
         }
-
-
-        
-
       }
 
       savePGN = () => {
@@ -265,24 +267,33 @@ class Game extends React.Component {
             "data": data,
             "positions":positions,
             "move":{"number":0,"side":"w"},
-            "pgnHistory": pgn
+            "pgnHistory": pgn,
+            "gameIsReady":true
            }
         });
-        this.setGameInfos();
+        
       }
-     
-    render() {
-      return (
-        <div className="game">
-          <div className="game-board">
-            <Board key={1} game={this.state} />
-          </div>
-          <div className="game-info">
-            <Info key={1} game={this.state} movePGN={this.movePGN} savePGN={this.savePGN} statuses={this.gameStatus}></Info>
-          </div>
-        </div>
-      );
-    }
+
+        render() {
+          if( this.state.gameIsReady){
+          return (
+            <div className="game">
+              <div className="game-board">
+                <Board key={1} game={this.state} />
+              </div>
+              <div className="game-info">
+                <Info key={1} game={this.state} movePGN={this.movePGN} savePGN={this.savePGN} statuses={this.gameStatus}></Info>
+              </div>
+            </div>
+          );
+          }else{
+            return(
+              <div className="game">
+                <h1> Loading </h1>
+              </div>
+            );
+          }
+        }
   }
 
   export default Game;

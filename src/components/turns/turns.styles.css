@@ -39,6 +39,7 @@
  .turns-zone .board-title{
    display:none;
 }
+
 .game-turns span{
    cursor:pointer;
 }
