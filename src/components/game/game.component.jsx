@@ -75,7 +75,49 @@ class Game extends React.Component {
           
           let nextMove = this.state.pgnGame[nextMovePosition.number][nextMovePosition.side];
 
+          let moveSide = nextMovePosition.side;
+          let moveColumn = nextMove.charAt(0);
+          let moveRow = nextMove.charAt(1);
+          let movePieceType = null;
+          let moveType = null; // move, move2Squares, castle, take
+          let isCheck = false; // maybe not usefull
+          let moveMaybe = null;
+          let isError = false;
+          if(nextMove.length === 2 || (nextMove.length === 3 && nextMove.charAt(2) === "+")){// pawn move
+            isCheck = nextMove.length === 3;
+            movePieceType = "p";
+            moveColumn = nextMove.charAt(0);
+            moveRow = parseInt(nextMove.charAt(1));
+            moveType = "move";
+            if(isNaN(moveRow)){
+              isError = true;
+            }
+            if(!isError){
+              if((moveRow === 4 && moveSide === "w") || (moveRow === 5 && moveSide === "b")){
+                moveMaybe = "move2Squares";
+              }
+            }
+          } else if(nextMove.length === 3){
+              if(nextMove === "0-0"){
+                movePieceType = "K,R";
+                moveColumn = moveSide === "w" ? 1 : 8;
+                moveRow = "g,f";
+                moveType = "castle";
+              }else{
+                moveType = "move";
+                movePieceType = nextMove.charAt(0);
+                moveColumn = nextMove.charAt(1);
+                moveRow = parseInt(nextMove.charAt(2));
+                if(isNaN(moveRow)){
+                  isError = true;
+                }
+              }
+          }else{
+            // to be continued
+            isError = true;
+          }
           console.log(nextMove);
+
           // will update the board positions
           // update the state
           // recurse on moveGameTo = (askedMove)

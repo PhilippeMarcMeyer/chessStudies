@@ -10,7 +10,7 @@ const Info = (props) => {
       return(
         <div className='info-zone'>
           <h3 className='board-title'>{props.game.infosTitle}</h3>
-          <textarea id="game-input" className="game-input" name="pgn">{pgn}</textarea>
+          <textarea id="game-input" className="game-input" name="pgn" defaultValue={pgn}></textarea>
           <button onClick={props.savePGN}>Go</button>
         </div>
       )
