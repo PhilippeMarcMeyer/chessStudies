@@ -57,6 +57,15 @@ class Game extends React.Component {
         let currentMove = this.state.move;
         let gamePositions = this.state.pgnGame;
         let nextMoveData = getNextMove (gamePositions,currentMove,askedMove);
+        if(!nextMoveData.isError){
+          if(nextMoveData.moveType === "move"){
+            if(nextMoveData.possiblePositions && nextMoveData.possiblePositions.length > 0){
+                for(let i = 0;i< nextMoveData.possiblePositions.length; i++){
+                  
+                }
+            }
+          }
+        }
         console.log(nextMoveData);
     }
 
