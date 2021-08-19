@@ -55,14 +55,43 @@ class Game extends React.Component {
 
      moveGameTo = (askedMove) => {
         let currentMove = this.state.move;
-        let gamePositions = this.state.pgnGame;
-        let nextMoveData = getNextMove (gamePositions,currentMove,askedMove);
+        let gamePgn = this.state.pgnGame;
+        let gamePositions = this.state.data;
+
+        let nextMoveData = getNextMove (gamePgn,currentMove,askedMove);
+
         if(!nextMoveData.isError){
           if(nextMoveData.moveType === "move"){
+            let hasMoved = false;
             if(nextMoveData.possiblePositions && nextMoveData.possiblePositions.length > 0){
                 for(let i = 0;i< nextMoveData.possiblePositions.length; i++){
-                  
+                  if(hasMoved) break;
+                  for(let j = 0;j< gamePositions.length; j++){
+                     if( gamePositions[j].column === nextMoveData.possiblePositions[i].column && parseInt(gamePositions[j].row) === nextMoveData.possiblePositions[i].row){
+                      if(gamePositions[j].fig === (nextMoveData.movePieceType + nextMoveData.moveSide.toUpperCase())){
+                        hasMoved = true;
+                        gamePositions[j].fig = null;
+                        break;
+                      }
+                     }
+                  }
                 }
+            }
+            if(hasMoved){
+              for(let i = 0;i< gamePositions.length; i++){
+                if(gamePositions[i].column === nextMoveData.moveColumn && parseInt(gamePositions[i].row) === nextMoveData.moveRow){
+                  gamePositions[i].fig =  nextMoveData.movePieceType + nextMoveData.moveSide.toUpperCase();
+                  this.setState((prevState,prevProps) => {
+                    return {
+                      "data": gamePositions,
+                      "move": {number: nextMoveData.number, side: nextMoveData.moveSide}
+                     }
+                  },() => {
+                    this.moveGameTo(askedMove);
+                  });
+                  break;
+                }
+              }
             }
           }
         }

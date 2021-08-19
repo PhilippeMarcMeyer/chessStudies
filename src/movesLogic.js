@@ -31,7 +31,11 @@ const getAskedMove = (elem) => {
       moveType : null, // move, castle-king, take
       isCheck : false, // maybe not usefull
       isMat : false,
-      isError : false
+      isError : false,
+      possiblePositions : null,
+      additionalMove : null,
+      number:0
+
     };
 
     if(askedMoveOffset > currentMoveOffset){
@@ -41,13 +45,13 @@ const getAskedMove = (elem) => {
         nextMovePosition.number = Math.trunc(currentMoveOffset/2)+1;
         nextMovePosition.side = "w";
       }else{
-        nextMovePosition.number = currentMoveOffset/2;
+        nextMovePosition.number = (currentMoveOffset+1)/2;
         nextMovePosition.side = "b";
       }
       
       let nextMove = gamePositions[nextMovePosition.number-1][nextMovePosition.side];
       nextMoveData.moveSide = nextMovePosition.side;
-
+      nextMoveData.number = nextMovePosition.number;
       nextMove = nextMove.replace(/\?|!/,"") // no ?! !! etc...
       
       if(nextMove.charAt(nextMove.length-1) === "+" && nextMove.charAt(nextMove.length-2) === "+"){
