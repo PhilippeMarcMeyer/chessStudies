@@ -25,12 +25,12 @@ const getAskedMove = (elem) => {
 
     let nextMoveData = {
       moveSide:"",
-      moveColumn : 0,
-      moveRow : "",
+      moveColumn : "",
+      moveRow : 0,
       movePieceType : null,
-      moveType : null, // move, move2Squares, castle, take
+      moveType : null, // move, castle-king, take
       isCheck : false, // maybe not usefull
-      moveMaybe : null, // for instance 1 or 2 squares for the pawn
+      isMat : false,
       isError : false
     };
 
@@ -46,29 +46,52 @@ const getAskedMove = (elem) => {
       }
       
       let nextMove = gamePositions[nextMovePosition.number-1][nextMovePosition.side];
-
       nextMoveData.moveSide = nextMovePosition.side;
 
-      if(nextMove.length === 2 || (nextMove.length === 3 && nextMove.charAt(2) === "+")){// pawn move
-        nextMoveData.isCheck = nextMove.length === 3;
+      nextMove = nextMove.replace(/\?|!/,"") // no ?! !! etc...
+      
+      if(nextMove.charAt(nextMove.length-1) === "+" && nextMove.charAt(nextMove.length-2) === "+"){
+        nextMove.isMat = true;
+        nextMove = nextMove.substring(0,nextMove.length-2);
+      }else if(nextMove.charAt(nextMove.length-1) === "+"){
+        nextMove.isCheck = true;
+        nextMove = nextMove.substring(0,nextMove.length-1);
+      }
+      if(nextMove.length === 2){// pawn move
         nextMoveData.movePieceType = "p";
         nextMoveData.moveColumn = nextMove.charAt(0);
         nextMoveData.moveRow = parseInt(nextMove.charAt(1));
+        nextMoveData.possiblePositions = [];
+        if((nextMoveData.moveRow === 4 && nextMoveData.moveSide === "w")){
+          nextMoveData.possiblePositions.push({"column":nextMoveData.moveColumn,"row":3});
+          nextMoveData.possiblePositions.push({"column":nextMoveData.moveColumn,"row":2});
+
+        }else if(nextMoveData.moveRow === 5 && nextMoveData.moveSide === "b"){
+          nextMoveData.possiblePositions.push({"column":nextMoveData.moveColumn,"row":7});
+          nextMoveData.possiblePositions.push({"column":nextMoveData.moveColumn,"row":6}); 
+        }else{
+          nextMoveData.possiblePositions.push({"column":nextMoveData.moveColumn,"row":nextMoveData.moveSide === "w"?nextMoveData.moveRow++ :nextMoveData.moveRow-- });
+        }
         nextMoveData.moveType = "move";
         if(isNaN(nextMoveData.moveRow)){
           nextMoveData.isError = true;
         }
-        if(!nextMoveData.isError){
-          if((nextMoveData.moveRow === 4 && nextMoveData.moveSide === "w") || (nextMoveData.moveRow === 5 && nextMoveData.moveSide === "b")){
-            nextMoveData.moveMaybe = "move2Squares";
-          }
-        }
       } else if(nextMove.length === 3){
           if(nextMove === "0-0"){
-            nextMoveData.movePieceType = "K,R";
+            nextMoveData.movePieceType = "K";
             nextMoveData.moveColumn = nextMoveData.moveSide === "w" ? 1 : 8;
-            nextMoveData.moveRow = "g,f";
-            nextMoveData.moveType = "castle";
+            nextMoveData.moveRow = "g";
+            nextMoveData.moveType = "castle-king";
+            nextMoveData.possiblePositions = [];
+            nextMoveData.additionalMove = {
+              moveSide:nextMoveData.moveSide,
+              moveColumn : nextMoveData.moveColumn,
+              moveRow : "f",
+              movePieceType : "R",
+              moveType : nextMoveData.moveType,
+              isCheck : false, // maybe not usefull
+              isError : false
+            }
           }else{
             nextMoveData.moveType = "move";
             nextMoveData.movePieceType = nextMove.charAt(0);
