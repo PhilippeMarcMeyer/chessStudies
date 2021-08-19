@@ -2,7 +2,7 @@ import React from 'react';
 import './game.styles.css';
 import Board from '../board/board.component';
 import Info from '../info/info.component';
-import {getMoveOffset,getAskedMove} from '../../movesLogic.js';
+import {getMoveOffset,getAskedMove,getNextMove} from '../../movesLogic.js';
 
 class Game extends React.Component {
     constructor(){
@@ -51,77 +51,13 @@ class Game extends React.Component {
                 "pW":"&#9817;",
               }
         };
-
-        
       }
 
-
      moveGameTo = (askedMove) => {
-        //let currentMove = this.state.move;
         let currentMove = this.state.move;
-
-        let askedMoveOffset = getMoveOffset(askedMove);
-        let currentMoveOffset = getMoveOffset(currentMove);
-        if(askedMoveOffset > currentMoveOffset){
-          let nextMoveOffset = currentMoveOffset === 0 ? currentMoveOffset = 1 : currentMoveOffset+1;
-          let nextMovePosition = {}
-          if(nextMoveOffset % 2 === 1){
-            nextMovePosition.number = Math.trunc(currentMoveOffset/2)+1;
-            nextMovePosition.side = "w";
-          }else{
-            nextMovePosition.number = currentMoveOffset/2;
-            nextMovePosition.side = "b";
-          }
-          
-          let nextMove = this.state.pgnGame[nextMovePosition.number][nextMovePosition.side];
-
-          let moveSide = nextMovePosition.side;
-          let moveColumn = nextMove.charAt(0);
-          let moveRow = nextMove.charAt(1);
-          let movePieceType = null;
-          let moveType = null; // move, move2Squares, castle, take
-          let isCheck = false; // maybe not usefull
-          let moveMaybe = null;
-          let isError = false;
-          if(nextMove.length === 2 || (nextMove.length === 3 && nextMove.charAt(2) === "+")){// pawn move
-            isCheck = nextMove.length === 3;
-            movePieceType = "p";
-            moveColumn = nextMove.charAt(0);
-            moveRow = parseInt(nextMove.charAt(1));
-            moveType = "move";
-            if(isNaN(moveRow)){
-              isError = true;
-            }
-            if(!isError){
-              if((moveRow === 4 && moveSide === "w") || (moveRow === 5 && moveSide === "b")){
-                moveMaybe = "move2Squares";
-              }
-            }
-          } else if(nextMove.length === 3){
-              if(nextMove === "0-0"){
-                movePieceType = "K,R";
-                moveColumn = moveSide === "w" ? 1 : 8;
-                moveRow = "g,f";
-                moveType = "castle";
-              }else{
-                moveType = "move";
-                movePieceType = nextMove.charAt(0);
-                moveColumn = nextMove.charAt(1);
-                moveRow = parseInt(nextMove.charAt(2));
-                if(isNaN(moveRow)){
-                  isError = true;
-                }
-              }
-          }else{
-            // to be continued
-            isError = true;
-          }
-          console.log(nextMove);
-
-          // will update the board positions
-          // update the state
-          // recurse on moveGameTo = (askedMove)
-        }
+        let gamePositions = this.state.pgnGame;
+        let nextMoveData = getNextMove (gamePositions,currentMove,askedMove);
+        console.log(nextMoveData);
     }
 
     componentDidMount() {

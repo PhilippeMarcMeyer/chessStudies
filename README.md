@@ -72,6 +72,14 @@ Board placed on the left and an information block showing beside it on the right
 
 the info block with show a texteara and a button and after the PGN is saved and analysed will list the turns, allowing the user to click on the different moves to show the corresponding positions on the board.
 
+Usefull tip : How to kill VS code local server ?
+Ctrl-c is working if you haven't closed the vsc terminal
+If you have closed it then yarn start witl ask you to run the server on another port
+to kill the server on port 3000 :
+>> netstat -ano | findstr :3000 
+return the process number on the right most column ex : 26028
+>> taskkill /PID 26028 /F
+
 to be continued...
 
 ## You can help me by learning React with me, or if you are a saisonned React dev, by providing advices
