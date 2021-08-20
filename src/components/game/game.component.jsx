@@ -16,6 +16,7 @@ class Game extends React.Component {
         };
 
         this.state = {
+              "initialData": null,
               "gameIsReady" :false,
               "status":this.gameStatus.off,
               "infosTitle":"",
@@ -67,7 +68,7 @@ class Game extends React.Component {
                 for(let i = 0;i< nextMoveData.possiblePositions.length; i++){
                   if(hasMoved) break;
                   for(let j = 0;j< gamePositions.length; j++){
-                     if( gamePositions[j].column === nextMoveData.possiblePositions[i].column && gamePositions[j].row === nextMoveData.possiblePositions[i].row){
+                     if(gamePositions[j].column === nextMoveData.possiblePositions[i].column && gamePositions[j].row === nextMoveData.possiblePositions[i].row){
                       if(gamePositions[j].fig === (nextMoveData.movePieceType + nextMoveData.moveSide.toUpperCase())){
                         hasMoved = true;
                         gamePositions[j].fig = null;
@@ -76,25 +77,58 @@ class Game extends React.Component {
                      }
                   }
                 }
+         
+            if (nextMoveData.additionalMove !== null) {
+              let hasMovedKing = hasMoved;
+              let hasMovedRook = false;
+              for (let i = 0; i < gamePositions.length; i++) {
+                // Rook
+                if (gamePositions[i].column === nextMoveData.additionalMove.possiblePositions[0].column && gamePositions[i].row === nextMoveData.additionalMove.possiblePositions[0].row) {
+                  if (gamePositions[i].fig === nextMoveData.additionalMove.movePieceType + nextMoveData.additionalMove.moveSide.toUpperCase()) {
+                    hasMovedRook = true;
+                    gamePositions[i].fig = null;
+                  }
+                }
+              }
+              hasMoved = hasMovedKing && hasMovedRook;
+            }
+            }
+            if(nextMoveData.unique === true){
+              for(let i = 0;i< gamePositions.length; i++){
+                if(gamePositions[i].fig ===  nextMoveData.movePieceType + nextMoveData.moveSide.toUpperCase()){
+                  hasMoved = true;
+                  gamePositions[i].fig = null;
+                  break;
+                }
+              }
             }
             if(hasMoved){
               for(let i = 0;i< gamePositions.length; i++){
                 if(gamePositions[i].column === nextMoveData.moveColumn && gamePositions[i].row === nextMoveData.moveRow){
                   gamePositions[i].fig =  nextMoveData.movePieceType + nextMoveData.moveSide.toUpperCase();
-                  this.setState((prevState,prevProps) => {
-                    return {
-                      "data": gamePositions,
-                      "move": {number: nextMoveData.number, side: nextMoveData.moveSide}
-                     }
-                  },() => {
-                    let that = this;
-                    setTimeout(function(){
-                      that.moveGameTo(askedMove);
-                    },800);
-                  });
                   break;
                 }
               }
+              if(nextMoveData.additionalMove !=null){
+                for(let i = 0;i< gamePositions.length; i++){
+                  if(gamePositions[i].column === nextMoveData.additionalMove.moveColumn && gamePositions[i].row === nextMoveData.additionalMove.moveRow){
+                    gamePositions[i].fig =  nextMoveData.additionalMove.movePieceType + nextMoveData.additionalMove.moveSide.toUpperCase();
+                    break;
+                  }
+                }   
+              }
+
+              this.setState((prevState,prevProps) => {
+                return {
+                  "data": gamePositions,
+                  "move": {number: nextMoveData.number, side: nextMoveData.moveSide}
+                 }
+              },() => {
+                let that = this;
+                setTimeout(function(){
+                  that.moveGameTo(askedMove);
+                },300);
+              });
             }
           }
         }
@@ -131,9 +165,13 @@ class Game extends React.Component {
           this.moveGameTo(askedMove);
           }else{
             // reset currentMove to 0 and move to askedMove
+            let reinitData = JSON.parse(this.state.initialData);
+
             this.setState((prevState,prevProps) => {
               return {
-                "move":{"number":0,"side":"w"}
+                "data":reinitData,
+                "move":{"number":0,"side":"w"},
+                "status": this.gameStatus.ready
                }
             },() => {
               this.moveGameTo(askedMove);
@@ -279,10 +317,10 @@ class Game extends React.Component {
               sqr.fig = check[0].fig;
             }
         });
-
         this.setState((prevState,prevProps) => {
           return {
             "data": data,
+            "initialData":JSON.stringify(data),
             "positions":positions,
             "move":{"number":0,"side":"w"},
             "pgnHistory": pgn,

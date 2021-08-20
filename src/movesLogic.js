@@ -37,10 +37,11 @@ const getAskedMove = (elem) => {
       isMat : false,
       isError : false,
       isDone : true, // no change : we are at the asked move
-      possiblePositions : null,
+      possiblePositions : [],
       additionalMove : null,
       comingFromRow : 0, // ex R2c8 => 2 : the Rook is coming from row 2 (there are 2 Rooks able to make teh move)
       comingFromColumn : "",// ex Rac8 => a : the Rook is coming from column/file "a"
+      uniqueFigure:false,
       number:0
     };
 
@@ -82,20 +83,21 @@ const getAskedMove = (elem) => {
           nextMoveData.isError = true;
         }
       } else if(nextMove.length === 3){
-          if(nextMove === "0-0"){
+          if(nextMove === "0-0" || nextMove === "O-O"){
             nextMoveData.movePieceType = "K";
-            nextMoveData.moveColumn = nextMoveData.moveSide === "w" ? 1 : 8;
-            nextMoveData.moveRow = "g";
+            nextMoveData.moveColumn = "g"
+            nextMoveData.moveRow = nextMoveData.moveSide === "w" ? 1 : 8;
             nextMoveData.moveType = "castle-king";
             nextMoveData.possiblePositions = [];
             nextMoveData.additionalMove = {
               moveSide:nextMoveData.moveSide,
-              moveColumn : nextMoveData.moveColumn,
-              moveRow : "f",
+              moveColumn : "f",
+              moveRow :  nextMoveData.moveRow,
               movePieceType : "R",
               moveType : nextMoveData.moveType,
               isCheck : false, // maybe not usefull
-              isError : false
+              isError : false,
+              possiblePositions : []
             }
           }else{
             nextMoveData.moveType = take ? "take" : "move";
@@ -128,7 +130,23 @@ const getAskedMove = (elem) => {
         if(isNaN(nextMoveData.moveRow)){
           nextMoveData.isError = true;
         }
-    }else{
+      }else if(nextMove === "0-0-0" || nextMove === "O-O-O"){
+        nextMoveData.movePieceType = "K";
+        nextMoveData.moveColumn = "c";
+        nextMoveData.moveRow = nextMoveData.moveSide === "w" ? 1 : 8;
+        nextMoveData.moveType = "castle-queen";
+        nextMoveData.possiblePositions = [];
+        nextMoveData.additionalMove = {
+          moveSide:nextMoveData.moveSide,
+          moveColumn : "d",
+          moveRow : nextMoveData.moveRow,
+          movePieceType : "R",
+          moveType : nextMoveData.moveType,
+          isCheck : false, 
+          isError : false,
+          possiblePositions : []
+        }
+      }else{
         // to be continued (queen side castling)
         nextMoveData.isError = true;
       }
@@ -235,14 +253,85 @@ const getAskedMove = (elem) => {
             }
           }
         }else if(nextMoveData.movePieceType === "B"){
-          // todo
+          // diagonally
+          let rowPos = nextMoveData.moveRow;// starts at 1
+          let convenientShift = 1;
+          let colPos = columnsOrdered.indexOf(nextMoveData.moveColumn) + convenientShift; // starts at 0
+
+           // each +1 row +1 col
+          for(let r = rowPos+1;r < 9; r++){
+            for(let c = colPos+1;c < 9; c++){
+              let possibleMove = {"column":columnsOrdered[c - convenientShift],"row":r};
+              if((nextMoveData.comingFromRow === 0 || possibleMove.row === nextMoveData.comingFromRow ) 
+              && (nextMoveData.comingFromColumn === "" || possibleMove.column === nextMoveData.comingFromColumn )){
+                nextMoveData.possiblePositions.push(possibleMove);
+              }
+            }
+          }
+
+          // each +1 row -1 col
+          for(let r = rowPos+1;r < 9; r++){
+            for(let c = colPos-1;c > 0; c--){
+              let possibleMove = {"column":columnsOrdered[c - convenientShift],"row":r};
+              if((nextMoveData.comingFromRow === 0 || possibleMove.row === nextMoveData.comingFromRow ) 
+              && (nextMoveData.comingFromColumn === "" || possibleMove.column === nextMoveData.comingFromColumn )){
+                nextMoveData.possiblePositions.push(possibleMove);
+              }
+            }
+          }
+          // each -1 row +1 col
+          for(let r = rowPos-1;r > 0; r--){
+            for(let c = colPos+1;c < 9; c++){
+              let possibleMove = {"column":columnsOrdered[c - convenientShift],"row":r};
+              if((nextMoveData.comingFromRow === 0 || possibleMove.row === nextMoveData.comingFromRow ) 
+              && (nextMoveData.comingFromColumn === "" || possibleMove.column === nextMoveData.comingFromColumn )){
+                nextMoveData.possiblePositions.push(possibleMove);
+              }
+            }
+          }
+          // each -1 row -1 col
+          for(let r = rowPos-1;r > 0; r--){
+            for(let c = colPos-1;c > 0; c--){
+              let possibleMove = {"column":columnsOrdered[c - convenientShift],"row":r};
+              if((nextMoveData.comingFromRow === 0 || possibleMove.row === nextMoveData.comingFromRow ) 
+              && (nextMoveData.comingFromColumn === "" || possibleMove.column === nextMoveData.comingFromColumn )){
+                nextMoveData.possiblePositions.push(possibleMove);
+              }
+            }
+          }
+
         }else if(nextMoveData.movePieceType === "R"){
           // todo
         }else if(nextMoveData.movePieceType === "K"){
-          // todo
-        }else if(nextMoveData.movePieceType === "Q"){
-          // todo
-        }
+         if (nextMoveData.moveType === "castle-king") {
+           nextMoveData.possiblePositions.push({
+             "column": "e",
+             "row": nextMoveData.moveSide === "w" ? 1 : 8
+           });
+           nextMoveData.additionalMove.possiblePositions.push({
+             "column": "h",
+             "row": nextMoveData.moveSide === "w" ? 1 : 8
+           });
+           nextMoveData.moveType = "move";
+           nextMoveData.additionalMove.moveType = "move";
+         } else if (nextMoveData.moveType === "castle-queen") {
+           nextMoveData.possiblePositions.push({
+             "column": "e",
+             "row": nextMoveData.moveSide === "w" ? 1 : 8
+           });
+           nextMoveData.additionalMove.possiblePositions.push({
+             "column": "a",
+             "row": nextMoveData.moveSide === "w" ? 1 : 8
+           });
+           nextMoveData.moveType = "move";
+           nextMoveData.additionalMove.moveType = "move";
+
+         } else {
+           nextMoveData.uniqueFigure = true;
+         }
+         } else if (nextMoveData.movePieceType === "Q") {
+           nextMoveData.uniqueFigure = true;
+         }
       }
       // will update the board positions
       // update the state
