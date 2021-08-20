@@ -87,7 +87,10 @@ class Game extends React.Component {
                       "move": {number: nextMoveData.number, side: nextMoveData.moveSide}
                      }
                   },() => {
-                    this.moveGameTo(askedMove);
+                    let that = this;
+                    setTimeout(function(){
+                      that.moveGameTo(askedMove);
+                    },800);
                   });
                   break;
                 }
