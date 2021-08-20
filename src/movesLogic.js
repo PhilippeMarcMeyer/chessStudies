@@ -32,6 +32,7 @@ const getAskedMove = (elem) => {
       isCheck : false, // maybe not usefull
       isMat : false,
       isError : false,
+      isDone : true, // no change : we are at the asked move
       possiblePositions : null,
       additionalMove : null,
       number:0
@@ -39,6 +40,7 @@ const getAskedMove = (elem) => {
     };
 
     if(askedMoveOffset > currentMoveOffset){
+      nextMoveData.isDone = false;
       let nextMoveOffset = currentMoveOffset === 0 ? currentMoveOffset = 1 : currentMoveOffset+1;
       let nextMovePosition = {}
       if(nextMoveOffset % 2 === 1){
@@ -65,17 +67,6 @@ const getAskedMove = (elem) => {
         nextMoveData.movePieceType = "p";
         nextMoveData.moveColumn = nextMove.charAt(0);
         nextMoveData.moveRow = parseInt(nextMove.charAt(1));
-        nextMoveData.possiblePositions = [];
-        if((nextMoveData.moveRow === 4 && nextMoveData.moveSide === "w")){
-          nextMoveData.possiblePositions.push({"column":nextMoveData.moveColumn,"row":3});
-          nextMoveData.possiblePositions.push({"column":nextMoveData.moveColumn,"row":2});
-
-        }else if(nextMoveData.moveRow === 5 && nextMoveData.moveSide === "b"){
-          nextMoveData.possiblePositions.push({"column":nextMoveData.moveColumn,"row":7});
-          nextMoveData.possiblePositions.push({"column":nextMoveData.moveColumn,"row":6}); 
-        }else{
-          nextMoveData.possiblePositions.push({"column":nextMoveData.moveColumn,"row":nextMoveData.moveSide === "w"?nextMoveData.moveRow++ :nextMoveData.moveRow-- });
-        }
         nextMoveData.moveType = "move";
         if(isNaN(nextMoveData.moveRow)){
           nextMoveData.isError = true;
@@ -108,6 +99,32 @@ const getAskedMove = (elem) => {
       }else{
         // to be continued
         nextMoveData.isError = true;
+      }
+      // Computing possible previous positions of the moving piece 
+      if(!nextMoveData.isError){
+        nextMoveData.possiblePositions = [];
+        if(nextMoveData.movePieceType === "p"){
+          if((nextMoveData.moveRow === 4 && nextMoveData.moveSide === "w")){
+            nextMoveData.possiblePositions.push({"column":nextMoveData.moveColumn,"row":3});
+            nextMoveData.possiblePositions.push({"column":nextMoveData.moveColumn,"row":2});
+
+          }else if(nextMoveData.moveRow === 5 && nextMoveData.moveSide === "b"){
+            nextMoveData.possiblePositions.push({"column":nextMoveData.moveColumn,"row":7});
+            nextMoveData.possiblePositions.push({"column":nextMoveData.moveColumn,"row":6}); 
+          }else{
+            nextMoveData.possiblePositions.push({"column":nextMoveData.moveColumn,"row":nextMoveData.moveSide === "w"?nextMoveData.moveRow++ :nextMoveData.moveRow-- });
+          }
+        }else if(nextMoveData.movePieceType === "N"){
+          // todo
+        }else if(nextMoveData.movePieceType === "B"){
+          // todo
+        }else if(nextMoveData.movePieceType === "R"){
+          // todo
+        }else if(nextMoveData.movePieceType === "K"){
+          // todo
+        }else if(nextMoveData.movePieceType === "Q"){
+          // todo
+        }
       }
       // will update the board positions
       // update the state

@@ -27,8 +27,8 @@ class Game extends React.Component {
               "pgnResume":[],
               "pgnGame":[],
               "positions":[],
-              "columns" : "a,b,c,d,e,f,g,h".split(","),
-              "rows" : "1,2,3,4,5,6,7,8".split(","),
+              "columns" : "a,b,c,d,e,f,g,h".split(","), // "columns" or "files"
+              "rows" : [1,2,3,4,5,6,7,8],
               "figures" : "R,N,B,Q,K,B,N,R".split(","),
               "pawn" : "p",
               "black": "B",
@@ -60,14 +60,14 @@ class Game extends React.Component {
 
         let nextMoveData = getNextMove (gamePgn,currentMove,askedMove);
 
-        if(!nextMoveData.isError){
+        if(!nextMoveData.isError && !nextMoveData.isDone){
           if(nextMoveData.moveType === "move"){
             let hasMoved = false;
             if(nextMoveData.possiblePositions && nextMoveData.possiblePositions.length > 0){
                 for(let i = 0;i< nextMoveData.possiblePositions.length; i++){
                   if(hasMoved) break;
                   for(let j = 0;j< gamePositions.length; j++){
-                     if( gamePositions[j].column === nextMoveData.possiblePositions[i].column && parseInt(gamePositions[j].row) === nextMoveData.possiblePositions[i].row){
+                     if( gamePositions[j].column === nextMoveData.possiblePositions[i].column && gamePositions[j].row === nextMoveData.possiblePositions[i].row){
                       if(gamePositions[j].fig === (nextMoveData.movePieceType + nextMoveData.moveSide.toUpperCase())){
                         hasMoved = true;
                         gamePositions[j].fig = null;
@@ -79,7 +79,7 @@ class Game extends React.Component {
             }
             if(hasMoved){
               for(let i = 0;i< gamePositions.length; i++){
-                if(gamePositions[i].column === nextMoveData.moveColumn && parseInt(gamePositions[i].row) === nextMoveData.moveRow){
+                if(gamePositions[i].column === nextMoveData.moveColumn && gamePositions[i].row === nextMoveData.moveRow){
                   gamePositions[i].fig =  nextMoveData.movePieceType + nextMoveData.moveSide.toUpperCase();
                   this.setState((prevState,prevProps) => {
                     return {
@@ -117,7 +117,6 @@ class Game extends React.Component {
 
       movePGN= (e) => {
         let elem = e.currentTarget;
-
         let askedMove= getAskedMove(elem);
         let askedMoveOffset = getMoveOffset(askedMove);
         let currentMove = this.state.move;
