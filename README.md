@@ -80,6 +80,10 @@ to kill the server on port 3000 :
 return the process number on the right most column ex : 26028
 >> taskkill /PID 26028 /F
 
+08-21-2021 : 
+todo : rooks moves and en passant
+and testing !
+
 to be continued...
 
 ## You can help me by learning React with me, or if you are a saisonned React dev, by providing advices
