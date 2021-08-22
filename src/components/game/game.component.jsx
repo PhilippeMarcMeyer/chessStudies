@@ -93,7 +93,7 @@ class Game extends React.Component {
               hasMoved = hasMovedKing && hasMovedRook;
             }
             }
-            if(nextMoveData.unique === true){
+            if(nextMoveData.uniqueFigure === true){
               for(let i = 0;i< gamePositions.length; i++){
                 if(gamePositions[i].fig ===  nextMoveData.movePieceType + nextMoveData.moveSide.toUpperCase()){
                   hasMoved = true;
