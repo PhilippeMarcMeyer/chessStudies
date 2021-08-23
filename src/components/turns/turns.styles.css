@@ -14,12 +14,24 @@
    overflow-y:scroll;
    overflow-x:hidden;
 }
+
+
 .game-turns ol li:nth-child(odd) {  
     background-color: #6c7c9c;
    }
 
-.game-turns ol li:nth-child(even) {  
+.game-turns ol li:nth-child(even){  
     background-color: #404a5e;
+}
+.game-turns ol li:nth-child(odd) .turn-current{
+   background-color: #fff;
+   color:#000;
+   font-weight:bold;
+}
+.game-turns ol li:nth-child(even) .turn-current{
+   background-color: #fff;
+   color:#000;
+   font-weight:bold;
 }
 
 .game-turns li .turn-w{

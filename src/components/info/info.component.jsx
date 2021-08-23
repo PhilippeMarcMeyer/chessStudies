@@ -27,7 +27,7 @@ const Info = (props) => {
       return(
         <div className='turns-zone'>
           <Resume resume = {props.game.pgnResume}/>
-          <Turns turnsList = {props.game.pgnGame} movePGN = {props.movePGN}/>
+          <Turns turnsList = {props.game.pgnGame} currentMove={props.game.move} movePGN = {props.movePGN}/>
         </div>
       )
     } else{

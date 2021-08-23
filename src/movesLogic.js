@@ -64,10 +64,10 @@ const getAskedMove = (elem) => {
       }
       
       if(nextMove.charAt(nextMove.length-1) === "+" && nextMove.charAt(nextMove.length-2) === "+"){
-        nextMove.isMat = true;
+        nextMoveData.isMat = true;
         nextMove = nextMove.substring(0,nextMove.length-2);
       }else if(nextMove.charAt(nextMove.length-1) === "+"){
-        nextMove.isCheck = true;
+        nextMoveData.isCheck = true;
         nextMove = nextMove.substring(0,nextMove.length-1);
       }
       if(nextMove.length === 2){// pawn move
