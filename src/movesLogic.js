@@ -368,8 +368,8 @@ for (let i = 0; i < 9; i++) {
       nextMoveData.possiblePositions.push(possibleMove);
     }
   }
-  c--;
-  r++;
+  c++;
+  r--;
 }
  // each -1 row -1 col
  c = colPos-1;
