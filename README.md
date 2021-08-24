@@ -84,7 +84,8 @@ return the process number on the right most column ex : 26028
 todo : rooks moves and en passant
 and testing !
 
-to be continued...
+08/24/2021 : this version is working, one game at a time (using localstorage) it does not support varaitions nor comments
+but is its functional !  I'm glad I could code my first react app
 
 ## You can help me by learning React with me, or if you are a saisonned React dev, by providing advices
 
