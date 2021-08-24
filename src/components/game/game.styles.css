@@ -14,7 +14,19 @@
     vertical-align:top;
     display:inline-block;   
     margin-top:-10px;
+    margin-left:10px;
     position:relative;
-    width : 50vmin;
-    overflow:hidden;
+    width : 75vmin;
 }
+
+@media screen and (min-width: 1200px) {
+    .game-info{
+        vertical-align:top;
+        display:inline-block;   
+        margin-top:-10px;
+        margin-left:10px;
+        position:relative;
+        width : 55vmin;
+        overflow:hidden;
+    }
+  }

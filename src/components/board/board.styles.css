@@ -8,10 +8,6 @@
     position:relative;
     width : 75vmin;
     height: 75vmin; 
- /*   max-width: 420px;
-    max-height:420px;
-    min-width: 320px;
-    min-height:320px;*/
     overflow:hidden;
 }
 
