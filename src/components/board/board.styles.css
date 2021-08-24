@@ -8,10 +8,10 @@
     position:relative;
     width : 75vmin;
     height: 75vmin; 
-    max-width: 420px;
+ /*   max-width: 420px;
     max-height:420px;
     min-width: 320px;
-    min-height:320px;
+    min-height:320px;*/
     overflow:hidden;
 }
 
@@ -56,10 +56,8 @@
     margin:0;
 }
 
-
- 
 @media screen and (min-width: 1200px) {
     .square {
-      font-size: 36px;
+      font-size: 68px;
     }
   }

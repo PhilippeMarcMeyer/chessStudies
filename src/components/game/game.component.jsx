@@ -135,7 +135,7 @@ class Game extends React.Component {
                 let that = this;
                 setTimeout(function(){
                   that.moveGameTo(askedMove);
-                },300);
+                },800);
               });
             }
         }
