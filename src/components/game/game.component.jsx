@@ -106,13 +106,15 @@ class Game extends React.Component {
               for(let i = 0;i< gamePositions.length; i++){
                 if(gamePositions[i].column === nextMoveData.moveColumn && gamePositions[i].row === nextMoveData.moveRow){
                   gamePositions[i].fig =  nextMoveData.movePieceType + nextMoveData.moveSide.toUpperCase();
+                  gamePositions[i].fig = nextMoveData.promoteTo ? nextMoveData.promoteTo + nextMoveData.moveSide.toUpperCase() : nextMoveData.movePieceType + nextMoveData.moveSide.toUpperCase();
+
                   break;
                 }
               }
               if(nextMoveData.additionalMove !=null){
                 for(let i = 0;i< gamePositions.length; i++){
                   if(gamePositions[i].column === nextMoveData.additionalMove.moveColumn && gamePositions[i].row === nextMoveData.additionalMove.moveRow){
-                    gamePositions[i].fig =  nextMoveData.additionalMove.movePieceType + nextMoveData.additionalMove.moveSide.toUpperCase();
+                    gamePositions[i].fig = nextMoveData.additionalMove.movePieceType + nextMoveData.additionalMove.moveSide.toUpperCase();
                     break;
                   }
                 }   

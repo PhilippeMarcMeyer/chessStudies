@@ -35,6 +35,7 @@ const getAskedMove = (elem) => {
       comingFromRow : 0, // ex R2c8 => 2 : the Rook is coming from row 2 (there are 2 Rooks able to make teh move)
       comingFromColumn : "",// ex Rac8 => a : the Rook is coming from column/file "a"
       uniqueFigure:false,
+      promoteTo:null,
       number:0
     };
 
@@ -111,17 +112,24 @@ const getAskedMove = (elem) => {
             }
           }
       }else if(nextMove.length === 4){
-        nextMoveData.movePieceType = nextMove.charAt(0);
-        let comingFrom = nextMove.charAt(1);
-        if(!isNaN(parseInt(comingFrom))){
-          nextMoveData.comingFromRow = parseInt(comingFrom);
+        if(nextMove.charAt(2) === "="){
+          nextMoveData.promoteTo = nextMove.charAt(3);
+          nextMoveData.movePieceType = "p";
+          nextMoveData.moveColumn = nextMove.charAt(0);
+          nextMoveData.moveRow = parseInt(nextMove.charAt(1));
         }else{
-          nextMoveData.comingFromColumn = comingFrom;
-        }
-        nextMoveData.moveColumn = nextMove.charAt(2);
-        nextMoveData.moveRow = parseInt(nextMove.charAt(3));
-        if(isNaN(nextMoveData.moveRow)){
-          nextMoveData.isError = true;
+          nextMoveData.movePieceType = nextMove.charAt(0);
+          let comingFrom = nextMove.charAt(1);
+          if(!isNaN(parseInt(comingFrom))){
+            nextMoveData.comingFromRow = parseInt(comingFrom);
+          }else{
+            nextMoveData.comingFromColumn = comingFrom;
+          }
+          nextMoveData.moveColumn = nextMove.charAt(2);
+          nextMoveData.moveRow = parseInt(nextMove.charAt(3));
+          if(isNaN(nextMoveData.moveRow)){
+            nextMoveData.isError = true;
+          }
         }
       }else if(nextMove === "0-0-0" || nextMove === "O-O-O"){
         nextMoveData.movePieceType = "K";
@@ -173,13 +181,13 @@ const charIsLowercase = (c) => {
 }
 
 const setRookPossiblePreviousPositions = (nextMoveData,columnsOrdered) => {
-  let rowPos = nextMoveData.moveRow;// starts at 1
-  let colPos = columnsOrdered.indexOf(nextMoveData.moveColumn);
-  
-   // each +1 row 
-  for (let r = rowPos + 1; r < 9; r++) {
+  // Same column 
+  // changing row
+
+  for (let r = 1; r < 9; r++) {
+    if (r === nextMoveData.moveRow) continue;
     let possibleMove = {
-      "column": colPos+1,
+      "column": nextMoveData.moveColumn,
       "row": r
     };
     if ((nextMoveData.comingFromRow === 0 || possibleMove.row === nextMoveData.comingFromRow) &&
@@ -187,39 +195,21 @@ const setRookPossiblePreviousPositions = (nextMoveData,columnsOrdered) => {
       nextMoveData.possiblePositions.push(possibleMove);
     }
   }
-  // each -1 row 
-  for (let r = rowPos - 1; r < 0; r--) {
-    let possibleMove = {
-      "column": colPos+1,
-      "row": r
-    };
-    if ((nextMoveData.comingFromRow === 0 || possibleMove.row === nextMoveData.comingFromRow) &&
-      (nextMoveData.comingFromColumn === "" || possibleMove.column === nextMoveData.comingFromColumn)) {
-      nextMoveData.possiblePositions.push(possibleMove);
-    }
-  }
-  // each +1 col
-    for (let c = colPos + 1; c < 9; c++) {
+
+    // Same row 
+  // changing column/file
+    for (let c = 0; c < 8; c++) {
+      if (columnsOrdered[c] === nextMoveData.moveColumn) continue;
       let possibleMove = {
-        "column": columnsOrdered[c-1],
-        "row": rowPos 
+        "column": columnsOrdered[c],
+        "row": nextMoveData.moveRow 
       };
       if ((nextMoveData.comingFromRow === 0 || possibleMove.row === nextMoveData.comingFromRow) &&
         (nextMoveData.comingFromColumn === "" || possibleMove.column === nextMoveData.comingFromColumn)) {
         nextMoveData.possiblePositions.push(possibleMove);
       }
     }
-  // each -1 col
-  for (let c = colPos - 1; c < 0; c--) {
-    let possibleMove = {
-      "column": columnsOrdered[c-1],
-      "row": rowPos 
-    };
-    if ((nextMoveData.comingFromRow === 0 || possibleMove.row === nextMoveData.comingFromRow) &&
-      (nextMoveData.comingFromColumn === "" || possibleMove.column === nextMoveData.comingFromColumn)) {
-      nextMoveData.possiblePositions.push(possibleMove);
-    }
-  }
+
 }
 
 const setKingPossiblePreviousPositions = (nextMoveData,columnsOrdered) => {

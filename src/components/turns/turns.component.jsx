@@ -15,7 +15,7 @@ const Turns = (props) => {
                     </span>
                     <span onClick={props.movePGN} data-turn={index + 1} data-side="b"
                         className={`turn-b ${props.currentMove.number === index + 1 && props.currentMove.side === 'b' ? "turn-current" : ""}`}>
-                        {turn.w}
+                        {turn.b}
                     </span>
                 </li>
                     )
