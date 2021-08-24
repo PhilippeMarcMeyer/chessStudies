@@ -1,5 +1,3 @@
-
-
 const getAskedMove = (elem) => {
     let turn = 0;
     let side = "w";
@@ -170,20 +168,17 @@ const getAskedMove = (elem) => {
       }
     }
 
-    nextMoveData.moveType = "move";
     return nextMoveData;
   }
 
 // Private functions
-  
 const charIsLowercase = (c) => {
   return c !== c.toUpperCase();
 }
 
-const setRookPossiblePreviousPositions = (nextMoveData,columnsOrdered) => {
+const setRookPossiblePreviousPositions = (nextMoveData, columnsOrdered) => {
   // Same column 
   // changing row
-
   for (let r = 1; r < 9; r++) {
     if (r === nextMoveData.moveRow) continue;
     let possibleMove = {
@@ -196,20 +191,19 @@ const setRookPossiblePreviousPositions = (nextMoveData,columnsOrdered) => {
     }
   }
 
-    // Same row 
+  // Same row 
   // changing column/file
-    for (let c = 0; c < 8; c++) {
-      if (columnsOrdered[c] === nextMoveData.moveColumn) continue;
-      let possibleMove = {
-        "column": columnsOrdered[c],
-        "row": nextMoveData.moveRow 
-      };
-      if ((nextMoveData.comingFromRow === 0 || possibleMove.row === nextMoveData.comingFromRow) &&
-        (nextMoveData.comingFromColumn === "" || possibleMove.column === nextMoveData.comingFromColumn)) {
-        nextMoveData.possiblePositions.push(possibleMove);
-      }
+  for (let c = 0; c < 8; c++) {
+    if (columnsOrdered[c] === nextMoveData.moveColumn) continue;
+    let possibleMove = {
+      "column": columnsOrdered[c],
+      "row": nextMoveData.moveRow
+    };
+    if ((nextMoveData.comingFromRow === 0 || possibleMove.row === nextMoveData.comingFromRow) &&
+      (nextMoveData.comingFromColumn === "" || possibleMove.column === nextMoveData.comingFromColumn)) {
+      nextMoveData.possiblePositions.push(possibleMove);
     }
-
+  }
 }
 
 const setKingPossiblePreviousPositions = (nextMoveData,columnsOrdered) => {
@@ -267,8 +261,6 @@ const setPawnPossiblePreviousPositions = (nextMoveData,columnsOrdered) => {
       "row": nextMoveData.moveSide === "w" ? nextMoveData.moveRow - 1 : nextMoveData.moveRow + 1
     });
   } else if (nextMoveData.moveType === "take") {
-    // toDo : en passant
-
     // mundane take :
     if (nextMoveData.comingFromColumn !== "") {
       nextMoveData.possiblePositions.push({
@@ -282,20 +274,24 @@ const setPawnPossiblePreviousPositions = (nextMoveData,columnsOrdered) => {
           "column": columnsOrdered[1],
           "row": nextMoveData.moveSide === "w" ? nextMoveData.moveRow - 1 : nextMoveData.moveRow + 1
         });
+        //setEnPassantLeftSide(nextMoveData,columnsOrdered,posMoveColumn);
       } else if (posMoveColumn === 7) { // pawn takes on "h" file : only one possibility, it's on "g" file
         nextMoveData.possiblePositions.push({
           "column": columnsOrdered[6],
           "row": nextMoveData.moveSide === "w" ? nextMoveData.moveRow - 1 : nextMoveData.moveRow + 1
         });
+        //setEnPassantRightSide(nextMoveData,columnsOrdered,posMoveColumn);
       } else { // 2 possibilities the pawn is either coming from the left side or the right side of the taken piece column
         nextMoveData.possiblePositions.push({
           "column": columnsOrdered[posMoveColumn - 1],
           "row": nextMoveData.moveSide === "w" ? nextMoveData.moveRow - 1 : nextMoveData.moveRow + 1
         });
+        //setEnPassantLeftSide(nextMoveData,columnsOrdered,posMoveColumn);
         nextMoveData.possiblePositions.push({
           "column": columnsOrdered[posMoveColumn + 1],
           "row": nextMoveData.moveSide === "w" ? nextMoveData.moveRow - 1 : nextMoveData.moveRow + 1
         });
+        //setEnPassantRightSide(nextMoveData,columnsOrdered,posMoveColumn);
       }
     }
   } else {

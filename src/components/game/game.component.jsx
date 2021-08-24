@@ -62,7 +62,6 @@ class Game extends React.Component {
         let nextMoveData = getNextMove (gamePgn,currentMove,askedMove,columnsOrdered);
 
         if(!nextMoveData.isError && !nextMoveData.isDone){
-          if(nextMoveData.moveType === "move"){
             let hasMoved = false;
             if(nextMoveData.possiblePositions && nextMoveData.possiblePositions.length > 0){
                 for(let i = 0;i< nextMoveData.possiblePositions.length; i++){
@@ -105,9 +104,16 @@ class Game extends React.Component {
             if(hasMoved){
               for(let i = 0;i< gamePositions.length; i++){
                 if(gamePositions[i].column === nextMoveData.moveColumn && gamePositions[i].row === nextMoveData.moveRow){
-                  gamePositions[i].fig =  nextMoveData.movePieceType + nextMoveData.moveSide.toUpperCase();
-                  gamePositions[i].fig = nextMoveData.promoteTo ? nextMoveData.promoteTo + nextMoveData.moveSide.toUpperCase() : nextMoveData.movePieceType + nextMoveData.moveSide.toUpperCase();
-
+                  if(nextMoveData.moveType === "take"){
+                    if(gamePositions[i].fig === null && nextMoveData.movePieceType === "p") { // En passant
+                      let delta = nextMoveData.moveSide === "w" ? 8 : -8;
+                      gamePositions[i + delta].fig = null;
+                    }
+                    gamePositions[i].fig = nextMoveData.movePieceType + nextMoveData.moveSide.toUpperCase();
+                    
+                  }else{
+                    gamePositions[i].fig = nextMoveData.promoteTo ? nextMoveData.promoteTo + nextMoveData.moveSide.toUpperCase() : nextMoveData.movePieceType + nextMoveData.moveSide.toUpperCase();
+                  }
                   break;
                 }
               }
@@ -132,7 +138,6 @@ class Game extends React.Component {
                 },300);
               });
             }
-          }
         }
         console.log(nextMoveData);
     }
