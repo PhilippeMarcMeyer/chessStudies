@@ -17,7 +17,8 @@
 
 .game-info{
   margin-top:0;
-  padding-top:0;  
+  padding-top:0; 
+  width:75vmin; 
   text-align:right;
 }
 
