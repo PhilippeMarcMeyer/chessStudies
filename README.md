@@ -84,10 +84,12 @@ return the process number on the right most column ex : 26028
 todo : rooks moves and en passant
 and testing !
 
-08/24/2021 : this version is working, one game at a time (using localstorage) it does not support varaitions nor comments
+08-24-2021 : this version is working : goal reached ! one game at a time (using localstorage) it does not support variations nor comments
 but is its functional !  I'm glad I could code my first react app
 
-## You can help me by learning React with me, or if you are a saisonned React dev, by providing advices
+What could come next : We could use a database sql server or firebase, to keep a list of games and their associated FEN to compare games and see if some positions (FEN) repeat themselves accross différent games) we aloso could use an API to get FEN evaluations and help undersand when moves are bad or good.
+
+## You can still help me by learning React with me, or if you are a saisonned React dev, by providing advices
 
 Remember : I'm learning React, so this WIP code is probably not the best possible one ! And should not be considered as an example to follow (well not yet !) :)
 
