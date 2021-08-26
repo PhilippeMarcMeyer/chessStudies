@@ -9,9 +9,8 @@
    color: white;
    border:1px solid black;
    border-radius:5px;
-   height: 71vmin; 
-   width:100%;
-   min-width: 320px;
+   height: calc(66vmin - 56px); 
+   width : 66vmin;
    overflow-y:scroll;
    overflow-x:hidden;
 }
@@ -49,3 +48,9 @@
 .game-turns span{
    cursor:pointer;
 }
+
+@media screen and (min-width: 1200px) {
+   .game-turns{
+      height: calc(66vmin - 76px); 
+   }
+ }

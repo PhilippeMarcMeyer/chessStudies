@@ -1,6 +1,5 @@
 import React from 'react';
 import './turns.styles.css';
-
 const Turns = (props) => {
     return (
         <div className="game-turns">

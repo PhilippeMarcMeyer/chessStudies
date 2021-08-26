@@ -1,13 +1,63 @@
-const getAskedMove = (elem) => {
+const getAskedMove = (elem,currentMove,movesList) => {
     let turn = 0;
     let side = "w";
     let askedMove = null;
-    if(elem.hasAttribute("data-turn") && elem.hasAttribute("data-side")){
-      turn = parseInt(elem.getAttribute("data-turn"));
+    let lastMove = movesList[movesList.length-1];
+    if("move" in elem){
+      let instruction = elem.move;
+      if(instruction === "first"){
+        askedMove={"number":0,"side":"w"};
+      }else if(instruction === "last"){
+        if("b" in lastMove){
+          askedMove={"number":movesList.length,"side":"b"};
+        }else{
+          askedMove={"number":movesList.length,"side":"w"};
+        }
+        askedMove.pace = "quick";
+      }else if(instruction === "pause"){
+        askedMove=currentMove;
+        askedMove.pace = "stop";
+      }else if(instruction === "prev"){
+          if(currentMove.side === "b"){
+            askedMove={"number":currentMove.number,"side":"w"};
+          }else{
+            askedMove={"number":currentMove.number -1 ,"side":"b"};
+          }
+          if(askedMove.number < 1 ){
+            askedMove={"number":1,"side":"w"};
+          }
+          askedMove.pace = "quick";
+      }else if(instruction === "next"){
+        if(currentMove.number === movesList.length){
+          if(currentMove.side === "b"){
+            askedMove=currentMove;
+          }else{
+            if("b" in lastMove){
+              askedMove={"number":movesList.length ,"side":"b"};
+            }else{
+              askedMove=currentMove;
+            }
+          }
+        }else{
+          if(currentMove.side === "b"){
+            askedMove={"number":currentMove.number +1,"side":"w"};
+          }else{
+            askedMove={"number":currentMove.number ,"side":"b"};
+          }
+        }
+
+        if(askedMove.number < 1 ){
+          askedMove={"number":1,"side":"w"};
+        }
+      }
+    }
+
+    else if("turn" in elem && "side" in elem){
+      turn = parseInt(elem.turn);
       if(isNaN(turn)){
         turn = 0;
       }
-      side = elem.getAttribute("data-side")
+      side = elem.side;
     }
     if(turn>0){
       askedMove={"number":turn,"side":side};

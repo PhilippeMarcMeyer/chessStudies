@@ -1,9 +1,8 @@
 .game-resume{
-    width:100%;
+    width : 66vmin;
     background-color: white;
     border: 1px solid black;    
     text-align:center;
-    min-width: 320px;
     overflow-x:hidden;
-    height: 4vmin; 
+    height: 30px; 
 }

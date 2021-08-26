@@ -16,6 +16,7 @@ class Game extends React.Component {
         };
 
         this.state = {
+              "readerStop":false,
               "initialData": null,
               "gameIsReady" :false,
               "status":this.gameStatus.off,
@@ -55,6 +56,18 @@ class Game extends React.Component {
       }
 
      moveGameTo = (askedMove) => {
+       let timing = 10;
+       if("pace" in askedMove){
+         if(askedMove.pace === "quick"){
+          timing = 1;
+         }else if(askedMove.pace === "stop"){
+          this.setState((prevState,prevProps) => {
+            return {
+              "readerStop": true
+             }
+            });
+          }
+       }
         let currentMove = this.state.move;
         let gamePgn = this.state.pgnGame;
         let gamePositions = this.state.data;
@@ -125,7 +138,7 @@ class Game extends React.Component {
                   }
                 }   
               }
-
+              let doContinue = !this.state.readerStop
               this.setState((prevState,prevProps) => {
                 return {
                   "data": gamePositions,
@@ -133,9 +146,11 @@ class Game extends React.Component {
                  }
               },() => {
                 let that = this;
-                setTimeout(function(){
-                  that.moveGameTo(askedMove);
-                },800);
+                if(doContinue){
+                  setTimeout(function(){
+                    that.moveGameTo(askedMove);
+                  },timing);
+                }
               });
             }
         }
@@ -160,11 +175,11 @@ class Game extends React.Component {
       }
 
       movePGN= (e) => {
-        let elem = e.currentTarget;
-        let askedMove= getAskedMove(elem);
-        let askedMoveOffset = getMoveOffset(askedMove);
+        let elem = (e.currentTarget).dataset;
         let currentMove = this.state.move;
         let currentMoveOffset = getMoveOffset(currentMove);
+        let askedMove= getAskedMove(elem,currentMove,this.state.pgnGame);
+        let askedMoveOffset = getMoveOffset(askedMove);
 
         if(askedMoveOffset !== currentMoveOffset){
           if(askedMoveOffset > currentMoveOffset){
@@ -345,7 +360,7 @@ class Game extends React.Component {
                 <Board key={1} game={this.state} />
               </div>
               <div className="game-info">
-                <Info key={1} game={this.state} movePGN={this.movePGN} savePGN={this.savePGN} statuses={this.gameStatus}></Info>
+                <Info key={1} game={this.state} moveFromCommand={this.moveFromCommand} movePGN={this.movePGN} savePGN={this.savePGN} statuses={this.gameStatus}></Info>
               </div>
             </div>
           );

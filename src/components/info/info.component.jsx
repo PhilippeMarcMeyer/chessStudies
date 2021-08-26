@@ -2,6 +2,8 @@ import React from 'react';
 import './info.styles.css';
 import Turns from '../turns/turns.component';
 import Resume from '../resume/resume.component';
+import MovesCommands from '../movesCommands/movesCommands.component';
+
 const Info = (props) => {
   let status = props.game.status;
   let pgn = props.game.pgnHistory
@@ -28,6 +30,7 @@ const Info = (props) => {
         <div className='turns-zone'>
           <Resume resume = {props.game.pgnResume}/>
           <Turns turnsList = {props.game.pgnGame} currentMove={props.game.move} movePGN = {props.movePGN}/>
+          <MovesCommands movePGN = {props.movePGN}/>
         </div>
       )
     } else{
