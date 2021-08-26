@@ -2,7 +2,6 @@ import React from 'react';
 import './turns.styles.css';
 
 const Turns = (props) => {
-    console.log(props)
     return (
         <div className="game-turns">
             <ol>
