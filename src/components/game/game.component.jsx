@@ -3,6 +3,7 @@ import './game.styles.css';
 import Board from '../board/board.component';
 import Info from '../info/info.component';
 import {getMoveOffset,getAskedMove,getNextMove} from '../../movesLogic.js';
+import {boardToFen,fenToBoard} from '../../fen.js';
 
 class Game extends React.Component {
     constructor(){
@@ -28,6 +29,7 @@ class Game extends React.Component {
               "move":{"number":0,"side":"b"},
               "pgnResume":[],
               "pgnGame":[],
+              "fenGame":[{"number":0,"side":"w","fen":"rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1"}],
               "positions":[],
               "columns" : "a,b,c,d,e,f,g,h".split(","), // "columns" or "files"
               "rows" : [1,2,3,4,5,6,7,8],
@@ -138,11 +140,25 @@ class Game extends React.Component {
                   }
                 }   
               }
-              let doContinue = !this.state.readerStop
+              let doContinue = !this.state.readerStop; // does not work !
+
+              let fenGame = this.state.fenGame;
+              let fenData = fenGame.filter((x)=>{
+                return x.number === nextMoveData.number && x.side === nextMoveData.moveSide;    
+              });
+              if(fenData.length === 0){
+                let gamePositions = this.state.data;
+                let columnsOrdered = this.state.columns.slice(0)
+                let fen = boardToFen(gamePositions,nextMoveData,columnsOrdered);
+                if(fen){
+                  fenGame.push({"number":nextMoveData.number,"side":nextMoveData.moveSide,"fen":fen});
+                }
+              }
               this.setState((prevState,prevProps) => {
                 return {
                   "data": gamePositions,
-                  "move": {number: nextMoveData.number, side: nextMoveData.moveSide}
+                  "move": {number: nextMoveData.number, side: nextMoveData.moveSide},
+                  "fenGame":fenGame
                  }
               },() => {
                 let that = this;
@@ -154,7 +170,6 @@ class Game extends React.Component {
               });
             }
         }
-        console.log(nextMoveData);
     }
 
     componentDidMount() {
