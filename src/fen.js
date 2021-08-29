@@ -55,7 +55,7 @@ const fenToBoard = (fen,board,columnsOrdered) => {
                 for (let d = 0; d < intTry; d++) {
                     board[cursorPos + d].fig = null;
                 }
-                cursorPos+=(intTry-1);
+                cursorPos+=intTry;
             }else{
                 let side = "W";
                 let fig = char;
@@ -74,6 +74,7 @@ const fenToBoard = (fen,board,columnsOrdered) => {
                     }
                 } 
                 board[cursorPos].fig = fig + side;
+                cursorPos++;
             }
         }
     });

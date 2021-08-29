@@ -202,12 +202,13 @@ class Game extends React.Component {
         if (fenMove.length !== 0) {
           let columnsOrdered = this.state.columns.slice(0)
           let reinitData = JSON.parse(this.state.initialData);
+          reinitData = fenToBoard(fenMove[0].fen, reinitData, columnsOrdered);
           this.setState((prevState, prevProps) => {
             return {
-              "data": fenToBoard(fenMove[0].fen, reinitData, columnsOrdered),
+              "data":reinitData,
               "move": {
                 number: askedMove.number,
-                side: askedMove.moveSide
+                side: askedMove.side
               }
             }
           });
