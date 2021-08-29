@@ -1,3 +1,5 @@
+import {charIsLowercase} from './utils.js';
+
 const getAskedMove = (elem,currentMove,movesList) => {
     let turn = 0;
     let side = "w";
@@ -221,10 +223,6 @@ const getAskedMove = (elem,currentMove,movesList) => {
     return nextMoveData;
   }
 
-// Private functions
-const charIsLowercase = (c) => {
-  return c !== c.toUpperCase();
-}
 
 const setRookPossiblePreviousPositions = (nextMoveData, columnsOrdered) => {
   // Same column 
