@@ -114,6 +114,9 @@ and testing !
 08-24-2021 : this version is working : goal reached ! one game at a time (using localstorage) it does not support variations nor comments
 but is its functional !  I'm glad I could code my first react app
 
+08-29-2021 :
+Once a position is calculated, it is transformed into a FEN so no move calculation is required
+
 What could come next : We could use a database sql server or firebase, to keep a list of games and their associated FEN to compare games and see if some positions (FEN) repeat themselves accross différent games) we aloso could use an API to get FEN evaluations and help undersand when moves are bad or good.
 
 I was not able to publish the result on GITHUB => I could use some help here !
