@@ -58,6 +58,7 @@ class Game extends React.Component {
       }
 
      moveGameTo = (askedMove) => {
+
        let timing = 10;
        if("pace" in askedMove){
          if(askedMove.pace === "quick"){
@@ -170,7 +171,7 @@ class Game extends React.Component {
               });
             }
         }
-    }
+      }
 
     componentDidMount() {
       this.setNewGame();
@@ -189,30 +190,50 @@ class Game extends React.Component {
         }else return null;
       }
 
-      movePGN= (e) => {
+      movePGN = (e) => {
         let elem = (e.currentTarget).dataset;
         let currentMove = this.state.move;
         let currentMoveOffset = getMoveOffset(currentMove);
-        let askedMove= getAskedMove(elem,currentMove,this.state.pgnGame);
+        let askedMove = getAskedMove(elem, currentMove, this.state.pgnGame);
         let askedMoveOffset = getMoveOffset(askedMove);
-
-        if(askedMoveOffset !== currentMoveOffset){
-          if(askedMoveOffset > currentMoveOffset){
-          // move from currentMove to askedMove
-          this.moveGameTo(askedMove);
-          }else{
-            // reset currentMove to 0 and move to askedMove
-            let reinitData = JSON.parse(this.state.initialData);
-
-            this.setState((prevState,prevProps) => {
-              return {
-                "data":reinitData,
-                "move":{"number":0,"side":"w"},
-                "status": this.gameStatus.ready
-               }
-            },() => {
+        let fenMove = this.state.fenGame.filter((x) => {
+          return x.number === askedMove.number && x.side === askedMove.side;
+        });
+        if (fenMove.length !== 0) {
+          let columnsOrdered = this.state.columns.slice(0)
+          let reinitData = JSON.parse(this.state.initialData);
+          reinitData = fenToBoard(fenMove[0].fen, reinitData, columnsOrdered);
+          this.setState((prevState, prevProps) => {
+            return {
+              "data":reinitData,
+              "move": {
+                number: askedMove.number,
+                side: askedMove.side
+              }
+            }
+          });
+        } else {
+          if (askedMoveOffset !== currentMoveOffset) {
+            if (askedMoveOffset > currentMoveOffset) {
+              // move from currentMove to askedMove
               this.moveGameTo(askedMove);
-            });
+            } else {
+              // reset currentMove to 0 and move to askedMove
+              let reinitData = JSON.parse(this.state.initialData);
+
+              this.setState((prevState, prevProps) => {
+                return {
+                  "data": reinitData,
+                  "move": {
+                    "number": 0,
+                    "side": "w"
+                  },
+                  "status": this.gameStatus.ready
+                }
+              }, () => {
+                this.moveGameTo(askedMove);
+              });
+            }
           }
         }
       }

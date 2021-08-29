@@ -1,3 +1,5 @@
+import {charIsLowercase} from './utils.js';
+
 const getAskedMove = (elem,currentMove,movesList) => {
     let turn = 0;
     let side = "w";
@@ -18,6 +20,9 @@ const getAskedMove = (elem,currentMove,movesList) => {
         askedMove=currentMove;
         askedMove.pace = "stop";
       }else if(instruction === "prev"){
+        if(currentMove.number <= 1 && currentMove.side === "w"){
+          askedMove={"number":0,"side":"w"};
+        }else{
           if(currentMove.side === "b"){
             askedMove={"number":currentMove.number,"side":"w"};
           }else{
@@ -26,7 +31,8 @@ const getAskedMove = (elem,currentMove,movesList) => {
           if(askedMove.number < 1 ){
             askedMove={"number":1,"side":"w"};
           }
-          askedMove.pace = "quick";
+        }
+        askedMove.pace = "quick";
       }else if(instruction === "next"){
         if(currentMove.number === movesList.length){
           if(currentMove.side === "b"){
@@ -221,10 +227,6 @@ const getAskedMove = (elem,currentMove,movesList) => {
     return nextMoveData;
   }
 
-// Private functions
-const charIsLowercase = (c) => {
-  return c !== c.toUpperCase();
-}
 
 const setRookPossiblePreviousPositions = (nextMoveData, columnsOrdered) => {
   // Same column 
