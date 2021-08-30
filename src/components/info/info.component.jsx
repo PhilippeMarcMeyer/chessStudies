@@ -7,8 +7,14 @@ import MovesCommands from '../movesCommands/movesCommands.component';
 const Info = (props) => {
   let status = props.game.status;
   let pgn = props.game.pgnHistory
-
-  if(status === props.statuses.off){
+  /*
+  "initializing":0,
+  "chooseFromList":1,
+  "addingPGN":2,
+  "analysingPGN":3,
+  "gameReady":4,
+  "inerror":5*/
+  if(status === props.statuses.addingPGN){
       return(
         <div className='info-zone'>
           <h3 className='board-title'>{props.game.infosTitle}</h3>
@@ -17,7 +23,23 @@ const Info = (props) => {
         </div>
       )
   }
-  else if (status === props.statuses.loaded) {
+  else if (status === props.statuses.initializing) { 
+    return(
+      <div className='info-zone'>
+        <h3 className='board-title'>{props.game.infosTitle}</h3>
+        <p className='infosMessage'>{props.game.infosMessage}</p>
+      </div>
+    )
+  }
+  else if (status === props.statuses.analysingPGN) { 
+    return(
+      <div className='info-zone'>
+        <h3 className='board-title'>{props.game.infosTitle}</h3>
+        <p className='infosMessage'>{props.game.infosMessage}</p>
+      </div>
+    )
+  }
+  else if (status === props.statuses.chooseFromList) { // List
       return(
         <div className='info-zone'>
           <h3 className='board-title'>{props.game.infosTitle}</h3>
@@ -25,7 +47,7 @@ const Info = (props) => {
 
         </div>
       )
-    } else if (status === props.statuses.ready) {
+    } else if (status === props.statuses.gameReady) {
       return(
         <div className='turns-zone'>
           <Resume resume = {props.game.pgnResume}/>

@@ -10,17 +10,21 @@ class Game extends React.Component {
         super();        
          // off, loaded, inerror, ready
         this.gameStatus = {
-            "off":0,
-            "loaded":1,
-            "inerror":2,
-            "ready":3
+            "initializing":0,
+            "chooseFromList":1,
+            "addingPGN":2,
+            "analysingPGN":3,
+            "gameReady":4,
+            "inerror":5
         };
 
         this.state = {
+              "games":[],
+              "gameKey":0,
+              "status":this.gameStatus.initializing,
               "readerStop":false,
               "initialData": null,
               "gameIsReady" :false,
-              "status":this.gameStatus.off,
               "infosTitle":"",
               "infosMessage":"",
               "msg":"White to play",
@@ -58,11 +62,8 @@ class Game extends React.Component {
       }
 
      moveGameTo = (askedMove) => {
-
-       let timing = 10;
        if("pace" in askedMove){
          if(askedMove.pace === "quick"){
-          timing = 1;
          }else if(askedMove.pace === "stop"){
           this.setState((prevState,prevProps) => {
             return {
@@ -164,9 +165,7 @@ class Game extends React.Component {
               },() => {
                 let that = this;
                 if(doContinue){
-                  setTimeout(function(){
-                    that.moveGameTo(askedMove);
-                  },timing);
+                  that.moveGameTo(askedMove);
                 }
               });
             }
@@ -174,7 +173,7 @@ class Game extends React.Component {
       }
 
     componentDidMount() {
-      this.setNewGame();
+      this.initGames();
     }
 
       cleanRawInfo = (raw) => {
@@ -192,6 +191,11 @@ class Game extends React.Component {
 
       movePGN = (e) => {
         let elem = (e.currentTarget).dataset;
+        if("move" in e){
+          elem = e;
+        }else{
+          elem = (e.currentTarget).dataset;
+        }
         let currentMove = this.state.move;
         let currentMoveOffset = getMoveOffset(currentMove);
         let askedMove = getAskedMove(elem, currentMove, this.state.pgnGame);
@@ -290,30 +294,46 @@ class Game extends React.Component {
                 return {
                   "pgnResume": infosClean,
                   "pgnGame":turns,
-                  "status": this.gameStatus.ready
+                  "status": this.gameStatus.analysingPGN
                  }
               },() => {
                 this.setGameInfos();
+                this.movePGN({"move":"last"});
+                // save game
+                let gameToSave = {};
+                gameToSave.fenGame = this.state.fenGame;
+                gameToSave.pgnResume = this.state.pgnResume;
+                gameToSave.pgnGame = this.state.pgnGame;
+                let games = [];
+                if(localStorage.getItem("games")!== null){
+                  games = localStorage.getItem("games");
+                }
+                games.push(gameToSave);
+                localStorage.setItem("games",games);
+                this.setState((prevState,prevProps) => {
+                  return {
+                    "status": this.gameStatus.gameReady
+                   }
+                });
               });
             });
           }
         }
       }
-
       setGameInfos = () => {
         let infos = ""
         switch (this.state.status) {
-          case this.gameStatus.off:
+          case this.gameStatus.addingPGN:
             infos = {"title":"Please enter a game in PGN format","message":""};
             break;
-          case this.gameStatus.loaded:
-            infos = {"title":"Game loaded","message":"analysing game...(WIP)"};
+          case this.gameStatus.initializing:
+            infos = {"title":"New game saved","message":"analysing PGN game..."};
            break;
            case this.gameStatus.inerror:
             infos = {"title":"Error !","message":"the game can't be analysed..."};
            break;
-           case this.gameStatus.ready:
-            infos = {"title":"Game ready","message":"Let's read it !"};
+           case this.gameStatus.chooseFromList:
+            infos = {"title":"Choose from list","message":""};
            break;
           default:
             infos = {"title":"Error !","message":"the program is in error..."};
@@ -327,7 +347,18 @@ class Game extends React.Component {
         });
       }
 
-      setNewGame = () => {
+      initGames = () => {
+        let games = [];
+        if(localStorage.getItem("games")!== null){
+          games = localStorage.getItem("games");
+        }
+        if(games.length > 0){
+          this.gameStatus = this.gameStatus.chooseFromList;
+        }else{
+          this.gameStatus = this.gameStatus.addingPGN;
+        }
+        
+
         let pgn = "";
         if(localStorage.getItem("pgnHistory")!== null){
           pgn = localStorage.getItem("pgnHistory");
