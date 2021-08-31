@@ -19,9 +19,10 @@ class Game extends React.Component {
         };
 
         this.state = {
+              "proposeSave":false,
               "games":[],
               "gameKey":0,
-              "status":this.gameStatus.initializing,
+              "status":this.gameStatus.addingPGN,
               "readerStop":false,
               "initialData": null,
               "gameIsReady" :false,
@@ -292,6 +293,7 @@ class Game extends React.Component {
               });
               this.setState((prevState,prevProps) => {
                 return {
+                  "proposeSave" : true,
                   "pgnResume": infosClean,
                   "pgnGame":turns,
                   "status": this.gameStatus.analysingPGN
@@ -300,26 +302,52 @@ class Game extends React.Component {
                 this.setGameInfos();
                 this.movePGN({"move":"last"});
                 // save game
-                let gameToSave = {};
-                gameToSave.fenGame = this.state.fenGame;
-                gameToSave.pgnResume = this.state.pgnResume;
-                gameToSave.pgnGame = this.state.pgnGame;
-                let games = [];
-                if(localStorage.getItem("games")!== null){
-                  games = localStorage.getItem("games");
-                }
-                games.push(gameToSave);
-                localStorage.setItem("games",games);
-                this.setState((prevState,prevProps) => {
-                  return {
-                    "status": this.gameStatus.gameReady
-                   }
-                });
               });
             });
           }
         }
       }
+
+      saveGameToStorage = () => {
+        let gameToSave = {
+          "pgnHistory":this.state.pgnHistory,
+          "pgnResume": this.state.pgnResume,
+          "pgnGame": this.state.pgnGame,
+          "fenGame": this.state.fenGame
+        };
+
+        gameToSave.fenGame = this.state.fenGame;
+        gameToSave.pgnResume = this.state.pgnResume;
+        gameToSave.pgnGame = this.state.pgnGame;
+        let games = [];
+        if(localStorage.getItem("games")!== null){
+          games = localStorage.getItem("games");
+          let gameAlready = games.filter((x) => {
+            return x.pgnGame === gameToSave.pgnGame;
+          });
+          if(gameAlready.length === 0){
+            games.push(gameToSave);
+          }else{
+            games.forEach((x) => {
+              if(x.pgnGame === gameToSave.pgnGame){
+                x.pgnHistory = gameToSave.pgnHistory;
+                x.pgnResume = gameToSave.pgnResume;
+                x.fenGame = gameToSave.fenGame; 
+              }
+            });
+          }
+        }else{
+          games.push(gameToSave);
+        }
+        localStorage.setItem("games",games);
+      }
+  /*
+  "initializing":0,
+  "chooseFromList":1,
+  "addingPGN":2,
+  "analysingPGN":3,
+  "gameReady":4,
+  "inerror":5*/
       setGameInfos = () => {
         let infos = ""
         switch (this.state.status) {
@@ -329,7 +357,7 @@ class Game extends React.Component {
           case this.gameStatus.initializing:
             infos = {"title":"New game saved","message":"analysing PGN game..."};
            break;
-           case this.gameStatus.inerror:
+           case this.gameStatus.analysingPGN:
             infos = {"title":"Error !","message":"the game can't be analysed..."};
            break;
            case this.gameStatus.chooseFromList:
@@ -352,10 +380,9 @@ class Game extends React.Component {
         if(localStorage.getItem("games")!== null){
           games = localStorage.getItem("games");
         }
+        let initialStatus = this.gameStatus.addingPGN;
         if(games.length > 0){
-          this.gameStatus = this.gameStatus.chooseFromList;
-        }else{
-          this.gameStatus = this.gameStatus.addingPGN;
+          initialStatus = this.gameStatus.chooseFromList;
         }
         
 
@@ -408,6 +435,7 @@ class Game extends React.Component {
         });
         this.setState((prevState,prevProps) => {
           return {
+            "status":initialStatus,
             "data": data,
             "initialData":JSON.stringify(data),
             "positions":positions,
@@ -416,29 +444,28 @@ class Game extends React.Component {
             "gameIsReady":true
            }
         });
-        
       }
 
-        render() {
-          if( this.state.gameIsReady){
-          return (
+      render() {
+        if( this.state.gameIsReady){
+        return (
+          <div className="game">
+            <div className="game-board">
+              <Board key={1} game={this.state} />
+            </div>
+            <div className="game-info">
+              <Info key={1} game={this.state} moveFromCommand={this.moveFromCommand} movePGN={this.movePGN} savePGN={this.savePGN} statuses={this.gameStatus}></Info>
+            </div>
+          </div>
+        );
+        }else{
+          return(
             <div className="game">
-              <div className="game-board">
-                <Board key={1} game={this.state} />
-              </div>
-              <div className="game-info">
-                <Info key={1} game={this.state} moveFromCommand={this.moveFromCommand} movePGN={this.movePGN} savePGN={this.savePGN} statuses={this.gameStatus}></Info>
-              </div>
+              <h1> Loading </h1>
             </div>
           );
-          }else{
-            return(
-              <div className="game">
-                <h1> Loading </h1>
-              </div>
-            );
-          }
         }
+      }
   }
 
   export default Game;
