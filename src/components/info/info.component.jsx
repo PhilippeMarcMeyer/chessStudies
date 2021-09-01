@@ -8,15 +8,17 @@ const Info = (props) => {
   let status = props.game.status;
   let pgn = props.game.pgnHistory;
 let statuses = props.statuses;
-  console.log(statuses);
   /*
-  "initializing":0,
-  "chooseFromList":1,
-  "addingPGN":2,
-  "analysingPGN":3,
-  "gameReady":4,
-  "inerror":5*/
-  if(status === statuses.addingPGN){
+    "init":0,
+    "showList":1,
+    "showInput":2,
+    "showMoves":3,
+    "showMessage":4,
+    "inError":-1,
+	// other
+"proposeSave":false,
+  */
+  if(status === statuses.showInput){
       return(
         <div className='info-zone'>
           <h3 className='board-title'>{props.game.infosTitle}</h3>
@@ -25,7 +27,7 @@ let statuses = props.statuses;
         </div>
       )
   }
-  else if (status === statuses.initializing) { 
+  else if (status === statuses.showList) { // todo : showList
     return(
       <div className='info-zone'>
         <h3 className='board-title'>{props.game.infosTitle}</h3>
@@ -33,7 +35,7 @@ let statuses = props.statuses;
       </div>
     )
   }
-  else if (status === statuses.analysingPGN) { 
+  else if (status === statuses.showMessage || status === statuses.inError|| status === statuses.init) { 
     return(
       <div className='info-zone'>
         <h3 className='board-title'>{props.game.infosTitle}</h3>
@@ -41,20 +43,12 @@ let statuses = props.statuses;
       </div>
     )
   }
-  else if (status === statuses.chooseFromList) { // List
-      return(
-        <div className='info-zone'>
-          <h3 className='board-title'>{props.game.infosTitle}</h3>
-          <p className='infosMessage'>{props.game.infosMessage}</p>
-
-        </div>
-      )
-    } else if (status === statuses.gameReady) {
+ else if (status === statuses.showMoves) { // add proposeSave : tue|false (button to save loaded game to locaStorage or back in the future (or both))
       return(
         <div className='turns-zone'>
           <Resume resume = {props.game.pgnResume}/>
           <Turns turnsList = {props.game.pgnGame} currentMove={props.game.move} movePGN = {props.movePGN}/>
-          <MovesCommands movePGN = {props.movePGN}/>
+          <MovesCommands movePGN = {props.movePGN}/> 
         </div>
       )
     } else{

@@ -1,5 +1,7 @@
 # Chess studies
 
+This version will provide a list of already analyzed games, an input to set more games
+
 ## Live demo :
 
 https://philippemarcmeyer.github.io/chessStudies/index.html

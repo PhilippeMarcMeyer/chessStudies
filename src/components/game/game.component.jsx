@@ -8,21 +8,20 @@ import {boardToFen,fenToBoard} from '../../fen.js';
 class Game extends React.Component {
     constructor(){
         super();        
-         // off, loaded, inerror, ready
         this.gameStatus = {
-            "initializing":0,
-            "chooseFromList":1,
-            "addingPGN":2,
-            "analysingPGN":3,
-            "gameReady":4,
-            "inerror":5
+          "init":0,
+          "showList":1,
+          "showInput":2,
+          "showMoves":3,
+          "showMessage":4,
+          "inError":-1,
         };
 
         this.state = {
-              "proposeSave":false,
               "games":[],
               "gameKey":0,
-              "status":this.gameStatus.addingPGN,
+              "proposeSave":false,
+              "status":this.gameStatus.init,
               "readerStop":false,
               "initialData": null,
               "gameIsReady" :false,
@@ -161,7 +160,8 @@ class Game extends React.Component {
                 return {
                   "data": gamePositions,
                   "move": {number: nextMoveData.number, side: nextMoveData.moveSide},
-                  "fenGame":fenGame
+                  "fenGame":fenGame,
+                  "status":this.gameStatus.showMoves
                  }
               },() => {
                 let that = this;
@@ -192,8 +192,10 @@ class Game extends React.Component {
 
       movePGN = (e) => {
         let elem = (e.currentTarget).dataset;
+        let proposeSave = false;
         if("move" in e){
           elem = e;
+          proposeSave = true;
         }else{
           elem = (e.currentTarget).dataset;
         }
@@ -210,6 +212,7 @@ class Game extends React.Component {
           reinitData = fenToBoard(fenMove[0].fen, reinitData, columnsOrdered);
           this.setState((prevState, prevProps) => {
             return {
+              "proposeSave":proposeSave,
               "data":reinitData,
               "move": {
                 number: askedMove.number,
@@ -228,12 +231,12 @@ class Game extends React.Component {
 
               this.setState((prevState, prevProps) => {
                 return {
+                  "proposeSave":proposeSave,
                   "data": reinitData,
                   "move": {
                     "number": 0,
                     "side": "w"
-                  },
-                  "status": this.gameStatus.ready
+                  }
                 }
               }, () => {
                 this.moveGameTo(askedMove);
@@ -248,10 +251,9 @@ class Game extends React.Component {
         if(textArea!=null){
           let pgn = textArea.value;
           if(pgn !== ""){ // todo check validity !
-            localStorage.setItem("pgnHistory",pgn);
             this.setState((prevState,prevProps) => {
               return {
-                "status": this.gameStatus.loaded,
+                "status": this.gameStatus.init,
                }
             },() => {
               this.setGameInfos();
@@ -293,10 +295,9 @@ class Game extends React.Component {
               });
               this.setState((prevState,prevProps) => {
                 return {
-                  "proposeSave" : true,
                   "pgnResume": infosClean,
                   "pgnGame":turns,
-                  "status": this.gameStatus.analysingPGN
+                  "status": this.gameStatus.showMoves
                  }
               },() => {
                 this.setGameInfos();
@@ -342,31 +343,38 @@ class Game extends React.Component {
         localStorage.setItem("games",games);
       }
   /*
-  "initializing":0,
-  "chooseFromList":1,
-  "addingPGN":2,
-  "analysingPGN":3,
-  "gameReady":4,
-  "inerror":5*/
-      setGameInfos = () => {
+    "init":0,
+    "showList":1,
+    "showInput":2,
+    "showMoves":3,
+    "showMessage":4,
+    "inError":-1,
+  */
+      setGameInfos = (message) => {
         let infos = ""
         switch (this.state.status) {
-          case this.gameStatus.addingPGN:
+          case this.gameStatus.showInput:
             infos = {"title":"Please enter a game in PGN format","message":""};
             break;
-          case this.gameStatus.initializing:
+          case this.gameStatus.init:
             infos = {"title":"New game saved","message":"analysing PGN game..."};
            break;
-           case this.gameStatus.analysingPGN:
-            infos = {"title":"Error !","message":"the game can't be analysed..."};
+           case this.gameStatus.showMoves:
+            infos = {"title":"Game's moves","message":""};
            break;
-           case this.gameStatus.chooseFromList:
+           case this.gameStatus.showList:
             infos = {"title":"Choose from list","message":""};
+           break;
+           case this.gameStatus.showMessage:
+            infos = {"title":"Choose from list","message":message};
+           break;
+           case this.gameStatus.inError:
+            infos = {"title":"Error !","message":message};
            break;
           default:
             infos = {"title":"Error !","message":"the program is in error..."};
         }
-
+        
         this.setState((prevState,prevProps) => {
           return {
             "infosTitle":infos.title,
@@ -380,17 +388,12 @@ class Game extends React.Component {
         if(localStorage.getItem("games")!== null){
           games = localStorage.getItem("games");
         }
-        let initialStatus = this.gameStatus.addingPGN;
+        let initialStatus = this.gameStatus.showInput;
         if(games.length > 0){
-          initialStatus = this.gameStatus.chooseFromList;
+          initialStatus = this.gameStatus.showList;
         }
-        
-
-        let pgn = "";
-        if(localStorage.getItem("pgnHistory")!== null){
-          pgn = localStorage.getItem("pgnHistory");
-        }
-
+    
+        let pgn = this.state.pgnHistory;
         let data = [];
         let positions =  [];
         let blackColor = this.state.blackColor;
@@ -440,14 +443,15 @@ class Game extends React.Component {
             "initialData":JSON.stringify(data),
             "positions":positions,
             "move":{"number":0,"side":"w"},
-            "pgnHistory": pgn,
-            "gameIsReady":true
+            "pgnHistory": pgn
            }
-        });
+          },() => {
+            this.setGameInfos();
+          });
       }
 
       render() {
-        if( this.state.gameIsReady){
+        if( this.state.status === this.gameStatus.showInput){// todo : adapt to input in textArea
         return (
           <div className="game">
             <div className="game-board">
@@ -457,8 +461,17 @@ class Game extends React.Component {
               <Info key={1} game={this.state} moveFromCommand={this.moveFromCommand} movePGN={this.movePGN} savePGN={this.savePGN} statuses={this.gameStatus}></Info>
             </div>
           </div>
-        );
-        }else{
+        )}else if(this.state.status === this.gameStatus.showList){ // todo : adapt to list
+          <div className="game">
+            <div className="game-board">
+              <Board key={1} game={this.state} />
+            </div>
+            <div className="game-info">
+              <Info key={1} game={this.state} moveFromCommand={this.moveFromCommand} movePGN={this.movePGN} savePGN={this.savePGN} statuses={this.gameStatus}></Info>
+            </div>
+          </div>
+        }
+        else{ // Adapt to other status such as error
           return(
             <div className="game">
               <h1> Loading </h1>
