@@ -191,7 +191,7 @@ class Game extends React.Component {
       }
 
       movePGN = (e) => {
-        let elem = (e.currentTarget).dataset;
+        let elem;
         let proposeSave = false;
         if("move" in e){
           elem = e;
