@@ -7,7 +7,7 @@ import MovesCommands from '../movesCommands/movesCommands.component';
 const Info = (props) => {
   let status = props.game.status;
   let pgn = props.game.pgnHistory;
-let statuses = props.statuses;
+  let statuses = props.statuses;
   /*
     "init":0,
     "showList":1,
@@ -18,6 +18,7 @@ let statuses = props.statuses;
 	// other
 "proposeSave":false,
   */
+console.log(statuses);
   if(status === statuses.showInput){
       return(
         <div className='info-zone'>

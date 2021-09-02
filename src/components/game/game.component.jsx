@@ -62,8 +62,10 @@ class Game extends React.Component {
       }
 
      moveGameTo = (askedMove) => {
+       let timing = 10;
        if("pace" in askedMove){
          if(askedMove.pace === "quick"){
+           timing = 1;
          }else if(askedMove.pace === "stop"){
           this.setState((prevState,prevProps) => {
             return {
@@ -166,7 +168,9 @@ class Game extends React.Component {
               },() => {
                 let that = this;
                 if(doContinue){
-                  that.moveGameTo(askedMove);
+                  setTimeout(function(){
+                    that.moveGameTo(askedMove);
+                  },timing);
                 }
               });
             }
@@ -449,7 +453,14 @@ class Game extends React.Component {
             this.setGameInfos();
           });
       }
-
+  /*
+    "init":0,
+    "showList":1,
+    "showInput":2,
+    "showMoves":3,
+    "showMessage":4,
+    "inError":-1,
+  */
       render() {
         if( this.state.status === this.gameStatus.showInput){// todo : adapt to input in textArea
         return (
@@ -462,6 +473,15 @@ class Game extends React.Component {
             </div>
           </div>
         )}else if(this.state.status === this.gameStatus.showList){ // todo : adapt to list
+          <div className="game">
+            <div className="game-board">
+              <Board key={1} game={this.state} />
+            </div>
+            <div className="game-info">
+              <Info key={1} game={this.state} moveFromCommand={this.moveFromCommand} movePGN={this.movePGN} savePGN={this.savePGN} statuses={this.gameStatus}></Info>
+            </div>
+          </div>
+        }else if(this.state.status === this.gameStatus.showMoves){ // todo : adapt to list
           <div className="game">
             <div className="game-board">
               <Board key={1} game={this.state} />
