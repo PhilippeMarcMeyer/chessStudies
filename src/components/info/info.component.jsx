@@ -18,7 +18,6 @@ const Info = (props) => {
 	// other
 "proposeSave":false,
   */
-console.log(statuses);
   if(status === statuses.showInput){
       return(
         <div className='info-zone'>
