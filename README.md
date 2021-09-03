@@ -1,5 +1,7 @@
 # Chess studies
 
+New to reactjs : I need some help on the branch feature/multigames
+
 ## Live demo :
 
 https://philippemarcmeyer.github.io/chessStudies/index.html
