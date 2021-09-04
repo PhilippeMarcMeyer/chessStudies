@@ -9,6 +9,14 @@
     display:inline-block;
 
 }
+.game-message{
+    vertical-align:top;
+    display:inline-block;   
+    margin-top:-10px;
+    margin-left:10px;
+    position:relative;
+    background-color: antiquewhite;
+}
 
 .game-info{
     vertical-align:top;
