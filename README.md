@@ -2,8 +2,6 @@
 
 This version will provide a list of already analyzed games, an input to set more games
 
-Error: Game(...): Nothing was returned from render. This usually means a return statement is missing. Or, to render nothing, return null.
-
 ## Live demo (master) :
 
 https://philippemarcmeyer.github.io/chessStudies/index.html
