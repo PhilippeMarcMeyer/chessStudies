@@ -61,6 +61,10 @@ class Game extends React.Component {
     };
   }
 
+  loadGame = (gameNr) =>{
+
+  }
+
   moveGameTo = (askedMove) => {
     let timing = 10;
     if ("pace" in askedMove) {
@@ -212,6 +216,9 @@ class Game extends React.Component {
           let pgnGame = pgn.substring(limitBetweenGameParts, pgn.length).replace(/\r\n?|\n/g, " ").trim();
           // putting the infos in an object
           let infosClean = pngToInfos(pngInfos);
+          if(!infosClean.Site){
+            infosClean.Site = "???";
+          }
           // putting the game into an array of turns ex : [{"w":"a4","b":"a5"}]
           let turns = pngToTurns(pgnGame);
           // calculating the fens for every half move
@@ -329,7 +336,7 @@ class Game extends React.Component {
 
     let games = [];
     if (localStorage.getItem("games") !== null) {
-      games = localStorage.getItem("games");
+      games = JSON.parse(localStorage.getItem("games"));
     }
     let initialStatus = this.gameStatus.showInput;
     if (games.length > 0) {
@@ -379,6 +386,7 @@ class Game extends React.Component {
       }
     });
     let otherProps = {
+      "games":games,
       "status": initialStatus,
       "data": data,
       "initialData": JSON.stringify(data),
@@ -408,7 +416,7 @@ class Game extends React.Component {
             <Board key={1} game={this.state} />
           </div>
           <div className="game-info">
-            <Info key={1} game={this.state} movePGN={this.movePGN} savePGN={this.savePGN} statuses={this.gameStatus}></Info>
+            <Info key={1} game={this.state} loadGame={this.loadGame} statuses={this.gameStatus}></Info>
           </div>
         </div>
       )

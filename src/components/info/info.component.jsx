@@ -3,6 +3,7 @@ import './info.styles.css';
 import Turns from '../turns/turns.component';
 import Resume from '../resume/resume.component';
 import MovesCommands from '../movesCommands/movesCommands.component';
+import GameList from '../gameList/gameList.component';
 
 const Info = (props) => {
   let status = props.game.status;
@@ -29,9 +30,9 @@ const Info = (props) => {
   }
   else if (status === statuses.showList) { // todo : showList
     return(
-      <div className='info-zone'>
-        <h3 className='board-title'>{props.game.infosTitle}</h3>
-        <p className='infosMessage'>{props.game.infosMessage}</p>
+      <div className='list-zone'>
+        <h3 className='board-list-title'>{props.game.infosTitle}</h3>
+        <GameList games={props.game.games} loadGame={props.loadGame}></GameList>
       </div>
     )
   }

@@ -47,3 +47,12 @@ button{
   display:block;
   font-weight: 400;
 }
+
+.list-zone .board-list-title{
+  padding-inline-start: 40px;
+  display:block;
+  font-weight: 400;
+  color:white;
+  text-align:left;
+}
+
