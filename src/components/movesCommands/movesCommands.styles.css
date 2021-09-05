@@ -3,9 +3,13 @@
     display:block;
     width : 66vmin;
     margin-left:1px;
-    background-color: #c5c5c5;
     margin-top:0;
     padding-top:0;
+    background-color: whitesmoke;
+    height: 40px;
+    border:1px solid white;
+    border-bottom-left-radius: 6px;
+    border-bottom-right-radius: 6px;
 }
 
 .moves-board span{

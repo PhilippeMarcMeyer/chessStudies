@@ -52,6 +52,6 @@
 
 @media screen and (min-width: 1200px) {
    .game-turns{
-      height: calc(66vmin - 76px); 
+      height: calc(66vmin - 80px); 
    }
  }

@@ -7,7 +7,6 @@
     margin-top:0;
     padding-top:0;
     text-align:left;
-    border-bottom:1px dashed white;
 }
 
 .game-menu div{
@@ -24,6 +23,7 @@
     border-right: 1px solid white;
     border-top-left-radius: 6px;
     border-top-right-radius: 6px;
+    border-bottom:1px dashed white;
 }
 
 .game-menu .hidden{

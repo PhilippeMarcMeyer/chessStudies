@@ -1,8 +1,12 @@
 .game-resume{
     width : 66vmin;
-    background-color: white;
-    border: 1px solid black;    
+    color: black;
+    padding-top: 4px;
     text-align:center;
     overflow-x:hidden;
     height: 30px; 
+    background-color: whitesmoke;
+    border:1px solid white;
+    border-top-right-radius: 6px;
+    font-size: large;
 }
