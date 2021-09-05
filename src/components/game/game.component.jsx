@@ -61,8 +61,27 @@ class Game extends React.Component {
     };
   }
 
-  loadGame = (gameNr) =>{
+  loadGame = (e) => {
+    let index = e.currentTarget.getAttribute("data-index");
+    if (this.state.games && this.state.games.length > 0 && index < this.state.games.length) {
+      this.doLoadGame(index);
+    }
+  }
 
+  doLoadGame = (index) => {
+    let game = this.state.games[index];
+    let otherProps = {
+      "data": JSON.parse(this.state.initialData),
+      "pgnResume": game.pgnResume,
+      "pgnHistory": game.pgnHistory,
+      "pgnGame": game.pgnGame,
+      "fenGame": game.fenGame,
+      "move": {
+        "number": 0,
+        "side": "w"
+      }
+    }
+    this.setGameStatus(this.gameStatus.showMoves, "", otherProps);
   }
 
   moveGameTo = (askedMove) => {
@@ -173,6 +192,13 @@ class Game extends React.Component {
 
   componentDidMount() {
     this.initGames();
+  }
+
+  menuMove = (e) => {
+    let target = e.currentTarget.getAttribute("data-target");
+    if (target in this.gameStatus) {
+      this.setGameStatus(this.gameStatus[target]);
+    }
   }
 
   movePGN = (e) => {
@@ -405,7 +431,7 @@ class Game extends React.Component {
             <Board key={1} game={this.state} />
           </div>
           <div className="game-info">
-            <Info key={1} game={this.state} movePGN={this.movePGN} savePGN={this.savePGN} statuses={this.gameStatus}></Info>
+            <Info key={1} game={this.state} movePGN={this.movePGN} menuMove = {this.menuMove} savePGN={this.savePGN} statuses={this.gameStatus}></Info>
           </div>
         </div>
       )
@@ -416,7 +442,7 @@ class Game extends React.Component {
             <Board key={1} game={this.state} />
           </div>
           <div className="game-info">
-            <Info key={1} game={this.state} loadGame={this.loadGame} statuses={this.gameStatus}></Info>
+            <Info key={1} game={this.state} loadGame={this.loadGame} menuMove = {this.menuMove} statuses={this.gameStatus}></Info>
           </div>
         </div>
       )
@@ -427,7 +453,7 @@ class Game extends React.Component {
             <Board key={1} game={this.state} />
           </div>
           <div className="game-info">
-            <Info key={1} game={this.state} movePGN={this.movePGN} savePGN={this.savePGN} statuses={this.gameStatus}></Info>
+            <Info key={1} game={this.state} movePGN={this.movePGN} menuMove = {this.menuMove} savePGN={this.savePGN} statuses={this.gameStatus}></Info>
           </div>
         </div>
       )
@@ -436,7 +462,7 @@ class Game extends React.Component {
         <div className="game">
           <div >
             <h1> {this.state.infosTitle} </h1>
-            <p>{this.state.infosMessage} </p>
+            <p> {this.state.infosMessage} </p>
           </div>
         </div>
       )

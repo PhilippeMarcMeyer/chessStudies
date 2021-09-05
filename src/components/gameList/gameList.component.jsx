@@ -6,10 +6,10 @@ const GameList = (props) => {
             <ol>
                 { 
                     props.games.map((game, index) =>
-                        <li key={index} onClick={props.loadGame}>
+                        <li key={index}>
                           {game.pgnResume.Event} {game.pgnResume.Site} <br/>
                           {game.pgnResume.White} {"vs"} {game.pgnResume.Black} {"=>"} {game.pgnResume.Result}
-                          <span className="button">Load</span>
+                          <span className="button" data-index={index} onClick={props.loadGame}>Load</span>
                         </li>
                     )
                 }
