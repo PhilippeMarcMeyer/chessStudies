@@ -33,7 +33,7 @@ let currentFigure = "";
         nullCounter = 0;
     }
 })
-console.log(nextMoveData)
+
 // posible castles are missing and number of moves since the last pawn move or check (?)
 fen += " " + nextMoveData.moveSide + " - - 0 " + nextMoveData.number ;
     return fen;

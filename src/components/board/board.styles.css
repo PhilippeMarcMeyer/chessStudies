@@ -2,6 +2,7 @@
     position:relative;
     padding-left:10px;
     width : 90%;
+    margin-top:30px;
 }
 
 .board{
@@ -36,6 +37,8 @@
 
 .board-title{
     color:whitesmoke;
+    text-align:left;
+
 }
 
 .board-zone{
