@@ -60,12 +60,29 @@ class Game extends React.Component {
       }
     };
   }
+  deleteGame= (e) => {
+    let index = e.currentTarget.getAttribute("data-index");
+    if (this.state.games && this.state.games.length > 0 && index < this.state.games.length) {
+      this.doDeleteGame(index);
+    }
+  }
 
   loadGame = (e) => {
     let index = e.currentTarget.getAttribute("data-index");
     if (this.state.games && this.state.games.length > 0 && index < this.state.games.length) {
       this.doLoadGame(index);
     }
+  }
+
+  doDeleteGame = (index) => {
+    let games = JSON.parse(JSON.stringify(this.state.games));
+    games.splice(index, 1);
+    let otherProps = {
+      games : games
+    }
+    localStorage.setItem("games", JSON.stringify(games));
+    let newStatus = games && games.length > 0 ? this.gameStatus.showList: this.gameStatus.showInput;
+    this.setGameStatus(newStatus, "", otherProps);
   }
 
   doLoadGame = (index) => {
@@ -271,6 +288,7 @@ class Game extends React.Component {
             "fenGame": fenGame
           };
           this.saveGameToStorage(gameToSave);
+          this.state.games.push(gameToSave);
           let otherProps = {
             "data": JSON.parse(this.state.initialData),
             "pgnResume": infosClean,
@@ -282,7 +300,7 @@ class Game extends React.Component {
               "side": "w"
             }
           }
-          this.setGameStatus(this.gameStatus.showMoves, "",otherProps);
+          this.setGameStatus(this.gameStatus.showList, "",otherProps);
         } else {
           this.setGameStatus(this.gameStatus.inError, "unable to read this png");
         }
@@ -442,7 +460,7 @@ class Game extends React.Component {
             <Board key={1} game={this.state} />
           </div>
           <div className="game-info">
-            <Info key={1} game={this.state} loadGame={this.loadGame} menuMove = {this.menuMove} statuses={this.gameStatus}></Info>
+            <Info key={1} game={this.state} loadGame={this.loadGame} deleteGame={this.deleteGame} menuMove = {this.menuMove} statuses={this.gameStatus}></Info>
           </div>
         </div>
       )

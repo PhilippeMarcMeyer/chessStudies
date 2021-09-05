@@ -28,7 +28,7 @@ const Info = (props) => {
       <GameMenu menuMove = {props.menuMove} movesLoaded={props.game.pgnHistory && props.game.pgnHistory.length > 1 ? true:false}/>
       <div className='list-zone'>
         <h3 className='board-list-title'>{props.game.infosTitle}</h3>
-        <GameList games={props.game.games} loadGame={props.loadGame}></GameList>
+        <GameList games={props.game.games} deleteGame={props.deleteGame} loadGame={props.loadGame}></GameList>
       </div>
       </React.Fragment>
     )

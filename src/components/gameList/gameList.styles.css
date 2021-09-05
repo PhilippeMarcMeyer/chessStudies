@@ -2,7 +2,7 @@
     border: solid 1px grey;
     border-radius:10px;
     position:relative;
-    padding: 12px 2px 12px 28px;
+    padding: 12px 2px 12px 14px;
     margin-top: 7px;
     margin-bottom: 8px;
     user-select: none;
@@ -15,11 +15,12 @@
     text-overflow: ellipsis;
     overflow: hidden;
     text-align:left;
+    width:94%;
 }
 
 .game-list li .button{
     border: solid 1px black;
-    padding: 6px 24px;
+    padding: 6px 18px;
     position:absolute;
     right:12px;
     vertical-align: middle;
@@ -29,7 +30,18 @@
     cursor: pointer;
 }
 
+.game-list li .button.delete{
+    right:90px;
+}
+
 .game-list li .button:hover{
     background-color: #EEEED2;
     font-weight:bold;
+}
+
+.game-list{
+    height: calc(66vmin - 56px); 
+    width : 66vmin;
+    overflow-y:auto;
+    overflow-x:hidden;
 }

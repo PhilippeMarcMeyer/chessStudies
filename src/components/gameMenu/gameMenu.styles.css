@@ -2,22 +2,28 @@
     display:block;
     width : 66vmin;
     height:30px;
-    margin-left:1px;
+    margin-left:10px;
     color:white;
     margin-top:0;
     padding-top:0;
     text-align:left;
+    border-bottom:1px dashed white;
 }
 
 .game-menu div{
     display:inline-block;
     width:30%;
-    margin-right:1px;
+    margin-right:3px;
     text-align:center;
     font-size: 18px;
     height:26px;
     cursor:pointer;
     user-select: none;
+    border-top: 1px solid white;
+    border-left: 1px solid white;
+    border-right: 1px solid white;
+    border-top-left-radius: 6px;
+    border-top-right-radius: 6px;
 }
 
 .game-menu .hidden{

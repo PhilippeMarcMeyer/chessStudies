@@ -7,8 +7,9 @@ const GameList = (props) => {
                 { 
                     props.games.map((game, index) =>
                         <li key={index}>
-                          {game.pgnResume.Event} {game.pgnResume.Site} <br/>
-                          {game.pgnResume.White} {"vs"} {game.pgnResume.Black} {"=>"} {game.pgnResume.Result}
+                          {game.pgnResume.Event} {game.pgnResume.Site} {game.pgnResume.Date} <br/>
+                          {game.pgnResume.White} ({game.pgnResume.WhiteElo}) {"vs"} {game.pgnResume.Black} ({game.pgnResume.BlackElo})  {"=>"} {game.pgnResume.Result}
+                          <span className="button delete" data-index={index} onClick={props.deleteGame}>Delete</span>
                           <span className="button" data-index={index} onClick={props.loadGame}>Load</span>
                         </li>
                     )
