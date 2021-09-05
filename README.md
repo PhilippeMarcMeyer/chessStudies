@@ -1,6 +1,6 @@
-# Chess studies
+# Chess studies : PGN reader
 
-This version will provide a list of already analyzed games, an input to set more games
+This version provides a list of already analyzed games, an input to set more games 
 
 ## Live demo (master) :
 
