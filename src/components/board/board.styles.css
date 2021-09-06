@@ -1,8 +1,9 @@
 .board-zone{
     position:relative;
     padding-left:10px;
-    width : 90%;
-    margin-top:30px;
+    width : calc(100% -10px);
+    padding: 0 0 0 20px;
+
 }
 
 .board{
@@ -23,6 +24,16 @@
     padding:0;
 }
 
+.board-zone.inverse{
+    transform: rotate(180deg);
+    padding: 0 20px 0 0;
+}
+
+.board-zone.inverse .square{
+    transform: rotate(180deg);
+}
+
+
 .light-square{
     background-color: #EEEED2;
 }
@@ -39,10 +50,6 @@
     color:whitesmoke;
     text-align:left;
 
-}
-
-.board-zone{
-    padding: 0 0 0 20px;
 }
 
 .hidden{

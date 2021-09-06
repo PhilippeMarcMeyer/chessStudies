@@ -1,0 +1,52 @@
+.jail {
+    height:30px;
+    width: 66vmin;
+    display:block;
+    color:white;
+    font-size:24px;
+}
+
+.jail.white{
+    height:30px;
+    width:100%;
+}
+
+.jail span{
+    display:inline-block;
+}
+
+.jail.black{
+    height:30px;
+    width:100%;
+}
+
+.board-zone:not(.inverse) .inverse-clickable{
+    float:right;
+    margin-right:10px;
+    cursor:pointer;
+    user-select: none;
+}
+   
+.board-zone.inverse .inverse-clickable{
+    float:left;
+    margin-left:10px;
+    cursor:pointer;
+    user-select: none;
+}
+
+.board-zone.inverse .jail.black .inverse-clickable{
+    display:none;
+}
+.board-zone:not(.inverse) .jail.black .inverse-clickable{
+    display:inline-block;
+}
+   
+.board-zone.inverse .jail.white .inverse-clickable{
+    display:inline-block;
+}
+.board-zone:not(.inverse) .jail.white .inverse-clickable{
+    display:none;
+}
+   
+
+

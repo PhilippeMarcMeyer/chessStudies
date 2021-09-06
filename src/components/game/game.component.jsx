@@ -20,6 +20,7 @@ class Game extends React.Component {
     this.state = {
       "games": [],
       "gameKey": 0,
+      "doReverseBoard" :false,
       "proposeSave": false,
       "status": this.gameStatus.init,
       "readerStop": false,
@@ -60,6 +61,16 @@ class Game extends React.Component {
       }
     };
   }
+
+  reverseBoard= (e) => {
+    let doReverse= !this.state.doReverseBoard;
+    this.setState((state, props) => (
+      {
+        "doReverseBoard": doReverse,
+      }
+    ));
+  }
+
   deleteGame= (e) => {
     let index = e.currentTarget.getAttribute("data-index");
     if (this.state.games && this.state.games.length > 0 && index < this.state.games.length) {
@@ -446,7 +457,7 @@ class Game extends React.Component {
       return (
         <div className="game">
           <div className="game-board">
-            <Board key={1} game={this.state} />
+            <Board key={1} reverseBoard={this.reverseBoard} game={this.state} />
           </div>
           <div className="game-info">
             <Info key={1} game={this.state} movePGN={this.movePGN} menuMove = {this.menuMove} savePGN={this.savePGN} statuses={this.gameStatus}></Info>
@@ -457,7 +468,7 @@ class Game extends React.Component {
       return (
         <div className="game">
           <div className="game-board">
-            <Board key={1} game={this.state} />
+            <Board key={1} reverseBoard={this.reverseBoard} game={this.state} />
           </div>
           <div className="game-info">
             <Info key={1} game={this.state} loadGame={this.loadGame} deleteGame={this.deleteGame} menuMove = {this.menuMove} statuses={this.gameStatus}></Info>
@@ -468,7 +479,7 @@ class Game extends React.Component {
       return (
         <div className="game">
           <div className="game-board">
-            <Board key={1} game={this.state} />
+            <Board key={1} reverseBoard={this.reverseBoard} game={this.state} />
           </div>
           <div className="game-info">
             <Info key={1} game={this.state} movePGN={this.movePGN} menuMove = {this.menuMove} savePGN={this.savePGN} statuses={this.gameStatus}></Info>
