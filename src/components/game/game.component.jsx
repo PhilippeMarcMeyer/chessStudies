@@ -2,7 +2,7 @@ import React from 'react';
 import './game.styles.css';
 import Board from '../board/board.component';
 import Info from '../info/info.component';
-import { getAskedMove, getNextMove, pngToTurns, pngToInfos, getMoveDataAt, getPositionsAt } from '../../movesLogic.js';
+import { getAskedMove, getNextMove, pngToTurns, pngToInfos, getMoveDataAt, getPositionsAt ,boardToScore} from '../../movesLogic.js';
 import { boardToFen, fenToBoard } from '../../fen.js';
 
 class Game extends React.Component {
@@ -19,6 +19,12 @@ class Game extends React.Component {
 
     this.state = {
       "games": [],
+      "scores" : {
+        "whiteScore" : 0,
+        "blackScore" : 0,
+        "whiteJail" : [],
+        "blackJail" : []
+      },
       "gameKey": 0,
       "doReverseBoard" :false,
       "proposeSave": false,
@@ -107,6 +113,12 @@ class Game extends React.Component {
       "move": {
         "number": 0,
         "side": "w"
+      },
+      "scores" : {
+        "whiteScore" : 0,
+        "blackScore" : 0,
+        "whiteJail" : [],
+        "blackJail" : []
       }
     }
     this.setGameStatus(this.gameStatus.showMoves, "", otherProps);
@@ -245,10 +257,12 @@ class Game extends React.Component {
       let columnsOrdered = this.state.columns.slice(0)
       let reinitData = JSON.parse(this.state.initialData);
       reinitData = fenToBoard(fenMove[0].fen, reinitData, columnsOrdered);
+      let scores = boardToScore(reinitData);
 
       this.setState((state, props) => (
         {
           data: reinitData,
+          scores:scores,
           move: {
             number: askedMove.number,
             side: askedMove.side
@@ -309,6 +323,12 @@ class Game extends React.Component {
             "move": {
               "number": 0,
               "side": "w"
+            },
+            "scores" : {
+              "whiteScore" : 0,
+              "blackScore" : 0,
+              "whiteJail" : [],
+              "blackJail" : []
             }
           }
           this.setGameStatus(this.gameStatus.showList, "",otherProps);
@@ -447,7 +467,13 @@ class Game extends React.Component {
       "initialData": JSON.stringify(data),
       "positions": positions,
       "move": { "number": 0, "side": "w" },
-      "pgnHistory": pgn
+      "pgnHistory": pgn,
+      "scores" : {
+        "whiteScore" : 0,
+        "blackScore" : 0,
+        "whiteJail" : [],
+        "blackJail" : []
+      }
     }
     this.setGameStatus(initialStatus, "",otherProps);
   }

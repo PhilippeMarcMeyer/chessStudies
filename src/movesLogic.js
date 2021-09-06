@@ -685,6 +685,77 @@ const getMoveOffset = (move) => {
   return move.number === 0 ? 0 : ((move.number-1)*2) + (move.side === "w" ? 1 : 2);
 }
 
+const boardToScore = (data) => {
+  let scores = {
+    "whiteScore" : 0,
+    "blackScore" : 0,
+    "whiteJail" : [],
+    "blackJail" : []
+  }
+  let scoreWhite = 0;
+  let scoreBlack = 0;
+  let figs = ["p","R","B","N","Q"];
+  let figsValues = [1,5,3,3,9];
+
+  let whiteTeam = {
+    "p": 0, 
+    "R": 0, 
+    "B": 0, 
+    "N": 0, 
+    "Q": 0
+  }
+  
+  let blackTeam = {
+    "p": 0, 
+    "R": 0, 
+    "B": 0, 
+    "N": 0, 
+    "Q": 0
+  }
+
+  let originalTeam = {
+    "p": 8, 
+    "R": 2, 
+    "B": 2, 
+    "N": 2, 
+    "Q": 1
+  }
+
+  data.forEach((x,i) => {
+      if(x.fig !== null){
+          let figure = x.fig.charAt(0);
+          let pos = figs.indexOf(figure);
+          if(pos !== -1){
+              if( x.fig.charAt(1)==="W"){
+                  whiteTeam[figure] +=1;
+                  scoreWhite+=figsValues[pos];
+              }else{
+                  blackTeam[figure] +=1;
+                  scoreBlack+=figsValues[pos];
+              }
+          }
+      }
+  })
+
+  scores.whiteScore = scoreWhite - scoreBlack;
+  scores.blackScore = scoreBlack - scoreWhite;
+
+  for (const item in whiteTeam) {
+    let nr = originalTeam[item] - whiteTeam[item];
+    for (let i = 0; i < nr; i++) {
+      scores.blackJail.push(item);
+    }
+  }
+
+  for (const item in blackTeam) {
+    let nr = originalTeam[item] - blackTeam[item];
+    for (let i = 0; i < nr; i++) {
+      scores.whiteJail.push(item);
+    }
+  }
+  return scores;
+}
+     
 const getPositionsAt = (nextMoveData, gamePositions) => {
   if (!nextMoveData.isError && !nextMoveData.isDone) {
     let hasMoved = false;
@@ -755,4 +826,4 @@ const getPositionsAt = (nextMoveData, gamePositions) => {
   return gamePositions;
 }
 
-export {getMoveOffset,getAskedMove,getNextMove,pngToTurns,pngToInfos,getMoveDataAt,getPositionsAt};
+export {getMoveOffset,getAskedMove,getNextMove,pngToTurns,pngToInfos,getMoveDataAt,getPositionsAt,boardToScore};

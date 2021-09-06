@@ -36,9 +36,16 @@
     user-select: none;
 }
 
+.board-zone.inverse .jail-yard{
+    transform: rotate(180deg);
+    float: right;
+}
+
+
 .board-zone.inverse .jail.black .inverse-clickable{
     display:none;
 }
+
 .board-zone:not(.inverse) .jail.black .inverse-clickable{
     display:inline-block;
 }
@@ -46,8 +53,13 @@
 .board-zone.inverse .jail.white .inverse-clickable{
     display:inline-block;
 }
+
 .board-zone:not(.inverse) .jail.white .inverse-clickable{
     display:none;
+}
+
+.score {
+   padding:0 10px 0 10px;
 }
    
 
