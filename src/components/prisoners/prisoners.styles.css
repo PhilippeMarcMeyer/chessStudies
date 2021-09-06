@@ -1,9 +1,11 @@
 .jail {
-    height:30px;
-    width: 66vmin;
+  
+    width:100%;
     display:block;
     color:white;
-    font-size:24px;
+    font-size:20px;
+    height:30px;
+    overflow: hidden;
 }
 
 .jail.white{
