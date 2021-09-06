@@ -28,6 +28,7 @@
     bottom:14px;
     border-radius:6px;
     cursor: pointer;
+    background-color: #fff;
 }
 
 .game-list li .button.delete{
