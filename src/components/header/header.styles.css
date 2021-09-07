@@ -2,7 +2,7 @@
     padding:10px 0 10px 18px;
     margin-right:20px;
     height:15vmin;
-    width:15vmin;
+    width:20.7vmin;
     pointer-events: none;
     display:inline-block;
   }
@@ -10,12 +10,12 @@
   .title {
     position:absolute;
     display:inline-block;
-    margin-left:20vmin;
+    margin-left:22vmin;
     display:block;
     pointer-events: none;
     margin-top:12vmin;
     color:"#C3B69C";
-  
+
   }
   
   .header {
