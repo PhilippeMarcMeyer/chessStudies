@@ -4,7 +4,7 @@ import Prisoners from '../prisoners/prisoners.component';
 const Board = (props) => {
   return (
     <div className={`board-zone ${props.game.doReverseBoard ? "inverse" : ""}`} >
-      <Prisoners side="w" reverseBoard={props.reverseBoard} figCodes={props.game.figCodes} scores={props.game.scores}/>
+      <Prisoners side="w" reverseBoard={props.reverseBoard} figCodes={props.game.figCodes} pgnResume={props.game.pgnResume} scores={props.game.scores}/>
       <div className='board'>
         {
           props.game.data
@@ -15,7 +15,7 @@ const Board = (props) => {
             ))
         }
       </div>
-      <Prisoners side="b" reverseBoard={props.reverseBoard} figCodes={props.game.figCodes} scores={props.game.scores}/>
+      <Prisoners side="b" reverseBoard={props.reverseBoard} figCodes={props.game.figCodes} pgnResume={props.game.pgnResume} scores={props.game.scores}/>
     </div>
   )
    }

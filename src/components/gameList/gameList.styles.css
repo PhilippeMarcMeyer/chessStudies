@@ -19,20 +19,34 @@
 }
 
 .game-list li .button{
+    padding: 6px 12px;
     border: solid 1px black;
-    padding: 6px 18px;
     position:absolute;
-    right:12px;
     vertical-align: middle;
     top:14px;
     bottom:14px;
     border-radius:6px;
     cursor: pointer;
-    background-color: #fff;
+    background-color: white;
 }
 
 .game-list li .button.delete{
-    right:90px;
+    right:60px;
+    border: solid 1px red;
+    color: red;
+}
+.game-list li .button.delete::after{
+    content:"❌";
+
+}
+.game-list li .button.choose{
+    right:12px;
+    border: solid 1px #769656;
+}
+.game-list li .button.choose::after{
+    content:"✔️";
+    font-size:18px;
+    font-weight:bold;
 }
 
 .game-list li .button:hover{
