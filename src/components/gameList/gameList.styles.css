@@ -18,31 +18,43 @@
     width:94%;
 }
 
-.game-list li .button{
-    padding: 6px 12px;
-    border: solid 1px black;
+.list-element{
+    position:relative;
+    width:100%;
+}
+
+.list-element-text{
+    display:block;
     position:absolute;
-    vertical-align: middle;
-    top:14px;
-    bottom:14px;
+    width:70%;
+}
+
+.game-list li .button{
+    border: solid 1px black;
+    float:right;
+    vertical-align: top;
     border-radius:6px;
     cursor: pointer;
     background-color: white;
+    margin-right:3px;
+    margin-left:3px;
 }
 
 .game-list li .button.delete{
-    right:60px;
+    padding: 6px 12px;
     border: solid 1px red;
     color: red;
 }
+
 .game-list li .button.delete::after{
     content:"❌";
-
 }
+
 .game-list li .button.choose{
-    right:12px;
+    padding: 5px 12px;
     border: solid 1px #769656;
 }
+
 .game-list li .button.choose::after{
     content:"✔️";
     font-size:18px;
