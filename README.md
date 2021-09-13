@@ -1,6 +1,12 @@
 # Chess studies : PGN reader
 
-This version provides a list of already analyzed games, an input to set more games 
+This version analyses PGN games and show them in a list
+to show and play them on a board with 
+an input to set more games 
+
+The list is saved in localStorage for demo purposes
+
+I will provide a backend probably using firebase or a simple json storage provider
 
 ## Live demo (master) :
 
