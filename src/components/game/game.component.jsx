@@ -409,21 +409,17 @@ class Game extends React.Component {
     this.setState((state, props) => ({
       status: this.gameStatus.init
     }));
-    // eslint-disable-next-line no-restricted-globals
-    let database = parent.database !== undefined ? parent.database : null;
+
     let games = [];
-    if(database){
-      games = database.ref("Posts");
-    }else{
-      if (localStorage.getItem("games") !== null) {
-        games = JSON.parse(localStorage.getItem("games"));
-      }
+    if (localStorage.getItem("games") !== null) {
+      games = JSON.parse(localStorage.getItem("games"));
     }
-    
+
     let initialStatus = this.gameStatus.showInput;
     if (games.length > 0) {
       initialStatus = this.gameStatus.showList;
     }
+    
     let pgn = this.state.pgnHistory;
     let data = [];
     let positions = [];
