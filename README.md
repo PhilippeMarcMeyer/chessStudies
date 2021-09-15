@@ -125,9 +125,18 @@ but is its functional !  I'm glad I could code my first react app
 08-29-2021 :
 Once a position is calculated, it is transformed into a FEN so no move calculation is required
 
+09-06-2021 : multi-games version : PGN are analysed and stored. available thru a list 
+
 What could come next : We could use a database sql server or firebase, to keep a list of games and their associated FEN to compare games and see if some positions (FEN) repeat themselves accross différent games) we aloso could use an API to get FEN evaluations and help undersand when moves are bad or good.
 
-I was not able to publish the result on GITHUB => I could use some help here !
+adding comments and comments support
+search for games by date, opening, players
+opening recognition (by importing known openings)
+opening quizz : try to find the right move
+position evaluation via api
+evolution elo graphs rendered by 'followed players' and major openings
+pattern recognition : (in openings ? what i play the most)
+
 
 ## You can still help me by learning React with me, or if you are a saisonned React dev, by providing advices
 
