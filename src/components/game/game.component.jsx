@@ -3,6 +3,7 @@ import './game.styles.css';
 import Board from '../board/board.component';
 import Info from '../info/info.component';
 import { getAskedMove, getNextMove, pngToTurns, pngToInfos, getMoveDataAt, getPositionsAt ,boardToScore} from '../../movesLogic.js';
+import { ManageStorage} from '../../storage.js';
 import { boardToFen, fenToBoard } from '../../fen.js';
 
 class Game extends React.Component {
@@ -18,7 +19,8 @@ class Game extends React.Component {
     };
 
     this.state = {
-      "database": null,
+      "isRemote": true,
+      "initError":false,
       "games": [],
       "scores" : {
         "whiteScore" : 0,
@@ -232,7 +234,7 @@ class Game extends React.Component {
   }
 
   componentDidMount() {
-    this.initGames();
+    this.initData();
   }
 
   menuMove = (e) => {
@@ -337,7 +339,6 @@ class Game extends React.Component {
           this.setGameStatus(this.gameStatus.inError, "unable to read this png");
         }
       }
-   
   }
 
   saveGameToStorage = (gameToSave) => {
@@ -405,82 +406,106 @@ class Game extends React.Component {
     ));
   }
 
-  initGames = () => {
-    this.setState((state, props) => ({
-      status: this.gameStatus.init
-    }));
-
-    let games = [];
-    if (localStorage.getItem("games") !== null) {
-      games = JSON.parse(localStorage.getItem("games"));
-    }
-
-    let initialStatus = this.gameStatus.showInput;
-    if (games.length > 0) {
-      initialStatus = this.gameStatus.showList;
-    }
-    
-    let pgn = this.state.pgnHistory;
-    let data = [];
-    let positions = [];
-    let blackColor = this.state.blackColor;
-    let whiteColor = this.state.whiteColor;
-    let black = this.state.black;
-    let white = this.state.white;
-
-    let currentColor;
-    let previousColor = whiteColor;
-    let row = 0;
-    let col = 0;
-    let i = 0;
-    for (let r = 7; r >= 0; r--) {
-      row = this.state.rows[r];
-      for (let c = 0; c < 8; c++) {
-        col = this.state.columns[c];
-        i++;
-        if (i % 8 === 1) {
-          currentColor = previousColor;
-        } else {
-          currentColor = previousColor === blackColor ? whiteColor : blackColor;
-          previousColor = currentColor;
-        }
-        data.push({ "row": row, "column": col, "squareColor": currentColor, "fig": null });
-      }
-    }
-
-    this.state.figures.forEach((fig, i) => {
-      positions.push({ "row": this.state.rows[0], "column": this.state.columns[i], "fig": fig + white });
-      positions.push({ "row": this.state.rows[1], "column": this.state.columns[i], "fig": this.state.pawn + white });
-      positions.push({ "row": this.state.rows[6], "column": this.state.columns[i], "fig": this.state.pawn + black });
-      positions.push({ "row": this.state.rows[7], "column": this.state.columns[i], "fig": fig + black });
-    });
-
-    data.forEach((sqr) => {
-      let check = positions.filter((pos) => {
-        return pos.row === sqr.row && pos.column === sqr.column;
+  initData = () => {
+    let factory = this;
+    let isRemote = true;
+    let initError = false;
+    let storageManager = new ManageStorage();
+    storageManager
+      .initRemote()
+      .then(function (data) {
+        factory.initGames(data, isRemote, initError)
+      })
+      .catch(function (e) {
+        isRemote = false;
+        storageManager
+          .initLocal()
+          .then(function (data) {
+            factory.initGames(data, isRemote, initError)
+          })
+          .catch(function (e) {
+            initError = true;
+            factory.initGames(null, isRemote, initError)
+          });
       });
-      if (check.length === 1) {
-        sqr.fig = check[0].fig;
-      }
-    });
-    let otherProps = {
-      "games":games,
-      "status": initialStatus,
-      "data": data,
-      "initialData": JSON.stringify(data),
-      "positions": positions,
-      "move": { "number": 0, "side": "w" },
-      "pgnHistory": pgn,
-      "scores" : {
-        "whiteScore" : 0,
-        "blackScore" : 0,
-        "whiteJail" : [],
-        "blackJail" : []
-      }
-    }
-    this.setGameStatus(initialStatus, "",otherProps);
   }
 
+  initGames = (games,isRemote,initError) => {
+
+    if(initError){
+      let initialStatus = this.gameStatus.inError;
+      let otherProps = {
+        isRemote: isRemote,
+        initError:initError
+      }
+      this.setGameStatus(initialStatus, "",otherProps);
+     }else{
+      let initialStatus = this.gameStatus.showInput;
+      if (games.length > 0) {
+        initialStatus = this.gameStatus.showList;
+      }
+      let pgn = this.state.pgnHistory;
+      let data = [];
+      let positions = [];
+      let blackColor = this.state.blackColor;
+      let whiteColor = this.state.whiteColor;
+      let black = this.state.black;
+      let white = this.state.white;
+  
+      let currentColor;
+      let previousColor = whiteColor;
+      let row = 0;
+      let col = 0;
+      let i = 0;
+      for (let r = 7; r >= 0; r--) {
+        row = this.state.rows[r];
+        for (let c = 0; c < 8; c++) {
+          col = this.state.columns[c];
+          i++;
+          if (i % 8 === 1) {
+            currentColor = previousColor;
+          } else {
+            currentColor = previousColor === blackColor ? whiteColor : blackColor;
+            previousColor = currentColor;
+          }
+          data.push({ "row": row, "column": col, "squareColor": currentColor, "fig": null });
+        }
+      }
+  
+      this.state.figures.forEach((fig, i) => {
+        positions.push({ "row": this.state.rows[0], "column": this.state.columns[i], "fig": fig + white });
+        positions.push({ "row": this.state.rows[1], "column": this.state.columns[i], "fig": this.state.pawn + white });
+        positions.push({ "row": this.state.rows[6], "column": this.state.columns[i], "fig": this.state.pawn + black });
+        positions.push({ "row": this.state.rows[7], "column": this.state.columns[i], "fig": fig + black });
+      });
+  
+      data.forEach((sqr) => {
+        let check = positions.filter((pos) => {
+          return pos.row === sqr.row && pos.column === sqr.column;
+        });
+        if (check.length === 1) {
+          sqr.fig = check[0].fig;
+        }
+      });
+      let otherProps = {
+        "games":games,
+        "data": data,
+        "isRemote": isRemote,
+        "initError":initError,
+        "initialData": JSON.stringify(data),
+        "positions": positions,
+        "move": { "number": 0, "side": "w" },
+        "pgnHistory": pgn,
+        "scores" : {
+          "whiteScore" : 0,
+          "blackScore" : 0,
+          "whiteJail" : [],
+          "blackJail" : []
+        }
+      }
+      this.setGameStatus(initialStatus, "",otherProps);
+     }
+  };
   render() {
     if (this.state.status === this.gameStatus.showInput) {// todo : adapt to input in textArea
       return (
