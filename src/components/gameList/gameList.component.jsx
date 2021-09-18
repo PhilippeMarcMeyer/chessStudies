@@ -13,7 +13,8 @@ const GameList = (props) => {
                                 {game.pgnResume.White} ({game.pgnResume.WhiteElo}) {"vs"} {game.pgnResume.Black} ({game.pgnResume.BlackElo})  {"=>"} {game.pgnResume.Result}
                                 </span>
                                 <span className="button choose" data-index={index} onClick={props.loadGame}></span>
-                                <span className="button delete" data-index={index} onClick={props.deleteGame}></span>
+                                <span className={`button delete ${!props.online  ? "hidden" : ""}`} data-index={index} onClick={props.deleteGame}></span>
+                                
                             </div>
                         </li>
                     )

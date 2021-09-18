@@ -7,7 +7,7 @@ import { ManageStorage} from '../../storage.js';
 import { boardToFen, fenToBoard } from '../../fen.js';
 
 class Game extends React.Component {
-  constructor() {
+  constructor(props) {
     super();
     this.gameStatus = {
       "init": 0,
@@ -19,6 +19,7 @@ class Game extends React.Component {
     };
 
     this.state = {
+      "storageManager":null,
       "isRemote": true,
       "initError":false,
       "games": [],
@@ -95,14 +96,25 @@ class Game extends React.Component {
   }
 
   doDeleteGame = (index) => {
-    let games = JSON.parse(JSON.stringify(this.state.games));
-    games.splice(index, 1);
-    let otherProps = {
-      games : games
+    let factory = this;
+    if (this.state.isRemote && this.state.storageManager) {
+      let games = this.state.games;
+      games.splice(index, 1);
+      let otherProps = {
+        games: games
+      }
+      factory.state.storageManager.setRemote(games)
+        .then(function (response) {
+          if (response === "OK") {
+            factory.state.storageManager.setLocal(games);
+            let newStatus = games && games.length > 0 ? factory.gameStatus.showList : factory.gameStatus.showInput;
+            factory.setGameStatus(newStatus, "", otherProps);
+          }
+        })
+        .catch(function (response) {
+
+        });
     }
-    localStorage.setItem("games", JSON.stringify(games));
-    let newStatus = games && games.length > 0 ? this.gameStatus.showList: this.gameStatus.showInput;
-    this.setGameStatus(newStatus, "", otherProps);
   }
 
   doLoadGame = (index) => {
@@ -316,7 +328,6 @@ class Game extends React.Component {
             "fenGame": fenGame
           };
           this.saveGameToStorage(gameToSave);
-          this.state.games.push(gameToSave);
           let otherProps = {
             "data": JSON.parse(this.state.initialData),
             "pgnResume": infosClean,
@@ -342,18 +353,20 @@ class Game extends React.Component {
   }
 
   saveGameToStorage = (gameToSave) => {
+    let factory = this;
     this.setGameStatus(this.gameStatus.showMessage, "Saving analyzed game");
-
-    let games = [];
-    if (localStorage.getItem("games") !== null) {
-      games = JSON.parse(localStorage.getItem("games"));
+    let games = this.state.games;
+    //
+    if (games.length === 0) {
+      games.push(gameToSave);
+    } else {
       let gameAlready = games.filter((x) => {
         return x.pgnGame === gameToSave.pgnGame;
       });
       if (gameAlready.length === 0) {
         games.push(gameToSave);
       } else {
-        games.forEach((x) => {
+        games.forEach((x) => { // rewrite it (?)
           if (x.pgnGame === gameToSave.pgnGame) {
             x.pgnHistory = gameToSave.pgnHistory;
             x.pgnResume = gameToSave.pgnResume;
@@ -361,10 +374,18 @@ class Game extends React.Component {
           }
         });
       }
-    } else {
-      games.push(gameToSave);
     }
-    localStorage.setItem("games", JSON.stringify(games));
+    if (this.state.isRemote && this.state.storageManager) {
+      factory.state.storageManager.setRemote(games)
+        .then(function (response) {
+          if (response === "OK") {
+            factory.state.storageManager.setLocal(games);
+          }
+        })
+        .catch(function (response) {
+
+        });
+    }
   }
   
   setGameStatus = (status, message,otherProps) => {
@@ -414,32 +435,37 @@ class Game extends React.Component {
     storageManager
       .initRemote()
       .then(function (data) {
-        factory.initGames(data, isRemote, initError)
+        storageManager.setLocal(data); // in case we go offline
+        factory.initGames(data, isRemote, initError,storageManager)
       })
       .catch(function (e) {
         isRemote = false;
         storageManager
           .initLocal()
           .then(function (data) {
-            factory.initGames(data, isRemote, initError)
+            factory.initGames(data, isRemote, initError,storageManager)
           })
           .catch(function (e) {
             initError = true;
-            factory.initGames(null, isRemote, initError)
+            factory.initGames(null, isRemote, initError,storageManager)
           });
       });
   }
 
-  initGames = (games,isRemote,initError) => {
-
+  initGames = (games,isRemote,initError,storageManager) => {
     if(initError){
       let initialStatus = this.gameStatus.inError;
+      this.props.setParentInfos({"storageType":"no data"});
       let otherProps = {
         isRemote: isRemote,
-        initError:initError
+        initError:initError,
+        storageManager:storageManager
       }
       this.setGameStatus(initialStatus, "",otherProps);
      }else{
+       let storageType = isRemote ? "online":"disconnected";
+      this.props.setParentInfos({"storageType":storageType});
+
       let initialStatus = this.gameStatus.showInput;
       if (games.length > 0) {
         initialStatus = this.gameStatus.showList;
@@ -488,6 +514,7 @@ class Game extends React.Component {
         }
       });
       let otherProps = {
+        "storageManager":storageManager,
         "games":games,
         "data": data,
         "isRemote": isRemote,
@@ -508,6 +535,16 @@ class Game extends React.Component {
   };
   render() {
     if (this.state.status === this.gameStatus.showInput) {// todo : adapt to input in textArea
+      if(!this.state.isRemote){
+        return (
+        <div className="game">
+          <div >
+            <h1>"Offline Mode"</h1>
+            <p>You can't add games in offline mode, sorry :-( </p>
+          </div>
+        </div>
+        )
+      }else{
       return (
         <div className="game">
           <div className="game-board">
@@ -518,6 +555,7 @@ class Game extends React.Component {
           </div>
         </div>
       )
+    }
     } else if (this.state.status === this.gameStatus.showList) { // todo : adapt to list
       return (
         <div className="game">
