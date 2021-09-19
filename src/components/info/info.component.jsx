@@ -8,7 +8,6 @@ import GameMenu from '../gameMenu/gameMenu.component';
 
 const Info = (props) => {
   let status = props.game.status;
-  let pgn = props.game.pgnHistory;
   let statuses = props.statuses;
   if(status === statuses.showInput){
       return(
@@ -28,7 +27,7 @@ const Info = (props) => {
       <GameMenu menuMove = {props.menuMove} movesLoaded={props.game.pgnHistory && props.game.pgnHistory.length > 1 ? true:false}/>
       <div className='list-zone'>
         <h3 className='board-list-title'>{props.game.infosTitle}</h3>
-        <GameList games={props.game.games} deleteGame={props.deleteGame} loadGame={props.loadGame}></GameList>
+        <GameList games={props.game.games} deleteGame={props.deleteGame} loadGame={props.loadGame} online={props.game.isRemote}></GameList>
       </div>
       </React.Fragment>
     )

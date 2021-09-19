@@ -3,10 +3,11 @@ import './game.styles.css';
 import Board from '../board/board.component';
 import Info from '../info/info.component';
 import { getAskedMove, getNextMove, pngToTurns, pngToInfos, getMoveDataAt, getPositionsAt ,boardToScore} from '../../movesLogic.js';
+import { ManageStorage} from '../../storage.js';
 import { boardToFen, fenToBoard } from '../../fen.js';
 
 class Game extends React.Component {
-  constructor() {
+  constructor(props) {
     super();
     this.gameStatus = {
       "init": 0,
@@ -18,6 +19,9 @@ class Game extends React.Component {
     };
 
     this.state = {
+      "storageManager":null,
+      "isRemote": true,
+      "initError":false,
       "games": [],
       "scores" : {
         "whiteScore" : 0,
@@ -78,50 +82,65 @@ class Game extends React.Component {
   }
 
   deleteGame= (e) => {
-    let index = e.currentTarget.getAttribute("data-index");
-    if (this.state.games && this.state.games.length > 0 && index < this.state.games.length) {
-      this.doDeleteGame(index);
-    }
+    let id = Number(e.currentTarget.getAttribute("data-index"));
+    this.doDeleteGame(id);
   }
 
   loadGame = (e) => {
-    let index = e.currentTarget.getAttribute("data-index");
-    if (this.state.games && this.state.games.length > 0 && index < this.state.games.length) {
-      this.doLoadGame(index);
-    }
+    let id = Number(e.currentTarget.getAttribute("data-index"));
+    this.doLoadGame(id);
   }
 
-  doDeleteGame = (index) => {
-    let games = JSON.parse(JSON.stringify(this.state.games));
-    games.splice(index, 1);
-    let otherProps = {
-      games : games
-    }
-    localStorage.setItem("games", JSON.stringify(games));
-    let newStatus = games && games.length > 0 ? this.gameStatus.showList: this.gameStatus.showInput;
-    this.setGameStatus(newStatus, "", otherProps);
-  }
+  doDeleteGame = (id) => {
+    let factory = this;
+    if (this.state.isRemote && this.state.storageManager) {
+      let games = this.state.games.filter((game) => {
+        return game.id !== id;
+      })
 
-  doLoadGame = (index) => {
-    let game = this.state.games[index];
-    let otherProps = {
-      "data": JSON.parse(this.state.initialData),
-      "pgnResume": game.pgnResume,
-      "pgnHistory": game.pgnHistory,
-      "pgnGame": game.pgnGame,
-      "fenGame": game.fenGame,
-      "move": {
-        "number": 0,
-        "side": "w"
-      },
-      "scores" : {
-        "whiteScore" : 0,
-        "blackScore" : 0,
-        "whiteJail" : [],
-        "blackJail" : []
+      let otherProps = {
+        games: games
       }
+
+      factory.state.storageManager.setRemote(games)
+        .then(function (response) {
+          if (response === "OK") {
+            factory.state.storageManager.setLocal(games);
+            let newStatus = games && games.length > 0 ? factory.gameStatus.showList : factory.gameStatus.showInput;
+            factory.setGameStatus(newStatus, "", otherProps);
+          }
+        })
+        .catch(function (response) {
+
+        });
     }
-    this.setGameStatus(this.gameStatus.showMoves, "", otherProps);
+  }
+
+  doLoadGame = (id) => {
+    let gamesFilter = this.state.games.filter((game) => {
+      return game.id === id;
+    })
+    if (gamesFilter.length === 1) {
+      let game = gamesFilter[0];
+      let otherProps = {
+        "data": JSON.parse(this.state.initialData),
+        "pgnResume": game.pgnResume,
+        "pgnHistory": game.pgnHistory,
+        "pgnGame": game.pgnGame,
+        "fenGame": game.fenGame,
+        "move": {
+          "number": 0,
+          "side": "w"
+        },
+        "scores": {
+          "whiteScore": 0,
+          "blackScore": 0,
+          "whiteJail": [],
+          "blackJail": []
+        }
+      }
+      this.setGameStatus(this.gameStatus.showMoves, "", otherProps);
+    }
   }
 
   moveGameTo = (askedMove) => {
@@ -231,7 +250,7 @@ class Game extends React.Component {
   }
 
   componentDidMount() {
-    this.initGames();
+    this.initData();
   }
 
   menuMove = (e) => {
@@ -274,7 +293,7 @@ class Game extends React.Component {
 
   savePGN = () => {
   //  let that = this;
-  this.setGameStatus(this.gameStatus.showMessage, "Aanalyzing and saving your game");
+  this.setGameStatus(this.gameStatus.showMessage, "Analyzing and saving your game");
       let textArea = document.getElementById("game-input");
       if (textArea != null) {
         let pgn = textArea.value;
@@ -313,7 +332,6 @@ class Game extends React.Component {
             "fenGame": fenGame
           };
           this.saveGameToStorage(gameToSave);
-          this.state.games.push(gameToSave);
           let otherProps = {
             "data": JSON.parse(this.state.initialData),
             "pgnResume": infosClean,
@@ -336,22 +354,25 @@ class Game extends React.Component {
           this.setGameStatus(this.gameStatus.inError, "unable to read this png");
         }
       }
-   
   }
 
   saveGameToStorage = (gameToSave) => {
+    let factory = this;
+    if(!("id" in gameToSave)){
+      gameToSave.id = new Date().getTime();
+    }
     this.setGameStatus(this.gameStatus.showMessage, "Saving analyzed game");
-
-    let games = [];
-    if (localStorage.getItem("games") !== null) {
-      games = JSON.parse(localStorage.getItem("games"));
+    let games = this.state.games;
+    if (games.length === 0) {
+      games.push(gameToSave);
+    } else {
       let gameAlready = games.filter((x) => {
-        return x.pgnGame === gameToSave.pgnGame;
+        return x.id === gameToSave.id;
       });
       if (gameAlready.length === 0) {
         games.push(gameToSave);
       } else {
-        games.forEach((x) => {
+        games.forEach((x) => { // rewrite in the future : add comments etc...
           if (x.pgnGame === gameToSave.pgnGame) {
             x.pgnHistory = gameToSave.pgnHistory;
             x.pgnResume = gameToSave.pgnResume;
@@ -359,10 +380,18 @@ class Game extends React.Component {
           }
         });
       }
-    } else {
-      games.push(gameToSave);
     }
-    localStorage.setItem("games", JSON.stringify(games));
+    if (this.state.isRemote && this.state.storageManager) {
+      factory.state.storageManager.setRemote(games)
+        .then(function (response) {
+          if (response === "OK") {
+            factory.state.storageManager.setLocal(games);
+          }
+        })
+        .catch(function (response) {
+
+        });
+    }
   }
   
   setGameStatus = (status, message,otherProps) => {
@@ -404,82 +433,124 @@ class Game extends React.Component {
     ));
   }
 
-  initGames = () => {
-    this.setState((state, props) => ({
-      status: this.gameStatus.init
-    }));
-
-    let games = [];
-    if (localStorage.getItem("games") !== null) {
-      games = JSON.parse(localStorage.getItem("games"));
-    }
-    let initialStatus = this.gameStatus.showInput;
-    if (games.length > 0) {
-      initialStatus = this.gameStatus.showList;
-    }
-    let pgn = this.state.pgnHistory;
-    let data = [];
-    let positions = [];
-    let blackColor = this.state.blackColor;
-    let whiteColor = this.state.whiteColor;
-    let black = this.state.black;
-    let white = this.state.white;
-
-    let currentColor;
-    let previousColor = whiteColor;
-    let row = 0;
-    let col = 0;
-    let i = 0;
-    for (let r = 7; r >= 0; r--) {
-      row = this.state.rows[r];
-      for (let c = 0; c < 8; c++) {
-        col = this.state.columns[c];
-        i++;
-        if (i % 8 === 1) {
-          currentColor = previousColor;
-        } else {
-          currentColor = previousColor === blackColor ? whiteColor : blackColor;
-          previousColor = currentColor;
-        }
-        data.push({ "row": row, "column": col, "squareColor": currentColor, "fig": null });
-      }
-    }
-
-    this.state.figures.forEach((fig, i) => {
-      positions.push({ "row": this.state.rows[0], "column": this.state.columns[i], "fig": fig + white });
-      positions.push({ "row": this.state.rows[1], "column": this.state.columns[i], "fig": this.state.pawn + white });
-      positions.push({ "row": this.state.rows[6], "column": this.state.columns[i], "fig": this.state.pawn + black });
-      positions.push({ "row": this.state.rows[7], "column": this.state.columns[i], "fig": fig + black });
-    });
-
-    data.forEach((sqr) => {
-      let check = positions.filter((pos) => {
-        return pos.row === sqr.row && pos.column === sqr.column;
+  initData = () => {
+    let factory = this;
+    let isRemote = true;
+    let initError = false;
+    let storageManager = new ManageStorage();
+    storageManager
+      .initRemote()
+      .then(function (data) {
+        storageManager.setLocal(data); // in case we go offline
+        factory.initGames(data, isRemote, initError,storageManager)
+      })
+      .catch(function (e) {
+        isRemote = false;
+        storageManager
+          .initLocal()
+          .then(function (data) {
+            factory.initGames(data, isRemote, initError,storageManager)
+          })
+          .catch(function (e) {
+            initError = true;
+            factory.initGames(null, isRemote, initError,storageManager)
+          });
       });
-      if (check.length === 1) {
-        sqr.fig = check[0].fig;
-      }
-    });
-    let otherProps = {
-      "games":games,
-      "status": initialStatus,
-      "data": data,
-      "initialData": JSON.stringify(data),
-      "positions": positions,
-      "move": { "number": 0, "side": "w" },
-      "pgnHistory": pgn,
-      "scores" : {
-        "whiteScore" : 0,
-        "blackScore" : 0,
-        "whiteJail" : [],
-        "blackJail" : []
-      }
-    }
-    this.setGameStatus(initialStatus, "",otherProps);
   }
 
+  initGames = (games,isRemote,initError,storageManager) => {
+    if(initError){
+      let initialStatus = this.gameStatus.inError;
+      this.props.setParentInfos({"storageType":"no data"});
+      let otherProps = {
+        isRemote: isRemote,
+        initError:initError,
+        storageManager:storageManager
+      }
+      this.setGameStatus(initialStatus, "",otherProps);
+     }else{
+       let storageType = isRemote ? "online":"disconnected";
+      this.props.setParentInfos({"storageType":storageType});
+
+      let initialStatus = this.gameStatus.showInput;
+      if (games.length > 0) {
+        initialStatus = this.gameStatus.showList;
+      }
+      let pgn = this.state.pgnHistory;
+      let data = [];
+      let positions = [];
+      let blackColor = this.state.blackColor;
+      let whiteColor = this.state.whiteColor;
+      let black = this.state.black;
+      let white = this.state.white;
+  
+      let currentColor;
+      let previousColor = whiteColor;
+      let row = 0;
+      let col = 0;
+      let i = 0;
+      for (let r = 7; r >= 0; r--) {
+        row = this.state.rows[r];
+        for (let c = 0; c < 8; c++) {
+          col = this.state.columns[c];
+          i++;
+          if (i % 8 === 1) {
+            currentColor = previousColor;
+          } else {
+            currentColor = previousColor === blackColor ? whiteColor : blackColor;
+            previousColor = currentColor;
+          }
+          data.push({ "row": row, "column": col, "squareColor": currentColor, "fig": null });
+        }
+      }
+  
+      this.state.figures.forEach((fig, i) => {
+        positions.push({ "row": this.state.rows[0], "column": this.state.columns[i], "fig": fig + white });
+        positions.push({ "row": this.state.rows[1], "column": this.state.columns[i], "fig": this.state.pawn + white });
+        positions.push({ "row": this.state.rows[6], "column": this.state.columns[i], "fig": this.state.pawn + black });
+        positions.push({ "row": this.state.rows[7], "column": this.state.columns[i], "fig": fig + black });
+      });
+  
+      data.forEach((sqr) => {
+        let check = positions.filter((pos) => {
+          return pos.row === sqr.row && pos.column === sqr.column;
+        });
+        if (check.length === 1) {
+          sqr.fig = check[0].fig;
+        }
+      });
+      let otherProps = {
+        "storageManager":storageManager,
+        "games":games,
+        "data": data,
+        "isRemote": isRemote,
+        "initError":initError,
+        "initialData": JSON.stringify(data),
+        "positions": positions,
+        "move": { "number": 0, "side": "w" },
+        "pgnHistory": pgn,
+        "scores" : {
+          "whiteScore" : 0,
+          "blackScore" : 0,
+          "whiteJail" : [],
+          "blackJail" : []
+        }
+      }
+      this.setGameStatus(initialStatus, "",otherProps);
+     }
+  };
   render() {
     if (this.state.status === this.gameStatus.showInput) {// todo : adapt to input in textArea
+      if(!this.state.isRemote){
+        return (
+        <div className="game">
+          <div >
+            <h1>"Offline Mode"</h1>
+            <p>You can't add games in offline mode, sorry :-( </p>
+          </div>
+        </div>
+        )
+      }else{
       return (
         <div className="game">
           <div className="game-board">
@@ -490,6 +561,7 @@ class Game extends React.Component {
           </div>
         </div>
       )
+    }
     } else if (this.state.status === this.gameStatus.showList) { // todo : adapt to list
       return (
         <div className="game">

@@ -17,6 +17,11 @@
     color:"#C3B69C";
 
   }
+
+  .storageType{
+    font-size: calc(8px + 1vmin);
+    margin-left:1vmin;
+  }
   
   .header {
     background-color: #282c34;
