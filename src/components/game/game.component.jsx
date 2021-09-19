@@ -82,27 +82,26 @@ class Game extends React.Component {
   }
 
   deleteGame= (e) => {
-    let index = e.currentTarget.getAttribute("data-index");
-    if (this.state.games && this.state.games.length > 0 && index < this.state.games.length) {
-      this.doDeleteGame(index);
-    }
+    let id = Number(e.currentTarget.getAttribute("data-index"));
+    this.doDeleteGame(id);
   }
 
   loadGame = (e) => {
-    let index = e.currentTarget.getAttribute("data-index");
-    if (this.state.games && this.state.games.length > 0 && index < this.state.games.length) {
-      this.doLoadGame(index);
-    }
+    let id = Number(e.currentTarget.getAttribute("data-index"));
+    this.doLoadGame(id);
   }
 
-  doDeleteGame = (index) => {
+  doDeleteGame = (id) => {
     let factory = this;
     if (this.state.isRemote && this.state.storageManager) {
-      let games = this.state.games;
-      games.splice(index, 1);
+      let games = this.state.games.filter((game) => {
+        return game.id !== id;
+      })
+
       let otherProps = {
         games: games
       }
+
       factory.state.storageManager.setRemote(games)
         .then(function (response) {
           if (response === "OK") {
@@ -117,26 +116,31 @@ class Game extends React.Component {
     }
   }
 
-  doLoadGame = (index) => {
-    let game = this.state.games[index];
-    let otherProps = {
-      "data": JSON.parse(this.state.initialData),
-      "pgnResume": game.pgnResume,
-      "pgnHistory": game.pgnHistory,
-      "pgnGame": game.pgnGame,
-      "fenGame": game.fenGame,
-      "move": {
-        "number": 0,
-        "side": "w"
-      },
-      "scores" : {
-        "whiteScore" : 0,
-        "blackScore" : 0,
-        "whiteJail" : [],
-        "blackJail" : []
+  doLoadGame = (id) => {
+    let gamesFilter = this.state.games.filter((game) => {
+      return game.id === id;
+    })
+    if (gamesFilter.length === 1) {
+      let game = gamesFilter[0];
+      let otherProps = {
+        "data": JSON.parse(this.state.initialData),
+        "pgnResume": game.pgnResume,
+        "pgnHistory": game.pgnHistory,
+        "pgnGame": game.pgnGame,
+        "fenGame": game.fenGame,
+        "move": {
+          "number": 0,
+          "side": "w"
+        },
+        "scores": {
+          "whiteScore": 0,
+          "blackScore": 0,
+          "whiteJail": [],
+          "blackJail": []
+        }
       }
+      this.setGameStatus(this.gameStatus.showMoves, "", otherProps);
     }
-    this.setGameStatus(this.gameStatus.showMoves, "", otherProps);
   }
 
   moveGameTo = (askedMove) => {
@@ -289,7 +293,7 @@ class Game extends React.Component {
 
   savePGN = () => {
   //  let that = this;
-  this.setGameStatus(this.gameStatus.showMessage, "Aanalyzing and saving your game");
+  this.setGameStatus(this.gameStatus.showMessage, "Analyzing and saving your game");
       let textArea = document.getElementById("game-input");
       if (textArea != null) {
         let pgn = textArea.value;
@@ -354,19 +358,21 @@ class Game extends React.Component {
 
   saveGameToStorage = (gameToSave) => {
     let factory = this;
+    if(!("id" in gameToSave)){
+      gameToSave.id = new Date().getTime();
+    }
     this.setGameStatus(this.gameStatus.showMessage, "Saving analyzed game");
     let games = this.state.games;
-    //
     if (games.length === 0) {
       games.push(gameToSave);
     } else {
       let gameAlready = games.filter((x) => {
-        return x.pgnGame === gameToSave.pgnGame;
+        return x.id === gameToSave.id;
       });
       if (gameAlready.length === 0) {
         games.push(gameToSave);
       } else {
-        games.forEach((x) => { // rewrite it (?)
+        games.forEach((x) => { // rewrite in the future : add comments etc...
           if (x.pgnGame === gameToSave.pgnGame) {
             x.pgnHistory = gameToSave.pgnHistory;
             x.pgnResume = gameToSave.pgnResume;
