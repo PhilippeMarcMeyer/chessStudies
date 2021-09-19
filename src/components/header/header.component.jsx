@@ -5,7 +5,7 @@ import logo from '../../assets/zadigChess.png';
 const Header = (props) => {
   return (
   <div className="header">
-    <img src={logo} className="logo" alt="logo" />
+    <img src={"./"+logo} className="logo" alt="logo" />
     <div className="title">
       Chess Studies <span className="storageType">{props.parentInfos.storageType}</span>
     </div>
