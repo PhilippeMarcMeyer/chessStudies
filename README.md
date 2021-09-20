@@ -18,6 +18,7 @@ Todos :
 9. finding other games with the same FEN
 10. switching games or showing a second board to compare
 11. Adding alt moves ?
+12. Opening quizz : find the right moves (new feature)
 
 The list is saved to https://jsonblob.com/ a json server 
 and in localStorage as a fallback
