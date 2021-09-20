@@ -4,6 +4,8 @@ This version analyses PGN games and show them in a list
 to show and play them on a board with 
 an input to set more games 
 
+2021-09-20 : this version is still buggy with players inversion and moving wrong piece on the board (ex : the wrong rook)
+
 The list is saved to https://jsonblob.com/ a json server 
 and in localStorage as a fallback
 
@@ -11,7 +13,9 @@ and in localStorage as a fallback
 
 https://philippemarcmeyer.github.io/chessStudies/index.html
 
-You can use this game as an example : 
+There are already a few master games but 
+
+you can use this game as an example to add a new game to the list : 
 ```
 [Event "x3dworld rapid"]
 [Site "New York USA"]
