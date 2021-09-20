@@ -1,4 +1,4 @@
-# Chess studies : PGN reader
+# Chess studies : PGN reader v 0.1
 
 This version analyses PGN games and show them in a list
 to show and play them on a board with 
