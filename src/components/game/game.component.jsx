@@ -291,69 +291,92 @@ class Game extends React.Component {
     }
   }
 
-  savePGN = () => {
-  //  let that = this;
-  this.setGameStatus(this.gameStatus.showMessage, "Analyzing and saving your game");
-      let textArea = document.getElementById("game-input");
-      if (textArea != null) {
-        let pgn = textArea.value;
-        if (pgn !== "") { // todo check validity !
-          let limitBetweenGameParts = /\n\n/.exec(pgn).index;
-          let pngInfos = pgn.substring(0, limitBetweenGameParts).replace(/\r\n?|\n/g, ",").trim();
-          let pgnGame = pgn.substring(limitBetweenGameParts, pgn.length).replace(/\r\n?|\n/g, " ").trim();
-          // putting the infos in an object
-          let infosClean = pngToInfos(pngInfos);
-          if(!infosClean.Site){
-            infosClean.Site = "???";
-          }
-          // putting the game into an array of turns ex : [{"w":"a4","b":"a5"}]
-          let turns = pngToTurns(pgnGame);
-          // calculating the fens for every half move
-          let fenGame = [{ "number": 0, "side": "w", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" }];
-          let positions = JSON.parse(this.state.initialData);
-          let columnsOrdered = this.state.columns.slice(0)
-  
-          turns.forEach((turn, i) => {
-            ["w", "b"].forEach((side) => {
-              if (side in turn) {
-                let nextMoveData = getMoveDataAt(turn, side, i + 1, positions, columnsOrdered);
-                positions = getPositionsAt(nextMoveData, positions);
-                let fen = boardToFen(positions, nextMoveData, columnsOrdered);
-                if (fen) {
-                  fenGame.push({ "number": nextMoveData.number, "side": nextMoveData.moveSide, "fen": fen });
-                }
-              }
-            });
-          });
-          let gameToSave = {
-            "pgnHistory": pgn,
-            "pgnResume": infosClean,
-            "pgnGame": turns,
-            "fenGame": fenGame
-          };
-          this.saveGameToStorage(gameToSave);
-          let otherProps = {
-            "data": JSON.parse(this.state.initialData),
-            "pgnResume": infosClean,
-            "pgnHistory": pgn,
-            "pgnGame": turns,
-            "fenGame": fenGame,
-            "move": {
-              "number": 0,
-              "side": "w"
-            },
-            "scores" : {
-              "whiteScore" : 0,
-              "blackScore" : 0,
-              "whiteJail" : [],
-              "blackJail" : []
+  savePGN = (data) => {
+    let result = null;
+    if(data.infos && data.infos.length > 0 && data.game && data.game.length > 0){
+      data.infos = data.infos.replace(/\r\n?|\n/g, ",").trim();
+      data.game = data.game.replace(/\r\n?|\n/g, " ").trim();
+      // putting the infos in an object
+      let infosClean = pngToInfos(data.infos);
+      if(!infosClean.Site){
+        infosClean.Site = "???";
+      }
+      // putting the game into an array of turns ex : [{"w":"a4","b":"a5"}]
+      let turns = pngToTurns(data.game);
+      // calculating the fens for every half move
+      let fenGame = [{ "number": 0, "side": "w", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" }];
+      let positions = JSON.parse(this.state.initialData);
+      let columnsOrdered = this.state.columns.slice(0);
+      turns.forEach((turn, i) => {
+        ["w", "b"].forEach((side) => {
+          if (side in turn) {
+            let nextMoveData = getMoveDataAt(turn, side, i + 1, positions, columnsOrdered);
+            positions = getPositionsAt(nextMoveData, positions);
+            let fen = boardToFen(positions, nextMoveData, columnsOrdered);
+            if (fen) {
+              fenGame.push({ "number": nextMoveData.number, "side": nextMoveData.moveSide, "fen": fen });
             }
           }
-          this.setGameStatus(this.gameStatus.showList, "",otherProps);
-        } else {
-          this.setGameStatus(this.gameStatus.inError, "unable to read this png");
+        });
+      });
+      let gameToSave = {
+        "pgnHistory": data.game,
+        "pgnResume": infosClean,
+        "pgnGame": turns,
+        "fenGame": fenGame
+      };
+      this.saveGameToStorage(gameToSave);
+      let otherProps = {
+        "data": JSON.parse(this.state.initialData),
+        "pgnResume": infosClean,
+        "pgnHistory": data.game,
+        "pgnGame": turns,
+        "fenGame": fenGame,
+        "move": {
+          "number": 0,
+          "side": "w"
+        },
+        "scores" : {
+          "whiteScore" : 0,
+          "blackScore" : 0,
+          "whiteJail" : [],
+          "blackJail" : []
         }
       }
+      result = otherProps;
+    }
+    return result;
+  }
+
+  savePGNs = () => {
+    this.setGameStatus(this.gameStatus.showMessage, "Analyzing and saving your games");
+    let textArea = document.getElementById("game-input");
+    let result = null;
+    if (textArea != null) {
+      let toImport = textArea.value;
+      if (toImport !== "") { 
+        let severalPGN = toImport.split("\n\n");
+        if(severalPGN.length % 2 === 0){
+          let data = null;
+          severalPGN.forEach((pgn,i)=>{
+            if(i%2===0){
+              data = {"infos":pgn};
+            }else{
+              data.game = pgn;
+              let checkResult = this.savePGN(data);
+              if(checkResult !== null){
+                result = checkResult;
+              }
+            }
+          });
+        }
+      }
+    }
+    if(result !== null){
+      this.setGameStatus(this.gameStatus.showList, "",result);
+    }else{
+      this.setGameStatus(this.gameStatus.inError, "unable to read these pngs");
+    }
   }
 
   saveGameToStorage = (gameToSave) => {
@@ -557,7 +580,7 @@ class Game extends React.Component {
             <Board key={1} reverseBoard={this.reverseBoard} game={this.state} />
           </div>
           <div className="game-info">
-            <Info key={1} game={this.state} movePGN={this.movePGN} menuMove = {this.menuMove} savePGN={this.savePGN} statuses={this.gameStatus}></Info>
+            <Info key={1} game={this.state} movePGN={this.movePGN} menuMove = {this.menuMove} savePGN={this.savePGNs} statuses={this.gameStatus}></Info>
           </div>
         </div>
       )
@@ -580,7 +603,7 @@ class Game extends React.Component {
             <Board key={1} reverseBoard={this.reverseBoard} game={this.state} />
           </div>
           <div className="game-info">
-            <Info key={1} game={this.state} movePGN={this.movePGN} menuMove = {this.menuMove} savePGN={this.savePGN} statuses={this.gameStatus}></Info>
+            <Info key={1} game={this.state} movePGN={this.movePGN} menuMove = {this.menuMove} savePGN={this.savePGNs} statuses={this.gameStatus}></Info>
           </div>
         </div>
       )
