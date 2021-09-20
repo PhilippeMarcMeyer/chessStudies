@@ -6,6 +6,7 @@ an input to set more games
 
 
 0.11 => 2021-09-20 : It is possible to paste several games in the textarea (provided the game separator is a double \n
+
 0.10 => 2021-09-20 : this version is still buggy with players inversion and moving wrong piece on the board (ex : the wrong rook)
 
 Todos :
