@@ -23,6 +23,11 @@
     width:100%;
 }
 
+.list-element:hover{
+  height:100px;
+}
+
+
 .list-element-text{
     display:block;
     position:absolute;

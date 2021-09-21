@@ -5,6 +5,7 @@ import Info from '../info/info.component';
 import { getAskedMove, getNextMove, pngToTurns, pngToInfos, getMoveDataAt, getPositionsAt ,boardToScore} from '../../movesLogic.js';
 import { ManageStorage} from '../../storage.js';
 import { boardToFen, fenToBoard } from '../../fen.js';
+import { ecoOpenings } from '../../openings.js';
 
 class Game extends React.Component {
   constructor(props) {
@@ -492,8 +493,23 @@ class Game extends React.Component {
       }
       this.setGameStatus(initialStatus, "",otherProps);
      }else{
-       let storageType = isRemote ? "online":"disconnected";
+      let storageType = isRemote ? "online":"disconnected";
       this.props.setParentInfos({"storageType":storageType});
+
+      games.forEach((game) => {
+        if(!("opening" in game.pgnResume) && "ECO" in game.pgnResume){
+          let openingFiltered = ecoOpenings.filter((x) => {
+            return x.ecoCode === game.pgnResume.ECO;
+          });
+          if(openingFiltered.length > 0){
+            game.pgnResume.opening = openingFiltered[0].opening;
+            game.pgnResume.openingMoves = openingFiltered[0].moves;
+          }else{
+            game.pgnResume.opening = "?";
+            game.pgnResume.openingMoves = "";
+          }
+        }
+      });
 
       let initialStatus = this.gameStatus.showInput;
       if (games.length > 0) {

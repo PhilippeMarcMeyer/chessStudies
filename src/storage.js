@@ -5,7 +5,7 @@ class ManageStorage {
   }
 
     initRemote = () => {
-      const url = "https://jsonblob.com/api/jsonBlob/" + this.key
+      const url = "https://jsonblob.com/api/jsonBlob/" + this.key;
       return new Promise(function (resolve, reject) {
           var xhr = new XMLHttpRequest();
           xhr.open("GET", url);
@@ -30,7 +30,7 @@ class ManageStorage {
     }
 
     setRemote = (data) => {
-      const url = "https://jsonblob.com/api/jsonBlob/" + this.key
+      const url = "https://jsonblob.com/api/jsonBlob/" + this.key;
       return new Promise(function (resolve, reject) {
           var xhr = new XMLHttpRequest();
           xhr.open("PUT", url,true);

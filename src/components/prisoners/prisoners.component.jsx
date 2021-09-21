@@ -35,7 +35,7 @@ const Prisoners = (props) => {
         <div className={`jail ${props.boardPosition === "inversed" ? "reverse" : ""} 
         ${props.side === "b" ? (props.boardPosition === "inversed" ? "black" : "white") : (props.boardPosition === "inversed" ? "white" : "black")}`}>
             <span className="jail-yard">
-                <span className="player">{props.side === "b" ? props.pgnResume.Black : props.pgnResume.White}</span>
+                <span className="player">{props.side === "b" ? props.pgnResume.White : props.pgnResume.Black}</span>
                 <span className="score">{props.side === "b" ? prepareScore(props.scores.whiteScore) : prepareScore(props.scores.blackScore)}</span>
                 <span className="list" dangerouslySetInnerHTML={prepareJail(whiteJail,blackJail,figCodes,side)}/>
                  

@@ -5,7 +5,7 @@ import Game from './components/game/game.component';
 
 function App() {
 
-  const [parentInfos, setParentInfos] = useState({"storageType":"no data"});
+  const [parentInfos, setParentInfos] = useState({"storageType":"no data","gameDigest":""});
 
   return (
     <div className="App">
