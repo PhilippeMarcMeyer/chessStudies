@@ -1,9 +1,10 @@
-# Chess studies : PGN reader v 0.11
+# Chess studies : PGN reader v 0.12
 
 This version analyses PGN games and show them in a list
 to show and play them on a board with 
 an input to set more games 
 
+0.12 => 2021-09-21 : Introducing openings : an ECO informations is transformes into an opening information. Also showing more information on hover in game list like elos ans opening. ToDo next : as the ECO is not always provided use the moves of the game to find out the right opening. 
 
 0.11 => 2021-09-20 : It is possible to paste several games in the textarea (provided the game separator is a double \n
 
