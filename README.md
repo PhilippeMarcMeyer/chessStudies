@@ -13,14 +13,14 @@ an input to set more games
 0.10 => 2021-09-20 : this version is still buggy with players inversion and moving wrong piece on the board (ex : the wrong rook)
 
 Todos :
-2. Correct the choice of the wrong piece to move in pairs
-3. Check the disapearance of pieces of the board !
-5. recognize and add comments
-8. Managing collections or filter by opponents
-9. finding other games with the same FEN
-10. switching games or showing a second board to compare
-11. Adding alt moves ?
-12. Opening quizz : find the right moves (new feature)
+1. Correct the choice of the wrong piece to move in pairs
+1. Check the disapearance of pieces of the board !
+1. recognize and add comments
+1. Managing collections or filter by opponents
+1. finding other games with the same FEN
+1. switching games or showing a second board to compare
+1. Adding alt moves ?
+1. Opening quizz : find the right moves (new feature)
 
 The list is saved to https://jsonblob.com/ a json server 
 and in localStorage as a fallback
