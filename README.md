@@ -1,8 +1,10 @@
-# Chess studies : PGN reader v 0.12
+# Chess studies : PGN reader v 0.13
 
 This version analyses PGN games and show them in a list
 to show and play them on a board with 
 an input to set more games 
+
+0.13 => 2021-09-22 : Displaying opening name and moves while reading the game thanks to the opening collection with fen of https://github.com/niklasf/chess-openings !
 
 0.12 => 2021-09-21 : Introducing openings : an ECO informations is transformes into an opening information. Also showing more information on hover in game list like elos ans opening. ToDo next : as the ECO is not always provided use the moves of the game to find out the right opening. 
 
@@ -11,13 +13,9 @@ an input to set more games
 0.10 => 2021-09-20 : this version is still buggy with players inversion and moving wrong piece on the board (ex : the wrong rook)
 
 Todos :
-1. Correct the player names inversion !
 2. Correct the choice of the wrong piece to move in pairs
 3. Check the disapearance of pieces of the board !
-4. show more informations about a game because it is not enough to distinguish between to games the same day with the same opponents, same sides
 5. recognize and add comments
-6. adding several games at once (it is not very handy to add them 1 by 1!) [DONE in v 0.11 : to improve regarding to separators]
-7. recognizing the opening
 8. Managing collections or filter by opponents
 9. finding other games with the same FEN
 10. switching games or showing a second board to compare
@@ -27,7 +25,7 @@ Todos :
 The list is saved to https://jsonblob.com/ a json server 
 and in localStorage as a fallback
 
-## Live demo (master) :
+## Live demo (v 12):
 
 https://philippemarcmeyer.github.io/chessStudies/index.html
 
