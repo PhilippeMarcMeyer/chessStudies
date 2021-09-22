@@ -27,6 +27,14 @@
     width : 75vmin;
 }
 
+.game-analysis{
+    color:white;
+    position: absolute;
+    left: 20vmin;
+    top: 20px;
+    color:white;
+}
+
 @media screen and (min-width: 1200px) {
     .game-info{
         vertical-align:top;
@@ -36,5 +44,23 @@
         position:relative;
         width : 55vmin;
         overflow:hidden;
+    }
+  }
+
+  @media screen and (min-width: 1300px) {
+    .game-analysis{
+        position: absolute;
+        left: 70vmin;
+        top: 25px;
+        color:white;
+    }
+  }
+
+  @media screen and (min-width: 1400px) {
+    .game-analysis{
+        position: absolute;
+        left: 140vmin;
+        top: 175px;
+        color:white;
     }
   }

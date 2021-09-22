@@ -1,7 +1,7 @@
 
 class ManageStorage {
   constructor(props) {
-  this.key = "887579374078148608"
+  this.key = "xxx" // put your own jsonblob key with a bare array [] at the begining
   }
 
     initRemote = () => {

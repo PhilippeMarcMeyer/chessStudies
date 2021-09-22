@@ -6,6 +6,7 @@ import { getAskedMove, getNextMove, pngToTurns, pngToInfos, getMoveDataAt, getPo
 import { ManageStorage} from '../../storage.js';
 import { boardToFen, fenToBoard } from '../../fen.js';
 import {findOpeningByFen,findOpeningByCode} from '../../openingLogic.js';
+import Analysis from '../analysis/analysis.component';
 
 class Game extends React.Component {
   constructor(props) {
@@ -20,6 +21,7 @@ class Game extends React.Component {
     };
 
     this.state = {
+      "analysis":null,
       "storageManager":null,
       "isRemote": true,
       "initError":false,
@@ -125,6 +127,7 @@ class Game extends React.Component {
     if (gamesFilter.length === 1) {
       let game = gamesFilter[0];
       let otherProps = {
+        "analysis":null,
         "data": JSON.parse(this.state.initialData),
         "pgnResume": game.pgnResume,
         "pgnHistory": game.pgnHistory,
@@ -281,12 +284,24 @@ class Game extends React.Component {
       let scores = boardToScore(reinitData);
       let openingFiltered = findOpeningByFen(fenMove[0].fen);
       let currentOpening = null;
+      let analysis = this.state.analysis;
+
       if(openingFiltered.length > 0){
         currentOpening = openingFiltered[0];
-        console.log(currentOpening);
+        analysis = {
+          title : "Opening :",
+          text : currentOpening.opening,
+          move: askedMove.move,
+          moves : currentOpening.moves
+        }
+      }else{
+        if(analysis !== null && analysis.move <  askedMove.move){
+          analysis = null;
+        }
       }
       this.setState((state, props) => (
         {
+          analysis:analysis,
           data: reinitData,
           scores:scores,
           currentOpening:currentOpening,
@@ -601,7 +616,7 @@ class Game extends React.Component {
             <Board key={1} reverseBoard={this.reverseBoard} game={this.state} />
           </div>
           <div className="game-info">
-            <Info key={1} game={this.state} movePGN={this.movePGN} menuMove = {this.menuMove} savePGN={this.savePGNs} statuses={this.gameStatus}></Info>
+            <Info key={1} game={this.state} movePGN={this.movePGN} menuMove = {this.menuMove} savePGN={this.savePGNs} statuses={this.gameStatus}/>
           </div>
         </div>
       )
@@ -613,7 +628,7 @@ class Game extends React.Component {
             <Board key={1} reverseBoard={this.reverseBoard} game={this.state} />
           </div>
           <div className="game-info">
-            <Info key={1} game={this.state} loadGame={this.loadGame} deleteGame={this.deleteGame} menuMove = {this.menuMove} statuses={this.gameStatus}></Info>
+            <Info key={1} game={this.state} loadGame={this.loadGame} deleteGame={this.deleteGame} menuMove = {this.menuMove} statuses={this.gameStatus}/>
           </div>
         </div>
       )
@@ -624,7 +639,10 @@ class Game extends React.Component {
             <Board key={1} reverseBoard={this.reverseBoard} game={this.state} />
           </div>
           <div className="game-info">
-            <Info key={1} game={this.state} movePGN={this.movePGN} menuMove = {this.menuMove} savePGN={this.savePGNs} statuses={this.gameStatus}></Info>
+            <Info key={1} game={this.state} movePGN={this.movePGN} menuMove = {this.menuMove} savePGN={this.savePGNs} statuses={this.gameStatus}/>
+          </div>
+          <div className="game-analysis">
+            <Analysis key={1} analysis={this.state.analysis}/>
           </div>
         </div>
       )

@@ -1,0 +1,31 @@
+
+.analysis-zone{
+    position:relative;
+    padding-left:10px;
+  }
+  
+  .analysis-title{
+    margin:5px 0;
+    padding:0; 
+
+  }
+
+  .analysis-text{
+    margin:0;
+    padding-top:0; 
+  }
+
+  .analysis-moves{
+    margin-top:0;
+    padding-top:0; 
+  }
+
+  
+  @media screen and (max-width: 900px) {
+    .analysis-title{
+        display:none;
+    }
+    .analysis-moves{
+        display:none;
+    }
+  }
