@@ -1,7 +1,7 @@
 
 class ManageStorage {
   constructor(props) {
-  this.key = "xxx"
+  this.key = "887579374078148608"
   }
 
     initRemote = () => {

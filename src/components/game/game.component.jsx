@@ -5,7 +5,7 @@ import Info from '../info/info.component';
 import { getAskedMove, getNextMove, pngToTurns, pngToInfos, getMoveDataAt, getPositionsAt ,boardToScore} from '../../movesLogic.js';
 import { ManageStorage} from '../../storage.js';
 import { boardToFen, fenToBoard } from '../../fen.js';
-import { ecoOpenings } from '../../openings.js';
+import {findOpeningByFen,findOpeningByCode} from '../../openingLogic.js';
 
 class Game extends React.Component {
   constructor(props) {
@@ -39,6 +39,7 @@ class Game extends React.Component {
       "gameIsReady": false,
       "infosTitle": "",
       "infosMessage": "",
+      "currentOpening": null,
       "msg": "White to play",
       "data": [],
       "pgnHistory": "",
@@ -278,11 +279,17 @@ class Game extends React.Component {
       let reinitData = JSON.parse(this.state.initialData);
       reinitData = fenToBoard(fenMove[0].fen, reinitData, columnsOrdered);
       let scores = boardToScore(reinitData);
-
+      let openingFiltered = findOpeningByFen(fenMove[0].fen);
+      let currentOpening = null;
+      if(openingFiltered.length > 0){
+        currentOpening = openingFiltered[0];
+        console.log(currentOpening);
+      }
       this.setState((state, props) => (
         {
           data: reinitData,
           scores:scores,
+          currentOpening:currentOpening,
           move: {
             number: askedMove.number,
             side: askedMove.side
@@ -498,9 +505,7 @@ class Game extends React.Component {
 
       games.forEach((game) => {
         if(!("opening" in game.pgnResume) && "ECO" in game.pgnResume){
-          let openingFiltered = ecoOpenings.filter((x) => {
-            return x.ecoCode === game.pgnResume.ECO;
-          });
+          let openingFiltered = findOpeningByCode(game.pgnResume.ECO);
           if(openingFiltered.length > 0){
             game.pgnResume.opening = openingFiltered[0].opening;
             game.pgnResume.openingMoves = openingFiltered[0].moves;
