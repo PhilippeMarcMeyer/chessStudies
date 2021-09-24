@@ -7,6 +7,7 @@ const Analysis = (props) => {
             <h3 className='analysis-title'>{props.analysis ? props.analysis.title:""}</h3>
             <p className='analysis-text'>{props.analysis ? props.analysis.text:""}</p>
             <div className='analysis-moves'>{props.analysis ? props.analysis.moves:""}</div>
+            <div className={`button saveOpening ${!props.analysis ? "hidden" : ""}`} onClick={props.saveOpening}></div>
         </div>
     )
 }

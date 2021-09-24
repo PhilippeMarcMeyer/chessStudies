@@ -127,6 +127,7 @@ class Game extends React.Component {
     if (gamesFilter.length === 1) {
       let game = gamesFilter[0];
       let otherProps = {
+        "gameKey" : id,
         "analysis":null,
         "data": JSON.parse(this.state.initialData),
         "pgnResume": game.pgnResume,
@@ -314,6 +315,35 @@ class Game extends React.Component {
     }
   }
 
+  saveCurrentGameOpening = () => {
+      if (this.state.analysis) {
+        const pgnResume = {...this.state.pgnResume};
+        pgnResume.opening = this.state.analysis.text;
+        pgnResume.openingMoves = this.state.analysis.moves;
+
+        this.setState({
+          pgnResume
+      }, () => {
+          this.saveCurrentAnalysedGame();
+      })
+
+      }
+    }
+
+  saveCurrentAnalysedGame = () =>{
+    let id = this.state.gameKey;
+    if(id && !isNaN(id)){
+      let gameToSave = {
+        "id": id,
+        "pgnHistory": this.state.pgnHistory,
+        "pgnResume": this.state.pgnResume,
+        "pgnGame":this.state.pgnGame,
+        "fenGame": this.state.fenGame
+      };
+      this.saveGameToStorage(gameToSave)
+    }
+  }
+
   savePGN = (data) => {
     let result = null;
     if(data.infos && data.infos.length > 0 && data.game && data.game.length > 0){
@@ -407,7 +437,6 @@ class Game extends React.Component {
     if(!("id" in gameToSave)){
       gameToSave.id = new Date().getTime();
     }
-    this.setGameStatus(this.gameStatus.showMessage, "Saving analyzed game");
     let games = this.state.games;
     if (games.length === 0) {
       games.push(gameToSave);
@@ -642,7 +671,7 @@ class Game extends React.Component {
             <Info key={1} game={this.state} movePGN={this.movePGN} menuMove = {this.menuMove} savePGN={this.savePGNs} statuses={this.gameStatus}/>
           </div>
           <div className="game-analysis">
-            <Analysis key={1} analysis={this.state.analysis}/>
+            <Analysis key={1} analysis={this.state.analysis} saveOpening={this.saveCurrentGameOpening}/>
           </div>
         </div>
       )

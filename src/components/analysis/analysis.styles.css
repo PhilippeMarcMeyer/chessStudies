@@ -5,7 +5,7 @@
   }
   
   .analysis-title{
-    margin:5px 0;
+    margin:5px 24px;
     padding:0; 
 
   }
@@ -20,6 +20,22 @@
     padding-top:0; 
   }
 
+  .analysis-zone .button.saveOpening{
+    position:absolute;
+    top:0;
+}
+
+.analysis-zone .button.saveOpening::after{
+    content:"🖫";
+    font-size:18px;
+    font-weight:bold;
+}
+
+.analysis-zone .button.saveOpening:hover{
+    font-weight:bold;
+    color:#769656;
+}
+
   
   @media screen and (max-width: 900px) {
     .analysis-title{
@@ -29,3 +45,5 @@
         display:none;
     }
   }
+
+  
