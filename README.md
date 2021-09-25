@@ -22,8 +22,17 @@ Todos :
 1. Adding alt moves ?
 1. Openings study : choosing an opening with its variations and illustrating it with games. deciding on the moves to play and noting down the results
 
+on the react part : 
+1. switching the store to redux to learn it
+2. making or using some useful pure UI components
+
+on the back part: 
+1. Hosting the app maybe on azure as im a .net dev and making a back with a sql server db 
+1. or an Api in node or C# 
+
+At the present time
 The list is saved to https://jsonblob.com/ a json server 
-and in localStorage as a fallback
+and in localStorage as a readonly fallback.
 
 ## Live demo (v 12):
 
