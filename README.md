@@ -1,8 +1,10 @@
-# Chess studies : PGN reader v 0.13
+# Chess studies : PGN reader v 0.14
 
 This version analyses PGN games and show them in a list
 to show and play them on a board with 
 an input to set more games 
+
+0.14 => 2021-09-26 : Correcting the bug of the wrong rook
 
 0.13 => 2021-09-22 : Displaying opening name and moves while reading the game thanks to the opening collection with fen of https://github.com/niklasf/chess-openings !
 
@@ -13,7 +15,7 @@ an input to set more games
 0.10 => 2021-09-20 : this version is still buggy with players inversion and moving wrong piece on the board (ex : the wrong rook)
 
 Todos :
-1. Correct the choice of the wrong Rook to move 
+
 1. Check the disapearance of pieces of the board !
 1. recognize comments in PGN and allow to add new ones
 1. Managing collections or filter by opponents, openings
@@ -169,6 +171,3 @@ pattern recognition : (in openings ? what i play the most)
 ## You can still help me by learning React with me, or if you are a saisonned React dev, by providing advices
 
 Remember : I'm learning React, so this WIP code is probably not the best possible one ! And should not be considered as an example to follow (well not yet !) :)
-
----
-

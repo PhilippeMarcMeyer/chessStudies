@@ -71,7 +71,7 @@ const getAskedMove = (elem,currentMove,movesList) => {
     return askedMove;
   }
 
-  const getNextMove = (gamePositions,currentMove,askedMove,columnsOrdered) => {
+  const getNextMove = (gameMoves,currentMove,askedMove,columnsOrdered,boardPositions) => {
     let askedMoveOffset = getMoveOffset(askedMove);
     let currentMoveOffset = getMoveOffset(currentMove);
     let nextMoveData = {
@@ -105,7 +105,7 @@ const getAskedMove = (elem,currentMove,movesList) => {
         nextMovePosition.side = "b";
       }
       
-      let nextMove = gamePositions[nextMovePosition.number-1][nextMovePosition.side];
+      let nextMove = gameMoves[nextMovePosition.number-1][nextMovePosition.side];
       nextMoveData.moveSide = nextMovePosition.side;
       nextMoveData.number = nextMovePosition.number;
       nextMove = nextMove.replace(/\?|!/,"") // no ?! !! etc...
@@ -215,7 +215,7 @@ const getAskedMove = (elem,currentMove,movesList) => {
         }else if(nextMoveData.movePieceType === "B"){
           setBishopPossiblePreviousPositions(nextMoveData,columnsOrdered);
         }else if(nextMoveData.movePieceType === "R"){
-          setRookPossiblePreviousPositions(nextMoveData,columnsOrdered);
+          setRookPossiblePreviousPositions(nextMoveData,columnsOrdered,boardPositions);
         }else if(nextMoveData.movePieceType === "K"){
           setKingPossiblePreviousPositions(nextMoveData,columnsOrdered);
          } else if (nextMoveData.movePieceType === "Q") {
@@ -356,7 +356,7 @@ const getAskedMove = (elem,currentMove,movesList) => {
         }else if(nextMoveData.movePieceType === "B"){
           setBishopPossiblePreviousPositions(nextMoveData,columnsOrdered);
         }else if(nextMoveData.movePieceType === "R"){
-          setRookPossiblePreviousPositions(nextMoveData,columnsOrdered);
+          setRookPossiblePreviousPositions(nextMoveData,columnsOrdered,positions);
         }else if(nextMoveData.movePieceType === "K"){
           setKingPossiblePreviousPositions(nextMoveData,columnsOrdered);
          } else if (nextMoveData.movePieceType === "Q") {
@@ -368,33 +368,80 @@ const getAskedMove = (elem,currentMove,movesList) => {
   }
 
 
-const setRookPossiblePreviousPositions = (nextMoveData, columnsOrdered) => {
+const setRookPossiblePreviousPositions = (nextMoveData, columnsOrdered, boardPositions) => {
+  // the rooks don"t "jump" over other pieces like knights and unlike bishops they can go on both colors's squares
+  // We can check obstacles with boardPositions
   // Same column 
   // changing row
-  for (let r = 1; r < 9; r++) {
-    if (r === nextMoveData.moveRow) continue;
-    let possibleMove = {
-      "column": nextMoveData.moveColumn,
-      "row": r
-    };
-    if ((nextMoveData.comingFromRow === 0 || possibleMove.row === nextMoveData.comingFromRow) &&
-      (nextMoveData.comingFromColumn === "" || possibleMove.column === nextMoveData.comingFromColumn)) {
-      nextMoveData.possiblePositions.push(possibleMove);
-    }
-  }
+  let searchedFigure = "R" + nextMoveData.moveSide.toUpperCase();
 
-  // Same row 
-  // changing column/file
-  for (let c = 0; c < 8; c++) {
-    if (columnsOrdered[c] === nextMoveData.moveColumn) continue;
-    let possibleMove = {
-      "column": columnsOrdered[c],
-      "row": nextMoveData.moveRow
-    };
-    if ((nextMoveData.comingFromRow === 0 || possibleMove.row === nextMoveData.comingFromRow) &&
-      (nextMoveData.comingFromColumn === "" || possibleMove.column === nextMoveData.comingFromColumn)) {
-      nextMoveData.possiblePositions.push(possibleMove);
+  // Let's find rooks on the board before we move
+  let rooks = boardPositions.filter((x) => {
+    return x.fig === searchedFigure;
+  });
+  // put theses positions in an array of possible moves
+  if (rooks.length === 0 || rooks.length > 2) {
+    nextMoveData.isError = true;
+  } else if (rooks.length === 1) {
+    nextMoveData.possiblePositions.push({
+      "column": rooks[0].column,
+      "row": rooks[0].row
+    });
+  } else {
+    nextMoveData.possiblePositions.push({
+      "column": rooks[0].column,
+      "row": rooks[0].row
+    });
+    nextMoveData.possiblePositions.push({
+      "column": rooks[1].column,
+      "row": rooks[1].row
+    });
+    // If we have an indication ex Rae5 : we can find the right rook
+    // check for rows  (ex : R5e5)
+    if (nextMoveData.comingFromRow !== 0) {
+      nextMoveData.possiblePositions = nextMoveData.possiblePositions.filter((x) => {
+        return x.row === nextMoveData.comingFromRow;
+      })
     }
+    // check for columns  (ex : Rae5)
+    if (nextMoveData.comingFromColumn !== 0) {
+      nextMoveData.possiblePositions = nextMoveData.possiblePositions.filter((x) => {
+        return x.column === nextMoveData.comingFromColumn;
+      })
+    }
+    // If we still have 2 posible previous positions, we still don't which Rook moved
+    // We have to check if the move would be in straight line (like rooks move)
+    if (nextMoveData.possiblePositions.length > 1) {
+      nextMoveData.possiblePositions = nextMoveData.possiblePositions.filter((x) => {
+        return x.column === nextMoveData.column || x.row === nextMoveData.row;
+      })
+    }
+    // If we still have 2 possible previous positions with pathes in straight line, we still don't which Rook moved
+    // We have to check if there are obstacles on one of the possible path
+    if (nextMoveData.possiblePositions.length > 1) {
+      nextMoveData.possiblePositions = nextMoveData.possiblePositions.filter((x) => {
+        if (x.column === nextMoveData.column) {
+          let Min = Math.min([x.row, nextMoveData.row]);
+          let Max = Math.max([x.row, nextMoveData.row]);
+          return boardPositions.filter((y) => {
+            return y.column === nextMoveData.column && y.row > Min && y.row < Max && y.fig === null;
+          })
+        } else {
+         let possColumn = columnsOrdered.indexOf(x.column);
+         let moveColumn = columnsOrdered.indexOf(nextMoveData.column);
+          let Min = Math.min([possColumn, moveColumn]);
+          let Max = Math.max([possColumn, moveColumn]);
+          const colToCheck = [];
+          for (let i = Min + 1; i < Max; i++) {
+            colToCheck.push(columnsOrdered[i]);
+          }
+          return boardPositions.filter((y) => {
+            return y.row === nextMoveData.row && colToCheck.indexOf(y.column) !== -1 && y.fig === null;
+          })
+        }
+      })
+    }
+
   }
 }
 
@@ -492,7 +539,7 @@ const setPawnPossiblePreviousPositions = (nextMoveData,columnsOrdered) => {
 }
 
 const setBishopPossiblePreviousPositions = (nextMoveData,columnsOrdered) => {
- // diagonally
+ // diagonally : bishops stay always on the same color so we alway find the good one !
  let rowPos = nextMoveData.moveRow;// starts at 1
  let convenientShift = 1;
  let colPos = columnsOrdered.indexOf(nextMoveData.moveColumn) + convenientShift; // starts at 0
@@ -570,6 +617,7 @@ for (let i = 0; i < 9; i++) {
 
 const setKnightPossiblePreviousPositions = (nextMoveData,columnsOrdered) => {
         // either 2 rows and 1 column aside or 1 row and 2 col aside
+        // we don't have to car about obstacles on the way as knights "jump" over the pawns and pieces
         let rowPos = nextMoveData.moveRow;// starts at 1
         let convenientShift = 1;
         let colPos = columnsOrdered.indexOf(nextMoveData.moveColumn) + convenientShift; // starts at 1

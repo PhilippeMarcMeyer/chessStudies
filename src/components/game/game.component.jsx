@@ -160,7 +160,7 @@ class Game extends React.Component {
     let gamePgn = this.state.pgnGame;
     let gamePositions = this.state.data;
     let columnsOrdered = this.state.columns.slice(0)
-    let nextMoveData = getNextMove(gamePgn, currentMove, askedMove, columnsOrdered);
+    let nextMoveData = getNextMove(gamePgn, currentMove, askedMove, columnsOrdered,gamePositions);
 
     if (!nextMoveData.isError && !nextMoveData.isDone) {
       let hasMoved = false;
