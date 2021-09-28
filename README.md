@@ -38,7 +38,7 @@ At the present time
 The list is saved to https://jsonblob.com/ a json server 
 and in localStorage as a readonly fallback.
 
-## Live demo (v 12):
+## Live demo (v 15):
 
 https://philippemarcmeyer.github.io/chessStudies/index.html
 
