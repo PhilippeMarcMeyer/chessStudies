@@ -42,6 +42,7 @@ class Game extends React.Component {
       "infosTitle": "",
       "infosMessage": "",
       "currentOpening": null,
+      "knownOpenings" : {list:["all"],selected:"all"},
       "msg": "White to play",
       "data": [],
       "pgnHistory": "",
@@ -437,7 +438,7 @@ class Game extends React.Component {
     if(!("id" in gameToSave)){
       gameToSave.id = new Date().getTime();
     }
-    let games = this.state.games;
+    let games = [...this.state.games];
     if (games.length === 0) {
       games.push(gameToSave);
     } else {
@@ -468,7 +469,36 @@ class Game extends React.Component {
         });
     }
   }
-  
+
+  onChangeOpening = (e) => {
+    let value = e.currentTarget.value;
+    let knownOpenings = {...this.state.knownOpenings};
+    knownOpenings.selected = value;
+    this.setState((state, props) => (
+      {knownOpenings}
+    ));
+  }
+
+getKnowOpenings = (games) => {
+    let knownOpenings = { list: ["all"], selected: "all" };
+    if (games.length > 0) {
+      let openingsList = games.map((x) => {
+        return "opening" in x.pgnResume ? x.pgnResume.opening : null;
+      });
+      openingsList = openingsList.filter((x) => {
+        return x !== null;
+      });
+      
+      const uniqueSet = new Set(openingsList);
+      openingsList = [...uniqueSet];
+      openingsList = ["all"].concat(openingsList)
+      knownOpenings.list = openingsList.sort();
+      knownOpenings.selected = "all";
+
+    }
+    return knownOpenings;
+  }
+
   setGameStatus = (status, message,otherProps) => {
     let infos = ""
     switch (status) {
@@ -607,7 +637,9 @@ class Game extends React.Component {
           sqr.fig = check[0].fig;
         }
       });
+      let knownOpenings = this.getKnowOpenings(games);
       let otherProps = {
+        "knownOpenings": knownOpenings,
         "storageManager":storageManager,
         "games":games,
         "data": data,
@@ -625,6 +657,7 @@ class Game extends React.Component {
         }
       }
       this.setGameStatus(initialStatus, "",otherProps);
+     
      }
   };
   render() {
@@ -657,7 +690,7 @@ class Game extends React.Component {
             <Board key={1} reverseBoard={this.reverseBoard} game={this.state} />
           </div>
           <div className="game-info">
-            <Info key={1} game={this.state} loadGame={this.loadGame} deleteGame={this.deleteGame} menuMove = {this.menuMove} statuses={this.gameStatus}/>
+            <Info key={1} onChangeOpening={this.onChangeOpening} knownOpenings={this.state.knownOpenings} game={this.state} loadGame={this.loadGame} deleteGame={this.deleteGame} menuMove = {this.menuMove} statuses={this.gameStatus}/>
           </div>
         </div>
       )

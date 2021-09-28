@@ -1,0 +1,10 @@
+.game-search{
+    margin-left:40px;
+    margin-top:10px;
+    text-align: left;
+}
+
+.game-search select{
+    height:28px;
+    font-size:16px;
+}

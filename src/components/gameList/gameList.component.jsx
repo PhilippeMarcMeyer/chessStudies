@@ -1,11 +1,18 @@
 import React from 'react';
 import './gameList.styles.css';
 const GameList = (props) => {
+    let selectedOpening = props.knownOpenings && props.knownOpenings.selected ?props.knownOpenings.selected : "all";
+    let games = props.games;
+    if(selectedOpening !== "all"){
+        games = games.filter((x) => {
+            return "opening" in x.pgnResume && x.pgnResume.opening === selectedOpening;
+        })
+    }
     return (
         <div className="game-list">
             <ol>
                 { 
-                    props.games.map((game, index) =>
+                    games.map((game, index) =>
                         <li key={index}>
                             <div className="list-element" >
                                 <span className="list-element-text" >

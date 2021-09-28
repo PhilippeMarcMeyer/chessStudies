@@ -5,6 +5,7 @@ import Resume from '../resume/resume.component';
 import MovesCommands from '../movesCommands/movesCommands.component';
 import GameList from '../gameList/gameList.component';
 import GameMenu from '../gameMenu/gameMenu.component';
+import GameListSearch from '../gameListSearch/gameListSearch.component';
 
 const Info = (props) => {
   let status = props.game.status;
@@ -26,8 +27,8 @@ const Info = (props) => {
       <React.Fragment>
       <GameMenu menuMove = {props.menuMove} movesLoaded={props.game.pgnHistory && props.game.pgnHistory.length > 1 ? true:false}/>
       <div className='list-zone'>
-        <h3 className='board-list-title'>{props.game.infosTitle}</h3>
-        <GameList games={props.game.games} deleteGame={props.deleteGame} loadGame={props.loadGame} online={props.game.isRemote}></GameList>
+        <GameListSearch onChangeOpening={props.onChangeOpening} knownOpenings={props.game.knownOpenings}/>
+        <GameList games={props.game.games} deleteGame={props.deleteGame} loadGame={props.loadGame} knownOpenings={props.game.knownOpenings} online={props.game.isRemote}/>
       </div>
       </React.Fragment>
     )
