@@ -1,8 +1,10 @@
-# Chess studies : PGN reader v 0.14
+# Chess studies : PGN reader v 0.15
 
 This version analyses PGN games and show them in a list
 to show and play them on a board with 
 an input to set more games 
+
+0.15 => 2021-09-28 : adding a select to filter games by opening
 
 0.14 => 2021-09-26 : Correcting the bug of the wrong rook
 
