@@ -1,8 +1,10 @@
-# Chess studies : PGN reader v 0.16
+# Chess studies : PGN reader v 0.17
 
 This version analyses PGN games and show them in a list
 to show and play them on a board with 
 an input to set more games 
+
+0.17 => 2021-09-29 : the game list is sorted by date and the filtered count is displayed
 
 0.16 => 2021-09-29 : adding a select to filter games by player and filter by opening refers to the main line
 

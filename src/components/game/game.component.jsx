@@ -458,6 +458,15 @@ class Game extends React.Component {
         });
       }
     }
+    games.forEach((x) => {
+      if(!("dateTag" in x) && "Date" in x.pgnResume){
+        let arr = x.pgnResume.Date.split(".");
+        if(arr.length === 3){
+          x.dateTag = new Date(Number(arr[0]),Number(arr[1]),Number(arr[2])).getTime();
+        }
+      }
+    })
+    
     if (this.state.isRemote && this.state.storageManager) {
       factory.state.storageManager.setRemote(games)
         .then(function (response) {
@@ -469,6 +478,9 @@ class Game extends React.Component {
 
         });
     }
+    this.setState((state, props) => (
+      games
+    ));
   }
 
   onChangeOpening = (e) => {
@@ -618,6 +630,11 @@ getKnowOpenings = (games) => {
      }else{
       let storageType = isRemote ? "online":"disconnected";
       this.props.setParentInfos({"storageType":storageType});
+
+      games.sort((a,b) => {
+        return b.dateTag - a.dateTag;
+      })
+      
 
       games.forEach((game) => {
         if(!("opening" in game.pgnResume) && "ECO" in game.pgnResume){

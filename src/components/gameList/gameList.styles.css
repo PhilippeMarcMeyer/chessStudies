@@ -18,6 +18,13 @@
     width:94%;
 }
 
+.games-list-length{
+    position:absolute; 
+    color:white;
+    left:0;
+    top:45px;
+}
+
 .list-element{
     position:relative;
     width:100%;

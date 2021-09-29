@@ -1,6 +1,8 @@
 import React from 'react';
 import './gameList.styles.css';
+
 const GameList = (props) => {
+
     let selectedOpening = props.knownOpenings && props.knownOpenings.selected ? props.knownOpenings.selected : "all";
     let selectedPlayer = props.knownPlayers && props.knownPlayers.selected ? props.knownPlayers.selected : "all";
 
@@ -21,8 +23,9 @@ const GameList = (props) => {
             }
         })
     }
+
     return (
-        <div className="game-list">
+        <div className="game-list"><span className="games-list-length">#{games.length}</span>
             <ol>
                 { 
                     games.map((game, index) =>

@@ -536,7 +536,7 @@ const ecoOpenings = [
 },
 {
     "ecoCode": "A00",
-    "opening": "Polish Opening: Queen/'s Indian Variation",
+    "opening": "Polish Opening: Queen's Indian Variation",
     "moves": "1. b4 e6 2. Bb2 Nf6 3. b5 b6",
     "fen": "rnbqkb1r/p1pp1ppp/1p2pn2/1P6/8/8/PBPPPPPP/RN1QKBNR"
 },
@@ -1244,7 +1244,7 @@ const ecoOpenings = [
 },
 {
     "ecoCode": "A04",
-    "opening": "Zukertort Opening: Queen/'s Gambit Invitation",
+    "opening": "Zukertort Opening: Queen's Gambit Invitation",
     "moves": "1. Nf3 e6",
     "fen": "rnbqkbnr/pppp1ppp/4p3/8/8/5N2/PPPPPPPP/RNBQKB1R"
 },
@@ -1922,13 +1922,13 @@ const ecoOpenings = [
 },
 {
     "ecoCode": "A15",
-    "opening": "English Opening: Anglo-Indian Defense, Queen/'s Indian Formation",
+    "opening": "English Opening: Anglo-Indian Defense, Queen's Indian Formation",
     "moves": "1. Nf3 Nf6 2. c4 b6",
     "fen": "rnbqkb1r/p1pppppp/1p3n2/8/2P5/5N2/PP1PPPPP/RNBQKB1R"
 },
 {
     "ecoCode": "A15",
-    "opening": "English Opening: Anglo-Indian Defense, Queen/'s Indian Formation",
+    "opening": "English Opening: Anglo-Indian Defense, Queen's Indian Formation",
     "moves": "1. Nf3 Nf6 2. c4 e6 3. g3 b6 4. Bg2 Bb7",
     "fen": "rn1qkb1r/pbpp1ppp/1p2pn2/8/2P5/5NP1/PP1PPPBP/RNBQK2R"
 },
@@ -2000,7 +2000,7 @@ const ecoOpenings = [
 },
 {
     "ecoCode": "A16",
-    "opening": "English Opening: Anglo-Indian Defense, Queen/'s Knight Variation",
+    "opening": "English Opening: Anglo-Indian Defense, Queen's Knight Variation",
     "moves": "1. c4 Nf6 2. Nc3",
     "fen": "rnbqkb1r/pppppppp/5n2/8/2P5/2N5/PP1PPPPP/R1BQKBNR"
 },
@@ -2018,13 +2018,13 @@ const ecoOpenings = [
 },
 {
     "ecoCode": "A17",
-    "opening": "English Opening: Anglo-Indian Defense, Queen/'s Indian Formation",
+    "opening": "English Opening: Anglo-Indian Defense, Queen's Indian Formation",
     "moves": "1. c4 Nf6 2. Nc3 e6 3. Nf3 b6",
     "fen": "rnbqkb1r/p1pp1ppp/1p2pn2/8/2P5/2N2N2/PP1PPPPP/R1BQKB1R"
 },
 {
     "ecoCode": "A17",
-    "opening": "English Opening: Anglo-Indian Defense, Queen/'s Indian Variation",
+    "opening": "English Opening: Anglo-Indian Defense, Queen's Indian Variation",
     "moves": "1. c4 Nf6 2. Nc3 e6 3. Nf3 b6 4. e4 Bb7 5. Bd3",
     "fen": "rn1qkb1r/pbpp1ppp/1p2pn2/8/2P1P3/2NB1N2/PP1P1PPP/R1BQK2R"
 },
@@ -2756,25 +2756,25 @@ const ecoOpenings = [
 },
 {
     "ecoCode": "A40",
-    "opening": "Queen/'s Pawn Game",
+    "opening": "Queen's Pawn Game",
     "moves": "1. d4",
     "fen": "rnbqkbnr/pppppppp/8/8/3P4/8/PPP1PPPP/RNBQKBNR"
 },
 {
     "ecoCode": "A40",
-    "opening": "Queen/'s Pawn Game: Anglo-Slav Opening",
+    "opening": "Queen's Pawn Game: Anglo-Slav Opening",
     "moves": "1. d4 c6 2. c4 d6",
     "fen": "rnbqkbnr/pp2pppp/2pp4/8/2PP4/8/PP2PPPP/RNBQKBNR"
 },
 {
     "ecoCode": "A40",
-    "opening": "Queen/'s Pawn Game: Englund Gambit",
+    "opening": "Queen's Pawn Game: Englund Gambit",
     "moves": "1. d4 e5 2. dxe5 Nc6 3. Nf3 Qe7 4. Qd5 f6 5. exf6 Nxf6",
     "fen": "r1b1kb1r/ppppq1pp/2n2n2/3Q4/8/5N2/PPP1PPPP/RNB1KB1R"
 },
 {
     "ecoCode": "A40",
-    "opening": "Queen/'s Pawn Game: London System, Pterodactyl Variation",
+    "opening": "Queen's Pawn Game: London System, Pterodactyl Variation",
     "moves": "1. d4 g6 2. Nf3 Bg7 3. Bf4 c5 4. c3 cxd4 5. cxd4 Qa5+",
     "fen": "rnb1k1nr/pp1pppbp/6p1/q7/3P1B2/5N2/PP2PPPP/RN1QKB1R"
 },
@@ -2828,7 +2828,7 @@ const ecoOpenings = [
 },
 {
     "ecoCode": "A41",
-    "opening": "Queen/'s Pawn Game",
+    "opening": "Queen's Pawn Game",
     "moves": "1. d4 d6",
     "fen": "rnbqkbnr/ppp1pppp/3p4/8/3P4/8/PPP1PPPP/RNBQKBNR"
 },
@@ -3008,7 +3008,7 @@ const ecoOpenings = [
 },
 {
     "ecoCode": "A43",
-    "opening": "Queen/'s Pawn Game: Liedmann Gambit",
+    "opening": "Queen's Pawn Game: Liedmann Gambit",
     "moves": "1. d4 c5 2. c4 cxd4 3. e3",
     "fen": "rnbqkbnr/pp1ppppp/8/8/2Pp4/4P3/PP3PPP/RNBQKBNR"
 },
@@ -3146,13 +3146,13 @@ const ecoOpenings = [
 },
 {
     "ecoCode": "A45",
-    "opening": "Queen/'s Pawn Game: Chigorin Variation",
+    "opening": "Queen's Pawn Game: Chigorin Variation",
     "moves": "1. d4 Nf6 2. Nc3 d5",
     "fen": "rnbqkb1r/ppp1pppp/5n2/3p4/3P4/2N5/PPP1PPPP/R1BQKBNR"
 },
 {
     "ecoCode": "A45",
-    "opening": "Queen/'s Pawn Game: Veresov, Richter Attack",
+    "opening": "Queen's Pawn Game: Veresov, Richter Attack",
     "moves": "1. d4 Nf6 2. f3 d5 3. Nc3",
     "fen": "rnbqkb1r/ppp1pppp/5n2/3p4/3P4/2N2P2/PPP1P1PP/R1BQKBNR"
 },
@@ -3278,13 +3278,13 @@ const ecoOpenings = [
 },
 {
     "ecoCode": "A46",
-    "opening": "Queen/'s Pawn Game: Torre Attack, Breyer Variation",
+    "opening": "Queen's Pawn Game: Torre Attack, Breyer Variation",
     "moves": "1. d4 Nf6 2. Nf3 e6 3. Bg5 d5 4. e3 c5 5. c3 Qb6",
     "fen": "rnb1kb1r/pp3ppp/1q2pn2/2pp2B1/3P4/2P1PN2/PP3PPP/RN1QKB1R"
 },
 {
     "ecoCode": "A46",
-    "opening": "Queen/'s Pawn Game: Veresov Attack, Classical Defense",
+    "opening": "Queen's Pawn Game: Veresov Attack, Classical Defense",
     "moves": "1. d4 Nf6 2. Nf3 e6 3. Nc3 d5 4. Bg5",
     "fen": "rnbqkb1r/ppp2ppp/4pn2/3p2B1/3P4/2N2N2/PPP1PPPP/R2QKB1R"
 },
@@ -3332,13 +3332,13 @@ const ecoOpenings = [
 },
 {
     "ecoCode": "A47",
-    "opening": "Queen/'s Indian Defense",
+    "opening": "Queen's Indian Defense",
     "moves": "1. d4 Nf6 2. Nf3 b6",
     "fen": "rnbqkb1r/p1pppppp/1p3n2/8/3P4/5N2/PPP1PPPP/RNBQKB1R"
 },
 {
     "ecoCode": "A47",
-    "opening": "Queen/'s Indian Defense: Marienbad System, Berg Variation",
+    "opening": "Queen's Indian Defense: Marienbad System, Berg Variation",
     "moves": "1. d4 Nf6 2. Nf3 b6 3. g3 Bb7 4. Bg2 c5 5. c4 cxd4 6. Qxd4",
     "fen": "rn1qkb1r/pb1ppppp/1p3n2/8/2PQ4/5NP1/PP2PPBP/RNB1K2R"
 },
@@ -3356,13 +3356,13 @@ const ecoOpenings = [
 },
 {
     "ecoCode": "A48",
-    "opening": "Queen/'s Pawn Game: Barry Attack, Grünfeld Variation",
+    "opening": "Queen's Pawn Game: Barry Attack, Grünfeld Variation",
     "moves": "1. d4 Nf6 2. Nf3 g6 3. Nc3 d5 4. Bf4 Bg7 5. e3 O-O 6. Be2",
     "fen": "rnbq1rk1/ppp1ppbp/5np1/3p4/3P1B2/2N1PN2/PPP1BPPP/R2QK2R"
 },
 {
     "ecoCode": "A48",
-    "opening": "Queen/'s Pawn Game: Torre Attack, Grünfeld Variation, Main Line",
+    "opening": "Queen's Pawn Game: Torre Attack, Grünfeld Variation, Main Line",
     "moves": "1. d4 Nf6 2. Nf3 g6 3. Bg5 Bg7 4. Nbd2 d5 5. e3 O-O",
     "fen": "rnbq1rk1/ppp1ppbp/5np1/3p2B1/3P4/4PN2/PPPN1PPP/R2QKB1R"
 },
@@ -3422,7 +3422,7 @@ const ecoOpenings = [
 },
 {
     "ecoCode": "A50",
-    "opening": "Queen/'s Indian Accelerated",
+    "opening": "Queen's Indian Accelerated",
     "moves": "1. d4 Nf6 2. c4 b6",
     "fen": "rnbqkb1r/p1pppppp/1p3n2/8/2PP4/8/PP2PPPP/RNBQKBNR"
 },
@@ -4016,7 +4016,7 @@ const ecoOpenings = [
 },
 {
     "ecoCode": "A80",
-    "opening": "Queen/'s Pawn Game: Veresov Attack, Dutch System",
+    "opening": "Queen's Pawn Game: Veresov Attack, Dutch System",
     "moves": "1. d4 f5 2. Nc3 d5",
     "fen": "rnbqkbnr/ppp1p1pp/8/3p1p2/3P4/2N5/PPP1PPPP/R1BQKBNR"
 },
@@ -4160,7 +4160,7 @@ const ecoOpenings = [
 },
 {
     "ecoCode": "A85",
-    "opening": "Dutch Defense: Queen/'s Knight Variation",
+    "opening": "Dutch Defense: Queen's Knight Variation",
     "moves": "1. d4 f5 2. c4 Nf6 3. Nc3",
     "fen": "rnbqkb1r/ppppp1pp/5n2/5p2/2PP4/2N5/PP2PPPP/R1BQKBNR"
 },
@@ -8804,7 +8804,7 @@ const ecoOpenings = [
 },
 {
     "ecoCode": "C00",
-    "opening": "French Defense: Queen/'s Knight",
+    "opening": "French Defense: Queen's Knight",
     "moves": "1. e4 e6 2. Nc3",
     "fen": "rnbqkbnr/pppp1ppp/4p3/8/4P3/2N5/PPPP1PPP/R1BQKBNR"
 },
@@ -8852,7 +8852,7 @@ const ecoOpenings = [
 },
 {
     "ecoCode": "C00",
-    "opening": "Queen/'s Pawn Game: Franco-Sicilian Defense",
+    "opening": "Queen's Pawn Game: Franco-Sicilian Defense",
     "moves": "1. e4 e6 2. d4 c5",
     "fen": "rnbqkbnr/pp1p1ppp/4p3/2p5/3PP3/8/PPP2PPP/RNBQKBNR"
 },
@@ -10754,7 +10754,7 @@ const ecoOpenings = [
 },
 {
     "ecoCode": "C30",
-    "opening": "King's Gambit Declined: Queen/'s Knight Defense",
+    "opening": "King's Gambit Declined: Queen's Knight Defense",
     "moves": "1. e4 e5 2. f4 Nc6",
     "fen": "r1bqkbnr/pppp1ppp/2n5/4p3/4PP2/8/PPPP2PP/RNBQKBNR"
 },
@@ -15902,145 +15902,145 @@ const ecoOpenings = [
 },
 {
     "ecoCode": "D00",
-    "opening": "Queen/'s Pawn Game",
+    "opening": "Queen's Pawn Game",
     "moves": "1. d4 d5",
     "fen": "rnbqkbnr/ppp1pppp/8/3p4/3P4/8/PPP1PPPP/RNBQKBNR"
 },
 {
     "ecoCode": "D00",
-    "opening": "Queen/'s Pawn Game",
+    "opening": "Queen's Pawn Game",
     "moves": "1. d4 d5 2. e3",
     "fen": "rnbqkbnr/ppp1pppp/8/3p4/3P4/4P3/PPP2PPP/RNBQKBNR"
 },
 {
     "ecoCode": "D00",
-    "opening": "Queen/'s Pawn Game",
+    "opening": "Queen's Pawn Game",
     "moves": "1. d4 d5 2. e3 Nf6",
     "fen": "rnbqkb1r/ppp1pppp/5n2/3p4/3P4/4P3/PPP2PPP/RNBQKBNR"
 },
 {
     "ecoCode": "D00",
-    "opening": "Queen/'s Pawn Game: Chigorin Variation",
+    "opening": "Queen's Pawn Game: Chigorin Variation",
     "moves": "1. d4 d5 2. Nc3",
     "fen": "rnbqkbnr/ppp1pppp/8/3p4/3P4/2N5/PPP1PPPP/R1BQKBNR"
 },
 {
     "ecoCode": "D00",
-    "opening": "Queen/'s Pawn Game: Chigorin Variation, Alburt Defense",
+    "opening": "Queen's Pawn Game: Chigorin Variation, Alburt Defense",
     "moves": "1. d4 d5 2. Nc3 Bf5",
     "fen": "rn1qkbnr/ppp1pppp/8/3p1b2/3P4/2N5/PPP1PPPP/R1BQKBNR"
 },
 {
     "ecoCode": "D00",
-    "opening": "Queen/'s Pawn Game: Chigorin Variation, Anti-Veresov",
+    "opening": "Queen's Pawn Game: Chigorin Variation, Anti-Veresov",
     "moves": "1. d4 d5 2. Nc3 Bg4",
     "fen": "rn1qkbnr/ppp1pppp/8/3p4/3P2b1/2N5/PPP1PPPP/R1BQKBNR"
 },
 {
     "ecoCode": "D00",
-    "opening": "Queen/'s Pawn Game: Chigorin Variation, Fianchetto Defense",
+    "opening": "Queen's Pawn Game: Chigorin Variation, Fianchetto Defense",
     "moves": "1. d4 g6 2. Nf3 Bg7 3. Nc3 d5",
     "fen": "rnbqk1nr/ppp1ppbp/6p1/3p4/3P4/2N2N2/PPP1PPPP/R1BQKB1R"
 },
 {
     "ecoCode": "D00",
-    "opening": "Queen/'s Pawn Game: Chigorin Variation, Irish Gambit",
+    "opening": "Queen's Pawn Game: Chigorin Variation, Irish Gambit",
     "moves": "1. d4 d5 2. Nc3 c5",
     "fen": "rnbqkbnr/pp2pppp/8/2pp4/3P4/2N5/PPP1PPPP/R1BQKBNR"
 },
 {
     "ecoCode": "D00",
-    "opening": "Queen/'s Pawn Game: Chigorin Variation, Shaviliuk Gambit",
+    "opening": "Queen's Pawn Game: Chigorin Variation, Shaviliuk Gambit",
     "moves": "1. d4 d5 2. Nc3 e5",
     "fen": "rnbqkbnr/ppp2ppp/8/3pp3/3P4/2N5/PPP1PPPP/R1BQKBNR"
 },
 {
     "ecoCode": "D00",
-    "opening": "Queen/'s Pawn Game: Chigorin Variation, Shropshire Defense",
+    "opening": "Queen's Pawn Game: Chigorin Variation, Shropshire Defense",
     "moves": "1. d4 d5 2. Nc3 h5",
     "fen": "rnbqkbnr/ppp1ppp1/8/3p3p/3P4/2N5/PPP1PPPP/R1BQKBNR"
 },
 {
     "ecoCode": "D00",
-    "opening": "Queen/'s Pawn Game: Hübsch Gambit",
+    "opening": "Queen's Pawn Game: Hübsch Gambit",
     "moves": "1. d4 Nf6 2. Nc3 d5 3. e4 Nxe4",
     "fen": "rnbqkb1r/ppp1pppp/8/3p4/3Pn3/2N5/PPP2PPP/R1BQKBNR"
 },
 {
     "ecoCode": "D00",
-    "opening": "Queen/'s Pawn Game: Levitsky Attack",
+    "opening": "Queen's Pawn Game: Levitsky Attack",
     "moves": "1. d4 d5 2. Bg5",
     "fen": "rnbqkbnr/ppp1pppp/8/3p2B1/3P4/8/PPP1PPPP/RN1QKBNR"
 },
 {
     "ecoCode": "D00",
-    "opening": "Queen/'s Pawn Game: Levitsky Attack, Welling Variation",
+    "opening": "Queen's Pawn Game: Levitsky Attack, Welling Variation",
     "moves": "1. d4 d5 2. Bg5 Bg4",
     "fen": "rn1qkbnr/ppp1pppp/8/3p2B1/3P2b1/8/PPP1PPPP/RN1QKBNR"
 },
 {
     "ecoCode": "D00",
-    "opening": "Queen/'s Pawn Game: Mason Attack",
+    "opening": "Queen's Pawn Game: Mason Attack",
     "moves": "1. d4 d5 2. f4",
     "fen": "rnbqkbnr/ppp1pppp/8/3p4/3P1P2/8/PPP1P1PP/RNBQKBNR"
 },
 {
     "ecoCode": "D00",
-    "opening": "Queen/'s Pawn Game: Mason Variation",
+    "opening": "Queen's Pawn Game: Mason Variation",
     "moves": "1. d4 d5 2. Bf4",
     "fen": "rnbqkbnr/ppp1pppp/8/3p4/3P1B2/8/PPP1PPPP/RN1QKBNR"
 },
 {
     "ecoCode": "D00",
-    "opening": "Queen/'s Pawn Game: Morris Countergambit",
+    "opening": "Queen's Pawn Game: Morris Countergambit",
     "moves": "1. d4 d5 2. Bf4 c5 3. e4",
     "fen": "rnbqkbnr/pp2pppp/8/2pp4/3PPB2/8/PPP2PPP/RN1QKBNR"
 },
 {
     "ecoCode": "D00",
-    "opening": "Queen/'s Pawn Game: Steinitz Countergambit",
+    "opening": "Queen's Pawn Game: Steinitz Countergambit",
     "moves": "1. d4 d5 2. Bf4 c5",
     "fen": "rnbqkbnr/pp2pppp/8/2pp4/3P1B2/8/PPP1PPPP/RN1QKBNR"
 },
 {
     "ecoCode": "D00",
-    "opening": "Queen/'s Pawn Game: Stonewall Attack",
+    "opening": "Queen's Pawn Game: Stonewall Attack",
     "moves": "1. d4 d5 2. e3 Nf6 3. Bd3",
     "fen": "rnbqkb1r/ppp1pppp/5n2/3p4/3P4/3BP3/PPP2PPP/RNBQK1NR"
 },
 {
     "ecoCode": "D00",
-    "opening": "Queen/'s Pawn Game: Zurich Gambit",
+    "opening": "Queen's Pawn Game: Zurich Gambit",
     "moves": "1. d4 d5 2. g4",
     "fen": "rnbqkbnr/ppp1pppp/8/3p4/3P2P1/8/PPP1PP1P/RNBQKBNR"
 },
 {
     "ecoCode": "D01",
-    "opening": "Queen/'s Pawn Game: Veresov Attack, Boyce Defense",
+    "opening": "Queen's Pawn Game: Veresov Attack, Boyce Defense",
     "moves": "1. d4 Nf6 2. Nc3 d5 3. Bg5 Ne4",
     "fen": "rnbqkb1r/ppp1pppp/8/3p2B1/3Pn3/2N5/PPP1PPPP/R2QKBNR"
 },
 {
     "ecoCode": "D01",
-    "opening": "Queen/'s Pawn Game: Veresov Attack, Richter Variation",
+    "opening": "Queen's Pawn Game: Veresov Attack, Richter Variation",
     "moves": "1. d4 Nf6 2. Nc3 d5 3. Bg5 Bf5 4. f3",
     "fen": "rn1qkb1r/ppp1pppp/5n2/3p1bB1/3P4/2N2P2/PPP1P1PP/R2QKBNR"
 },
 {
     "ecoCode": "D01",
-    "opening": "Queen/'s Pawn Game: Veresov Attack, Two Knights System",
+    "opening": "Queen's Pawn Game: Veresov Attack, Two Knights System",
     "moves": "1. d4 Nf6 2. Nc3 d5 3. Bg5 Nbd7 4. Nf3",
     "fen": "r1bqkb1r/pppnpppp/5n2/3p2B1/3P4/2N2N2/PPP1PPPP/R2QKB1R"
 },
 {
     "ecoCode": "D01",
-    "opening": "Queen/'s Pawn Game: Veresov Attack, Two Knights System, Grünfeld Defense",
+    "opening": "Queen's Pawn Game: Veresov Attack, Two Knights System, Grünfeld Defense",
     "moves": "1. d4 Nf6 2. Nc3 d5 3. Bg5 Nbd7 4. Nf3 g6",
     "fen": "r1bqkb1r/pppnpp1p/5np1/3p2B1/3P4/2N2N2/PPP1PPPP/R2QKB1R"
 },
 {
     "ecoCode": "D01",
-    "opening": "Queen/'s Pawn Game: Veresov Attack, Veresov Variation",
+    "opening": "Queen's Pawn Game: Veresov Attack, Veresov Variation",
     "moves": "1. d4 Nf6 2. Nc3 d5 3. Bg5 Bf5 4. Bxf6",
     "fen": "rn1qkb1r/ppp1pppp/5B2/3p1b2/3P4/2N5/PPP1PPPP/R2QKBNR"
 },
@@ -16076,133 +16076,133 @@ const ecoOpenings = [
 },
 {
     "ecoCode": "D02",
-    "opening": "Queen/'s Gambit Accepted: Rosenthal Variation",
+    "opening": "Queen's Gambit Accepted: Rosenthal Variation",
     "moves": "1. d4 d5 2. Nf3 e6 3. c4 dxc4",
     "fen": "rnbqkbnr/ppp2ppp/4p3/8/2pP4/5N2/PP2PPPP/RNBQKB1R"
 },
 {
     "ecoCode": "D02",
-    "opening": "Queen/'s Gambit Declined: Baltic Defense, Pseudo-Slav",
+    "opening": "Queen's Gambit Declined: Baltic Defense, Pseudo-Slav",
     "moves": "1. d4 d5 2. Nf3 Bf5 3. c4 e6 4. Nc3 c6",
     "fen": "rn1qkbnr/pp3ppp/2p1p3/3p1b2/2PP4/2N2N2/PP2PPPP/R1BQKB1R"
 },
 {
     "ecoCode": "D02",
-    "opening": "Queen/'s Pawn Game: Anti-Torre",
+    "opening": "Queen's Pawn Game: Anti-Torre",
     "moves": "1. Nf3 d5 2. d4 Bg4",
     "fen": "rn1qkbnr/ppp1pppp/8/3p4/3P2b1/5N2/PPP1PPPP/RNBQKB1R"
 },
 {
     "ecoCode": "D02",
-    "opening": "Queen/'s Pawn Game: Chandler Gambit",
+    "opening": "Queen's Pawn Game: Chandler Gambit",
     "moves": "1. d4 d5 2. Nf3 c5 3. g3 cxd4 4. Bg2",
     "fen": "rnbqkbnr/pp2pppp/8/3p4/3p4/5NP1/PPP1PPBP/RNBQK2R"
 },
 {
     "ecoCode": "D02",
-    "opening": "Queen/'s Pawn Game: Chigorin Variation",
+    "opening": "Queen's Pawn Game: Chigorin Variation",
     "moves": "1. d4 d5 2. Nf3 Nc6",
     "fen": "r1bqkbnr/ppp1pppp/2n5/3p4/3P4/5N2/PPP1PPPP/RNBQKB1R"
 },
 {
     "ecoCode": "D02",
-    "opening": "Queen/'s Pawn Game: Krause Variation",
+    "opening": "Queen's Pawn Game: Krause Variation",
     "moves": "1. d4 d5 2. Nf3 c5",
     "fen": "rnbqkbnr/pp2pppp/8/2pp4/3P4/5N2/PPP1PPPP/RNBQKB1R"
 },
 {
     "ecoCode": "D02",
-    "opening": "Queen/'s Pawn Game: Levitsky Attack, Euwe Variation, Modern Line",
+    "opening": "Queen's Pawn Game: Levitsky Attack, Euwe Variation, Modern Line",
     "moves": "1. d4 d5 2. Nf3 c6 3. Bg5 h6 4. Bh4 Qb6",
     "fen": "rnb1kbnr/pp2ppp1/1qp4p/3p4/3P3B/5N2/PPP1PPPP/RN1QKB1R"
 },
 {
     "ecoCode": "D02",
-    "opening": "Queen/'s Pawn Game: London System",
+    "opening": "Queen's Pawn Game: London System",
     "moves": "1. d4 d5 2. Nf3 Nf6 3. Bf4",
     "fen": "rnbqkb1r/ppp1pppp/5n2/3p4/3P1B2/5N2/PPP1PPPP/RN1QKB1R"
 },
 {
     "ecoCode": "D02",
-    "opening": "Queen/'s Pawn Game: Symmetrical Variation",
+    "opening": "Queen's Pawn Game: Symmetrical Variation",
     "moves": "1. d4 d5 2. Nf3 Nf6",
     "fen": "rnbqkb1r/ppp1pppp/5n2/3p4/3P4/5N2/PPP1PPPP/RNBQKB1R"
 },
 {
     "ecoCode": "D02",
-    "opening": "Queen/'s Pawn Game: Symmetrical Variation, Pseudo-Catalan",
+    "opening": "Queen's Pawn Game: Symmetrical Variation, Pseudo-Catalan",
     "moves": "1. d4 d5 2. Nf3 Nf6 3. g3",
     "fen": "rnbqkb1r/ppp1pppp/5n2/3p4/3P4/5NP1/PPP1PP1P/RNBQKB1R"
 },
 {
     "ecoCode": "D02",
-    "opening": "Queen/'s Pawn Game: Zilbermints Countergambit",
+    "opening": "Queen's Pawn Game: Zilbermints Countergambit",
     "moves": "1. d4 d5 2. Nf3 Nf6 3. c4 b5",
     "fen": "rnbqkb1r/p1p1pppp/5n2/1p1p4/2PP4/5N2/PP2PPPP/RNBQKB1R"
 },
 {
     "ecoCode": "D02",
-    "opening": "Queen/'s Pawn Game: Zukertort Variation",
+    "opening": "Queen's Pawn Game: Zukertort Variation",
     "moves": "1. d4 d5 2. Nf3",
     "fen": "rnbqkbnr/ppp1pppp/8/3p4/3P4/5N2/PPP1PPPP/RNBQKB1R"
 },
 {
     "ecoCode": "D03",
-    "opening": "Queen/'s Pawn Game: Torre Attack",
+    "opening": "Queen's Pawn Game: Torre Attack",
     "moves": "1. d4 d5 2. Nf3 Nf6 3. Bg5",
     "fen": "rnbqkb1r/ppp1pppp/5n2/3p2B1/3P4/5N2/PPP1PPPP/RN1QKB1R"
 },
 {
     "ecoCode": "D03",
-    "opening": "Queen/'s Pawn Game: Torre Attack, Gossip Variation",
+    "opening": "Queen's Pawn Game: Torre Attack, Gossip Variation",
     "moves": "1. d4 d5 2. Nf3 Nf6 3. Bg5 Ne4",
     "fen": "rnbqkb1r/ppp1pppp/8/3p2B1/3Pn3/5N2/PPP1PPPP/RN1QKB1R"
 },
 {
     "ecoCode": "D03",
-    "opening": "Queen/'s Pawn Game: Torre Attack, Grünfeld Variation",
+    "opening": "Queen's Pawn Game: Torre Attack, Grünfeld Variation",
     "moves": "1. d4 d5 2. Nf3 Nf6 3. Bg5 g6",
     "fen": "rnbqkb1r/ppp1pp1p/5np1/3p2B1/3P4/5N2/PPP1PPPP/RN1QKB1R"
 },
 {
     "ecoCode": "D04",
-    "opening": "Queen/'s Pawn Game: Colle System",
+    "opening": "Queen's Pawn Game: Colle System",
     "moves": "1. d4 d5 2. Nf3 Nf6 3. e3",
     "fen": "rnbqkb1r/ppp1pppp/5n2/3p4/3P4/4PN2/PPP2PPP/RNBQKB1R"
 },
 {
     "ecoCode": "D04",
-    "opening": "Queen/'s Pawn Game: Colle System, Anti-Colle",
+    "opening": "Queen's Pawn Game: Colle System, Anti-Colle",
     "moves": "1. d4 d5 2. Nf3 Nf6 3. e3 Bf5",
     "fen": "rn1qkb1r/ppp1pppp/5n2/3p1b2/3P4/4PN2/PPP2PPP/RNBQKB1R"
 },
 {
     "ecoCode": "D04",
-    "opening": "Queen/'s Pawn Game: Colle System, Grünfeld Formation",
+    "opening": "Queen's Pawn Game: Colle System, Grünfeld Formation",
     "moves": "1. d4 d5 2. Nf3 Nf6 3. e3 g6 4. Bd3 Bg7",
     "fen": "rnbqk2r/ppp1ppbp/5np1/3p4/3P4/3BPN2/PPP2PPP/RNBQK2R"
 },
 {
     "ecoCode": "D05",
-    "opening": "Queen/'s Pawn Game, Zukertort Variation",
+    "opening": "Queen's Pawn Game, Zukertort Variation",
     "moves": "1. d4 d5 2. Nf3 c5 3. e3 Nf6 4. Nbd2 e6 5. b3",
     "fen": "rnbqkb1r/pp3ppp/4pn2/2pp4/3P4/1P2PN2/P1PN1PPP/R1BQKB1R"
 },
 {
     "ecoCode": "D05",
-    "opening": "Queen/'s Pawn Game: Colle System",
+    "opening": "Queen's Pawn Game: Colle System",
     "moves": "1. d4 d5 2. Nf3 Nf6 3. e3 e6",
     "fen": "rnbqkb1r/ppp2ppp/4pn2/3p4/3P4/4PN2/PPP2PPP/RNBQKB1R"
 },
 {
     "ecoCode": "D05",
-    "opening": "Queen/'s Pawn Game: Colle System",
+    "opening": "Queen's Pawn Game: Colle System",
     "moves": "1. d4 d5 2. Nf3 Nf6 3. e3 e6 4. Bd3",
     "fen": "rnbqkb1r/ppp2ppp/4pn2/3p4/3P4/3BPN2/PPP2PPP/RNBQK2R"
 },
 {
     "ecoCode": "D05",
-    "opening": "Queen/'s Pawn Game: Colle System, Traditional Colle",
+    "opening": "Queen's Pawn Game: Colle System, Traditional Colle",
     "moves": "1. d4 Nf6 2. Nf3 e6 3. e3 c5 4. Bd3 d5 5. c3",
     "fen": "rnbqkb1r/pp3ppp/4pn2/2pp4/3P4/2PBPN2/PP3PPP/RNBQK2R"
 },
@@ -16232,217 +16232,217 @@ const ecoOpenings = [
 },
 {
     "ecoCode": "D06",
-    "opening": "Queen/'s Gambit",
+    "opening": "Queen's Gambit",
     "moves": "1. d4 d5 2. c4",
     "fen": "rnbqkbnr/ppp1pppp/8/3p4/2PP4/8/PP2PPPP/RNBQKBNR"
 },
 {
     "ecoCode": "D06",
-    "opening": "Queen/'s Gambit Declined: Austrian Attack, Salvio Countergambit",
+    "opening": "Queen's Gambit Declined: Austrian Attack, Salvio Countergambit",
     "moves": "1. d4 d5 2. c4 c5 3. dxc5 d4",
     "fen": "rnbqkbnr/pp2pppp/8/2P5/2Pp4/8/PP2PPPP/RNBQKBNR"
 },
 {
     "ecoCode": "D06",
-    "opening": "Queen/'s Gambit Declined: Austrian Defense",
+    "opening": "Queen's Gambit Declined: Austrian Defense",
     "moves": "1. d4 d5 2. c4 c5",
     "fen": "rnbqkbnr/pp2pppp/8/2pp4/2PP4/8/PP2PPPP/RNBQKBNR"
 },
 {
     "ecoCode": "D06",
-    "opening": "Queen/'s Gambit Declined: Austrian Defense, Gusev Countergambit",
+    "opening": "Queen's Gambit Declined: Austrian Defense, Gusev Countergambit",
     "moves": "1. d4 d5 2. c4 c5 3. cxd5 Nf6",
     "fen": "rnbqkb1r/pp2pppp/5n2/2pP4/3P4/8/PP2PPPP/RNBQKBNR"
 },
 {
     "ecoCode": "D06",
-    "opening": "Queen/'s Gambit Declined: Austrian Defense, Haberditz Variation",
+    "opening": "Queen's Gambit Declined: Austrian Defense, Haberditz Variation",
     "moves": "1. d4 d5 2. c4 c5 3. cxd5 Nf6 4. e4 Nxe4 5. dxc5 Qa5+",
     "fen": "rnb1kb1r/pp2pppp/8/q1PP4/4n3/8/PP3PPP/RNBQKBNR"
 },
 {
     "ecoCode": "D06",
-    "opening": "Queen/'s Gambit Declined: Baltic Defense",
+    "opening": "Queen's Gambit Declined: Baltic Defense",
     "moves": "1. d4 d5 2. c4 Bf5",
     "fen": "rn1qkbnr/ppp1pppp/8/3p1b2/2PP4/8/PP2PPPP/RNBQKBNR"
 },
 {
     "ecoCode": "D06",
-    "opening": "Queen/'s Gambit Declined: Baltic Defense, Argentinian Gambit",
+    "opening": "Queen's Gambit Declined: Baltic Defense, Argentinian Gambit",
     "moves": "1. d4 d5 2. c4 Bf5 3. cxd5 Bxb1 4. Qa4+ c6 5. dxc6 Nxc6",
     "fen": "r2qkbnr/pp2pppp/2n5/8/Q2P4/8/PP2PPPP/RbB1KBNR"
 },
 {
     "ecoCode": "D06",
-    "opening": "Queen/'s Gambit Declined: Baltic Defense, Pseudo-Chigorin",
+    "opening": "Queen's Gambit Declined: Baltic Defense, Pseudo-Chigorin",
     "moves": "1. d4 d5 2. c4 Bf5 3. Nc3 e6 4. Nf3 Nc6",
     "fen": "r2qkbnr/ppp2ppp/2n1p3/3p1b2/2PP4/2N2N2/PP2PPPP/R1BQKB1R"
 },
 {
     "ecoCode": "D06",
-    "opening": "Queen/'s Gambit Declined: Baltic Defense, Queen Attack",
+    "opening": "Queen's Gambit Declined: Baltic Defense, Queen Attack",
     "moves": "1. d4 d5 2. c4 Bf5 3. Qb3",
     "fen": "rn1qkbnr/ppp1pppp/8/3p1b2/2PP4/1Q6/PP2PPPP/RNB1KBNR"
 },
 {
     "ecoCode": "D06",
-    "opening": "Queen/'s Gambit Declined: Baltic Defense, Queen Attack Deferred",
+    "opening": "Queen's Gambit Declined: Baltic Defense, Queen Attack Deferred",
     "moves": "1. d4 d5 2. c4 Bf5 3. Nc3 e6 4. Qb3",
     "fen": "rn1qkbnr/ppp2ppp/4p3/3p1b2/2PP4/1QN5/PP2PPPP/R1B1KBNR"
 },
 {
     "ecoCode": "D06",
-    "opening": "Queen/'s Gambit Declined: Marshall Defense",
+    "opening": "Queen's Gambit Declined: Marshall Defense",
     "moves": "1. d4 d5 2. c4 Nf6",
     "fen": "rnbqkb1r/ppp1pppp/5n2/3p4/2PP4/8/PP2PPPP/RNBQKBNR"
 },
 {
     "ecoCode": "D06",
-    "opening": "Queen/'s Gambit Declined: Marshall Defense, Tan Gambit",
+    "opening": "Queen's Gambit Declined: Marshall Defense, Tan Gambit",
     "moves": "1. d4 d5 2. c4 Nf6 3. cxd5 c6",
     "fen": "rnbqkb1r/pp2pppp/2p2n2/3P4/3P4/8/PP2PPPP/RNBQKBNR"
 },
 {
     "ecoCode": "D06",
-    "opening": "Queen/'s Gambit Declined: Zilbermints Gambit",
+    "opening": "Queen's Gambit Declined: Zilbermints Gambit",
     "moves": "1. d4 d5 2. c4 b5",
     "fen": "rnbqkbnr/p1p1pppp/8/1p1p4/2PP4/8/PP2PPPP/RNBQKBNR"
 },
 {
     "ecoCode": "D07",
-    "opening": "Queen/'s Gambit Declined: Chigorin Defense",
+    "opening": "Queen's Gambit Declined: Chigorin Defense",
     "moves": "1. d4 d5 2. c4 Nc6",
     "fen": "r1bqkbnr/ppp1pppp/2n5/3p4/2PP4/8/PP2PPPP/RNBQKBNR"
 },
 {
     "ecoCode": "D07",
-    "opening": "Queen/'s Gambit Declined: Chigorin Defense",
+    "opening": "Queen's Gambit Declined: Chigorin Defense",
     "moves": "1. d4 d5 2. c4 Nc6 3. Nc3",
     "fen": "r1bqkbnr/ppp1pppp/2n5/3p4/2PP4/2N5/PP2PPPP/R1BQKBNR"
 },
 {
     "ecoCode": "D07",
-    "opening": "Queen/'s Gambit Declined: Chigorin Defense",
+    "opening": "Queen's Gambit Declined: Chigorin Defense",
     "moves": "1. d4 d5 2. c4 Nc6 3. Nc3 dxc4",
     "fen": "r1bqkbnr/ppp1pppp/2n5/8/2pP4/2N5/PP2PPPP/R1BQKBNR"
 },
 {
     "ecoCode": "D07",
-    "opening": "Queen/'s Gambit Declined: Chigorin Defense, Exchange Variation",
+    "opening": "Queen's Gambit Declined: Chigorin Defense, Exchange Variation",
     "moves": "1. d4 d5 2. c4 Nc6 3. cxd5 Qxd5",
     "fen": "r1b1kbnr/ppp1pppp/2n5/3q4/3P4/8/PP2PPPP/RNBQKBNR"
 },
 {
     "ecoCode": "D07",
-    "opening": "Queen/'s Gambit Declined: Chigorin Defense, Exchange Variation, Costa/'s Line",
+    "opening": "Queen's Gambit Declined: Chigorin Defense, Exchange Variation, Costa/'s Line",
     "moves": "1. d4 d5 2. c4 Nc6 3. cxd5 Qxd5 4. e3 e5 5. Nc3 Bb4 6. Bd2 Bxc3 7. Bxc3 exd4 8. Ne2",
     "fen": "r1b1k1nr/ppp2ppp/2n5/3q4/3p4/2B1P3/PP2NPPP/R2QKB1R"
 },
 {
     "ecoCode": "D07",
-    "opening": "Queen/'s Gambit Declined: Chigorin Defense, Janowski Variation",
+    "opening": "Queen's Gambit Declined: Chigorin Defense, Janowski Variation",
     "moves": "1. d4 d5 2. c4 Nc6 3. Nc3 dxc4 4. Nf3",
     "fen": "r1bqkbnr/ppp1pppp/2n5/8/2pP4/2N2N2/PP2PPPP/R1BQKB1R"
 },
 {
     "ecoCode": "D07",
-    "opening": "Queen/'s Gambit Declined: Chigorin Defense, Lazard Gambit",
+    "opening": "Queen's Gambit Declined: Chigorin Defense, Lazard Gambit",
     "moves": "1. d4 d5 2. c4 Nc6 3. Nf3 e5",
     "fen": "r1bqkbnr/ppp2ppp/2n5/3pp3/2PP4/5N2/PP2PPPP/RNBQKB1R"
 },
 {
     "ecoCode": "D07",
-    "opening": "Queen/'s Gambit Declined: Chigorin Defense, Main Line",
+    "opening": "Queen's Gambit Declined: Chigorin Defense, Main Line",
     "moves": "1. d4 d5 2. c4 Nc6 3. Nf3 Bg4",
     "fen": "r2qkbnr/ppp1pppp/2n5/3p4/2PP2b1/5N2/PP2PPPP/RNBQKB1R"
 },
 {
     "ecoCode": "D07",
-    "opening": "Queen/'s Gambit Declined: Chigorin Defense, Main Line, Alekhine Variation",
+    "opening": "Queen's Gambit Declined: Chigorin Defense, Main Line, Alekhine Variation",
     "moves": "1. d4 d5 2. c4 Nc6 3. Nf3 Bg4 4. Qa4",
     "fen": "r2qkbnr/ppp1pppp/2n5/3p4/Q1PP2b1/5N2/PP2PPPP/RNB1KB1R"
 },
 {
     "ecoCode": "D07",
-    "opening": "Queen/'s Gambit Declined: Chigorin Defense, Modern Gambit",
+    "opening": "Queen's Gambit Declined: Chigorin Defense, Modern Gambit",
     "moves": "1. d4 d5 2. c4 Nc6 3. Nc3 dxc4 4. Nf3 Nf6",
     "fen": "r1bqkb1r/ppp1pppp/2n2n2/8/2pP4/2N2N2/PP2PPPP/R1BQKB1R"
 },
 {
     "ecoCode": "D07",
-    "opening": "Queen/'s Gambit Declined: Chigorin Defense, Tartakower Gambit",
+    "opening": "Queen's Gambit Declined: Chigorin Defense, Tartakower Gambit",
     "moves": "1. d4 d5 2. c4 Nc6 3. Nc3 e5",
     "fen": "r1bqkbnr/ppp2ppp/2n5/3pp3/2PP4/2N5/PP2PPPP/R1BQKBNR"
 },
 {
     "ecoCode": "D08",
-    "opening": "Queen/'s Gambit Declined: Albin Countergambit",
+    "opening": "Queen's Gambit Declined: Albin Countergambit",
     "moves": "1. d4 d5 2. c4 e5",
     "fen": "rnbqkbnr/ppp2ppp/8/3pp3/2PP4/8/PP2PPPP/RNBQKBNR"
 },
 {
     "ecoCode": "D08",
-    "opening": "Queen/'s Gambit Declined: Albin Countergambit, Balogh Variation",
+    "opening": "Queen's Gambit Declined: Albin Countergambit, Balogh Variation",
     "moves": "1. d4 d5 2. c4 e5 3. dxe5 d4 4. Nf3 Nc6 5. Nbd2 Qe7",
     "fen": "r1b1kbnr/ppp1qppp/2n5/4P3/2Pp4/5N2/PP1NPPPP/R1BQKB1R"
 },
 {
     "ecoCode": "D08",
-    "opening": "Queen/'s Gambit Declined: Albin Countergambit, Janowski Variation",
+    "opening": "Queen's Gambit Declined: Albin Countergambit, Janowski Variation",
     "moves": "1. d4 d5 2. c4 e5 3. dxe5 d4 4. Nf3 Nc6 5. Nbd2 f6",
     "fen": "r1bqkbnr/ppp3pp/2n2p2/4P3/2Pp4/5N2/PP1NPPPP/R1BQKB1R"
 },
 {
     "ecoCode": "D08",
-    "opening": "Queen/'s Gambit Declined: Albin Countergambit, Krenosz Variation",
+    "opening": "Queen's Gambit Declined: Albin Countergambit, Krenosz Variation",
     "moves": "1. d4 d5 2. c4 e5 3. dxe5 d4 4. Nf3 Nc6 5. Nbd2 Bg4 6. h3 Bxf3 7. Nxf3 Bb4+ 8. Bd2 Qe7",
     "fen": "r3k1nr/ppp1qppp/2n5/4P3/1bPp4/5N1P/PP1BPPP1/R2QKB1R"
 },
 {
     "ecoCode": "D08",
-    "opening": "Queen/'s Gambit Declined: Albin Countergambit, Lasker Trap",
+    "opening": "Queen's Gambit Declined: Albin Countergambit, Lasker Trap",
     "moves": "1. d4 d5 2. c4 e5 3. dxe5 d4 4. e3 Bb4+ 5. Bd2 dxe3",
     "fen": "rnbqk1nr/ppp2ppp/8/4P3/1bP5/4p3/PP1B1PPP/RN1QKBNR"
 },
 {
     "ecoCode": "D08",
-    "opening": "Queen/'s Gambit Declined: Albin Countergambit, Modern Line",
+    "opening": "Queen's Gambit Declined: Albin Countergambit, Modern Line",
     "moves": "1. d4 d5 2. c4 e5 3. dxe5 d4 4. Nf3 Nc6 5. Nbd2",
     "fen": "r1bqkbnr/ppp2ppp/2n5/4P3/2Pp4/5N2/PP1NPPPP/R1BQKB1R"
 },
 {
     "ecoCode": "D08",
-    "opening": "Queen/'s Gambit Declined: Albin Countergambit, Normal Line",
+    "opening": "Queen's Gambit Declined: Albin Countergambit, Normal Line",
     "moves": "1. d4 d5 2. c4 e5 3. dxe5 d4 4. Nf3",
     "fen": "rnbqkbnr/ppp2ppp/8/4P3/2Pp4/5N2/PP2PPPP/RNBQKB1R"
 },
 {
     "ecoCode": "D08",
-    "opening": "Queen/'s Gambit Declined: Albin Countergambit, Tartakower Defense",
+    "opening": "Queen's Gambit Declined: Albin Countergambit, Tartakower Defense",
     "moves": "1. d4 d5 2. c4 e5 3. dxe5 d4 4. Nf3 c5",
     "fen": "rnbqkbnr/pp3ppp/8/2p1P3/2Pp4/5N2/PP2PPPP/RNBQKB1R"
 },
 {
     "ecoCode": "D09",
-    "opening": "Queen/'s Gambit Declined: Albin Countergambit, Fianchetto Variation",
+    "opening": "Queen's Gambit Declined: Albin Countergambit, Fianchetto Variation",
     "moves": "1. d4 d5 2. c4 e5 3. dxe5 d4 4. Nf3 Nc6 5. g3",
     "fen": "r1bqkbnr/ppp2ppp/2n5/4P3/2Pp4/5NP1/PP2PP1P/RNBQKB1R"
 },
 {
     "ecoCode": "D09",
-    "opening": "Queen/'s Gambit Declined: Albin Countergambit, Fianchetto Variation, Be6 Line",
+    "opening": "Queen's Gambit Declined: Albin Countergambit, Fianchetto Variation, Be6 Line",
     "moves": "1. d4 d5 2. c4 e5 3. dxe5 d4 4. Nf3 Nc6 5. g3 Be6",
     "fen": "r2qkbnr/ppp2ppp/2n1b3/4P3/2Pp4/5NP1/PP2PP1P/RNBQKB1R"
 },
 {
     "ecoCode": "D09",
-    "opening": "Queen/'s Gambit Declined: Albin Countergambit, Fianchetto Variation, Bf5 Line",
+    "opening": "Queen's Gambit Declined: Albin Countergambit, Fianchetto Variation, Bf5 Line",
     "moves": "1. d4 d5 2. c4 e5 3. dxe5 d4 4. Nf3 Nc6 5. g3 Bf5",
     "fen": "r2qkbnr/ppp2ppp/2n5/4Pb2/2Pp4/5NP1/PP2PP1P/RNBQKB1R"
 },
 {
     "ecoCode": "D09",
-    "opening": "Queen/'s Gambit Declined: Albin Countergambit, Fianchetto Variation, Bg4 Line",
+    "opening": "Queen's Gambit Declined: Albin Countergambit, Fianchetto Variation, Bg4 Line",
     "moves": "1. d4 d5 2. c4 e5 3. dxe5 d4 4. Nf3 Nc6 5. g3 Bg4",
     "fen": "r2qkbnr/ppp2ppp/2n5/4P3/2Pp2b1/5NP1/PP2PP1P/RNBQKB1R"
 },
@@ -16724,295 +16724,295 @@ const ecoOpenings = [
 },
 {
     "ecoCode": "D20",
-    "opening": "Queen/'s Gambit Accepted",
+    "opening": "Queen's Gambit Accepted",
     "moves": "1. d4 d5 2. c4 dxc4",
     "fen": "rnbqkbnr/ppp1pppp/8/8/2pP4/8/PP2PPPP/RNBQKBNR"
 },
 {
     "ecoCode": "D20",
-    "opening": "Queen/'s Gambit Accepted: Accelerated Mannheim Variation",
+    "opening": "Queen's Gambit Accepted: Accelerated Mannheim Variation",
     "moves": "1. d4 d5 2. c4 dxc4 3. Qa4+",
     "fen": "rnbqkbnr/ppp1pppp/8/8/Q1pP4/8/PP2PPPP/RNB1KBNR"
 },
 {
     "ecoCode": "D20",
-    "opening": "Queen/'s Gambit Accepted: Central Variation, Alekhine System",
+    "opening": "Queen's Gambit Accepted: Central Variation, Alekhine System",
     "moves": "1. d4 d5 2. c4 dxc4 3. e4 Nf6",
     "fen": "rnbqkb1r/ppp1pppp/5n2/8/2pPP3/8/PP3PPP/RNBQKBNR"
 },
 {
     "ecoCode": "D20",
-    "opening": "Queen/'s Gambit Accepted: Central Variation, Greco Variation",
+    "opening": "Queen's Gambit Accepted: Central Variation, Greco Variation",
     "moves": "1. d4 d5 2. c4 dxc4 3. e4 b5",
     "fen": "rnbqkbnr/p1p1pppp/8/1p6/2pPP3/8/PP3PPP/RNBQKBNR"
 },
 {
     "ecoCode": "D20",
-    "opening": "Queen/'s Gambit Accepted: Central Variation, McDonnell Defense",
+    "opening": "Queen's Gambit Accepted: Central Variation, McDonnell Defense",
     "moves": "1. d4 d5 2. c4 dxc4 3. e4 e5",
     "fen": "rnbqkbnr/ppp2ppp/8/4p3/2pPP3/8/PP3PPP/RNBQKBNR"
 },
 {
     "ecoCode": "D20",
-    "opening": "Queen/'s Gambit Accepted: Central Variation, McDonnell Defense, Somov Gambit",
+    "opening": "Queen's Gambit Accepted: Central Variation, McDonnell Defense, Somov Gambit",
     "moves": "1. d4 d5 2. c4 dxc4 3. e4 e5 4. Bxc4",
     "fen": "rnbqkbnr/ppp2ppp/8/4p3/2BPP3/8/PP3PPP/RNBQK1NR"
 },
 {
     "ecoCode": "D20",
-    "opening": "Queen/'s Gambit Accepted: Central Variation, Modern Defense",
+    "opening": "Queen's Gambit Accepted: Central Variation, Modern Defense",
     "moves": "1. d4 d5 2. c4 dxc4 3. e4 Nc6",
     "fen": "r1bqkbnr/ppp1pppp/2n5/8/2pPP3/8/PP3PPP/RNBQKBNR"
 },
 {
     "ecoCode": "D20",
-    "opening": "Queen/'s Gambit Accepted: Central Variation, Rubinstein Defense",
+    "opening": "Queen's Gambit Accepted: Central Variation, Rubinstein Defense",
     "moves": "1. d4 d5 2. c4 dxc4 3. e4 c5",
     "fen": "rnbqkbnr/pp2pppp/8/2p5/2pPP3/8/PP3PPP/RNBQKBNR"
 },
 {
     "ecoCode": "D20",
-    "opening": "Queen/'s Gambit Accepted: Central Variation, Rubinstein Defense, Yefimov Gambit",
+    "opening": "Queen's Gambit Accepted: Central Variation, Rubinstein Defense, Yefimov Gambit",
     "moves": "1. d4 d5 2. c4 dxc4 3. e4 c5 4. d5 b5",
     "fen": "rnbqkbnr/p3pppp/8/1ppP4/2p1P3/8/PP3PPP/RNBQKBNR"
 },
 {
     "ecoCode": "D20",
-    "opening": "Queen/'s Gambit Accepted: Linares Variation",
+    "opening": "Queen's Gambit Accepted: Linares Variation",
     "moves": "1. d4 d5 2. c4 dxc4 3. e4 c5 4. d5 Nf6 5. Nc3 b5",
     "fen": "rnbqkb1r/p3pppp/5n2/1ppP4/2p1P3/2N5/PP3PPP/R1BQKBNR"
 },
 {
     "ecoCode": "D20",
-    "opening": "Queen/'s Gambit Accepted: Old Variation",
+    "opening": "Queen's Gambit Accepted: Old Variation",
     "moves": "1. d4 d5 2. c4 dxc4 3. e3",
     "fen": "rnbqkbnr/ppp1pppp/8/8/2pP4/4P3/PP3PPP/RNBQKBNR"
 },
 {
     "ecoCode": "D20",
-    "opening": "Queen/'s Gambit Accepted: Old Variation, Billinger Gambit",
+    "opening": "Queen's Gambit Accepted: Old Variation, Billinger Gambit",
     "moves": "1. d4 d5 2. c4 dxc4 3. e3 e5 4. Bxc4 exd4 5. Qb3 Qe7 6. a3",
     "fen": "rnb1kbnr/ppp1qppp/8/8/2Bp4/PQ2P3/1P3PPP/RNB1K1NR"
 },
 {
     "ecoCode": "D20",
-    "opening": "Queen/'s Gambit Accepted: Old Variation, Christensen Gambit",
+    "opening": "Queen's Gambit Accepted: Old Variation, Christensen Gambit",
     "moves": "1. d4 d5 2. c4 dxc4 3. e3 e5 4. Bxc4 exd4 5. Qb3 Qe7 6. Nf3",
     "fen": "rnb1kbnr/ppp1qppp/8/8/2Bp4/1Q2PN2/PP3PPP/RNB1K2R"
 },
 {
     "ecoCode": "D20",
-    "opening": "Queen/'s Gambit Accepted: Old Variation, Korchnoi Gambit",
+    "opening": "Queen's Gambit Accepted: Old Variation, Korchnoi Gambit",
     "moves": "1. d4 d5 2. c4 dxc4 3. e3 e5 4. Bxc4 exd4 5. Qb3 Qe7 6. Kf1",
     "fen": "rnb1kbnr/ppp1qppp/8/8/2Bp4/1Q2P3/PP3PPP/RNB2KNR"
 },
 {
     "ecoCode": "D20",
-    "opening": "Queen/'s Gambit Accepted: Old Variation, Novikov Gambit",
+    "opening": "Queen's Gambit Accepted: Old Variation, Novikov Gambit",
     "moves": "1. d4 d5 2. c4 dxc4 3. e3 e5 4. Bxc4 exd4 5. Qb3 Qe7 6. Nd2",
     "fen": "rnb1kbnr/ppp1qppp/8/8/2Bp4/1Q2P3/PP1N1PPP/R1B1K1NR"
 },
 {
     "ecoCode": "D20",
-    "opening": "Queen/'s Gambit Accepted: Saduleto Variation",
+    "opening": "Queen's Gambit Accepted: Saduleto Variation",
     "moves": "1. d4 d5 2. c4 dxc4 3. e4",
     "fen": "rnbqkbnr/ppp1pppp/8/8/2pPP3/8/PP3PPP/RNBQKBNR"
 },
 {
     "ecoCode": "D20",
-    "opening": "Queen/'s Gambit Accepted: Schwartz Defense",
+    "opening": "Queen's Gambit Accepted: Schwartz Defense",
     "moves": "1. d4 d5 2. c4 dxc4 3. e4 f5",
     "fen": "rnbqkbnr/ppp1p1pp/8/5p2/2pPP3/8/PP3PPP/RNBQKBNR"
 },
 {
     "ecoCode": "D21",
-    "opening": "Queen/'s Gambit Accepted: Alekhine Defense, Borisenko-Furman Variation",
+    "opening": "Queen's Gambit Accepted: Alekhine Defense, Borisenko-Furman Variation",
     "moves": "1. d4 d5 2. c4 dxc4 3. Nf3 a6 4. e4",
     "fen": "rnbqkbnr/1pp1pppp/p7/8/2pPP3/5N2/PP3PPP/RNBQKB1R"
 },
 {
     "ecoCode": "D21",
-    "opening": "Queen/'s Gambit Accepted: Godes Variation",
+    "opening": "Queen's Gambit Accepted: Godes Variation",
     "moves": "1. d4 d5 2. c4 dxc4 3. Nf3 Nd7",
     "fen": "r1bqkbnr/pppnpppp/8/8/2pP4/5N2/PP2PPPP/RNBQKB1R"
 },
 {
     "ecoCode": "D21",
-    "opening": "Queen/'s Gambit Accepted: Gunsberg Defense",
+    "opening": "Queen's Gambit Accepted: Gunsberg Defense",
     "moves": "1. d4 d5 2. c4 dxc4 3. Nf3 c5",
     "fen": "rnbqkbnr/pp2pppp/8/2p5/2pP4/5N2/PP2PPPP/RNBQKB1R"
 },
 {
     "ecoCode": "D21",
-    "opening": "Queen/'s Gambit Accepted: Normal Variation",
+    "opening": "Queen's Gambit Accepted: Normal Variation",
     "moves": "1. d4 d5 2. c4 dxc4 3. Nf3",
     "fen": "rnbqkbnr/ppp1pppp/8/8/2pP4/5N2/PP2PPPP/RNBQKB1R"
 },
 {
     "ecoCode": "D21",
-    "opening": "Queen/'s Gambit Accepted: Slav Gambit",
+    "opening": "Queen's Gambit Accepted: Slav Gambit",
     "moves": "1. d4 d5 2. c4 dxc4 3. Nf3 b5",
     "fen": "rnbqkbnr/p1p1pppp/8/1p6/2pP4/5N2/PP2PPPP/RNBQKB1R"
 },
 {
     "ecoCode": "D22",
-    "opening": "Queen/'s Gambit Accepted: Alekhine Defense",
+    "opening": "Queen's Gambit Accepted: Alekhine Defense",
     "moves": "1. d4 d5 2. c4 dxc4 3. Nf3 a6",
     "fen": "rnbqkbnr/1pp1pppp/p7/8/2pP4/5N2/PP2PPPP/RNBQKB1R"
 },
 {
     "ecoCode": "D22",
-    "opening": "Queen/'s Gambit Accepted: Alekhine Defense, Alatortsev Variation",
+    "opening": "Queen's Gambit Accepted: Alekhine Defense, Alatortsev Variation",
     "moves": "1. d4 d5 2. c4 dxc4 3. Nf3 a6 4. e3 Bg4 5. Bxc4 e6 6. d5",
     "fen": "rn1qkbnr/1pp2ppp/p3p3/3P4/2B3b1/4PN2/PP3PPP/RNBQK2R"
 },
 {
     "ecoCode": "D22",
-    "opening": "Queen/'s Gambit Accepted: Alekhine Defense, Haberditz Variation",
+    "opening": "Queen's Gambit Accepted: Alekhine Defense, Haberditz Variation",
     "moves": "1. d4 d5 2. c4 dxc4 3. Nf3 a6 4. e3 b5",
     "fen": "rnbqkbnr/2p1pppp/p7/1p6/2pP4/4PN2/PP3PPP/RNBQKB1R"
 },
 {
     "ecoCode": "D23",
-    "opening": "Queen/'s Gambit Accepted",
+    "opening": "Queen's Gambit Accepted",
     "moves": "1. d4 d5 2. c4 dxc4 3. Nf3 Nf6",
     "fen": "rnbqkb1r/ppp1pppp/5n2/8/2pP4/5N2/PP2PPPP/RNBQKB1R"
 },
 {
     "ecoCode": "D23",
-    "opening": "Queen/'s Gambit Accepted: Mannheim Variation",
+    "opening": "Queen's Gambit Accepted: Mannheim Variation",
     "moves": "1. d4 d5 2. c4 dxc4 3. Nf3 Nf6 4. Qa4+",
     "fen": "rnbqkb1r/ppp1pppp/5n2/8/Q1pP4/5N2/PP2PPPP/RNB1KB1R"
 },
 {
     "ecoCode": "D24",
-    "opening": "Queen/'s Gambit Accepted: Bogoljubov Defense",
+    "opening": "Queen's Gambit Accepted: Bogoljubov Defense",
     "moves": "1. d4 d5 2. c4 dxc4 3. Nf3 Nf6 4. Nc3 a6 5. e4",
     "fen": "rnbqkb1r/1pp1pppp/p4n2/8/2pPP3/2N2N2/PP3PPP/R1BQKB1R"
 },
 {
     "ecoCode": "D24",
-    "opening": "Queen/'s Gambit Accepted: Gunsberg Defense, Prianishenmo Gambit",
+    "opening": "Queen's Gambit Accepted: Gunsberg Defense, Prianishenmo Gambit",
     "moves": "1. d4 d5 2. c4 dxc4 3. Nf3 Nf6 4. Nc3 c5 5. d5 e6 6. e4 exd5 7. e5",
     "fen": "rnbqkb1r/pp3ppp/5n2/2ppP3/2p5/2N2N2/PP3PPP/R1BQKB1R"
 },
 {
     "ecoCode": "D24",
-    "opening": "Queen/'s Gambit Accepted: Showalter Variation",
+    "opening": "Queen's Gambit Accepted: Showalter Variation",
     "moves": "1. d4 d5 2. c4 dxc4 3. Nf3 Nf6 4. Nc3",
     "fen": "rnbqkb1r/ppp1pppp/5n2/8/2pP4/2N2N2/PP2PPPP/R1BQKB1R"
 },
 {
     "ecoCode": "D25",
-    "opening": "Queen/'s Gambit Accepted: Janowski-Larsen Variation",
+    "opening": "Queen's Gambit Accepted: Janowski-Larsen Variation",
     "moves": "1. d4 d5 2. c4 dxc4 3. Nf3 Nf6 4. e3 Bg4",
     "fen": "rn1qkb1r/ppp1pppp/5n2/8/2pP2b1/4PN2/PP3PPP/RNBQKB1R"
 },
 {
     "ecoCode": "D25",
-    "opening": "Queen/'s Gambit Accepted: Normal Variation",
+    "opening": "Queen's Gambit Accepted: Normal Variation",
     "moves": "1. d4 d5 2. c4 dxc4 3. Nf3 Nf6 4. e3",
     "fen": "rnbqkb1r/ppp1pppp/5n2/8/2pP4/4PN2/PP3PPP/RNBQKB1R"
 },
 {
     "ecoCode": "D25",
-    "opening": "Queen/'s Gambit Accepted: Smyslov Variation",
+    "opening": "Queen's Gambit Accepted: Smyslov Variation",
     "moves": "1. d4 d5 2. c4 dxc4 3. Nf3 Nf6 4. e3 g6",
     "fen": "rnbqkb1r/ppp1pp1p/5np1/8/2pP4/4PN2/PP3PPP/RNBQKB1R"
 },
 {
     "ecoCode": "D25",
-    "opening": "Queen/'s Gambit Accepted: Winawer Defense",
+    "opening": "Queen's Gambit Accepted: Winawer Defense",
     "moves": "1. d4 d5 2. c4 dxc4 3. Nf3 Nf6 4. e3 Be6",
     "fen": "rn1qkb1r/ppp1pppp/4bn2/8/2pP4/4PN2/PP3PPP/RNBQKB1R"
 },
 {
     "ecoCode": "D26",
-    "opening": "Queen/'s Gambit Accepted: Classical Defense",
+    "opening": "Queen's Gambit Accepted: Classical Defense",
     "moves": "1. d4 d5 2. c4 dxc4 3. Nf3 Nf6 4. e3 e6 5. Bxc4 c5",
     "fen": "rnbqkb1r/pp3ppp/4pn2/2p5/2BP4/4PN2/PP3PPP/RNBQK2R"
 },
 {
     "ecoCode": "D26",
-    "opening": "Queen/'s Gambit Accepted: Classical Defense, Normal Line",
+    "opening": "Queen's Gambit Accepted: Classical Defense, Normal Line",
     "moves": "1. d4 d5 2. c4 dxc4 3. Nf3 Nf6 4. e3 e6 5. Bxc4 c5 6. O-O",
     "fen": "rnbqkb1r/pp3ppp/4pn2/2p5/2BP4/4PN2/PP3PPP/RNBQ1RK1"
 },
 {
     "ecoCode": "D26",
-    "opening": "Queen/'s Gambit Accepted: Classical Defense, Steinitz Variation, Development Variation",
+    "opening": "Queen's Gambit Accepted: Classical Defense, Steinitz Variation, Development Variation",
     "moves": "1. d4 d5 2. c4 dxc4 3. Nf3 Nf6 4. e3 e6 5. Bxc4 c5 6. O-O Nc6",
     "fen": "r1bqkb1r/pp3ppp/2n1pn2/2p5/2BP4/4PN2/PP3PPP/RNBQ1RK1"
 },
 {
     "ecoCode": "D26",
-    "opening": "Queen/'s Gambit Accepted: Classical Defense, Steinitz Variation, Exchange Variation",
+    "opening": "Queen's Gambit Accepted: Classical Defense, Steinitz Variation, Exchange Variation",
     "moves": "1. d4 d5 2. c4 dxc4 3. Nf3 Nf6 4. e3 e6 5. Bxc4 c5 6. O-O cxd4",
     "fen": "rnbqkb1r/pp3ppp/4pn2/8/2Bp4/4PN2/PP3PPP/RNBQ1RK1"
 },
 {
     "ecoCode": "D26",
-    "opening": "Queen/'s Gambit Accepted: Classical, Furman Variation",
+    "opening": "Queen's Gambit Accepted: Classical, Furman Variation",
     "moves": "1. d4 d5 2. c4 dxc4 3. Nf3 Nf6 4. e3 e6 5. Bxc4 c5 6. Qe2 a6 7. dxc5 Bxc5 8. O-O Nc6 9. e4 b5 10. e5",
     "fen": "r1bqk2r/5ppp/p1n1pn2/1pb1P3/2B5/5N2/PP2QPPP/RNB2RK1"
 },
 {
     "ecoCode": "D26",
-    "opening": "Queen/'s Gambit Accepted: Normal Variation, Traditional System",
+    "opening": "Queen's Gambit Accepted: Normal Variation, Traditional System",
     "moves": "1. d4 d5 2. c4 dxc4 3. Nf3 Nf6 4. e3 e6",
     "fen": "rnbqkb1r/ppp2ppp/4pn2/8/2pP4/4PN2/PP3PPP/RNBQKB1R"
 },
 {
     "ecoCode": "D27",
-    "opening": "Queen/'s Gambit Accepted: Classical Defense, Main Line",
+    "opening": "Queen's Gambit Accepted: Classical Defense, Main Line",
     "moves": "1. d4 d5 2. c4 dxc4 3. Nf3 Nf6 4. e3 e6 5. Bxc4 c5 6. O-O a6",
     "fen": "rnbqkb1r/1p3ppp/p3pn2/2p5/2BP4/4PN2/PP3PPP/RNBQ1RK1"
 },
 {
     "ecoCode": "D27",
-    "opening": "Queen/'s Gambit Accepted: Classical Defense, Rubinstein Variation",
+    "opening": "Queen's Gambit Accepted: Classical Defense, Rubinstein Variation",
     "moves": "1. d4 d5 2. c4 dxc4 3. Nf3 Nf6 4. e3 e6 5. Bxc4 c5 6. O-O a6 7. a4",
     "fen": "rnbqkb1r/1p3ppp/p3pn2/2p5/P1BP4/4PN2/1P3PPP/RNBQ1RK1"
 },
 {
     "ecoCode": "D27",
-    "opening": "Queen/'s Gambit Accepted: Classical Defense, Russian Gambit",
+    "opening": "Queen's Gambit Accepted: Classical Defense, Russian Gambit",
     "moves": "1. d4 d5 2. c4 dxc4 3. e3 Nf6 4. Bxc4 e6 5. Nf3 c5 6. O-O a6 7. e4",
     "fen": "rnbqkb1r/1p3ppp/p3pn2/2p5/2BPP3/5N2/PP3PPP/RNBQ1RK1"
 },
 {
     "ecoCode": "D27",
-    "opening": "Queen/'s Gambit Accepted: Furman Variation",
+    "opening": "Queen's Gambit Accepted: Furman Variation",
     "moves": "1. d4 d5 2. c4 dxc4 3. Nf3 Nf6 4. e3 e6 5. Bxc4 c5 6. O-O a6 7. dxc5 Bxc5",
     "fen": "rnbqk2r/1p3ppp/p3pn2/2b5/2B5/4PN2/PP3PPP/RNBQ1RK1"
 },
 {
     "ecoCode": "D28",
-    "opening": "Queen/'s Gambit Accepted: Classical Defense, Alekhine System",
+    "opening": "Queen's Gambit Accepted: Classical Defense, Alekhine System",
     "moves": "1. d4 d5 2. c4 dxc4 3. Nf3 Nf6 4. e3 e6 5. Bxc4 c5 6. O-O a6 7. Qe2",
     "fen": "rnbqkb1r/1p3ppp/p3pn2/2p5/2BP4/4PN2/PP2QPPP/RNB2RK1"
 },
 {
     "ecoCode": "D28",
-    "opening": "Queen/'s Gambit Accepted: Classical Defense, Alekhine System, No Main Line",
+    "opening": "Queen's Gambit Accepted: Classical Defense, Alekhine System, No Main Line",
     "moves": "1. d4 d5 2. c4 dxc4 3. Nf3 Nf6 4. e3 e6 5. Bxc4 c5 6. O-O a6 7. Qe2 b5",
     "fen": "rnbqkb1r/5ppp/p3pn2/1pp5/2BP4/4PN2/PP2QPPP/RNB2RK1"
 },
 {
     "ecoCode": "D28",
-    "opening": "Queen/'s Gambit Accepted: Classical, Flohr Variation",
+    "opening": "Queen's Gambit Accepted: Classical, Flohr Variation",
     "moves": "1. d4 d5 2. c4 dxc4 3. Nf3 Nf6 4. e3 e6 5. Bxc4 c5 6. O-O a6 7. Qe2 b5 8. Bb3 Nc6 9. Rd1 c4 10. Bc2 Nb4 11. Nc3 Nxc2 12. Qxc2 Bb7 13. d5 Qc7",
     "fen": "r3kb1r/1bq2ppp/p3pn2/1p1P4/2p5/2N1PN2/PPQ2PPP/R1BR2K1"
 },
 {
     "ecoCode": "D29",
-    "opening": "Queen/'s Gambit Accepted: Classical Defense, Alekhine System, Main Line",
+    "opening": "Queen's Gambit Accepted: Classical Defense, Alekhine System, Main Line",
     "moves": "1. d4 d5 2. c4 dxc4 3. Nf3 Nf6 4. e3 e6 5. Bxc4 c5 6. O-O a6 7. Qe2 b5 8. Bb3 Bb7",
     "fen": "rn1qkb1r/1b3ppp/p3pn2/1pp5/3P4/1B2PN2/PP2QPPP/RNB2RK1"
 },
 {
     "ecoCode": "D29",
-    "opening": "Queen/'s Gambit Accepted: Classical Defense, Alekhine System, Smyslov Variation",
+    "opening": "Queen's Gambit Accepted: Classical Defense, Alekhine System, Smyslov Variation",
     "moves": "1. d4 d5 2. c4 dxc4 3. Nf3 Nf6 4. e3 e6 5. Bxc4 c5 6. O-O a6 7. Qe2 b5 8. Bb3 Bb7 9. Rd1 Nbd7 10. Nc3 Bd6",
     "fen": "r2qk2r/1b1n1ppp/p2bpn2/1pp5/3P4/1BN1PN2/PP2QPPP/R1BR2K1"
 },
@@ -17024,61 +17024,61 @@ const ecoOpenings = [
 },
 {
     "ecoCode": "D30",
-    "opening": "Queen/'s Gambit Declined",
+    "opening": "Queen's Gambit Declined",
     "moves": "1. d4 d5 2. c4 e6",
     "fen": "rnbqkbnr/ppp2ppp/4p3/3p4/2PP4/8/PP2PPPP/RNBQKBNR"
 },
 {
     "ecoCode": "D30",
-    "opening": "Queen/'s Gambit Declined: Capablanca Variation",
+    "opening": "Queen's Gambit Declined: Capablanca Variation",
     "moves": "1. d4 Nf6 2. c4 e6 3. Nf3 d5 4. Bg5 h6",
     "fen": "rnbqkb1r/ppp2pp1/4pn1p/3p2B1/2PP4/5N2/PP2PPPP/RN1QKB1R"
 },
 {
     "ecoCode": "D30",
-    "opening": "Queen/'s Gambit Declined: Capablanca Variation",
+    "opening": "Queen's Gambit Declined: Capablanca Variation",
     "moves": "1. d4 Nf6 2. Nf3 e6 3. c4 d5 4. Bg5 c6 5. Nbd2 Nbd7 6. e3",
     "fen": "r1bqkb1r/pp1n1ppp/2p1pn2/3p2B1/2PP4/4PN2/PP1N1PPP/R2QKB1R"
 },
 {
     "ecoCode": "D30",
-    "opening": "Queen/'s Gambit Declined: Semmering Variation",
+    "opening": "Queen's Gambit Declined: Semmering Variation",
     "moves": "1. d4 d5 2. c4 c6 3. Nf3 Nf6 4. e3 e6 5. Nbd2 Nbd7 6. Bd3 c5",
     "fen": "r1bqkb1r/pp1n1ppp/4pn2/2pp4/2PP4/3BPN2/PP1N1PPP/R1BQK2R"
 },
 {
     "ecoCode": "D30",
-    "opening": "Queen/'s Gambit Declined: Spielmann Variation",
+    "opening": "Queen's Gambit Declined: Spielmann Variation",
     "moves": "1. d4 d5 2. c4 e6 3. Nf3 Nf6 4. e3 c6 5. Nbd2 g6",
     "fen": "rnbqkb1r/pp3p1p/2p1pnp1/3p4/2PP4/4PN2/PP1N1PPP/R1BQKB1R"
 },
 {
     "ecoCode": "D30",
-    "opening": "Queen/'s Gambit Declined: Stonewall Variation",
+    "opening": "Queen's Gambit Declined: Stonewall Variation",
     "moves": "1. d4 d5 2. c4 c6 3. Nf3 Nf6 4. e3 e6 5. Nbd2 Ne4 6. Bd3 f5",
     "fen": "rnbqkb1r/pp4pp/2p1p3/3p1p2/2PPn3/3BPN2/PP1N1PPP/R1BQK2R"
 },
 {
     "ecoCode": "D30",
-    "opening": "Queen/'s Gambit Declined: Tarrasch Defense, Pseudo-Tarrasch",
+    "opening": "Queen's Gambit Declined: Tarrasch Defense, Pseudo-Tarrasch",
     "moves": "1. d4 d5 2. c4 e6 3. Nf3 c5",
     "fen": "rnbqkbnr/pp3ppp/4p3/2pp4/2PP4/5N2/PP2PPPP/RNBQKB1R"
 },
 {
     "ecoCode": "D30",
-    "opening": "Queen/'s Gambit Declined: Tarrasch Defense, Pseudo-Tarrasch Bishop Attack",
+    "opening": "Queen's Gambit Declined: Tarrasch Defense, Pseudo-Tarrasch Bishop Attack",
     "moves": "1. d4 d5 2. c4 e6 3. Nf3 c5 4. cxd5 exd5 5. Bg5",
     "fen": "rnbqkbnr/pp3ppp/8/2pp2B1/3P4/5N2/PP2PPPP/RN1QKB1R"
 },
 {
     "ecoCode": "D30",
-    "opening": "Queen/'s Gambit Declined: Traditional Variation",
+    "opening": "Queen's Gambit Declined: Traditional Variation",
     "moves": "1. d4 Nf6 2. c4 e6 3. Nf3 d5 4. Bg5",
     "fen": "rnbqkb1r/ppp2ppp/4pn2/3p2B1/2PP4/5N2/PP2PPPP/RN1QKB1R"
 },
 {
     "ecoCode": "D30",
-    "opening": "Queen/'s Gambit Declined: Vienna Variation",
+    "opening": "Queen's Gambit Declined: Vienna Variation",
     "moves": "1. d4 Nf6 2. c4 e6 3. Nf3 d5 4. Bg5 Bb4+",
     "fen": "rnbqk2r/ppp2ppp/4pn2/3p2B1/1bPP4/5N2/PP2PPPP/RN1QKB1R"
 },
@@ -17096,55 +17096,55 @@ const ecoOpenings = [
 },
 {
     "ecoCode": "D31",
-    "opening": "Queen/'s Gambit Declined: Alapin Variation",
+    "opening": "Queen's Gambit Declined: Alapin Variation",
     "moves": "1. d4 e6 2. c4 b6 3. Nc3 d5",
     "fen": "rnbqkbnr/p1p2ppp/1p2p3/3p4/2PP4/2N5/PP2PPPP/R1BQKBNR"
 },
 {
     "ecoCode": "D31",
-    "opening": "Queen/'s Gambit Declined: Charousek Variation",
+    "opening": "Queen's Gambit Declined: Charousek Variation",
     "moves": "1. d4 d5 2. c4 e6 3. Nc3 Be7",
     "fen": "rnbqk1nr/ppp1bppp/4p3/3p4/2PP4/2N5/PP2PPPP/R1BQKBNR"
 },
 {
     "ecoCode": "D31",
-    "opening": "Queen/'s Gambit Declined: Charousek Variation, Miladinovic Gambit",
+    "opening": "Queen's Gambit Declined: Charousek Variation, Miladinovic Gambit",
     "moves": "1. d4 d5 2. c4 e6 3. Nc3 Be7 4. e4 dxe4 5. f3",
     "fen": "rnbqk1nr/ppp1bppp/4p3/8/2PPp3/2N2P2/PP4PP/R1BQKBNR"
 },
 {
     "ecoCode": "D31",
-    "opening": "Queen/'s Gambit Declined: Janowski Variation",
+    "opening": "Queen's Gambit Declined: Janowski Variation",
     "moves": "1. d4 d5 2. c4 e6 3. Nc3 a6",
     "fen": "rnbqkbnr/1pp2ppp/p3p3/3p4/2PP4/2N5/PP2PPPP/R1BQKBNR"
 },
 {
     "ecoCode": "D31",
-    "opening": "Queen/'s Gambit Declined: Queen/'s Knight Variation",
+    "opening": "Queen's Gambit Declined: Queen's Knight Variation",
     "moves": "1. d4 d5 2. c4 e6 3. Nc3",
     "fen": "rnbqkbnr/ppp2ppp/4p3/3p4/2PP4/2N5/PP2PPPP/R1BQKBNR"
 },
 {
     "ecoCode": "D31",
-    "opening": "Queen/'s Gambit Declined: Semi-Slav, Abrahams Variation",
+    "opening": "Queen's Gambit Declined: Semi-Slav, Abrahams Variation",
     "moves": "1. d4 d5 2. c4 e6 3. Nc3 c6 4. Nf3 dxc4 5. a4 Bb4 6. e3 b5 7. Bd2 a5",
     "fen": "rnbqk1nr/5ppp/2p1p3/pp6/PbpP4/2N1PN2/1P1B1PPP/R2QKB1R"
 },
 {
     "ecoCode": "D31",
-    "opening": "Queen/'s Gambit Declined: Semi-Slav, Junge Variation",
+    "opening": "Queen's Gambit Declined: Semi-Slav, Junge Variation",
     "moves": "1. d4 d5 2. c4 e6 3. Nf3 c6 4. Nc3 dxc4 5. a4 Bb4 6. e3 b5 7. Bd2 Qb6",
     "fen": "rnb1k1nr/p4ppp/1qp1p3/1p6/PbpP4/2N1PN2/1P1B1PPP/R2QKB1R"
 },
 {
     "ecoCode": "D31",
-    "opening": "Queen/'s Gambit Declined: Semi-Slav, Koomen Variation",
+    "opening": "Queen's Gambit Declined: Semi-Slav, Koomen Variation",
     "moves": "1. d4 d5 2. c4 e6 3. Nc3 c6 4. Nf3 dxc4 5. e3 b5 6. a4 Bb4 7. Bd2 Qe7",
     "fen": "rnb1k1nr/p3qppp/2p1p3/1p6/PbpP4/2N1PN2/1P1B1PPP/R2QKB1R"
 },
 {
     "ecoCode": "D31",
-    "opening": "Queen/'s Gambit Declined: Uhlmann Variation",
+    "opening": "Queen's Gambit Declined: Uhlmann Variation",
     "moves": "1. d4 d5 2. c4 e6 3. Nc3 Be7 4. Nf3 Nf6 5. Bg5 h6 6. Bh4 O-O 7. Rc1 dxc4",
     "fen": "rnbq1rk1/ppp1bpp1/4pn1p/8/2pP3B/2N2N2/PP2PPPP/2RQKB1R"
 },
@@ -17222,7 +17222,7 @@ const ecoOpenings = [
 },
 {
     "ecoCode": "D32",
-    "opening": "Queen/'s Gambit Declined: Tarrasch Defense",
+    "opening": "Queen's Gambit Declined: Tarrasch Defense",
     "moves": "1. d4 d5 2. c4 e6 3. Nc3 c5 4. cxd5 exd5",
     "fen": "rnbqkbnr/pp3ppp/8/2pp4/3P4/2N5/PP2PPPP/R1BQKBNR"
 },
@@ -17300,7 +17300,7 @@ const ecoOpenings = [
 },
 {
     "ecoCode": "D34",
-    "opening": "Queen/'s Gambit Declined: Tarrasch Defense, Stoltz Variation",
+    "opening": "Queen's Gambit Declined: Tarrasch Defense, Stoltz Variation",
     "moves": "1. d4 d5 2. c4 e6 3. Nf3 c5 4. cxd5 exd5 5. g3 Nc6 6. Bg2 Nf6 7. O-O Be7 8. Nc3 O-O 9. Bg5 Be6 10. Rc1 b6",
     "fen": "r2q1rk1/p3bppp/1pn1bn2/2pp2B1/3P4/2N2NP1/PP2PPBP/2RQ1RK1"
 },
@@ -17378,223 +17378,223 @@ const ecoOpenings = [
 },
 {
     "ecoCode": "D35",
-    "opening": "Queen/'s Gambit Declined: Exchange Variation",
+    "opening": "Queen's Gambit Declined: Exchange Variation",
     "moves": "1. d4 Nf6 2. c4 e6 3. Nc3 d5 4. cxd5",
     "fen": "rnbqkb1r/ppp2ppp/4pn2/3P4/3P4/2N5/PP2PPPP/R1BQKBNR"
 },
 {
     "ecoCode": "D35",
-    "opening": "Queen/'s Gambit Declined: Exchange Variation, Positional Variation",
+    "opening": "Queen's Gambit Declined: Exchange Variation, Positional Variation",
     "moves": "1. d4 Nf6 2. c4 e6 3. Nc3 d5 4. cxd5 exd5 5. Bg5",
     "fen": "rnbqkb1r/ppp2ppp/5n2/3p2B1/3P4/2N5/PP2PPPP/R2QKBNR"
 },
 {
     "ecoCode": "D35",
-    "opening": "Queen/'s Gambit Declined: Exchange Variation, Positional Variation",
+    "opening": "Queen's Gambit Declined: Exchange Variation, Positional Variation",
     "moves": "1. d4 Nf6 2. c4 e6 3. Nc3 d5 4. cxd5 exd5 5. Bg5 c6",
     "fen": "rnbqkb1r/pp3ppp/2p2n2/3p2B1/3P4/2N5/PP2PPPP/R2QKBNR"
 },
 {
     "ecoCode": "D35",
-    "opening": "Queen/'s Gambit Declined: Exchange Variation, Sämisch Variation",
+    "opening": "Queen's Gambit Declined: Exchange Variation, Sämisch Variation",
     "moves": "1. d4 Nf6 2. c4 e6 3. Nf3 d5 4. Nc3 Nbd7 5. cxd5 exd5 6. Bf4",
     "fen": "r1bqkb1r/pppn1ppp/5n2/3p4/3P1B2/2N2N2/PP2PPPP/R2QKB1R"
 },
 {
     "ecoCode": "D35",
-    "opening": "Queen/'s Gambit Declined: Exchange, Chameleon Variation",
+    "opening": "Queen's Gambit Declined: Exchange, Chameleon Variation",
     "moves": "1. d4 Nf6 2. c4 e6 3. Nc3 d5 4. cxd5 exd5 5. Bg5 Be7 6. e3 O-O 7. Bd3 Nbd7 8. Qc2 Re8 9. Nge2 Nf8 10. O-O-O",
     "fen": "r1bqrnk1/ppp1bppp/5n2/3p2B1/3P4/2NBP3/PPQ1NPPP/2KR3R"
 },
 {
     "ecoCode": "D35",
-    "opening": "Queen/'s Gambit Declined: Harrwitz Attack",
+    "opening": "Queen's Gambit Declined: Harrwitz Attack",
     "moves": "1. d4 d5 2. c4 e6 3. Nc3 Nf6 4. Bf4",
     "fen": "rnbqkb1r/ppp2ppp/4pn2/3p4/2PP1B2/2N5/PP2PPPP/R2QKBNR"
 },
 {
     "ecoCode": "D35",
-    "opening": "Queen/'s Gambit Declined: Normal Defense",
+    "opening": "Queen's Gambit Declined: Normal Defense",
     "moves": "1. d4 d5 2. c4 e6 3. Nc3 Nf6",
     "fen": "rnbqkb1r/ppp2ppp/4pn2/3p4/2PP4/2N5/PP2PPPP/R1BQKBNR"
 },
 {
     "ecoCode": "D36",
-    "opening": "Queen/'s Gambit Declined: Exchange Variation, Reshevsky Variation",
+    "opening": "Queen's Gambit Declined: Exchange Variation, Reshevsky Variation",
     "moves": "1. d4 Nf6 2. c4 e6 3. Nc3 d5 4. cxd5 exd5 5. Bg5 c6 6. Qc2",
     "fen": "rnbqkb1r/pp3ppp/2p2n2/3p2B1/3P4/2N5/PPQ1PPPP/R3KBNR"
 },
 {
     "ecoCode": "D37",
-    "opening": "Queen/'s Gambit Declined: Barmen Variation",
+    "opening": "Queen's Gambit Declined: Barmen Variation",
     "moves": "1. d4 Nf6 2. c4 e6 3. Nf3 d5 4. Nc3 Nbd7",
     "fen": "r1bqkb1r/pppn1ppp/4pn2/3p4/2PP4/2N2N2/PP2PPPP/R1BQKB1R"
 },
 {
     "ecoCode": "D37",
-    "opening": "Queen/'s Gambit Declined: Harrwitz Attack",
+    "opening": "Queen's Gambit Declined: Harrwitz Attack",
     "moves": "1. d4 Nf6 2. c4 e6 3. Nf3 d5 4. Nc3 Be7 5. Bf4",
     "fen": "rnbqk2r/ppp1bppp/4pn2/3p4/2PP1B2/2N2N2/PP2PPPP/R2QKB1R"
 },
 {
     "ecoCode": "D37",
-    "opening": "Queen/'s Gambit Declined: Harrwitz Attack",
+    "opening": "Queen's Gambit Declined: Harrwitz Attack",
     "moves": "1. d4 Nf6 2. c4 e6 3. Nf3 d5 4. Nc3 Be7 5. Bf4 O-O 6. e3 c5 7. dxc5 Bxc5 8. Qc2 Nc6 9. Rd1 Qa5 10. a3",
     "fen": "r1b2rk1/pp3ppp/2n1pn2/q1bp4/2P2B2/P1N1PN2/1PQ2PPP/3RKB1R"
 },
 {
     "ecoCode": "D37",
-    "opening": "Queen/'s Gambit Declined: Harrwitz Attack",
+    "opening": "Queen's Gambit Declined: Harrwitz Attack",
     "moves": "1. d4 Nf6 2. c4 e6 3. Nf3 d5 4. Nc3 Be7 5. Bf4 O-O 6. e3 c5 7. dxc5 Bxc5 8. Qc2 Nc6 9. a3 Qa5 10. O-O-O",
     "fen": "r1b2rk1/pp3ppp/2n1pn2/q1bp4/2P2B2/P1N1PN2/1PQ2PPP/2KR1B1R"
 },
 {
     "ecoCode": "D37",
-    "opening": "Queen/'s Gambit Declined: Harrwitz Attack, Fianchetto Defense",
+    "opening": "Queen's Gambit Declined: Harrwitz Attack, Fianchetto Defense",
     "moves": "1. d4 d5 2. c4 e6 3. Nc3 Be7 4. Nf3 Nf6 5. Bf4 O-O 6. e3 b6",
     "fen": "rnbq1rk1/p1p1bppp/1p2pn2/3p4/2PP1B2/2N1PN2/PP3PPP/R2QKB1R"
 },
 {
     "ecoCode": "D37",
-    "opening": "Queen/'s Gambit Declined: Harrwitz Attack, Main Line",
+    "opening": "Queen's Gambit Declined: Harrwitz Attack, Main Line",
     "moves": "1. d4 Nf6 2. c4 e6 3. Nf3 d5 4. Nc3 Be7 5. Bf4 O-O 6. e3 c5 7. dxc5 Bxc5",
     "fen": "rnbq1rk1/pp3ppp/4pn2/2bp4/2P2B2/2N1PN2/PP3PPP/R2QKB1R"
 },
 {
     "ecoCode": "D37",
-    "opening": "Queen/'s Gambit Declined: Harrwitz Attack, Orthodox Defense",
+    "opening": "Queen's Gambit Declined: Harrwitz Attack, Orthodox Defense",
     "moves": "1. d4 d5 2. c4 e6 3. Nc3 Nf6 4. Nf3 Be7 5. Bf4 O-O 6. e3 c6",
     "fen": "rnbq1rk1/pp2bppp/2p1pn2/3p4/2PP1B2/2N1PN2/PP3PPP/R2QKB1R"
 },
 {
     "ecoCode": "D37",
-    "opening": "Queen/'s Gambit Declined: Harrwitz Attack, Two Knights Defense",
+    "opening": "Queen's Gambit Declined: Harrwitz Attack, Two Knights Defense",
     "moves": "1. d4 Nf6 2. c4 e6 3. Nf3 d5 4. Nc3 Be7 5. Bf4 O-O 6. e3 Nbd7",
     "fen": "r1bq1rk1/pppnbppp/4pn2/3p4/2PP1B2/2N1PN2/PP3PPP/R2QKB1R"
 },
 {
     "ecoCode": "D37",
-    "opening": "Queen/'s Gambit Declined: Harrwitz Attack, Two Knights Defense, Blockade Line",
+    "opening": "Queen's Gambit Declined: Harrwitz Attack, Two Knights Defense, Blockade Line",
     "moves": "1. d4 Nf6 2. c4 e6 3. Nc3 d5 4. Nf3 Be7 5. Bf4 O-O 6. e3 Nbd7 7. c5",
     "fen": "r1bq1rk1/pppnbppp/4pn2/2Pp4/3P1B2/2N1PN2/PP3PPP/R2QKB1R"
 },
 {
     "ecoCode": "D37",
-    "opening": "Queen/'s Gambit Declined: Knight Defense, Alekhine Gambit",
+    "opening": "Queen's Gambit Declined: Knight Defense, Alekhine Gambit",
     "moves": "1. d4 Nf6 2. c4 e6 3. Nf3 d5 4. Nc3 Nbd7 5. Bg5 h6 6. Bh4 dxc4",
     "fen": "r1bqkb1r/pppn1pp1/4pn1p/8/2pP3B/2N2N2/PP2PPPP/R2QKB1R"
 },
 {
     "ecoCode": "D37",
-    "opening": "Queen/'s Gambit Declined: Miles Variation",
+    "opening": "Queen's Gambit Declined: Miles Variation",
     "moves": "1. d4 Nf6 2. c4 e6 3. Nf3 d5 4. Nc3 Be7 5. Bg5 O-O 6. Qc2",
     "fen": "rnbq1rk1/ppp1bppp/4pn2/3p2B1/2PP4/2N2N2/PPQ1PPPP/R3KB1R"
 },
 {
     "ecoCode": "D37",
-    "opening": "Queen/'s Gambit Declined: Three Knights Variation",
+    "opening": "Queen's Gambit Declined: Three Knights Variation",
     "moves": "1. d4 Nf6 2. c4 e6 3. Nf3 d5 4. Nc3",
     "fen": "rnbqkb1r/ppp2ppp/4pn2/3p4/2PP4/2N2N2/PP2PPPP/R1BQKB1R"
 },
 {
     "ecoCode": "D37",
-    "opening": "Queen/'s Gambit Declined: Vienna Variation",
+    "opening": "Queen's Gambit Declined: Vienna Variation",
     "moves": "1. d4 Nf6 2. c4 e6 3. Nf3 d5 4. Nc3 dxc4",
     "fen": "rnbqkb1r/ppp2ppp/4pn2/8/2pP4/2N2N2/PP2PPPP/R1BQKB1R"
 },
 {
     "ecoCode": "D37",
-    "opening": "Queen/'s Gambit Declined: Vienna Variation, Quiet Variation",
+    "opening": "Queen's Gambit Declined: Vienna Variation, Quiet Variation",
     "moves": "1. d4 Nf6 2. c4 e6 3. Nf3 d5 4. Nc3 dxc4 5. e3",
     "fen": "rnbqkb1r/ppp2ppp/4pn2/8/2pP4/2N1PN2/PP3PPP/R1BQKB1R"
 },
 {
     "ecoCode": "D38",
-    "opening": "Queen/'s Gambit Declined: Ragozin Defense",
+    "opening": "Queen's Gambit Declined: Ragozin Defense",
     "moves": "1. d4 Nf6 2. c4 e6 3. Nf3 d5 4. Nc3 Bb4",
     "fen": "rnbqk2r/ppp2ppp/4pn2/3p4/1bPP4/2N2N2/PP2PPPP/R1BQKB1R"
 },
 {
     "ecoCode": "D38",
-    "opening": "Queen/'s Gambit Declined: Ragozin Defense, Alekhine Variation",
+    "opening": "Queen's Gambit Declined: Ragozin Defense, Alekhine Variation",
     "moves": "1. d4 Nf6 2. c4 e6 3. Nf3 d5 4. Nc3 Bb4 5. Qa4+",
     "fen": "rnbqk2r/ppp2ppp/4pn2/3p4/QbPP4/2N2N2/PP2PPPP/R1B1KB1R"
 },
 {
     "ecoCode": "D38",
-    "opening": "Queen/'s Gambit Declined: Westphalian Variation",
+    "opening": "Queen's Gambit Declined: Westphalian Variation",
     "moves": "1. d4 Nf6 2. c4 e6 3. Nf3 d5 4. Nc3 Bb4 5. Bg5 Nbd7 6. e3 c5",
     "fen": "r1bqk2r/pp1n1ppp/4pn2/2pp2B1/1bPP4/2N1PN2/PP3PPP/R2QKB1R"
 },
 {
     "ecoCode": "D39",
-    "opening": "Queen/'s Gambit Declined: Ragozin Defense, Vienna Variation",
+    "opening": "Queen's Gambit Declined: Ragozin Defense, Vienna Variation",
     "moves": "1. d4 Nf6 2. c4 e6 3. Nf3 d5 4. Nc3 Bb4 5. Bg5 dxc4",
     "fen": "rnbqk2r/ppp2ppp/4pn2/6B1/1bpP4/2N2N2/PP2PPPP/R2QKB1R"
 },
 {
     "ecoCode": "D40",
-    "opening": "Queen/'s Gambit Declined: Semi-Tarrasch Defense",
+    "opening": "Queen's Gambit Declined: Semi-Tarrasch Defense",
     "moves": "1. d4 Nf6 2. c4 e6 3. Nf3 d5 4. Nc3 c5",
     "fen": "rnbqkb1r/pp3ppp/4pn2/2pp4/2PP4/2N2N2/PP2PPPP/R1BQKB1R"
 },
 {
     "ecoCode": "D40",
-    "opening": "Queen/'s Gambit Declined: Semi-Tarrasch Defense, Levenfish Variation",
+    "opening": "Queen's Gambit Declined: Semi-Tarrasch Defense, Levenfish Variation",
     "moves": "1. d4 d5 2. c4 e6 3. Nc3 Nf6 4. Nf3 c5 5. e3 Nc6 6. Bd3 Bd6 7. O-O O-O 8. Qe2 Qe7 9. dxc5 Bxc5 10. e4",
     "fen": "r1b2rk1/pp2qppp/2n1pn2/2bp4/2P1P3/2NB1N2/PP2QPPP/R1B2RK1"
 },
 {
     "ecoCode": "D40",
-    "opening": "Queen/'s Gambit Declined: Semi-Tarrasch Defense, Pillsbury Variation",
+    "opening": "Queen's Gambit Declined: Semi-Tarrasch Defense, Pillsbury Variation",
     "moves": "1. d4 d5 2. c4 e6 3. Nc3 Nf6 4. Nf3 c5 5. Bg5",
     "fen": "rnbqkb1r/pp3ppp/4pn2/2pp2B1/2PP4/2N2N2/PP2PPPP/R2QKB1R"
 },
 {
     "ecoCode": "D40",
-    "opening": "Queen/'s Gambit Declined: Semi-Tarrasch Defense, Symmetrical Variation",
+    "opening": "Queen's Gambit Declined: Semi-Tarrasch Defense, Symmetrical Variation",
     "moves": "1. c4 Nf6 2. Nc3 e6 3. Nf3 d5 4. e3 c5 5. d4 Nc6 6. Bd3 Bd6 7. O-O O-O",
     "fen": "r1bq1rk1/pp3ppp/2nbpn2/2pp4/2PP4/2NBPN2/PP3PPP/R1BQ1RK1"
 },
 {
     "ecoCode": "D41",
-    "opening": "Queen/'s Gambit Declined: Semi-Tarrasch Defense",
+    "opening": "Queen's Gambit Declined: Semi-Tarrasch Defense",
     "moves": "1. d4 Nf6 2. c4 e6 3. Nf3 d5 4. Nc3 c5 5. cxd5",
     "fen": "rnbqkb1r/pp3ppp/4pn2/2pP4/3P4/2N2N2/PP2PPPP/R1BQKB1R"
 },
 {
     "ecoCode": "D41",
-    "opening": "Queen/'s Gambit Declined: Semi-Tarrasch Defense, Exchange Variation",
+    "opening": "Queen's Gambit Declined: Semi-Tarrasch Defense, Exchange Variation",
     "moves": "1. d4 Nf6 2. c4 e6 3. Nf3 d5 4. Nc3 c5 5. cxd5 Nxd5 6. e4",
     "fen": "rnbqkb1r/pp3ppp/4p3/2pn4/3PP3/2N2N2/PP3PPP/R1BQKB1R"
 },
 {
     "ecoCode": "D41",
-    "opening": "Queen/'s Gambit Declined: Semi-Tarrasch Defense, Kmoch Variation",
+    "opening": "Queen's Gambit Declined: Semi-Tarrasch Defense, Kmoch Variation",
     "moves": "1. d4 d5 2. c4 e6 3. Nc3 Nf6 4. Nf3 c5 5. cxd5 Nxd5 6. e4 Nxc3 7. bxc3 cxd4 8. cxd4 Bb4+ 9. Bd2 Bxd2+ 10. Qxd2 O-O 11. Bb5",
     "fen": "rnbq1rk1/pp3ppp/4p3/1B6/3PP3/5N2/P2Q1PPP/R3K2R"
 },
 {
     "ecoCode": "D41",
-    "opening": "Queen/'s Gambit Declined: Semi-Tarrasch Defense, Pillsbury Variation",
+    "opening": "Queen's Gambit Declined: Semi-Tarrasch Defense, Pillsbury Variation",
     "moves": "1. d4 Nf6 2. c4 e6 3. Nf3 d5 4. Nc3 c5 5. cxd5 Nxd5 6. e3",
     "fen": "rnbqkb1r/pp3ppp/4p3/2pn4/3P4/2N1PN2/PP3PPP/R1BQKB1R"
 },
 {
     "ecoCode": "D41",
-    "opening": "Queen/'s Gambit Declined: Semi-Tarrasch Defense, San Sebastian Variation",
+    "opening": "Queen's Gambit Declined: Semi-Tarrasch Defense, San Sebastian Variation",
     "moves": "1. d4 d5 2. c4 e6 3. Nc3 Nf6 4. cxd5 Nxd5 5. e4 Nxc3 6. bxc3 c5 7. Nf3 cxd4 8. cxd4 Bb4+ 9. Bd2 Qa5",
     "fen": "rnb1k2r/pp3ppp/4p3/q7/1b1PP3/5N2/P2B1PPP/R2QKB1R"
 },
 {
     "ecoCode": "D42",
-    "opening": "Queen/'s Gambit Declined: Semi-Tarrasch Defense, Main Line",
+    "opening": "Queen's Gambit Declined: Semi-Tarrasch Defense, Main Line",
     "moves": "1. d4 Nf6 2. c4 e6 3. Nf3 d5 4. Nc3 c5 5. cxd5 Nxd5 6. e3 Nc6 7. Bd3",
     "fen": "r1bqkb1r/pp3ppp/2n1p3/2pn4/3P4/2NBPN2/PP3PPP/R1BQK2R"
 },
 {
     "ecoCode": "D43",
-    "opening": "Queen/'s Gambit Declined: Hastings Variation",
+    "opening": "Queen's Gambit Declined: Hastings Variation",
     "moves": "1. d4 d5 2. c4 c6 3. Nf3 Nf6 4. Nc3 e6 5. Bg5 h6 6. Bxf6 Qxf6 7. Qb3",
     "fen": "rnb1kb1r/pp3pp1/2p1pq1p/3p4/2PP4/1QN2N2/PP2PPPP/R3KB1R"
 },
@@ -17834,409 +17834,409 @@ const ecoOpenings = [
 },
 {
     "ecoCode": "D50",
-    "opening": "Queen/'s Gambit Declined: Been-Koomen Variation",
+    "opening": "Queen's Gambit Declined: Been-Koomen Variation",
     "moves": "1. d4 d5 2. c4 e6 3. Nc3 Nf6 4. Bg5 c5",
     "fen": "rnbqkb1r/pp3ppp/4pn2/2pp2B1/2PP4/2N5/PP2PPPP/R2QKBNR"
 },
 {
     "ecoCode": "D50",
-    "opening": "Queen/'s Gambit Declined: Modern Variation",
+    "opening": "Queen's Gambit Declined: Modern Variation",
     "moves": "1. d4 d5 2. c4 e6 3. Nc3 Nf6 4. Bg5",
     "fen": "rnbqkb1r/ppp2ppp/4pn2/3p2B1/2PP4/2N5/PP2PPPP/R2QKBNR"
 },
 {
     "ecoCode": "D50",
-    "opening": "Queen/'s Gambit Declined: Pseudo-Tarrasch Variation",
+    "opening": "Queen's Gambit Declined: Pseudo-Tarrasch Variation",
     "moves": "1. d4 d5 2. c4 e6 3. Nc3 Nf6 4. Bg5 c5 5. cxd5",
     "fen": "rnbqkb1r/pp3ppp/4pn2/2pP2B1/3P4/2N5/PP2PPPP/R2QKBNR"
 },
 {
     "ecoCode": "D50",
-    "opening": "Queen/'s Gambit Declined: Pseudo-Tarrasch Variation, Canal Variation",
+    "opening": "Queen's Gambit Declined: Pseudo-Tarrasch Variation, Canal Variation",
     "moves": "1. d4 d5 2. c4 e6 3. Nc3 Nf6 4. Bg5 c5 5. cxd5 Qb6",
     "fen": "rnb1kb1r/pp3ppp/1q2pn2/2pP2B1/3P4/2N5/PP2PPPP/R2QKBNR"
 },
 {
     "ecoCode": "D50",
-    "opening": "Queen/'s Gambit Declined: Pseudo-Tarrasch Variation, Primitive Pillsbury Variation",
+    "opening": "Queen's Gambit Declined: Pseudo-Tarrasch Variation, Primitive Pillsbury Variation",
     "moves": "1. d4 d5 2. c4 e6 3. Nc3 Nf6 4. Bg5 c5 5. Nf3 cxd4 6. Qxd4",
     "fen": "rnbqkb1r/pp3ppp/4pn2/3p2B1/2PQ4/2N2N2/PP2PPPP/R3KB1R"
 },
 {
     "ecoCode": "D50",
-    "opening": "Queen/'s Gambit Declined: Semi-Tarrasch Defense, Krause Variation",
+    "opening": "Queen's Gambit Declined: Semi-Tarrasch Defense, Krause Variation",
     "moves": "1. d4 d5 2. c4 e6 3. Nc3 Nf6 4. Bg5 c5 5. Nf3 cxd4 6. Nxd4 e5 7. Ndb5 a6 8. Qa4",
     "fen": "rnbqkb1r/1p3ppp/p4n2/1N1pp1B1/Q1P5/2N5/PP2PPPP/R3KB1R"
 },
 {
     "ecoCode": "D51",
-    "opening": "Queen/'s Gambit Declined: Alekhine Variation",
+    "opening": "Queen's Gambit Declined: Alekhine Variation",
     "moves": "1. c4 e6 2. Nc3 d5 3. d4 Nf6 4. Bg5 Nbd7 5. Nf3 c6 6. e4",
     "fen": "r1bqkb1r/pp1n1ppp/2p1pn2/3p2B1/2PPP3/2N2N2/PP3PPP/R2QKB1R"
 },
 {
     "ecoCode": "D51",
-    "opening": "Queen/'s Gambit Declined: Capablanca Variation, Anti-Cambridge Springs Variation",
+    "opening": "Queen's Gambit Declined: Capablanca Variation, Anti-Cambridge Springs Variation",
     "moves": "1. d4 d5 2. c4 e6 3. Nc3 Nf6 4. Bg5 Nbd7 5. e3 c6 6. a3",
     "fen": "r1bqkb1r/pp1n1ppp/2p1pn2/3p2B1/2PP4/P1N1P3/1P3PPP/R2QKBNR"
 },
 {
     "ecoCode": "D51",
-    "opening": "Queen/'s Gambit Declined: Manhattan Variation",
+    "opening": "Queen's Gambit Declined: Manhattan Variation",
     "moves": "1. d4 d5 2. c4 e6 3. Nc3 Nf6 4. Bg5 Nbd7 5. e3 Bb4",
     "fen": "r1bqk2r/pppn1ppp/4pn2/3p2B1/1bPP4/2N1P3/PP3PPP/R2QKBNR"
 },
 {
     "ecoCode": "D51",
-    "opening": "Queen/'s Gambit Declined: Modern Variation, Knight Defense",
+    "opening": "Queen's Gambit Declined: Modern Variation, Knight Defense",
     "moves": "1. d4 d5 2. c4 e6 3. Nc3 Nf6 4. Bg5 Nbd7",
     "fen": "r1bqkb1r/pppn1ppp/4pn2/3p2B1/2PP4/2N5/PP2PPPP/R2QKBNR"
 },
 {
     "ecoCode": "D51",
-    "opening": "Queen/'s Gambit Declined: Modern Variation, Knight Defense",
+    "opening": "Queen's Gambit Declined: Modern Variation, Knight Defense",
     "moves": "1. d4 d5 2. c4 e6 3. Nc3 Nf6 4. Bg5 Nbd7 5. e3",
     "fen": "r1bqkb1r/pppn1ppp/4pn2/3p2B1/2PP4/2N1P3/PP3PPP/R2QKBNR"
 },
 {
     "ecoCode": "D51",
-    "opening": "Queen/'s Gambit Declined: Modern Variation, Knight Defense",
+    "opening": "Queen's Gambit Declined: Modern Variation, Knight Defense",
     "moves": "1. d4 d5 2. c4 e6 3. Nc3 Nf6 4. Bg5 Nbd7 5. e3 c6",
     "fen": "r1bqkb1r/pp1n1ppp/2p1pn2/3p2B1/2PP4/2N1P3/PP3PPP/R2QKBNR"
 },
 {
     "ecoCode": "D51",
-    "opening": "Queen/'s Gambit Declined: Rochlin Variation",
+    "opening": "Queen's Gambit Declined: Rochlin Variation",
     "moves": "1. d4 d5 2. c4 e6 3. Nc3 Nf6 4. Bg5 Nbd7 5. Nf3 c6 6. Rc1 Qa5 7. Bd2",
     "fen": "r1b1kb1r/pp1n1ppp/2p1pn2/q2p4/2PP4/2N2N2/PP1BPPPP/2RQKB1R"
 },
 {
     "ecoCode": "D52",
-    "opening": "Queen/'s Gambit Declined",
+    "opening": "Queen's Gambit Declined",
     "moves": "1. d4 d5 2. c4 c6 3. Nf3 Nf6 4. Nc3 e6 5. Bg5 Nbd7 6. e3",
     "fen": "r1bqkb1r/pp1n1ppp/2p1pn2/3p2B1/2PP4/2N1PN2/PP3PPP/R2QKB1R"
 },
 {
     "ecoCode": "D52",
-    "opening": "Queen/'s Gambit Declined: Cambridge Springs Defense",
+    "opening": "Queen's Gambit Declined: Cambridge Springs Defense",
     "moves": "1. d4 d5 2. c4 c6 3. Nf3 Nf6 4. Nc3 e6 5. Bg5 Nbd7 6. e3 Qa5",
     "fen": "r1b1kb1r/pp1n1ppp/2p1pn2/q2p2B1/2PP4/2N1PN2/PP3PPP/R2QKB1R"
 },
 {
     "ecoCode": "D52",
-    "opening": "Queen/'s Gambit Declined: Cambridge Springs Defense",
+    "opening": "Queen's Gambit Declined: Cambridge Springs Defense",
     "moves": "1. d4 d5 2. c4 c6 3. Nf3 Nf6 4. Nc3 e6 5. Bg5 Nbd7 6. e3 Qa5 7. cxd5",
     "fen": "r1b1kb1r/pp1n1ppp/2p1pn2/q2P2B1/3P4/2N1PN2/PP3PPP/R2QKB1R"
 },
 {
     "ecoCode": "D52",
-    "opening": "Queen/'s Gambit Declined: Cambridge Springs Defense, Argentine Variation",
+    "opening": "Queen's Gambit Declined: Cambridge Springs Defense, Argentine Variation",
     "moves": "1. d4 d5 2. c4 e6 3. Nc3 Nf6 4. Bg5 Nbd7 5. e3 c6 6. Nf3 Qa5 7. Nd2 Bb4 8. Qc2 O-O 9. Bh4",
     "fen": "r1b2rk1/pp1n1ppp/2p1pn2/q2p4/1bPP3B/2N1P3/PPQN1PPP/R3KB1R"
 },
 {
     "ecoCode": "D52",
-    "opening": "Queen/'s Gambit Declined: Cambridge Springs Defense, Bogoljubov Variation",
+    "opening": "Queen's Gambit Declined: Cambridge Springs Defense, Bogoljubov Variation",
     "moves": "1. d4 d5 2. c4 c6 3. Nf3 Nf6 4. Nc3 e6 5. Bg5 Nbd7 6. e3 Qa5 7. Nd2 Bb4 8. Qc2",
     "fen": "r1b1k2r/pp1n1ppp/2p1pn2/q2p2B1/1bPP4/2N1P3/PPQN1PPP/R3KB1R"
 },
 {
     "ecoCode": "D52",
-    "opening": "Queen/'s Gambit Declined: Cambridge Springs Defense, Capablanca Variation",
+    "opening": "Queen's Gambit Declined: Cambridge Springs Defense, Capablanca Variation",
     "moves": "1. d4 d5 2. c4 e6 3. Nc3 Nf6 4. Bg5 Nbd7 5. e3 c6 6. Nf3 Qa5 7. Bxf6",
     "fen": "r1b1kb1r/pp1n1ppp/2p1pB2/q2p4/2PP4/2N1PN2/PP3PPP/R2QKB1R"
 },
 {
     "ecoCode": "D52",
-    "opening": "Queen/'s Gambit Declined: Cambridge Springs Defense, Rubinstein Variation",
+    "opening": "Queen's Gambit Declined: Cambridge Springs Defense, Rubinstein Variation",
     "moves": "1. d4 d5 2. c4 c6 3. Nf3 Nf6 4. Nc3 e6 5. Bg5 Nbd7 6. e3 Qa5 7. Nd2 dxc4",
     "fen": "r1b1kb1r/pp1n1ppp/2p1pn2/q5B1/2pP4/2N1P3/PP1N1PPP/R2QKB1R"
 },
 {
     "ecoCode": "D52",
-    "opening": "Queen/'s Gambit Declined: Cambridge Springs Defense, Yugoslav Variation",
+    "opening": "Queen's Gambit Declined: Cambridge Springs Defense, Yugoslav Variation",
     "moves": "1. d4 d5 2. c4 c6 3. Nf3 Nf6 4. Nc3 e6 5. Bg5 Nbd7 6. e3 Qa5 7. cxd5 Nxd5",
     "fen": "r1b1kb1r/pp1n1ppp/2p1p3/q2n2B1/3P4/2N1PN2/PP3PPP/R2QKB1R"
 },
 {
     "ecoCode": "D53",
-    "opening": "Queen/'s Gambit Declined",
+    "opening": "Queen's Gambit Declined",
     "moves": "1. d4 d5 2. c4 e6 3. Nc3 Nf6 4. Bg5 Be7",
     "fen": "rnbqk2r/ppp1bppp/4pn2/3p2B1/2PP4/2N5/PP2PPPP/R2QKBNR"
 },
 {
     "ecoCode": "D53",
-    "opening": "Queen/'s Gambit Declined: Lasker Defense",
+    "opening": "Queen's Gambit Declined: Lasker Defense",
     "moves": "1. d4 Nf6 2. c4 e6 3. Nc3 d5 4. Bg5 Be7 5. e3 Ne4",
     "fen": "rnbqk2r/ppp1bppp/4p3/3p2B1/2PPn3/2N1P3/PP3PPP/R2QKBNR"
 },
 {
     "ecoCode": "D53",
-    "opening": "Queen/'s Gambit Declined: Modern Variation, Heral Variation",
+    "opening": "Queen's Gambit Declined: Modern Variation, Heral Variation",
     "moves": "1. d4 d5 2. c4 e6 3. Nc3 Nf6 4. Bg5 Be7 5. Bxf6",
     "fen": "rnbqk2r/ppp1bppp/4pB2/3p4/2PP4/2N5/PP2PPPP/R2QKBNR"
 },
 {
     "ecoCode": "D54",
-    "opening": "Queen/'s Gambit Declined: Neo-Orthodox Variation",
+    "opening": "Queen's Gambit Declined: Neo-Orthodox Variation",
     "moves": "1. d4 Nf6 2. c4 e6 3. Nc3 d5 4. Bg5 Be7 5. e3 O-O 6. Rc1",
     "fen": "rnbq1rk1/ppp1bppp/4pn2/3p2B1/2PP4/2N1P3/PP3PPP/2RQKBNR"
 },
 {
     "ecoCode": "D55",
-    "opening": "Queen/'s Gambit Declined: Anti-Tartakower Variation",
+    "opening": "Queen's Gambit Declined: Anti-Tartakower Variation",
     "moves": "1. d4 Nf6 2. c4 e6 3. Nf3 d5 4. Nc3 Be7 5. Bg5 O-O 6. e3 h6 7. Bxf6",
     "fen": "rnbq1rk1/ppp1bpp1/4pB1p/3p4/2PP4/2N1PN2/PP3PPP/R2QKB1R"
 },
 {
     "ecoCode": "D55",
-    "opening": "Queen/'s Gambit Declined: Anti-Tartakower Variation, Petrosian Variation",
+    "opening": "Queen's Gambit Declined: Anti-Tartakower Variation, Petrosian Variation",
     "moves": "1. d4 Nf6 2. c4 e6 3. Nf3 d5 4. Nc3 Be7 5. Bg5 h6 6. Bxf6 Bxf6 7. e3 O-O 8. Rc1 c6 9. Bd3 Nd7 10. O-O dxc4 11. Bxc4",
     "fen": "r1bq1rk1/pp1n1pp1/2p1pb1p/8/2BP4/2N1PN2/PP3PPP/2RQ1RK1"
 },
 {
     "ecoCode": "D55",
-    "opening": "Queen/'s Gambit Declined: Modern Variation, Normal Line",
+    "opening": "Queen's Gambit Declined: Modern Variation, Normal Line",
     "moves": "1. d4 Nf6 2. c4 e6 3. Nf3 d5 4. Nc3 Be7 5. Bg5 O-O 6. e3",
     "fen": "rnbq1rk1/ppp1bppp/4pn2/3p2B1/2PP4/2N1PN2/PP3PPP/R2QKB1R"
 },
 {
     "ecoCode": "D55",
-    "opening": "Queen/'s Gambit Declined: Neo-Orthodox Variation",
+    "opening": "Queen's Gambit Declined: Neo-Orthodox Variation",
     "moves": "1. d4 Nf6 2. c4 e6 3. Nf3 d5 4. Nc3 Be7 5. Bg5 O-O 6. e3 h6",
     "fen": "rnbq1rk1/ppp1bpp1/4pn1p/3p2B1/2PP4/2N1PN2/PP3PPP/R2QKB1R"
 },
 {
     "ecoCode": "D55",
-    "opening": "Queen/'s Gambit Declined: Neo-Orthodox Variation, Main Line",
+    "opening": "Queen's Gambit Declined: Neo-Orthodox Variation, Main Line",
     "moves": "1. d4 Nf6 2. c4 e6 3. Nf3 d5 4. Nc3 Be7 5. Bg5 h6 6. Bh4 O-O 7. e3",
     "fen": "rnbq1rk1/ppp1bpp1/4pn1p/3p4/2PP3B/2N1PN2/PP3PPP/R2QKB1R"
 },
 {
     "ecoCode": "D55",
-    "opening": "Queen/'s Gambit Declined: Pillsbury Attack",
+    "opening": "Queen's Gambit Declined: Pillsbury Attack",
     "moves": "1. d4 Nf6 2. c4 e6 3. Nf3 b6 4. Nc3 d5 5. cxd5 exd5 6. Bg5 Be7 7. e3 O-O 8. Bd3 Bb7 9. Ne5",
     "fen": "rn1q1rk1/pbp1bppp/1p3n2/3pN1B1/3P4/2NBP3/PP3PPP/R2QK2R"
 },
 {
     "ecoCode": "D56",
-    "opening": "Queen/'s Gambit Declined: Lasker Defense",
+    "opening": "Queen's Gambit Declined: Lasker Defense",
     "moves": "1. d4 d5 2. c4 e6 3. Nc3 Be7 4. Nf3 Nf6 5. Bg5 h6 6. Bh4 O-O 7. e3 Ne4",
     "fen": "rnbq1rk1/ppp1bpp1/4p2p/3p4/2PPn2B/2N1PN2/PP3PPP/R2QKB1R"
 },
 {
     "ecoCode": "D56",
-    "opening": "Queen/'s Gambit Declined: Lasker Defense, Russian Variation",
+    "opening": "Queen's Gambit Declined: Lasker Defense, Russian Variation",
     "moves": "1. d4 d5 2. c4 e6 3. Nc3 Nf6 4. Bg5 Be7 5. e3 O-O 6. Nf3 h6 7. Bh4 Ne4 8. Bxe7 Qxe7 9. Qc2 Nf6 10. Bd3 dxc4 11. Bxc4 c5 12. O-O Nc6 13. Rfd1 Bd7",
     "fen": "r4rk1/pp1bqpp1/2n1pn1p/2p5/2BP4/2N1PN2/PPQ2PPP/R2R2K1"
 },
 {
     "ecoCode": "D56",
-    "opening": "Queen/'s Gambit Declined: Lasker Defense, Teichmann Variation",
+    "opening": "Queen's Gambit Declined: Lasker Defense, Teichmann Variation",
     "moves": "1. d4 Nf6 2. c4 e6 3. Nf3 d5 4. Nc3 Be7 5. Bg5 h6 6. Bh4 O-O 7. e3 Ne4 8. Bxe7 Qxe7 9. Qc2",
     "fen": "rnb2rk1/ppp1qpp1/4p2p/3p4/2PPn3/2N1PN2/PPQ2PPP/R3KB1R"
 },
 {
     "ecoCode": "D57",
-    "opening": "Queen/'s Gambit Declined: Lasker Defense, Bernstein Variation",
+    "opening": "Queen's Gambit Declined: Lasker Defense, Bernstein Variation",
     "moves": "1. d4 Nf6 2. c4 e6 3. Nc3 d5 4. Bg5 Be7 5. e3 h6 6. Bh4 O-O 7. Nf3 Ne4 8. Bxe7 Qxe7 9. cxd5 Nxc3 10. bxc3 exd5 11. Qb3 Qd6",
     "fen": "rnb2rk1/ppp2pp1/3q3p/3p4/3P4/1QP1PN2/P4PPP/R3KB1R"
 },
 {
     "ecoCode": "D57",
-    "opening": "Queen/'s Gambit Declined: Lasker Defense, Bernstein Variation, Mar del Plata Gambit",
+    "opening": "Queen's Gambit Declined: Lasker Defense, Bernstein Variation, Mar del Plata Gambit",
     "moves": "1. d4 d5 2. c4 e6 3. Nc3 Nf6 4. Bg5 Be7 5. e3 O-O 6. Nf3 h6 7. Bh4 Ne4 8. Bxe7 Qxe7 9. cxd5 Nxc3 10. bxc3 exd5 11. Qb3 Rd8 12. c4 Be6",
     "fen": "rn1r2k1/ppp1qpp1/4b2p/3p4/2PP4/1Q2PN2/P4PPP/R3KB1R"
 },
 {
     "ecoCode": "D57",
-    "opening": "Queen/'s Gambit Declined: Lasker Defense, Main Line",
+    "opening": "Queen's Gambit Declined: Lasker Defense, Main Line",
     "moves": "1. d4 d5 2. c4 e6 3. Nc3 Be7 4. Nf3 Nf6 5. Bg5 h6 6. Bh4 O-O 7. e3 Ne4 8. Bxe7 Qxe7 9. cxd5 Nxc3 10. bxc3",
     "fen": "rnb2rk1/ppp1qpp1/4p2p/3P4/3P4/2P1PN2/P4PPP/R2QKB1R"
 },
 {
     "ecoCode": "D58",
-    "opening": "Queen/'s Gambit Declined: Tartakower Defense",
+    "opening": "Queen's Gambit Declined: Tartakower Defense",
     "moves": "1. d4 Nf6 2. c4 e6 3. Nf3 d5 4. Nc3 Be7 5. Bg5 h6 6. Bh4 O-O 7. e3 b6",
     "fen": "rnbq1rk1/p1p1bpp1/1p2pn1p/3p4/2PP3B/2N1PN2/PP3PPP/R2QKB1R"
 },
 {
     "ecoCode": "D58",
-    "opening": "Queen/'s Gambit Declined: Tartakower Defense, Exchange Variation",
+    "opening": "Queen's Gambit Declined: Tartakower Defense, Exchange Variation",
     "moves": "1. d4 d5 2. c4 e6 3. Nc3 Be7 4. Nf3 Nf6 5. Bg5 h6 6. Bh4 O-O 7. e3 b6 8. cxd5 exd5",
     "fen": "rnbq1rk1/p1p1bpp1/1p3n1p/3p4/3P3B/2N1PN2/PP3PPP/R2QKB1R"
 },
 {
     "ecoCode": "D59",
-    "opening": "Queen/'s Gambit Declined: Tartakower Defense",
+    "opening": "Queen's Gambit Declined: Tartakower Defense",
     "moves": "1. d4 d5 2. c4 e6 3. Nc3 Be7 4. Nf3 Nf6 5. Bg5 h6 6. Bh4 O-O 7. e3 b6 8. cxd5 Nxd5 9. Bxe7 Qxe7 10. Nxd5 exd5 11. Rc1 Be6",
     "fen": "rn3rk1/p1p1qpp1/1p2b2p/3p4/3P4/4PN2/PP3PPP/2RQKB1R"
 },
 {
     "ecoCode": "D59",
-    "opening": "Queen/'s Gambit Declined: Tartakower Defense, Makogonov Exchange Variation",
+    "opening": "Queen's Gambit Declined: Tartakower Defense, Makogonov Exchange Variation",
     "moves": "1. d4 d5 2. c4 e6 3. Nc3 Be7 4. Nf3 Nf6 5. Bg5 h6 6. Bh4 O-O 7. e3 b6 8. cxd5 Nxd5",
     "fen": "rnbq1rk1/p1p1bpp1/1p2p2p/3n4/3P3B/2N1PN2/PP3PPP/R2QKB1R"
 },
 {
     "ecoCode": "D60",
-    "opening": "Queen/'s Gambit Declined: Orthodox Defense",
+    "opening": "Queen's Gambit Declined: Orthodox Defense",
     "moves": "1. d4 Nf6 2. c4 e6 3. Nf3 d5 4. Nc3 Be7 5. Bg5 O-O 6. e3 Nbd7",
     "fen": "r1bq1rk1/pppnbppp/4pn2/3p2B1/2PP4/2N1PN2/PP3PPP/R2QKB1R"
 },
 {
     "ecoCode": "D60",
-    "opening": "Queen/'s Gambit Declined: Orthodox Defense, Botvinnik Variation",
+    "opening": "Queen's Gambit Declined: Orthodox Defense, Botvinnik Variation",
     "moves": "1. d4 Nf6 2. c4 e6 3. Nf3 d5 4. Nc3 Be7 5. Bg5 O-O 6. e3 Nbd7 7. Bd3",
     "fen": "r1bq1rk1/pppnbppp/4pn2/3p2B1/2PP4/2NBPN2/PP3PPP/R2QK2R"
 },
 {
     "ecoCode": "D60",
-    "opening": "Queen/'s Gambit Declined: Orthodox Defense, Rauzer Variation",
+    "opening": "Queen's Gambit Declined: Orthodox Defense, Rauzer Variation",
     "moves": "1. d4 d5 2. Nf3 Nf6 3. c4 e6 4. Nc3 Be7 5. Bg5 O-O 6. e3 Nbd7 7. Qb3",
     "fen": "r1bq1rk1/pppnbppp/4pn2/3p2B1/2PP4/1QN1PN2/PP3PPP/R3KB1R"
 },
 {
     "ecoCode": "D61",
-    "opening": "Queen/'s Gambit Declined: Orthodox Defense, Rubinstein Variation",
+    "opening": "Queen's Gambit Declined: Orthodox Defense, Rubinstein Variation",
     "moves": "1. d4 Nf6 2. c4 e6 3. Nf3 d5 4. Nc3 Be7 5. Bg5 O-O 6. e3 Nbd7 7. Qc2",
     "fen": "r1bq1rk1/pppnbppp/4pn2/3p2B1/2PP4/2N1PN2/PPQ2PPP/R3KB1R"
 },
 {
     "ecoCode": "D62",
-    "opening": "Queen/'s Gambit Declined: Orthodox Defense, Rubinstein Variation, Flohr Line",
+    "opening": "Queen's Gambit Declined: Orthodox Defense, Rubinstein Variation, Flohr Line",
     "moves": "1. d4 Nf6 2. c4 e6 3. Nf3 d5 4. Nc3 Be7 5. Bg5 O-O 6. e3 Nbd7 7. Qc2 c5 8. cxd5",
     "fen": "r1bq1rk1/pp1nbppp/4pn2/2pP2B1/3P4/2N1PN2/PPQ2PPP/R3KB1R"
 },
 {
     "ecoCode": "D63",
-    "opening": "Queen/'s Gambit Declined: Orthodox Defense, Capablanca Variation",
+    "opening": "Queen's Gambit Declined: Orthodox Defense, Capablanca Variation",
     "moves": "1. Nf3 d5 2. d4 Nf6 3. c4 e6 4. Nc3 Be7 5. Bg5 O-O 6. e3 Nbd7 7. Rc1 b6 8. cxd5 exd5 9. Bb5",
     "fen": "r1bq1rk1/p1pnbppp/1p3n2/1B1p2B1/3P4/2N1PN2/PP3PPP/2RQK2R"
 },
 {
     "ecoCode": "D63",
-    "opening": "Queen/'s Gambit Declined: Orthodox Defense, Henneberger Variation",
+    "opening": "Queen's Gambit Declined: Orthodox Defense, Henneberger Variation",
     "moves": "1. d4 Nf6 2. c4 e6 3. Nf3 d5 4. Nc3 Be7 5. Bg5 O-O 6. e3 Nbd7 7. Rc1 a6",
     "fen": "r1bq1rk1/1ppnbppp/p3pn2/3p2B1/2PP4/2N1PN2/PP3PPP/2RQKB1R"
 },
 {
     "ecoCode": "D63",
-    "opening": "Queen/'s Gambit Declined: Orthodox Defense, Main Line",
+    "opening": "Queen's Gambit Declined: Orthodox Defense, Main Line",
     "moves": "1. d4 Nf6 2. c4 e6 3. Nf3 d5 4. Nc3 Be7 5. Bg5 O-O 6. e3 Nbd7 7. Rc1",
     "fen": "r1bq1rk1/pppnbppp/4pn2/3p2B1/2PP4/2N1PN2/PP3PPP/2RQKB1R"
 },
 {
     "ecoCode": "D63",
-    "opening": "Queen/'s Gambit Declined: Orthodox Defense, Main Line",
+    "opening": "Queen's Gambit Declined: Orthodox Defense, Main Line",
     "moves": "1. d4 Nf6 2. c4 e6 3. Nf3 d5 4. Nc3 Be7 5. Bg5 O-O 6. e3 Nbd7 7. Rc1 c6",
     "fen": "r1bq1rk1/pp1nbppp/2p1pn2/3p2B1/2PP4/2N1PN2/PP3PPP/2RQKB1R"
 },
 {
     "ecoCode": "D63",
-    "opening": "Queen/'s Gambit Declined: Orthodox Defense, Pillsbury Variation",
+    "opening": "Queen's Gambit Declined: Orthodox Defense, Pillsbury Variation",
     "moves": "1. d4 Nf6 2. c4 e6 3. Nc3 d5 4. Bg5 Be7 5. e3 O-O 6. Nf3 Nbd7 7. Rc1 b6 8. cxd5 exd5 9. Bd3",
     "fen": "r1bq1rk1/p1pnbppp/1p3n2/3p2B1/3P4/2NBPN2/PP3PPP/2RQK2R"
 },
 {
     "ecoCode": "D63",
-    "opening": "Queen/'s Gambit Declined: Orthodox Defense, Swiss, Karlsbad Variation",
+    "opening": "Queen's Gambit Declined: Orthodox Defense, Swiss, Karlsbad Variation",
     "moves": "1. d4 Nf6 2. c4 e6 3. Nf3 d5 4. Nc3 Be7 5. Bg5 O-O 6. e3 Nbd7 7. Rc1 a6 8. cxd5",
     "fen": "r1bq1rk1/1ppnbppp/p3pn2/3P2B1/3P4/2N1PN2/PP3PPP/2RQKB1R"
 },
 {
     "ecoCode": "D64",
-    "opening": "Queen/'s Gambit Declined: Orthodox Defense, Rubinstein Attack",
+    "opening": "Queen's Gambit Declined: Orthodox Defense, Rubinstein Attack",
     "moves": "1. d4 Nf6 2. c4 e6 3. Nc3 d5 4. Nf3 Be7 5. Bg5 O-O 6. e3 Nbd7 7. Rc1 c6 8. a3 a6 9. Qc2",
     "fen": "r1bq1rk1/1p1nbppp/p1p1pn2/3p2B1/2PP4/P1N1PN2/1PQ2PPP/2R1KB1R"
 },
 {
     "ecoCode": "D64",
-    "opening": "Queen/'s Gambit Declined: Orthodox Defense, Rubinstein Attack",
+    "opening": "Queen's Gambit Declined: Orthodox Defense, Rubinstein Attack",
     "moves": "1. d4 Nf6 2. c4 e6 3. Nf3 d5 4. Nc3 Be7 5. Bg5 O-O 6. e3 Nbd7 7. Rc1 c6 8. Qc2",
     "fen": "r1bq1rk1/pp1nbppp/2p1pn2/3p2B1/2PP4/2N1PN2/PPQ2PPP/2R1KB1R"
 },
 {
     "ecoCode": "D64",
-    "opening": "Queen/'s Gambit Declined: Orthodox Defense, Rubinstein Attack",
+    "opening": "Queen's Gambit Declined: Orthodox Defense, Rubinstein Attack",
     "moves": "1. d4 Nf6 2. c4 e6 3. Nf3 d5 4. Nc3 Be7 5. Bg5 O-O 6. e3 Nbd7 7. Rc1 c6 8. Qc2 a6",
     "fen": "r1bq1rk1/1p1nbppp/p1p1pn2/3p2B1/2PP4/2N1PN2/PPQ2PPP/2R1KB1R"
 },
 {
     "ecoCode": "D64",
-    "opening": "Queen/'s Gambit Declined: Orthodox Defense, Rubinstein Attack",
+    "opening": "Queen's Gambit Declined: Orthodox Defense, Rubinstein Attack",
     "moves": "1. Nf3 d5 2. d4 Nf6 3. c4 e6 4. Nc3 Be7 5. Bg5 O-O 6. e3 Nbd7 7. Rc1 c6 8. Qc2 Ne4",
     "fen": "r1bq1rk1/pp1nbppp/2p1p3/3p2B1/2PPn3/2N1PN2/PPQ2PPP/2R1KB1R"
 },
 {
     "ecoCode": "D65",
-    "opening": "Queen/'s Gambit Declined: Orthodox Defense, Rubinstein Attack",
+    "opening": "Queen's Gambit Declined: Orthodox Defense, Rubinstein Attack",
     "moves": "1. d4 d5 2. Nf3 Nf6 3. c4 e6 4. Nc3 Be7 5. Bg5 O-O 6. e3 Nbd7 7. Rc1 c6 8. Qc2 a6 9. cxd5",
     "fen": "r1bq1rk1/1p1nbppp/p1p1pn2/3P2B1/3P4/2N1PN2/PPQ2PPP/2R1KB1R"
 },
 {
     "ecoCode": "D66",
-    "opening": "Queen/'s Gambit Declined: Orthodox Defense, Bd3 Line",
+    "opening": "Queen's Gambit Declined: Orthodox Defense, Bd3 Line",
     "moves": "1. d4 d5 2. c4 e6 3. Nc3 Nf6 4. Bg5 Be7 5. e3 O-O 6. Nf3 Nbd7 7. Rc1 c6 8. Bd3",
     "fen": "r1bq1rk1/pp1nbppp/2p1pn2/3p2B1/2PP4/2NBPN2/PP3PPP/2RQK2R"
 },
 {
     "ecoCode": "D66",
-    "opening": "Queen/'s Gambit Declined: Orthodox Defense, Fianchetto Variation",
+    "opening": "Queen's Gambit Declined: Orthodox Defense, Fianchetto Variation",
     "moves": "1. d4 d5 2. c4 e6 3. Nc3 Nf6 4. Bg5 c6 5. Nf3 Be7 6. e3 Nbd7 7. Rc1 O-O 8. Bd3 dxc4 9. Bxc4 b5",
     "fen": "r1bq1rk1/p2nbppp/2p1pn2/1p4B1/2BP4/2N1PN2/PP3PPP/2RQK2R"
 },
 {
     "ecoCode": "D67",
-    "opening": "Queen/'s Gambit Declined: Orthodox Defense, Alekhine Variation",
+    "opening": "Queen's Gambit Declined: Orthodox Defense, Alekhine Variation",
     "moves": "1. d4 d5 2. c4 e6 3. Nc3 Nf6 4. Bg5 Be7 5. e3 O-O 6. Nf3 Nbd7 7. Rc1 c6 8. Bd3 dxc4 9. Bxc4 Nd5 10. Bxe7 Qxe7 11. Ne4",
     "fen": "r1b2rk1/pp1nqppp/2p1p3/3n4/2BPN3/4PN2/PP3PPP/2RQK2R"
 },
 {
     "ecoCode": "D67",
-    "opening": "Queen/'s Gambit Declined: Orthodox Defense, Bd3 Line",
+    "opening": "Queen's Gambit Declined: Orthodox Defense, Bd3 Line",
     "moves": "1. d4 d5 2. c4 e6 3. Nc3 Nf6 4. Bg5 Be7 5. e3 O-O 6. Nf3 Nbd7 7. Rc1 c6 8. Bd3 dxc4 9. Bxc4 Nd5 10. Bxe7 Qxe7",
     "fen": "r1b2rk1/pp1nqppp/2p1p3/3n4/2BP4/2N1PN2/PP3PPP/2RQK2R"
 },
 {
     "ecoCode": "D67",
-    "opening": "Queen/'s Gambit Declined: Orthodox Defense, Capablanca System",
+    "opening": "Queen's Gambit Declined: Orthodox Defense, Capablanca System",
     "moves": "1. d4 d5 2. c4 e6 3. Nc3 Nf6 4. Bg5 Be7 5. e3 O-O 6. Nf3 Nbd7 7. Rc1 c6 8. Bd3 dxc4 9. Bxc4 Nd5",
     "fen": "r1bq1rk1/pp1nbppp/2p1p3/3n2B1/2BP4/2N1PN2/PP3PPP/2RQK2R"
 },
 {
     "ecoCode": "D67",
-    "opening": "Queen/'s Gambit Declined: Orthodox Defense, Janowski Variation",
+    "opening": "Queen's Gambit Declined: Orthodox Defense, Janowski Variation",
     "moves": "1. d4 d5 2. Nf3 Nf6 3. c4 e6 4. Nc3 Be7 5. Bg5 O-O 6. e3 Nbd7 7. Rc1 c6 8. Bd3 dxc4 9. Bxc4 Nd5 10. h4",
     "fen": "r1bq1rk1/pp1nbppp/2p1p3/3n2B1/2BP3P/2N1PN2/PP3PP1/2RQK2R"
 },
 {
     "ecoCode": "D67",
-    "opening": "Queen/'s Gambit Declined: Orthodox Defense, Main Line",
+    "opening": "Queen's Gambit Declined: Orthodox Defense, Main Line",
     "moves": "1. d4 d5 2. c4 e6 3. Nc3 Nf6 4. Bg5 Be7 5. e3 O-O 6. Nf3 Nbd7 7. Rc1 c6 8. Bd3 dxc4 9. Bxc4 Nd5 10. Bxe7 Qxe7 11. O-O",
     "fen": "r1b2rk1/pp1nqppp/2p1p3/3n4/2BP4/2N1PN2/PP3PPP/2RQ1RK1"
 },
 {
     "ecoCode": "D68",
-    "opening": "Queen/'s Gambit Declined: Orthodox Defense, Classical Variation",
+    "opening": "Queen's Gambit Declined: Orthodox Defense, Classical Variation",
     "moves": "1. d4 d5 2. c4 e6 3. Nc3 Nf6 4. Bg5 Be7 5. e3 O-O 6. Nf3 Nbd7 7. Rc1 c6 8. Bd3 dxc4 9. Bxc4 Nd5 10. Bxe7 Qxe7 11. O-O Nxc3 12. Rxc3 e5",
     "fen": "r1b2rk1/pp1nqppp/2p5/4p3/2BP4/2R1PN2/PP3PPP/3Q1RK1"
 },
 {
     "ecoCode": "D68",
-    "opening": "Queen/'s Gambit Declined: Orthodox Defense, Classical Variation",
+    "opening": "Queen's Gambit Declined: Orthodox Defense, Classical Variation",
     "moves": "1. d4 d5 2. c4 e6 3. Nf3 Nf6 4. Nc3 Be7 5. Bg5 O-O 6. e3 Nbd7 7. Rc1 c6 8. Bd3 dxc4 9. Bxc4 Nd5 10. Bxe7 Qxe7 11. O-O Nxc3 12. Rxc3 e5 13. Qb1",
     "fen": "r1b2rk1/pp1nqppp/2p5/4p3/2BP4/2R1PN2/PP3PPP/1Q3RK1"
 },
 {
     "ecoCode": "D68",
-    "opening": "Queen/'s Gambit Declined: Orthodox Defense, Classical Variation",
+    "opening": "Queen's Gambit Declined: Orthodox Defense, Classical Variation",
     "moves": "1. d4 Nf6 2. c4 e6 3. Nf3 d5 4. Nc3 Be7 5. Bg5 O-O 6. e3 Nbd7 7. Rc1 c6 8. Bd3 dxc4 9. Bxc4 Nd5 10. Bxe7 Qxe7 11. O-O Nxc3 12. Rxc3 e5 13. Qc2",
     "fen": "r1b2rk1/pp1nqppp/2p5/4p3/2BP4/2R1PN2/PPQ2PPP/5RK1"
 },
 {
     "ecoCode": "D69",
-    "opening": "Queen/'s Gambit Declined: Orthodox Defense, Classical Variation",
+    "opening": "Queen's Gambit Declined: Orthodox Defense, Classical Variation",
     "moves": "1. d4 d5 2. c4 e6 3. Nc3 Nf6 4. Bg5 Be7 5. e3 O-O 6. Nf3 Nbd7 7. Rc1 c6 8. Bd3 dxc4 9. Bxc4 Nd5 10. Bxe7 Qxe7 11. O-O Nxc3 12. Rxc3 e5 13. dxe5 Nxe5 14. Nxe5 Qxe5",
     "fen": "r1b2rk1/pp3ppp/2p5/4q3/2B5/2R1P3/PP3PPP/3Q1RK1"
 },
@@ -18920,289 +18920,289 @@ const ecoOpenings = [
 },
 {
     "ecoCode": "E12",
-    "opening": "Queen/'s Indian Defense",
+    "opening": "Queen's Indian Defense",
     "moves": "1. d4 Nf6 2. c4 e6 3. Nf3 b6",
     "fen": "rnbqkb1r/p1pp1ppp/1p2pn2/8/2PP4/5N2/PP2PPPP/RNBQKB1R"
 },
 {
     "ecoCode": "E12",
-    "opening": "Queen/'s Indian Defense: Kasparov Variation",
+    "opening": "Queen's Indian Defense: Kasparov Variation",
     "moves": "1. d4 Nf6 2. c4 e6 3. Nf3 b6 4. Nc3",
     "fen": "rnbqkb1r/p1pp1ppp/1p2pn2/8/2PP4/2N2N2/PP2PPPP/R1BQKB1R"
 },
 {
     "ecoCode": "E12",
-    "opening": "Queen/'s Indian Defense: Kasparov Variation, Botvinnik Attack",
+    "opening": "Queen's Indian Defense: Kasparov Variation, Botvinnik Attack",
     "moves": "1. d4 Nf6 2. c4 e6 3. Nf3 b6 4. Nc3 Bb7 5. Bg5 h6 6. Bh4 g5 7. Bg3 Nh5",
     "fen": "rn1qkb1r/pbpp1p2/1p2p2p/6pn/2PP4/2N2NB1/PP2PPPP/R2QKB1R"
 },
 {
     "ecoCode": "E12",
-    "opening": "Queen/'s Indian Defense: Kasparov-Petrosian Variation",
+    "opening": "Queen's Indian Defense: Kasparov-Petrosian Variation",
     "moves": "1. d4 Nf6 2. c4 e6 3. Nf3 b6 4. a3 Bb7 5. Nc3",
     "fen": "rn1qkb1r/pbpp1ppp/1p2pn2/8/2PP4/P1N2N2/1P2PPPP/R1BQKB1R"
 },
 {
     "ecoCode": "E12",
-    "opening": "Queen/'s Indian Defense: Kasparov-Petrosian Variation, Andersson Variation",
+    "opening": "Queen's Indian Defense: Kasparov-Petrosian Variation, Andersson Variation",
     "moves": "1. d4 Nf6 2. c4 e6 3. Nf3 b6 4. a3 Bb7 5. Nc3 Ne4",
     "fen": "rn1qkb1r/pbpp1ppp/1p2p3/8/2PPn3/P1N2N2/1P2PPPP/R1BQKB1R"
 },
 {
     "ecoCode": "E12",
-    "opening": "Queen/'s Indian Defense: Kasparov-Petrosian Variation, Classical Variation",
+    "opening": "Queen's Indian Defense: Kasparov-Petrosian Variation, Classical Variation",
     "moves": "1. d4 Nf6 2. c4 e6 3. Nf3 b6 4. a3 Bb7 5. Nc3 d5 6. cxd5 exd5",
     "fen": "rn1qkb1r/pbp2ppp/1p3n2/3p4/3P4/P1N2N2/1P2PPPP/R1BQKB1R"
 },
 {
     "ecoCode": "E12",
-    "opening": "Queen/'s Indian Defense: Kasparov-Petrosian Variation, Hedgehog Variation",
+    "opening": "Queen's Indian Defense: Kasparov-Petrosian Variation, Hedgehog Variation",
     "moves": "1. d4 Nf6 2. c4 e6 3. Nf3 b6 4. a3 Bb7 5. Nc3 g6",
     "fen": "rn1qkb1r/pbpp1p1p/1p2pnp1/8/2PP4/P1N2N2/1P2PPPP/R1BQKB1R"
 },
 {
     "ecoCode": "E12",
-    "opening": "Queen/'s Indian Defense: Kasparov-Petrosian Variation, Kasparov Attack",
+    "opening": "Queen's Indian Defense: Kasparov-Petrosian Variation, Kasparov Attack",
     "moves": "1. d4 Nf6 2. c4 e6 3. Nf3 b6 4. a3 Bb7 5. Nc3 d5 6. cxd5 Nxd5 7. Qc2",
     "fen": "rn1qkb1r/pbp2ppp/1p2p3/3n4/3P4/P1N2N2/1PQ1PPPP/R1B1KB1R"
 },
 {
     "ecoCode": "E12",
-    "opening": "Queen/'s Indian Defense: Kasparov-Petrosian Variation, Main Line",
+    "opening": "Queen's Indian Defense: Kasparov-Petrosian Variation, Main Line",
     "moves": "1. d4 Nf6 2. c4 e6 3. Nf3 b6 4. a3 Bb7 5. Nc3 d5",
     "fen": "rn1qkb1r/pbp2ppp/1p2pn2/3p4/2PP4/P1N2N2/1P2PPPP/R1BQKB1R"
 },
 {
     "ecoCode": "E12",
-    "opening": "Queen/'s Indian Defense: Kasparov-Petrosian Variation, Marco Defense",
+    "opening": "Queen's Indian Defense: Kasparov-Petrosian Variation, Marco Defense",
     "moves": "1. d4 Nf6 2. c4 e6 3. Nf3 b6 4. a3 Bb7 5. Nc3 Be7",
     "fen": "rn1qk2r/pbppbppp/1p2pn2/8/2PP4/P1N2N2/1P2PPPP/R1BQKB1R"
 },
 {
     "ecoCode": "E12",
-    "opening": "Queen/'s Indian Defense: Kasparov-Petrosian Variation, Modern Variation",
+    "opening": "Queen's Indian Defense: Kasparov-Petrosian Variation, Modern Variation",
     "moves": "1. d4 Nf6 2. c4 e6 3. Nf3 b6 4. a3 Bb7 5. Nc3 d5 6. cxd5 Nxd5",
     "fen": "rn1qkb1r/pbp2ppp/1p2p3/3n4/3P4/P1N2N2/1P2PPPP/R1BQKB1R"
 },
 {
     "ecoCode": "E12",
-    "opening": "Queen/'s Indian Defense: Kasparov-Petrosian Variation, Petrosian Attack",
+    "opening": "Queen's Indian Defense: Kasparov-Petrosian Variation, Petrosian Attack",
     "moves": "1. d4 Nf6 2. c4 e6 3. Nf3 b6 4. a3 Bb7 5. Nc3 d5 6. cxd5 Nxd5 7. e3",
     "fen": "rn1qkb1r/pbp2ppp/1p2p3/3n4/3P4/P1N1PN2/1P3PPP/R1BQKB1R"
 },
 {
     "ecoCode": "E12",
-    "opening": "Queen/'s Indian Defense: Kasparov-Petrosian Variation, Polovodin Gambit",
+    "opening": "Queen's Indian Defense: Kasparov-Petrosian Variation, Polovodin Gambit",
     "moves": "1. d4 Nf6 2. c4 e6 3. Nf3 b6 4. Nc3 Bb7 5. a3 d5 6. cxd5 Nxd5 7. e4",
     "fen": "rn1qkb1r/pbp2ppp/1p2p3/3n4/3PP3/P1N2N2/1P3PPP/R1BQKB1R"
 },
 {
     "ecoCode": "E12",
-    "opening": "Queen/'s Indian Defense: Kasparov-Petrosian Variation, Rashkovsky Attack",
+    "opening": "Queen's Indian Defense: Kasparov-Petrosian Variation, Rashkovsky Attack",
     "moves": "1. d4 Nf6 2. c4 e6 3. Nf3 b6 4. a3 Bb7 5. Nc3 d5 6. cxd5 Nxd5 7. Qa4+",
     "fen": "rn1qkb1r/pbp2ppp/1p2p3/3n4/Q2P4/P1N2N2/1P2PPPP/R1B1KB1R"
 },
 {
     "ecoCode": "E12",
-    "opening": "Queen/'s Indian Defense: Kasparov-Petrosian Variation, Romanishin Attack",
+    "opening": "Queen's Indian Defense: Kasparov-Petrosian Variation, Romanishin Attack",
     "moves": "1. d4 Nf6 2. c4 e6 3. Nf3 b6 4. a3 Bb7 5. Nc3 d5 6. cxd5 Nxd5 7. Bd2",
     "fen": "rn1qkb1r/pbp2ppp/1p2p3/3n4/3P4/P1N2N2/1P1BPPPP/R2QKB1R"
 },
 {
     "ecoCode": "E12",
-    "opening": "Queen/'s Indian Defense: Miles Variation",
+    "opening": "Queen's Indian Defense: Miles Variation",
     "moves": "1. d4 Nf6 2. c4 e6 3. Nf3 b6 4. Bf4",
     "fen": "rnbqkb1r/p1pp1ppp/1p2pn2/8/2PP1B2/5N2/PP2PPPP/RN1QKB1R"
 },
 {
     "ecoCode": "E12",
-    "opening": "Queen/'s Indian Defense: Petrosian Variation",
+    "opening": "Queen's Indian Defense: Petrosian Variation",
     "moves": "1. d4 Nf6 2. c4 e6 3. Nf3 b6 4. a3",
     "fen": "rnbqkb1r/p1pp1ppp/1p2pn2/8/2PP4/P4N2/1P2PPPP/RNBQKB1R"
 },
 {
     "ecoCode": "E12",
-    "opening": "Queen/'s Indian Defense: Petrosian Variation, Farago Defense",
+    "opening": "Queen's Indian Defense: Petrosian Variation, Farago Defense",
     "moves": "1. d4 Nf6 2. c4 e6 3. Nf3 b6 4. a3 Ba6 5. Qc2 Bb7",
     "fen": "rn1qkb1r/pbpp1ppp/1p2pn2/8/2PP4/P4N2/1PQ1PPPP/RNB1KB1R"
 },
 {
     "ecoCode": "E13",
-    "opening": "Queen/'s Indian Defense: Kasparov Variation",
+    "opening": "Queen's Indian Defense: Kasparov Variation",
     "moves": "1. d4 Nf6 2. c4 e6 3. Nf3 b6 4. Nc3 Bb4 5. Bg5 h6 6. Bh4 Bb7",
     "fen": "rn1qk2r/pbpp1pp1/1p2pn1p/8/1bPP3B/2N2N2/PP2PPPP/R2QKB1R"
 },
 {
     "ecoCode": "E14",
-    "opening": "Queen/'s Indian Defense: Averbakh Variation",
+    "opening": "Queen's Indian Defense: Averbakh Variation",
     "moves": "1. Nf3 c5 2. b3 Nf6 3. Bb2 e6 4. e3 Be7 5. d4 O-O 6. Bd3 b6 7. O-O Bb7 8. c4 cxd4 9. Nxd4",
     "fen": "rn1q1rk1/pb1pbppp/1p2pn2/8/2PN4/1P1BP3/PB3PPP/RN1Q1RK1"
 },
 {
     "ecoCode": "E14",
-    "opening": "Queen/'s Indian Defense: Spassky System",
+    "opening": "Queen's Indian Defense: Spassky System",
     "moves": "1. d4 Nf6 2. c4 e6 3. Nf3 b6 4. e3",
     "fen": "rnbqkb1r/p1pp1ppp/1p2pn2/8/2PP4/4PN2/PP3PPP/RNBQKB1R"
 },
 {
     "ecoCode": "E15",
-    "opening": "Queen/'s Indian Defense: Buerger Variation",
+    "opening": "Queen's Indian Defense: Buerger Variation",
     "moves": "1. Nf3 Nf6 2. c4 b6 3. d4 e6 4. g3 Bb7 5. Bg2 c5 6. d5 exd5 7. Ng5",
     "fen": "rn1qkb1r/pb1p1ppp/1p3n2/2pp2N1/2P5/6P1/PP2PPBP/RNBQK2R"
 },
 {
     "ecoCode": "E15",
-    "opening": "Queen/'s Indian Defense: Fianchetto Traditional",
+    "opening": "Queen's Indian Defense: Fianchetto Traditional",
     "moves": "1. d4 Nf6 2. c4 e6 3. Nf3 b6 4. g3 Bb7",
     "fen": "rn1qkb1r/pbpp1ppp/1p2pn2/8/2PP4/5NP1/PP2PP1P/RNBQKB1R"
 },
 {
     "ecoCode": "E15",
-    "opening": "Queen/'s Indian Defense: Fianchetto Variation",
+    "opening": "Queen's Indian Defense: Fianchetto Variation",
     "moves": "1. d4 Nf6 2. c4 e6 3. Nf3 b6 4. g3",
     "fen": "rnbqkb1r/p1pp1ppp/1p2pn2/8/2PP4/5NP1/PP2PP1P/RNBQKB1R"
 },
 {
     "ecoCode": "E15",
-    "opening": "Queen/'s Indian Defense: Fianchetto Variation, Check Variation",
+    "opening": "Queen's Indian Defense: Fianchetto Variation, Check Variation",
     "moves": "1. d4 Nf6 2. c4 e6 3. Nf3 b6 4. g3 Ba6 5. b3 Bb4+",
     "fen": "rn1qk2r/p1pp1ppp/bp2pn2/8/1bPP4/1P3NP1/P3PP1P/RNBQKB1R"
 },
 {
     "ecoCode": "E15",
-    "opening": "Queen/'s Indian Defense: Fianchetto Variation, Check Variation, Intermezzo Line",
+    "opening": "Queen's Indian Defense: Fianchetto Variation, Check Variation, Intermezzo Line",
     "moves": "1. d4 Nf6 2. c4 e6 3. Nf3 b6 4. g3 Ba6 5. b3 Bb4+ 6. Bd2 Be7",
     "fen": "rn1qk2r/p1ppbppp/bp2pn2/8/2PP4/1P3NP1/P2BPP1P/RN1QKB1R"
 },
 {
     "ecoCode": "E15",
-    "opening": "Queen/'s Indian Defense: Fianchetto Variation, Check Variation, Modern Line",
+    "opening": "Queen's Indian Defense: Fianchetto Variation, Check Variation, Modern Line",
     "moves": "1. d4 Nf6 2. c4 e6 3. Nf3 b6 4. g3 Ba6 5. b3 Bb4+ 6. Bd2 Qe7",
     "fen": "rn2k2r/p1ppqppp/bp2pn2/8/1bPP4/1P3NP1/P2BPP1P/RN1QKB1R"
 },
 {
     "ecoCode": "E15",
-    "opening": "Queen/'s Indian Defense: Fianchetto Variation, Nimzowitsch Variation",
+    "opening": "Queen's Indian Defense: Fianchetto Variation, Nimzowitsch Variation",
     "moves": "1. d4 Nf6 2. c4 e6 3. Nf3 b6 4. g3 Ba6",
     "fen": "rn1qkb1r/p1pp1ppp/bp2pn2/8/2PP4/5NP1/PP2PP1P/RNBQKB1R"
 },
 {
     "ecoCode": "E15",
-    "opening": "Queen/'s Indian Defense: Fianchetto Variation, Nimzowitsch Variation, Nimzowitsch Attack",
+    "opening": "Queen's Indian Defense: Fianchetto Variation, Nimzowitsch Variation, Nimzowitsch Attack",
     "moves": "1. d4 Nf6 2. c4 e6 3. Nf3 b6 4. g3 Ba6 5. Qa4",
     "fen": "rn1qkb1r/p1pp1ppp/bp2pn2/8/Q1PP4/5NP1/PP2PP1P/RNB1KB1R"
 },
 {
     "ecoCode": "E15",
-    "opening": "Queen/'s Indian Defense: Fianchetto Variation, Nimzowitsch Variation, Quiet Line",
+    "opening": "Queen's Indian Defense: Fianchetto Variation, Nimzowitsch Variation, Quiet Line",
     "moves": "1. d4 Nf6 2. c4 e6 3. Nf3 b6 4. g3 Ba6 5. b3",
     "fen": "rn1qkb1r/p1pp1ppp/bp2pn2/8/2PP4/1P3NP1/P3PP1P/RNBQKB1R"
 },
 {
     "ecoCode": "E15",
-    "opening": "Queen/'s Indian Defense: Fianchetto Variation, Nimzowitsch Variation, Timman/'s Line",
+    "opening": "Queen's Indian Defense: Fianchetto Variation, Nimzowitsch Variation, Timman/'s Line",
     "moves": "1. d4 Nf6 2. c4 e6 3. Nf3 b6 4. g3 Ba6 5. Qb3",
     "fen": "rn1qkb1r/p1pp1ppp/bp2pn2/8/2PP4/1Q3NP1/PP2PP1P/RNB1KB1R"
 },
 {
     "ecoCode": "E15",
-    "opening": "Queen/'s Indian Defense: Fianchetto Variation, Rubinstein Variation",
+    "opening": "Queen's Indian Defense: Fianchetto Variation, Rubinstein Variation",
     "moves": "1. d4 Nf6 2. c4 e6 3. Nf3 b6 4. g3 Bb7 5. Bg2 c5 6. d5 exd5 7. Nh4",
     "fen": "rn1qkb1r/pb1p1ppp/1p3n2/2pp4/2P4N/6P1/PP2PPBP/RNBQK2R"
 },
 {
     "ecoCode": "E15",
-    "opening": "Queen/'s Indian Defense: Fianchetto Variation, Sämisch Variation",
+    "opening": "Queen's Indian Defense: Fianchetto Variation, Sämisch Variation",
     "moves": "1. d4 Nf6 2. c4 e6 3. Nf3 b6 4. g3 Bb7 5. Bg2 c5",
     "fen": "rn1qkb1r/pb1p1ppp/1p2pn2/2p5/2PP4/5NP1/PP2PPBP/RNBQK2R"
 },
 {
     "ecoCode": "E16",
-    "opening": "Queen/'s Indian Defense: Capablanca Variation",
+    "opening": "Queen's Indian Defense: Capablanca Variation",
     "moves": "1. d4 Nf6 2. c4 e6 3. Nf3 b6 4. g3 Bb7 5. Bg2 Bb4+",
     "fen": "rn1qk2r/pbpp1ppp/1p2pn2/8/1bPP4/5NP1/PP2PPBP/RNBQK2R"
 },
 {
     "ecoCode": "E16",
-    "opening": "Queen/'s Indian Defense: Riumin Variation",
+    "opening": "Queen's Indian Defense: Riumin Variation",
     "moves": "1. d4 Nf6 2. c4 e6 3. Nf3 b6 4. g3 Bb7 5. Bg2 Bb4+ 6. Bd2 Be7",
     "fen": "rn1qk2r/pbppbppp/1p2pn2/8/2PP4/5NP1/PP1BPPBP/RN1QK2R"
 },
 {
     "ecoCode": "E16",
-    "opening": "Queen/'s Indian Defense: Yates Variation",
+    "opening": "Queen's Indian Defense: Yates Variation",
     "moves": "1. d4 Nf6 2. c4 e6 3. Nf3 Bb4+ 4. Bd2 a5 5. g3 b6 6. Bg2 Bb7",
     "fen": "rn1qk2r/1bpp1ppp/1p2pn2/p7/1bPP4/5NP1/PP1BPPBP/RN1QK2R"
 },
 {
     "ecoCode": "E17",
-    "opening": "Queen/'s Indian Defense: Anti-Queen/'s Indian System",
+    "opening": "Queen's Indian Defense: Anti-Queen's Indian System",
     "moves": "1. d4 Nf6 2. c4 e6 3. Nf3 b6 4. g3 Bb7 5. Bg2 Be7 6. Nc3",
     "fen": "rn1qk2r/pbppbppp/1p2pn2/8/2PP4/2N2NP1/PP2PPBP/R1BQK2R"
 },
 {
     "ecoCode": "E17",
-    "opening": "Queen/'s Indian Defense: Classical Variation",
+    "opening": "Queen's Indian Defense: Classical Variation",
     "moves": "1. d4 Nf6 2. c4 e6 3. Nf3 b6 4. g3 Bb7 5. Bg2 Be7 6. O-O",
     "fen": "rn1qk2r/pbppbppp/1p2pn2/8/2PP4/5NP1/PP2PPBP/RNBQ1RK1"
 },
 {
     "ecoCode": "E17",
-    "opening": "Queen/'s Indian Defense: Classical Variation, Polugaevsky Gambit",
+    "opening": "Queen's Indian Defense: Classical Variation, Polugaevsky Gambit",
     "moves": "1. d4 Nf6 2. c4 e6 3. Nf3 b6 4. g3 Bb7 5. Bg2 Be7 6. O-O O-O 7. d5 exd5 8. Nh4",
     "fen": "rn1q1rk1/pbppbppp/1p3n2/3p4/2P4N/6P1/PP2PPBP/RNBQ1RK1"
 },
 {
     "ecoCode": "E17",
-    "opening": "Queen/'s Indian Defense: Classical Variation, Taimanov Gambit",
+    "opening": "Queen's Indian Defense: Classical Variation, Taimanov Gambit",
     "moves": "1. d4 Nf6 2. c4 e6 3. Nf3 b6 4. g3 Bb7 5. Bg2 Be7 6. O-O O-O 7. d5 exd5 8. Nd4",
     "fen": "rn1q1rk1/pbppbppp/1p3n2/3p4/2PN4/6P1/PP2PPBP/RNBQ1RK1"
 },
 {
     "ecoCode": "E17",
-    "opening": "Queen/'s Indian Defense: Euwe Variation",
+    "opening": "Queen's Indian Defense: Euwe Variation",
     "moves": "1. d4 Nf6 2. c4 e6 3. Nf3 b6 4. g3 Bb7 5. Bg2 Be7 6. O-O O-O 7. b3",
     "fen": "rn1q1rk1/pbppbppp/1p2pn2/8/2PP4/1P3NP1/P3PPBP/RNBQ1RK1"
 },
 {
     "ecoCode": "E17",
-    "opening": "Queen/'s Indian Defense: Fianchetto Variation, Kramnik Variation",
+    "opening": "Queen's Indian Defense: Fianchetto Variation, Kramnik Variation",
     "moves": "1. d4 Nf6 2. c4 e6 3. Nf3 b6 4. g3 Bb7 5. Bg2 Be7 6. O-O O-O 7. Re1",
     "fen": "rn1q1rk1/pbppbppp/1p2pn2/8/2PP4/5NP1/PP2PPBP/RNBQR1K1"
 },
 {
     "ecoCode": "E17",
-    "opening": "Queen/'s Indian Defense: Opocensky Variation",
+    "opening": "Queen's Indian Defense: Opocensky Variation",
     "moves": "1. d4 Nf6 2. c4 e6 3. Nf3 b6 4. g3 Bb7 5. Bg2 Be7 6. Nc3 Ne4 7. Bd2",
     "fen": "rn1qk2r/pbppbppp/1p2p3/8/2PPn3/2N2NP1/PP1BPPBP/R2QK2R"
 },
 {
     "ecoCode": "E17",
-    "opening": "Queen/'s Indian Defense: Traditional Variation",
+    "opening": "Queen's Indian Defense: Traditional Variation",
     "moves": "1. d4 Nf6 2. c4 e6 3. Nf3 b6 4. g3 Bb7 5. Bg2 Be7",
     "fen": "rn1qk2r/pbppbppp/1p2pn2/8/2PP4/5NP1/PP2PPBP/RNBQK2R"
 },
 {
     "ecoCode": "E18",
-    "opening": "Queen/'s Indian Defense: Classical Variation, Tiviakov Defense",
+    "opening": "Queen's Indian Defense: Classical Variation, Tiviakov Defense",
     "moves": "1. Nf3 Nf6 2. c4 e6 3. g3 b6 4. Bg2 Bb7 5. O-O Be7 6. Nc3 O-O 7. d4 Na6",
     "fen": "r2q1rk1/pbppbppp/np2pn2/8/2PP4/2N2NP1/PP2PPBP/R1BQ1RK1"
 },
 {
     "ecoCode": "E18",
-    "opening": "Queen/'s Indian Defense: Classical Variation, Traditional Variation",
+    "opening": "Queen's Indian Defense: Classical Variation, Traditional Variation",
     "moves": "1. d4 Nf6 2. c4 e6 3. Nf3 b6 4. g3 Bb7 5. Bg2 Be7 6. O-O O-O 7. Nc3",
     "fen": "rn1q1rk1/pbppbppp/1p2pn2/8/2PP4/2N2NP1/PP2PPBP/R1BQ1RK1"
 },
 {
     "ecoCode": "E18",
-    "opening": "Queen/'s Indian Defense: Classical Variation, Traditional Variation, Nimzowitsch Line",
+    "opening": "Queen's Indian Defense: Classical Variation, Traditional Variation, Nimzowitsch Line",
     "moves": "1. d4 Nf6 2. c4 e6 3. Nf3 b6 4. g3 Bb7 5. Bg2 Be7 6. O-O O-O 7. Nc3 d5",
     "fen": "rn1q1rk1/pbp1bppp/1p2pn2/3p4/2PP4/2N2NP1/PP2PPBP/R1BQ1RK1"
 },
 {
     "ecoCode": "E19",
-    "opening": "Queen/'s Indian Defense: Classical Variation, Traditional Variation, Main Line",
+    "opening": "Queen's Indian Defense: Classical Variation, Traditional Variation, Main Line",
     "moves": "1. d4 Nf6 2. c4 e6 3. Nf3 b6 4. g3 Bb7 5. Bg2 Be7 6. O-O O-O 7. Nc3 Ne4 8. Qc2 Nxc3 9. Qxc3",
     "fen": "rn1q1rk1/pbppbppp/1p2p3/8/2PP4/2Q2NP1/PP2PPBP/R1B2RK1"
 },
@@ -19766,7 +19766,7 @@ const ecoOpenings = [
 },
 {
     "ecoCode": "E60",
-    "opening": "Queen/'s Pawn, Mengarini Attack",
+    "opening": "Queen's Pawn, Mengarini Attack",
     "moves": "1. d4 Nf6 2. c4 g6 3. Qc2",
     "fen": "rnbqkb1r/pppppp1p/5np1/8/2PP4/8/PPQ1PPPP/RNB1KBNR"
 },
