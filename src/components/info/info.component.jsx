@@ -27,8 +27,8 @@ const Info = (props) => {
       <React.Fragment>
       <GameMenu menuMove = {props.menuMove} movesLoaded={props.game.pgnHistory && props.game.pgnHistory.length > 1 ? true:false}/>
       <div className='list-zone'>
-        <GameListSearch onChangeOpening={props.onChangeOpening} knownOpenings={props.game.knownOpenings}/>
-        <GameList games={props.game.games} deleteGame={props.deleteGame} loadGame={props.loadGame} knownOpenings={props.game.knownOpenings} online={props.game.isRemote}/>
+        <GameListSearch onChangePlayer={props.onChangePlayer} knownPlayers={props.knownPlayers} onChangeOpening={props.onChangeOpening} knownOpenings={props.knownOpenings}/>
+        <GameList games={props.game.games} deleteGame={props.deleteGame} loadGame={props.loadGame} knownPlayers={props.knownPlayers} knownOpenings={props.game.knownOpenings} online={props.game.isRemote}/>
       </div>
       </React.Fragment>
     )

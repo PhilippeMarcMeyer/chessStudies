@@ -1,11 +1,24 @@
 import React from 'react';
 import './gameList.styles.css';
 const GameList = (props) => {
-    let selectedOpening = props.knownOpenings && props.knownOpenings.selected ?props.knownOpenings.selected : "all";
+    let selectedOpening = props.knownOpenings && props.knownOpenings.selected ? props.knownOpenings.selected : "all";
+    let selectedPlayer = props.knownPlayers && props.knownPlayers.selected ? props.knownPlayers.selected : "all";
+
     let games = props.games;
     if(selectedOpening !== "all"){
         games = games.filter((x) => {
-            return "opening" in x.pgnResume && x.pgnResume.opening === selectedOpening;
+            return "opening" in x.pgnResume && x.pgnResume.opening.indexOf(selectedOpening) !==-1;
+        })
+    }
+    if(selectedPlayer !== "all"){
+        games = games.filter((x) => {
+            if("White" in x.pgnResume && x.pgnResume.White === selectedPlayer){
+                return true;
+            }else if("Black" in x.pgnResume && x.pgnResume.Black === selectedPlayer){
+                return true;
+            }else{
+                return false;
+            }
         })
     }
     return (

@@ -42,7 +42,8 @@ class Game extends React.Component {
       "infosTitle": "",
       "infosMessage": "",
       "currentOpening": null,
-      "knownOpenings" : {list:["all"],selected:"all"},
+      "knownOpenings" : {list:["all"],selected:"all",searchByRootName : true},
+      "knownPlayers" : {list:["all"],selected:"all"},
       "msg": "White to play",
       "data": [],
       "pgnHistory": "",
@@ -479,8 +480,40 @@ class Game extends React.Component {
     ));
   }
 
+  onChangePlayer = (e) => {
+    let value = e.currentTarget.value;
+    let knownPlayers = {...this.state.knownPlayers};
+    knownPlayers.selected = value;
+    this.setState((state, props) => (
+      {knownPlayers}
+    ));
+  }
+
+  getKnowPlayers = (games) => {
+    let knownPlayers = {...this.state.knownPlayers};
+    let playersList = [];
+    if (games.length > 0) {
+      games.forEach((x) => {
+        if ("Black" in x.pgnResume && x.pgnResume.Black){
+          playersList.push(x.pgnResume.Black.trim())
+        }
+        if ("White" in x.pgnResume && x.pgnResume.White){
+          playersList.push(x.pgnResume.White.trim())
+        }
+      });
+
+      const uniqueSet = new Set(playersList);
+      playersList = [...uniqueSet];
+      knownPlayers.list = playersList.sort();
+      knownPlayers.list = ["all"].concat(knownPlayers.list)
+      knownPlayers.selected = "all";
+    }
+    return knownPlayers;
+  }
+  
 getKnowOpenings = (games) => {
-    let knownOpenings = { list: ["all"], selected: "all" };
+    let knownOpenings =this.state.knownOpenings;
+
     if (games.length > 0) {
       let openingsList = games.map((x) => {
         return "opening" in x.pgnResume ? x.pgnResume.opening : null;
@@ -488,13 +521,22 @@ getKnowOpenings = (games) => {
       openingsList = openingsList.filter((x) => {
         return x !== null;
       });
-      
+
+      if(knownOpenings.searchByRootName){
+        openingsList = openingsList.map((x) => {
+          let pos = x.indexOf(":");
+          if(pos !== -1){
+            return x.substring(0,pos).trim();
+          }else{
+            return x.trim();
+          }
+        });
+      }
       const uniqueSet = new Set(openingsList);
       openingsList = [...uniqueSet];
-      openingsList = ["all"].concat(openingsList)
       knownOpenings.list = openingsList.sort();
+      knownOpenings.list = ["all"].concat(knownOpenings.list)
       knownOpenings.selected = "all";
-
     }
     return knownOpenings;
   }
@@ -637,8 +679,10 @@ getKnowOpenings = (games) => {
           sqr.fig = check[0].fig;
         }
       });
+      let knownPlayers = this.getKnowPlayers(games);
       let knownOpenings = this.getKnowOpenings(games);
       let otherProps = {
+        "knownPlayers":knownPlayers,
         "knownOpenings": knownOpenings,
         "storageManager":storageManager,
         "games":games,
@@ -690,7 +734,7 @@ getKnowOpenings = (games) => {
             <Board key={1} reverseBoard={this.reverseBoard} game={this.state} />
           </div>
           <div className="game-info">
-            <Info key={1} onChangeOpening={this.onChangeOpening} knownOpenings={this.state.knownOpenings} game={this.state} loadGame={this.loadGame} deleteGame={this.deleteGame} menuMove = {this.menuMove} statuses={this.gameStatus}/>
+            <Info key={1} onChangePlayer={this.onChangePlayer} knownPlayers={this.state.knownPlayers} onChangeOpening={this.onChangeOpening} knownOpenings={this.state.knownOpenings} game={this.state} loadGame={this.loadGame} deleteGame={this.deleteGame} menuMove = {this.menuMove} statuses={this.gameStatus}/>
           </div>
         </div>
       )
