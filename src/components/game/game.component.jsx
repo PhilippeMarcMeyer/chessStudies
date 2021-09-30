@@ -5,7 +5,7 @@ import Info from '../info/info.component';
 import { getAskedMove, getNextMove, pngToTurns, pngToInfos, getMoveDataAt, getPositionsAt ,boardToScore} from '../../movesLogic.js';
 import { ManageStorage} from '../../storage.js';
 import { boardToFen, fenToBoard } from '../../fen.js';
-import {findOpeningByFen,findOpeningByCode} from '../../openingLogic.js';
+import {findOpeningByFen,findOpeningByCode,findGamesByFen} from '../../openingLogic.js';
 import Analysis from '../analysis/analysis.component';
 
 class Game extends React.Component {
@@ -286,6 +286,10 @@ class Game extends React.Component {
       reinitData = fenToBoard(fenMove[0].fen, reinitData, columnsOrdered);
       let scores = boardToScore(reinitData);
       let openingFiltered = findOpeningByFen(fenMove[0].fen);
+      if(askedMove.number > 2){
+        let correspondences = findGamesByFen(this.state,fenMove[0].fen,askedMove);
+        console.log(correspondences);
+      }
       let currentOpening = null;
       let analysis = this.state.analysis;
 
@@ -380,7 +384,9 @@ class Game extends React.Component {
         "pgnGame": turns,
         "fenGame": fenGame
       };
-      this.saveGameToStorage(gameToSave);
+      setTimeout(()=>{
+        this.saveGameToStorage(gameToSave);
+      },500);
       let otherProps = {
         "data": JSON.parse(this.state.initialData),
         "pgnResume": infosClean,
@@ -418,19 +424,14 @@ class Game extends React.Component {
               data = {"infos":pgn};
             }else{
               data.game = pgn;
-              let checkResult = this.savePGN(data);
-              if(checkResult !== null){
-                result = checkResult;
-              }
+              setTimeout(()=>{
+                this.savePGN(data);
+                this.setGameStatus(this.gameStatus.showList, "",result);
+              },500);
             }
           });
         }
       }
-    }
-    if(result !== null){
-      this.setGameStatus(this.gameStatus.showList, "",result);
-    }else{
-      this.setGameStatus(this.gameStatus.inError, "unable to read these pngs");
     }
   }
 
