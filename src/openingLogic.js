@@ -27,11 +27,11 @@ const findGamesByFen = (state,fen,move) => {
             let games = [];
             state.games.forEach((x)=>{
                 let fens = x.fenGame.filter((f)=>{
-                    return f.fen.indexOf(fenModel) !== -1;
+                    return f.fen.indexOf(fenModel) !== -1 && x.id !== state.gameKey ;
                 });
                 if(fens.length > 0){
                     let digest = x.pgnResume.White + " vs " +  x.pgnResume.Black + " ["+x.pgnResume.Result+"] " + x.pgnResume.Date;
-                    games.push({"key":x.id,"move":{"number":fens[0].number,"side":fens[0].side,"movesList":x.pgnGames},"digest":digest});
+                    games.push({"key":x.id,"move":{"number":fens[0].number,"side":fens[0].side,"movesList":x.pgnGame},"digest":digest});
                 }
             });
             result.games = games;

@@ -21,6 +21,7 @@ class Game extends React.Component {
     };
 
     this.state = {
+      "identicalGames": {},
       "analysis":null,
       "storageManager":null,
       "isRemote": true,
@@ -94,7 +95,13 @@ class Game extends React.Component {
 
   loadGame = (e) => {
     let id = Number(e.currentTarget.getAttribute("data-index"));
-    this.doLoadGame(id);
+    if(e.currentTarget.hasAttribute("data-number")){ // identical games in analysis
+        let nr = Number(e.currentTarget.getAttribute("data-number"));
+        let side = e.currentTarget.getAttribute("data-side");
+        this.doLoadGame(id,{"number":nr,"side":side});
+    }else{
+      this.doLoadGame(id); // from games list
+    }
   }
 
   doDeleteGame = (id) => {
@@ -122,10 +129,15 @@ class Game extends React.Component {
     }
   }
 
-  doLoadGame = (id) => {
+  doLoadGame = (id,atMove) => {
+    let loadAndMove = true;
     let gamesFilter = this.state.games.filter((game) => {
       return game.id === id;
     })
+    if(!atMove){
+      atMove = {"number":0,"side":"w"};
+      loadAndMove = false;
+    }
     if (gamesFilter.length === 1) {
       let game = gamesFilter[0];
       let otherProps = {
@@ -137,14 +149,29 @@ class Game extends React.Component {
         "pgnGame": game.pgnGame,
         "fenGame": game.fenGame,
         "move": {
-          "number": 0,
-          "side": "w"
+          "number": atMove.number,
+          "side": atMove.side
         },
         "scores": {
           "whiteScore": 0,
           "blackScore": 0,
           "whiteJail": [],
           "blackJail": []
+        }
+      }
+      if(loadAndMove){
+        let fenMove = game.fenGame.filter((x) => {
+          return x.number === atMove.number && x.side === atMove.side;
+        });
+        if (fenMove.length !== 0) {
+          let columnsOrdered = this.state.columns.slice(0)
+          let gamePositions = fenToBoard(fenMove[0].fen, otherProps.data, columnsOrdered);
+          let scores = boardToScore(gamePositions);
+          otherProps.data = gamePositions;
+          otherProps.scores = scores;
+          otherProps.openingFiltered = this.state.openingFiltered;
+          otherProps.analysis = this.state.analysis;
+
         }
       }
       this.setGameStatus(this.gameStatus.showMoves, "", otherProps);
@@ -286,10 +313,11 @@ class Game extends React.Component {
       reinitData = fenToBoard(fenMove[0].fen, reinitData, columnsOrdered);
       let scores = boardToScore(reinitData);
       let openingFiltered = findOpeningByFen(fenMove[0].fen);
+      let identicalGames = {};
       if(askedMove.number > 2){
-        let correspondences = findGamesByFen(this.state,fenMove[0].fen,askedMove);
-        console.log(correspondences);
+        identicalGames = findGamesByFen(this.state,fenMove[0].fen,askedMove);
       }
+      
       let currentOpening = null;
       let analysis = this.state.analysis;
 
@@ -308,6 +336,7 @@ class Game extends React.Component {
       }
       this.setState((state, props) => (
         {
+          identicalGames:identicalGames,
           analysis:analysis,
           data: reinitData,
           scores:scores,
@@ -766,7 +795,7 @@ getKnowOpenings = (games) => {
             <Info key={1} game={this.state} movePGN={this.movePGN} menuMove = {this.menuMove} savePGN={this.savePGNs} statuses={this.gameStatus}/>
           </div>
           <div className="game-analysis">
-            <Analysis key={1} analysis={this.state.analysis} saveOpening={this.saveCurrentGameOpening}/>
+            <Analysis key={1} analysis={this.state.analysis} saveOpening={this.saveCurrentGameOpening} identicalGames={this.state.identicalGames} loadGame={this.loadGame}/>
           </div>
         </div>
       )
