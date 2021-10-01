@@ -1,8 +1,10 @@
-# Chess studies : PGN reader v 0.17
+# Chess studies : PGN reader v 0.20
 
 This version analyses PGN games and show them in a list
 to show and play them on a board with 
 an input to set more games 
+
+0.20 => 2021-10-01 : from the 3rd move, a clickable list of identical games is displayed with the possibility to switch between games at the same move
 
 0.17 => 2021-09-29 : the game list is sorted by date and the filtered count is displayed
 
@@ -42,7 +44,7 @@ At the present time
 The list is saved to https://jsonblob.com/ a json server 
 and in localStorage as a readonly fallback.
 
-## Live demo (v 15):
+## Live demo (v 20):
 
 https://philippemarcmeyer.github.io/chessStudies/index.html
 
