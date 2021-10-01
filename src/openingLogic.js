@@ -30,7 +30,8 @@ const findGamesByFen = (state,fen,move) => {
                     return f.fen.indexOf(fenModel) !== -1;
                 });
                 if(fens.length > 0){
-                    games.push({"key":x.id,"move":{"number":fens[0].number,"side":fens[0].side}});
+                    let digest = x.pgnResume.White + " vs " +  x.pgnResume.Black + " ["+x.pgnResume.Result+"] " + x.pgnResume.Date;
+                    games.push({"key":x.id,"move":{"number":fens[0].number,"side":fens[0].side,"movesList":x.pgnGames},"digest":digest});
                 }
             });
             result.games = games;
