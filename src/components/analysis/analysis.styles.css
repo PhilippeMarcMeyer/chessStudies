@@ -10,6 +10,41 @@
 
   }
 
+.analysis-games{
+  margin-top:5px;
+}
+
+.analysis-games ul{
+  list-style-type: '♟ ';
+  padding:0 10px 10px 20px;
+  margin-top:0;
+}
+.analysis-games ol{
+  list-style-type: '♔ ';
+  padding:10px 10px 0 20px;
+  margin-top:0;
+}
+
+.analysis-games ol li{
+  cursor:pointer;
+}
+
+.analysis-games ul li{
+  text-align: justify;
+  max-width:340px;
+  white-space: nowrap;
+  text-overflow:ellipsis;
+  cursor:pointer;
+}
+
+.analysis-games ul li:hover{
+  background-color:#6c7c9c
+}
+
+  .analysis-games-title{
+    margin:0;
+  }
+
   .analysis-text{
     margin:0;
     padding-top:0; 
@@ -46,4 +81,9 @@
     }
   }
 
+  @media screen and (max-width: 1500px) {
+    .analysis-games{
+      display:none;
+    }
+  }
   
