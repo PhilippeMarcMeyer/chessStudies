@@ -1,11 +1,12 @@
 
 class ManageStorage {
   constructor(props) {
-  this.key = "887579374078148608" // put your own jsonblob key with a bare array [] at the begining
+    this.url = "http:localhost:8080/"
+    this.key = "887579374078148608" // put your own jsonblob key with a bare array [] at the begining
   }
 
     initRemote = () => {
-      const url = "https://jsonblob.com/api/jsonBlob/" + this.key;
+      const url = "games";
       return new Promise(function (resolve, reject) {
           var xhr = new XMLHttpRequest();
           xhr.open("GET", url);
@@ -30,7 +31,7 @@ class ManageStorage {
     }
 
     setRemote = (data) => {
-      const url = "https://jsonblob.com/api/jsonBlob/" + this.key;
+      const url =  "games";
       return new Promise(function (resolve, reject) {
           var xhr = new XMLHttpRequest();
           xhr.open("PUT", url,true);
