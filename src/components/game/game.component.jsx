@@ -91,6 +91,10 @@ class Game extends React.Component {
   deleteGame= (e) => {
     let id = Number(e.currentTarget.getAttribute("data-index"));
     this.doDeleteGame(id);
+    setTimeout(() => {
+      // eslint-disable-next-line no-restricted-globals
+      location.reload(); // bad an temporary
+    },800);
   }
 
   loadGame = (e) => {
@@ -107,6 +111,7 @@ class Game extends React.Component {
   doDeleteGame = (id) => {
     let factory = this;
     if (this.state.isRemote && this.state.storageManager) {
+
       let games = this.state.games.filter((game) => {
         return game.id !== id;
       })
@@ -115,12 +120,16 @@ class Game extends React.Component {
         games: games
       }
 
-      factory.state.storageManager.setRemote(games)
+      factory.state.storageManager.deleteRemote(id)
         .then(function (response) {
           if (response === "OK") {
             factory.state.storageManager.setLocal(games);
             let newStatus = games && games.length > 0 ? factory.gameStatus.showList : factory.gameStatus.showInput;
             factory.setGameStatus(newStatus, "", otherProps);
+            setTimeout(() => {
+              // eslint-disable-next-line no-restricted-globals
+              location.reload();
+            },800);
           }
         })
         .catch(function (response) {
@@ -466,6 +475,7 @@ class Game extends React.Component {
 
   saveGameToStorage = (gameToSave) => {
     let factory = this;
+    let dontAdd = false;
     if(!("id" in gameToSave)){
       gameToSave.id = new Date().getTime();
     }
@@ -479,6 +489,7 @@ class Game extends React.Component {
       if (gameAlready.length === 0) {
         games.push(gameToSave);
       } else {
+        dontAdd = true;
         games.forEach((x) => { // rewrite in the future : add comments etc...
           if (x.pgnGame === gameToSave.pgnGame) {
             x.pgnHistory = gameToSave.pgnHistory;
@@ -498,7 +509,8 @@ class Game extends React.Component {
     })
     
     if (this.state.isRemote && this.state.storageManager) {
-      factory.state.storageManager.setRemote(games)
+      if(!dontAdd){
+        factory.state.storageManager.setRemote(gameToSave)
         .then(function (response) {
           if (response === "OK") {
             factory.state.storageManager.setLocal(games);
@@ -507,10 +519,17 @@ class Game extends React.Component {
         .catch(function (response) {
 
         });
+      }else{
+        factory.state.storageManager.setLocal(games);
+      }
+
     }
     this.setState((state, props) => (
       games
     ));
+    setTimeout(() => {
+      this.forceUpdate();
+    },800);
   }
 
   onChangeOpening = (e) => {
