@@ -12,6 +12,8 @@
 
 .analysis-games{
   margin-top:5px;
+  max-height:200px;
+  overflow-y: auto;
 }
 
 .analysis-games ul{
@@ -71,6 +73,25 @@
     color:#769656;
 }
 
+.comment-container{
+  margin-top:5px;
+  max-width:340px;
+}
+
+.comment-zone,.comment-input{
+  height:200px;
+  width:300px;
+  max-height:200px;
+  border: 1px solid white;
+  border-radius:4px;
+  overflow-y: auto;
+  color:white;
+  background-color: transparent;
+}
+.comment-zone{
+  border: 1px solid rgba(255,255,255,0.3);
+
+}
   
   @media screen and (max-width: 900px) {
     .analysis-title{
@@ -85,5 +106,10 @@
     .analysis-games{
       display:none;
     }
+    .comment-container{
+      display:none;
+    }
   }
+
+
   

@@ -21,6 +21,8 @@ class Game extends React.Component {
     };
 
     this.state = {
+      "commentIsOpen":false,
+      "comments":"",
       "identicalGames": {},
       "analysis":null,
       "storageManager":null,
@@ -150,6 +152,7 @@ class Game extends React.Component {
     if (gamesFilter.length === 1) {
       let game = gamesFilter[0];
       let otherProps = {
+        "comments": ("comments" in game) ? game.comments : "",
         "gameKey" : id,
         "analysis":null,
         "data": JSON.parse(this.state.initialData),
@@ -359,6 +362,24 @@ class Game extends React.Component {
     }
   }
 
+  openComments = () => {
+    this.setState({
+      commentIsOpen : true
+    })
+  }
+
+  saveComment = (e) => {
+    let comments = document.querySelector(e.currentTarget.getAttribute("data-target")).value;
+    if (comments !== this.state.comments) {
+      this.setState({
+        commentIsOpen : false,
+        comments : comments
+      }, () => {
+        this.saveCurrentAnalysedGame();
+      })
+    }
+  }
+
   saveCurrentGameOpening = () => {
       if (this.state.analysis) {
         const pgnResume = {...this.state.pgnResume};
@@ -367,9 +388,9 @@ class Game extends React.Component {
 
         this.setState({
           pgnResume
-      }, () => {
+        }, () => {
           this.saveCurrentAnalysedGame();
-      })
+        })
 
       }
     }
@@ -379,6 +400,7 @@ class Game extends React.Component {
     if(id && !isNaN(id)){
       let gameToSave = {
         "id": id,
+        "comments":this.state.comments,
         "pgnHistory": this.state.pgnHistory,
         "pgnResume": this.state.pgnResume,
         "pgnGame":this.state.pgnGame,
@@ -475,7 +497,6 @@ class Game extends React.Component {
 
   saveGameToStorage = (gameToSave) => {
     let factory = this;
-    let dontAdd = false;
     if(!("id" in gameToSave)){
       gameToSave.id = new Date().getTime();
     }
@@ -489,9 +510,9 @@ class Game extends React.Component {
       if (gameAlready.length === 0) {
         games.push(gameToSave);
       } else {
-        dontAdd = true;
         games.forEach((x) => { // rewrite in the future : add comments etc...
           if (x.pgnGame === gameToSave.pgnGame) {
+            x.comments = gameToSave.comments;
             x.pgnHistory = gameToSave.pgnHistory;
             x.pgnResume = gameToSave.pgnResume;
             x.fenGame = gameToSave.fenGame;
@@ -509,7 +530,6 @@ class Game extends React.Component {
     })
     
     if (this.state.isRemote && this.state.storageManager) {
-      if(!dontAdd){
         factory.state.storageManager.setRemote(gameToSave)
         .then(function (response) {
           if (response === "OK") {
@@ -519,17 +539,11 @@ class Game extends React.Component {
         .catch(function (response) {
 
         });
-      }else{
-        factory.state.storageManager.setLocal(games);
       }
 
-    }
-    this.setState((state, props) => (
-      games
-    ));
-    setTimeout(() => {
-      this.forceUpdate();
-    },800);
+      this.setState({
+        games
+      });
   }
 
   onChangeOpening = (e) => {
@@ -814,7 +828,7 @@ getKnowOpenings = (games) => {
             <Info key={1} game={this.state} movePGN={this.movePGN} menuMove = {this.menuMove} savePGN={this.savePGNs} statuses={this.gameStatus}/>
           </div>
           <div className="game-analysis">
-            <Analysis key={1} analysis={this.state.analysis} saveOpening={this.saveCurrentGameOpening} identicalGames={this.state.identicalGames} loadGame={this.loadGame}/>
+            <Analysis key={1} analysis={this.state.analysis} saveOpening={this.saveCurrentGameOpening} openComments={this.openComments} identicalGames={this.state.identicalGames} commentIsOpen={this.state.commentIsOpen} comments={this.state.comments} saveComment = {this.saveComment} loadGame={this.loadGame}/>
           </div>
         </div>
       )
