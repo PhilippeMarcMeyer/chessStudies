@@ -1,14 +1,15 @@
 
 class ManageStorage {
   constructor(props) {
-  this.key = "887579374078148608" // put your own jsonblob key with a bare array [] at the begining
+    this.url = ""
   }
 
     initRemote = () => {
-      const url = "https://jsonblob.com/api/jsonBlob/" + this.key;
+      const url = "games";
       return new Promise(function (resolve, reject) {
           var xhr = new XMLHttpRequest();
-          xhr.open("GET", url);
+          xhr.open("GET", url,true);
+          xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
           xhr.onload = function () {
             if (this.status >= 200 && this.status < 300) {
               try {
@@ -29,26 +30,56 @@ class ManageStorage {
       });
     }
 
-    setRemote = (data) => {
-      const url = "https://jsonblob.com/api/jsonBlob/" + this.key;
+    deleteRemote = (id) =>{
+      const url = this.url + "game/"+ id;
       return new Promise(function (resolve, reject) {
           var xhr = new XMLHttpRequest();
-          xhr.open("PUT", url,true);
+          xhr.open("DELETE", url,true);
           xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
-          xhr.onload = function () {
+          xhr.onload = function (result) {
             if (this.status >= 200 && this.status < 300) {
               try {
-                resolve("OK");
+                resolve(result);
 
               } catch (e) {
-                reject("KO");
+                reject(result);
               }
             } else {
-              reject("KO");
+              reject(xhr.statusText);
             }
           };
           xhr.onerror = function () {
-            reject("KO");
+            reject(xhr.statusText);
+          };
+          xhr.send();
+      });
+    }
+
+
+    setRemote = (data) => {
+      if(Array.isArray(data)){
+        data = data[0];
+      }
+      const url = "game";
+
+      return new Promise(function (resolve, reject) {
+          var xhr = new XMLHttpRequest();
+          xhr.open("PUT",url,true);
+          xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+          xhr.onload = function (result) {
+            if (this.status >= 200 && this.status < 300) {
+              try {
+                resolve(result);
+
+              } catch (e) {
+                reject(result);
+              }
+            } else {
+              reject(xhr.statusText);
+            }
+          };
+          xhr.onerror = function () {
+            reject(xhr.statusText);
           };
           xhr.send(JSON.stringify(data));
       });

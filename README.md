@@ -1,8 +1,10 @@
-# Chess studies : PGN reader v 0.20
+# Chess studies : PGN reader v 0.25
 
 This version analyses PGN games and show them in a list
 to show and play them on a board with 
 an input to set more games 
+
+0.25 => Node server
 
 0.20 => 2021-10-01 : from the 3rd move, a clickable list of identical games is displayed with the possibility to switch between games at the same move
 
@@ -24,53 +26,20 @@ an input to set more games
 
 Todos :
 
-1. Check the disapearance of pieces of the board !
 1. recognize comments in PGN and allow to add new ones
-1. Managing collections or filter by opponents, openings
-1. finding other games with the same FEN
-1. switching games or showing a second board to compare
-1. Adding alt moves ?
 1. Openings study : choosing an opening with its variations and illustrating it with games. deciding on the moves to play and noting down the results
+1. put the openings on the server in a json file with a version number to sync w localStorage
+1. Allow personal notes on openings : stored on the server in a openingNotes file
+1. Auth
+1. put the PGN analysis on the server side
+1. Load games only if version number != server
+1. Manage a maximum localStorage usage
+
 
 on the react part : 
 1. switching the store to redux to learn it
 2. making or using some useful pure UI components
 
-on the back part: 
-1. Hosting the app maybe on azure as im a .net dev and making a back with a sql server db 
-1. or an Api in node or C# 
-
-At the present time
-The list is saved to https://jsonblob.com/ a json server 
-and in localStorage as a readonly fallback.
-
-## Live demo (v 20):
-
-https://philippemarcmeyer.github.io/chessStudies/index.html
-
-There are already a few master games but 
-
-you can use this game as an example to add a new game to the list : 
-```
-[Event "x3dworld rapid"]
-[Site "New York USA"]
-[Date "2002.12.19"]
-[Round "1"]
-[White "Karpov,An"]
-[Black "Kasparov,G"]
-[Result "0-1"]
-[WhiteElo "2688"]
-[BlackElo "2838"]
-[ECO "D92"]
-
-1.d4 Nf6 2.c4 g6 3.Nc3 d5 4.Nf3 Bg7 5.Bf4 O-O 6.Rc1 dxc4 7.e3 Be6 8.Ng5 Bg4
-9.f3 Bc8 10.Bxc4 c6 11.Qb3 e6 12.Nge4 Nd5 13.Bxd5 cxd5 14.Nd6 Nc6 15.Nxb7 Qh4+
-16.Bg3 Qh6 17.Ne2 Bxb7 18.Qxb7 Na5 19.Qb4 Nc4 20.Rxc4 dxc4 21.Kf2 Rfc8 22.Rc1 Bf8
-23.Qa4 Qg5 24.Rxc4 Qd5 25.b3 Qb7 26.Be5 Be7 27.Nc3 f6 28.Bg3 a6 29.h3 Kf7
-30.Kg1 g5 31.Kh2 h5 32.h4 gxh4 33.Bf4 Rxc4 34.Qxc4 Rc8 35.Qd3 f5 36.d5 Qd7
-37.e4 Bf6 38.Na4 fxe4 39.fxe4 e5 40.Bd2 Qg4 41.Nb6 Rg8 42.Qf3 Qxf3 43.gxf3 Rg3
-44.f4 exf4 45.Bxf4 Rg4 46.Be3 Rxe4 47.Nc4 Rg4 48.a4 Rg3 49.a5 Ke8 50.b4 Rg4
-51.b5 Rxc4 52.bxa6 Rc8  0-1
 ```
 
 ## What is it about ?

@@ -1,0 +1,25 @@
+
+.comment-container .button{
+    border: solid 1px black;
+    float:right;
+    border-radius:6px;
+    cursor: pointer;
+    background-color: transparent;
+    margin-right:32px;
+    margin-left:3px;
+}
+
+.comment-container .button.save{
+    padding: 2px 8px 4px 8px;
+    border: solid 1px #769656;
+}
+
+.comment-container .button.save::after{
+    content:"save";/* "✔️" */
+}
+
+.comment-container .button:hover{
+    background-color: rgba(255,255,255,0.3);
+    font-weight:bold;
+}
+

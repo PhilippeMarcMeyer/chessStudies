@@ -21,6 +21,8 @@ class Game extends React.Component {
     };
 
     this.state = {
+      "commentIsOpen":false,
+      "comments":"",
       "identicalGames": {},
       "analysis":null,
       "storageManager":null,
@@ -91,6 +93,10 @@ class Game extends React.Component {
   deleteGame= (e) => {
     let id = Number(e.currentTarget.getAttribute("data-index"));
     this.doDeleteGame(id);
+    setTimeout(() => {
+      // eslint-disable-next-line no-restricted-globals
+      location.reload(); // bad an temporary
+    },800);
   }
 
   loadGame = (e) => {
@@ -107,6 +113,7 @@ class Game extends React.Component {
   doDeleteGame = (id) => {
     let factory = this;
     if (this.state.isRemote && this.state.storageManager) {
+
       let games = this.state.games.filter((game) => {
         return game.id !== id;
       })
@@ -115,7 +122,7 @@ class Game extends React.Component {
         games: games
       }
 
-      factory.state.storageManager.setRemote(games)
+      factory.state.storageManager.deleteRemote(id)
         .then(function (response) {
           if (response === "OK") {
             factory.state.storageManager.setLocal(games);
@@ -141,6 +148,7 @@ class Game extends React.Component {
     if (gamesFilter.length === 1) {
       let game = gamesFilter[0];
       let otherProps = {
+        "comments": game.comments || "",
         "gameKey" : id,
         "analysis":null,
         "data": JSON.parse(this.state.initialData),
@@ -350,17 +358,42 @@ class Game extends React.Component {
     }
   }
 
+  openComments = () => {
+    this.setState({
+      commentIsOpen : true
+    })
+  }
+
+  saveComment = (e) => {
+    let comments = document.querySelector(e.currentTarget.getAttribute("data-target")).value;
+    if (comments !== this.state.comments) {
+      let id = this.state.gameKey;
+      let games = [...this.state.games];
+      games.forEach((x)=> {
+        if(x.id === id){
+          x.comments = comments;
+        }
+      });
+      this.setState({
+        games:games,
+        commentIsOpen : false,
+        comments : comments
+      }, () => {
+        this.saveCurrentAnalysedGame();
+      })
+    }
+  }
+
   saveCurrentGameOpening = () => {
       if (this.state.analysis) {
         const pgnResume = {...this.state.pgnResume};
         pgnResume.opening = this.state.analysis.text;
         pgnResume.openingMoves = this.state.analysis.moves;
-
         this.setState({
           pgnResume
-      }, () => {
+        }, () => {
           this.saveCurrentAnalysedGame();
-      })
+        })
 
       }
     }
@@ -370,6 +403,7 @@ class Game extends React.Component {
     if(id && !isNaN(id)){
       let gameToSave = {
         "id": id,
+        "comments":this.state.comments,
         "pgnHistory": this.state.pgnHistory,
         "pgnResume": this.state.pgnResume,
         "pgnGame":this.state.pgnGame,
@@ -480,7 +514,8 @@ class Game extends React.Component {
         games.push(gameToSave);
       } else {
         games.forEach((x) => { // rewrite in the future : add comments etc...
-          if (x.pgnGame === gameToSave.pgnGame) {
+          if (x.id === gameToSave.id) {
+            x.comments = gameToSave.comments;
             x.pgnHistory = gameToSave.pgnHistory;
             x.pgnResume = gameToSave.pgnResume;
             x.fenGame = gameToSave.fenGame;
@@ -498,7 +533,7 @@ class Game extends React.Component {
     })
     
     if (this.state.isRemote && this.state.storageManager) {
-      factory.state.storageManager.setRemote(games)
+        factory.state.storageManager.setRemote(gameToSave)
         .then(function (response) {
           if (response === "OK") {
             factory.state.storageManager.setLocal(games);
@@ -507,10 +542,11 @@ class Game extends React.Component {
         .catch(function (response) {
 
         });
-    }
-    this.setState((state, props) => (
-      games
-    ));
+      }
+
+      this.setState({
+        games
+      });
   }
 
   onChangeOpening = (e) => {
@@ -664,7 +700,6 @@ getKnowOpenings = (games) => {
       games.sort((a,b) => {
         return b.dateTag - a.dateTag;
       })
-      
 
       games.forEach((game) => {
         if(!("opening" in game.pgnResume) && "ECO" in game.pgnResume){
@@ -748,7 +783,6 @@ getKnowOpenings = (games) => {
         }
       }
       this.setGameStatus(initialStatus, "",otherProps);
-     
      }
   };
   render() {
@@ -795,7 +829,7 @@ getKnowOpenings = (games) => {
             <Info key={1} game={this.state} movePGN={this.movePGN} menuMove = {this.menuMove} savePGN={this.savePGNs} statuses={this.gameStatus}/>
           </div>
           <div className="game-analysis">
-            <Analysis key={1} analysis={this.state.analysis} saveOpening={this.saveCurrentGameOpening} identicalGames={this.state.identicalGames} loadGame={this.loadGame}/>
+            <Analysis key={1} analysis={this.state.analysis} saveOpening={this.saveCurrentGameOpening} openComments={this.openComments} identicalGames={this.state.identicalGames} commentIsOpen={this.state.commentIsOpen} comments={this.state.comments} saveComment = {this.saveComment} loadGame={this.loadGame}/>
           </div>
         </div>
       )

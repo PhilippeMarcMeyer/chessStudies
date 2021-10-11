@@ -1,5 +1,6 @@
 import React from 'react';
 import './analysis.styles.css';
+import Comment from '../utils/comment.component';
 
 const Analysis = (props) => {
     return (
@@ -31,6 +32,8 @@ const Analysis = (props) => {
                     }
                 </ul>
             </div>
+          <h3>Comments on the game :</h3>
+            <Comment commentIsOpen={props.commentIsOpen} comments={props.comments} openComments={props.openComments} saveComment = {props.saveComment}/>
         </div>
     )
 }
