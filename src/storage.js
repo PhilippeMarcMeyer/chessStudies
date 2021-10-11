@@ -1,14 +1,15 @@
 
 class ManageStorage {
   constructor(props) {
-    this.url = "http:localhost:8080/"
+    this.url = ""
   }
 
     initRemote = () => {
       const url = "games";
       return new Promise(function (resolve, reject) {
           var xhr = new XMLHttpRequest();
-          xhr.open("GET", url);
+          xhr.open("GET", url,true);
+          xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
           xhr.onload = function () {
             if (this.status >= 200 && this.status < 300) {
               try {
@@ -30,7 +31,7 @@ class ManageStorage {
     }
 
     deleteRemote = (id) =>{
-      const url = "game/"+ id;
+      const url = this.url + "game/"+ id;
       return new Promise(function (resolve, reject) {
           var xhr = new XMLHttpRequest();
           xhr.open("DELETE", url,true);
@@ -54,6 +55,7 @@ class ManageStorage {
       });
     }
 
+
     setRemote = (data) => {
       if(Array.isArray(data)){
         data = data[0];
@@ -62,7 +64,7 @@ class ManageStorage {
 
       return new Promise(function (resolve, reject) {
           var xhr = new XMLHttpRequest();
-          xhr.open("PUT", url,true);
+          xhr.open("PUT",url,true);
           xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
           xhr.onload = function (result) {
             if (this.status >= 200 && this.status < 300) {

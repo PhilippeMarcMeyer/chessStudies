@@ -1,8 +1,8 @@
 {
-  "homepage": "",
-  "name": "npm",
-  "version": "0.1.0",
-  "private": true,
+  "name": "chessStudies",
+  "version": "0.1.2",
+  "description": "React chessStudies and node server",
+  "main": "index.js",
   "dependencies": {
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
@@ -10,15 +10,15 @@
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "4.0.3",
-    "web-vitals": "^1.0.1"
+    "web-vitals": "^1.0.1",
+    "bcrypt":"^3.0.6",
+    "cors": "^2.8.5",
+    "express": "^4.17.1"
   },
   "scripts": {
-    "start": "react-scripts start",
-    "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "start": "node server.js",
+    "launch": "react-scripts start",
+    "build": "react-scripts build"
   },
   "eslintConfig": {
     "extends": [

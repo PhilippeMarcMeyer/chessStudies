@@ -13,7 +13,7 @@ const Comment = (props) => {
                 !props.commentIsOpen ? 
                 <div className="comment-zone" onClick={props.openComments}>{comments}</div>
                 :
-                <textarea id="comment-input"  defaultValue={comments} className="comment-input"></textarea>
+                <textarea id="comment-input"  placeholder="Your text" defaultValue={comments} className="comment-input"></textarea>
             }
             <span data-target="#comment-input" className={`button save ${!props.commentIsOpen  ? "hidden" : ""}`} onClick={props.saveComment}></span>
         </div>

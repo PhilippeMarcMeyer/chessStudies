@@ -2,25 +2,15 @@
 .comment-container .button{
     border: solid 1px black;
     float:right;
-    vertical-align: top;
     border-radius:6px;
     cursor: pointer;
     background-color: transparent;
-    margin-right:3px;
+    margin-right:32px;
     margin-left:3px;
 }
 
-.comment-container .button.open{
-    padding: 5px 12px;
-    border: solid 1px #769656;
-}
-
-.comment-container .button.open::after{
-    content: "write"; /* "🖉"*/
-}
-
 .comment-container .button.save{
-    padding: 5px 12px;
+    padding: 2px 8px 4px 8px;
     border: solid 1px #769656;
 }
 
@@ -29,7 +19,7 @@
 }
 
 .comment-container .button:hover{
-    background-color: #EEEED2;
+    background-color: rgba(255,255,255,0.3);
     font-weight:bold;
 }
 

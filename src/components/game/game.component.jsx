@@ -128,10 +128,6 @@ class Game extends React.Component {
             factory.state.storageManager.setLocal(games);
             let newStatus = games && games.length > 0 ? factory.gameStatus.showList : factory.gameStatus.showInput;
             factory.setGameStatus(newStatus, "", otherProps);
-            setTimeout(() => {
-              // eslint-disable-next-line no-restricted-globals
-              location.reload();
-            },800);
           }
         })
         .catch(function (response) {
@@ -152,7 +148,7 @@ class Game extends React.Component {
     if (gamesFilter.length === 1) {
       let game = gamesFilter[0];
       let otherProps = {
-        "comments": ("comments" in game) ? game.comments : "",
+        "comments": game.comments || "",
         "gameKey" : id,
         "analysis":null,
         "data": JSON.parse(this.state.initialData),
@@ -371,7 +367,15 @@ class Game extends React.Component {
   saveComment = (e) => {
     let comments = document.querySelector(e.currentTarget.getAttribute("data-target")).value;
     if (comments !== this.state.comments) {
+      let id = this.state.gameKey;
+      let games = [...this.state.games];
+      games.forEach((x)=> {
+        if(x.id === id){
+          x.comments = comments;
+        }
+      });
       this.setState({
+        games:games,
         commentIsOpen : false,
         comments : comments
       }, () => {
@@ -385,7 +389,6 @@ class Game extends React.Component {
         const pgnResume = {...this.state.pgnResume};
         pgnResume.opening = this.state.analysis.text;
         pgnResume.openingMoves = this.state.analysis.moves;
-
         this.setState({
           pgnResume
         }, () => {
@@ -511,7 +514,7 @@ class Game extends React.Component {
         games.push(gameToSave);
       } else {
         games.forEach((x) => { // rewrite in the future : add comments etc...
-          if (x.pgnGame === gameToSave.pgnGame) {
+          if (x.id === gameToSave.id) {
             x.comments = gameToSave.comments;
             x.pgnHistory = gameToSave.pgnHistory;
             x.pgnResume = gameToSave.pgnResume;
@@ -697,7 +700,6 @@ getKnowOpenings = (games) => {
       games.sort((a,b) => {
         return b.dateTag - a.dateTag;
       })
-      
 
       games.forEach((game) => {
         if(!("opening" in game.pgnResume) && "ECO" in game.pgnResume){
@@ -781,7 +783,6 @@ getKnowOpenings = (games) => {
         }
       }
       this.setGameStatus(initialStatus, "",otherProps);
-     
      }
   };
   render() {

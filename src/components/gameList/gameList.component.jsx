@@ -34,7 +34,7 @@ const GameList = (props) => {
                                 <span className="list-element-text" >
                                 {game.pgnResume.Event} {game.pgnResume.Site} {game.pgnResume.Date} <br/>
                                 {game.pgnResume.White} {"vs"} {game.pgnResume.Black} {"=>"} {game.pgnResume.Result} <br/>
-                                {"White elo : "}{game.pgnResume.WhiteElo} {"Black elo : "} {game.pgnResume.BlackElo} <br/>
+                                {"White elo : "}{game.pgnResume.WhiteElo} {"Black elo : "} {game.pgnResume.BlackElo} {" "} {game.comments ? game.comments.substring(0,20):""}<br/>
                                 {"Opening : "} {game.pgnResume.opening} {" "} {game.pgnResume.openingMoves} <br/>
                                 </span>
                                 <span className="button choose" data-index={game.id} onClick={props.loadGame}></span>

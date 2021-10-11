@@ -79,7 +79,7 @@
 }
 
 .comment-zone,.comment-input{
-  height:200px;
+  min-height:60px;
   width:300px;
   max-height:200px;
   border: 1px solid white;
@@ -90,7 +90,7 @@
 }
 .comment-zone{
   border: 1px solid rgba(255,255,255,0.3);
-
+  background-color: rgba(255,255,255,0.3);
 }
   
   @media screen and (max-width: 900px) {
