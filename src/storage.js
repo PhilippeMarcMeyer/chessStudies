@@ -1,7 +1,7 @@
 
 class ManageStorage {
   constructor(props) {
-    this.url = "http://localhost:8080/"; // use only in dev stage, leave empty in prod
+    this.url = ""; // use only in dev stage, leave empty in prod
   }
 
     initRemote = () => {
