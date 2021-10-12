@@ -1,11 +1,11 @@
 
 class ManageStorage {
   constructor(props) {
-    this.url = ""
+    this.url = "http://localhost:8080/"; // use only in dev stage, leave empty in prod
   }
 
     initRemote = () => {
-      const url = "games";
+      const url = this.url+"games";
       return new Promise(function (resolve, reject) {
           var xhr = new XMLHttpRequest();
           xhr.open("GET", url,true);
@@ -60,7 +60,7 @@ class ManageStorage {
       if(Array.isArray(data)){
         data = data[0];
       }
-      const url = "game";
+      const url = this.url+ "game";
 
       return new Promise(function (resolve, reject) {
           var xhr = new XMLHttpRequest();

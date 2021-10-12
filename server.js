@@ -11,9 +11,10 @@ const app = express();
 
 app.use(express.json())
 
-const port = process.env.PORT || 8080
+const port = process.env.PORT || 8080;
+const devPort = 3000;
 
-var whitelist = [ 'http://localhost:'+port,]; //white list consumers
+var whitelist = [ 'http://localhost:'+port,'http://localhost:'+devPort]; //white list consumers
 var corsOptions = {
   origin: function (origin, callback) {
     if (!origin || whitelist.indexOf(origin) !== -1) {

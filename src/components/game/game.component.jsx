@@ -21,6 +21,7 @@ class Game extends React.Component {
     };
 
     this.state = {
+      "windowWidth" : window.innerWidth,
       "commentIsOpen":false,
       "comments":"",
       "identicalGames": {},
@@ -294,8 +295,15 @@ class Game extends React.Component {
 
   componentDidMount() {
     this.initData();
+    window.addEventListener("resize",() => {
+      this.setState({"windowWidth":window.innerWidth});
+    })
   }
-
+  componentWillUnmount() {
+    window.addEventListener("resize",() => {
+      this.setState({"windowWidth":window.innerWidth});
+    })
+  }
   menuMove = (e) => {
     let target = e.currentTarget.getAttribute("data-target");
     if (target in this.gameStatus) {
