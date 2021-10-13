@@ -17,6 +17,9 @@ class Game extends React.Component {
       "showInput": 2,
       "showMoves": 3,
       "showMessage": 4,
+      "unauthorized": 5,
+      "readingError":6,
+      "unknownError":7,
       "inError": -1,
     };
 
@@ -648,6 +651,15 @@ getKnowOpenings = (games) => {
       case this.gameStatus.inError:
         infos = { "title": "Error !", "message": message };
         break;
+        case this.gameStatus.unauthorized:
+          infos = { "title": "Error !", "message": "Please login in or contact philmageo on github to have an account" };
+          break; 
+          case this.gameStatus.readingError:
+          infos = { "title": "Error !", "message": "Could not load your games due to a technical issue, sorry" };
+          break; 
+          case this.gameStatus.unknownError:
+            infos = { "title": "Error !", "message": "Could not load your games due to an unknown error, sorry" };
+            break;       
       default:
         infos = { "title": "Error !", "message": "the program is in error..." };
     }
@@ -668,27 +680,55 @@ getKnowOpenings = (games) => {
 
   initData = () => {
     let factory = this;
-    let isRemote = true;
-    let initError = false;
     let storageManager = new ManageStorage();
+    let dataStatus = "nodata";
+    let chessGames = null;
+
     storageManager
       .initRemote()
       .then(function (data) {
-        storageManager.setLocal(data); // in case we go offline
-        factory.initGames(data, isRemote, initError,storageManager)
+        if("error" in data){
+          dataStatus = data.error;
+          factory.launchInits(dataStatus,null,storageManager);
+        }else{
+          dataStatus = "remote"
+          chessGames = [...data];
+          factory.launchInits(dataStatus,chessGames,storageManager);
+        }
       })
-      .catch(function (e) {
-        isRemote = false;
-        storageManager
+      .catch(function (err) {
+          storageManager
           .initLocal()
           .then(function (data) {
-            factory.initGames(data, isRemote, initError,storageManager)
+            dataStatus = "local";
+            chessGames = [...data];
+            factory.launchInits(dataStatus,chessGames,storageManager);
           })
           .catch(function (e) {
-            initError = true;
-            factory.initGames(null, isRemote, initError,storageManager)
+            dataStatus = "nodata"
+            factory.launchInits(dataStatus,null,storageManager);
           });
+          return;
       });
+
+
+  }
+
+  launchInits = (dataStatus,chessGames,storageManager) =>{
+    let factory = this;
+    if(dataStatus === "nodata"){
+      factory.initGames(null, false, true,storageManager);
+    }else if(dataStatus === "sessionError"){
+      factory.setGameStatus(factory.gameStatus.unauthorized, "",{});  
+    }else if(dataStatus === "readingError"){
+      factory.setGameStatus(factory.gameStatus.readingError, "",{});  
+    }else if(dataStatus === "remote"){
+      factory.initGames(chessGames, true, false,storageManager);
+    }else if(dataStatus === "local"){
+      factory.initGames(chessGames, false, false,storageManager);
+    }else{
+      factory.setGameStatus(factory.gameStatus.unknownError, "",{});  
+    }
   }
 
   initGames = (games,isRemote,initError,storageManager) => {
@@ -851,10 +891,20 @@ getKnowOpenings = (games) => {
         </div>
       )
     }
+    else if (this.state.status === this.gameStatus.unauthorized || this.state.status === this.gameStatus.readingError || this.state.status === this.gameStatus.unknowError) { 
+      return (
+        <div className="general-message">
+          <div >
+            <h1> {this.state.infosTitle} </h1>
+            <p> {this.state.infosMessage} </p>
+          </div>
+        </div>
+      )
+    }
     else { // Adapt to other status such as error
       return (
-        <div className="game">
-          <h1> Loading </h1>
+        <div className="general-message">
+          <h1> Loading ...</h1>
         </div>
       );
     }

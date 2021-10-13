@@ -1,8 +1,15 @@
 .game{
     width:100%;
     background-color: #282c34;
-
 }
+
+.general-message{
+    padding-left:30px;
+    width:100%;
+    background-color: #282c34;
+    color:white;
+}
+
 .game-board{
     margin :0;
     padding:0;

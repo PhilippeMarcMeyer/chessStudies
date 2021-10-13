@@ -1,9 +1,8 @@
 
 class ManageStorage {
   constructor(props) {
-    this.url = ""; // use only in dev stage, leave empty in prod
+    this.url = "http://localhost:8080/"; // use only in dev stage, leave empty in prod
   }
-
     initRemote = () => {
       const url = this.url+"games";
       return new Promise(function (resolve, reject) {
@@ -15,16 +14,15 @@ class ManageStorage {
               try {
                 let data = JSON.parse(xhr.response);
                 resolve(data);
-
               } catch (e) {
-                reject(e);
+                reject({"error":"invalid json"});
               }
             } else {
-              reject(xhr.statusText);
+              reject({"error":xhr.statusText});
             }
           };
           xhr.onerror = function () {
-            reject(xhr.statusText);
+            reject({"error":xhr.statusText});
           };
           xhr.send();
       });
@@ -38,48 +36,36 @@ class ManageStorage {
           xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
           xhr.onload = function (result) {
             if (this.status >= 200 && this.status < 300) {
-              try {
-                resolve(result);
-
-              } catch (e) {
-                reject(result);
-              }
+              resolve(result);
             } else {
-              reject(xhr.statusText);
+              reject({"error":xhr.statusText});
             }
           };
           xhr.onerror = function () {
-            reject(xhr.statusText);
+            reject({"error":xhr.statusText});
           };
           xhr.send();
       });
     }
-
 
     setRemote = (data) => {
       if(Array.isArray(data)){
         data = data[0];
       }
       const url = this.url+ "game";
-
       return new Promise(function (resolve, reject) {
           var xhr = new XMLHttpRequest();
           xhr.open("PUT",url,true);
           xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
           xhr.onload = function (result) {
             if (this.status >= 200 && this.status < 300) {
-              try {
-                resolve(result);
-
-              } catch (e) {
-                reject(result);
-              }
+              resolve(result);
             } else {
-              reject(xhr.statusText);
+              reject({"error":xhr.statusText});
             }
           };
           xhr.onerror = function () {
-            reject(xhr.statusText);
+            reject({"error":xhr.statusText});
           };
           xhr.send(JSON.stringify(data));
       });
@@ -113,5 +99,4 @@ class ManageStorage {
         });
     }
   }
-
   export {ManageStorage};
