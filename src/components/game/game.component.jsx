@@ -7,6 +7,7 @@ import { ManageStorage} from '../../storage.js';
 import { boardToFen, fenToBoard } from '../../fen.js';
 import {findOpeningByFen,findOpeningByCode,findGamesByFen} from '../../openingLogic.js';
 import Analysis from '../analysis/analysis.component';
+import Login from '../login/login.component';
 
 class Game extends React.Component {
   constructor(props) {
@@ -374,6 +375,19 @@ class Game extends React.Component {
       commentIsOpen : true
     })
   }
+  
+  doLogin = (username,password) => {
+    let factory = this;
+    if (this.state.storageManager) {
+      this.state.storageManager.login(username,password)
+      .then(function (response) {
+        factory.initData();
+      })
+      .catch(function (response) {
+
+      });
+    }
+  }
 
   saveComment = (e) => {
     let comments = document.querySelector(e.currentTarget.getAttribute("data-target")).value;
@@ -680,7 +694,7 @@ getKnowOpenings = (games) => {
 
   initData = () => {
     let factory = this;
-    let storageManager = new ManageStorage();
+    let storageManager = this.state.storageManager || new ManageStorage();
     let dataStatus = "nodata";
     let chessGames = null;
 
@@ -719,15 +733,15 @@ getKnowOpenings = (games) => {
     if(dataStatus === "nodata"){
       factory.initGames(null, false, true,storageManager);
     }else if(dataStatus === "sessionError"){
-      factory.setGameStatus(factory.gameStatus.unauthorized, "",{});  
+      factory.setGameStatus(factory.gameStatus.unauthorized, "",{storageManager:storageManager});  
     }else if(dataStatus === "readingError"){
-      factory.setGameStatus(factory.gameStatus.readingError, "",{});  
+      factory.setGameStatus(factory.gameStatus.readingError, "",{storageManager:storageManager});  
     }else if(dataStatus === "remote"){
       factory.initGames(chessGames, true, false,storageManager);
     }else if(dataStatus === "local"){
       factory.initGames(chessGames, false, false,storageManager);
     }else{
-      factory.setGameStatus(factory.gameStatus.unknownError, "",{});  
+      factory.setGameStatus(factory.gameStatus.unknownError, "",{storageManager:storageManager});  
     }
   }
 
@@ -883,7 +897,7 @@ getKnowOpenings = (games) => {
       )
     }else if (this.state.status === this.gameStatus.showMessage) { // todo : adapt to list
       return (
-        <div className="game">
+        <div className="general-message">
           <div >
             <h1> {this.state.infosTitle} </h1>
             <p> {this.state.infosMessage} </p>
@@ -891,7 +905,14 @@ getKnowOpenings = (games) => {
         </div>
       )
     }
-    else if (this.state.status === this.gameStatus.unauthorized || this.state.status === this.gameStatus.readingError || this.state.status === this.gameStatus.unknowError) { 
+    else if (this.state.status === this.gameStatus.unauthorized) { 
+      return (
+        <div>
+          <Login doLogin={this.doLogin}/>
+        </div>
+      )
+    }
+    else if (this.state.status === this.gameStatus.readingError || this.state.status === this.gameStatus.unknowError) { 
       return (
         <div className="general-message">
           <div >

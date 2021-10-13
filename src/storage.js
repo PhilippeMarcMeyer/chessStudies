@@ -48,6 +48,29 @@ class ManageStorage {
       });
     }
 
+    login = (username,pw) => {
+      username = username.trim();
+      pw = pw.trim();
+      const url = this.url+ "login";
+      return new Promise(function (resolve, reject) {
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST",url,true);
+        xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+        xhr.onload = function (result) {
+          if (this.status >= 200 && this.status < 300) {
+            resolve(result);
+          } else {
+            reject({"error":xhr.statusText});
+          }
+        };
+        xhr.onerror = function () {
+          reject({"error":xhr.statusText});
+        };
+        let data = {username:username,password:pw};
+        xhr.send(JSON.stringify(data));
+    });
+    }
+
     setRemote = (data) => {
       if(Array.isArray(data)){
         data = data[0];
