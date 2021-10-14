@@ -1,8 +1,10 @@
-# Chess studies : PGN reader v 0.25
+# Chess studies : PGN reader v 0.26
 
 This version analyses PGN games and show them in a list
 to show and play them on a board with 
 an input to set more games 
+
+0.26 => login with session (on heroku)
 
 0.25 => Node server
 
@@ -30,7 +32,7 @@ Todos :
 1. Openings study : choosing an opening with its variations and illustrating it with games. deciding on the moves to play and noting down the results
 1. put the openings on the server in a json file with a version number to sync w localStorage
 1. Allow personal notes on openings : stored on the server in a openingNotes file
-1. Auth
+1. Logout : call to /get/logout
 1. put the PGN analysis on the server side
 1. Load games only if version number != server
 1. Manage a maximum localStorage usage
