@@ -375,6 +375,12 @@ class Game extends React.Component {
       commentIsOpen : true
     })
   }
+
+  doLogOut = () => {
+    if (this.state.storageManager) {
+      this.state.storageManager.logout();
+    }
+  }
   
   doLogin = (username,password) => {
     let factory = this;
@@ -745,10 +751,11 @@ getKnowOpenings = (games) => {
     }
   }
 
+
   initGames = (games,isRemote,initError,storageManager) => {
     if(initError){
       let initialStatus = this.gameStatus.inError;
-      this.props.setParentInfos({"storageType":"no data"});
+      this.props.setParentInfos({"storageType":"no data","logOut":this.doLogOut});
       let otherProps = {
         isRemote: isRemote,
         initError:initError,
@@ -757,7 +764,7 @@ getKnowOpenings = (games) => {
       this.setGameStatus(initialStatus, "",otherProps);
      }else{
       let storageType = isRemote ? "online":"disconnected";
-      this.props.setParentInfos({"storageType":storageType});
+      this.props.setParentInfos({"storageType":storageType,"logOut":this.doLogOut});
 
       games.sort((a,b) => {
         return b.dateTag - a.dateTag;
@@ -861,6 +868,7 @@ getKnowOpenings = (games) => {
       }else{
       return (
         <div className="game">
+          <a href="/logout" className="logOut">LogOut</a>
           <div className="game-board">
             <Board key={1} reverseBoard={this.reverseBoard} game={this.state} />
           </div>
@@ -873,6 +881,7 @@ getKnowOpenings = (games) => {
     } else if (this.state.status === this.gameStatus.showList) { // todo : adapt to list
       return (
         <div className="game">
+           <a href="/logout" className="logOut">LogOut</a>
           <div className="game-board">
             <Board key={1} reverseBoard={this.reverseBoard} game={this.state} />
           </div>
@@ -884,6 +893,7 @@ getKnowOpenings = (games) => {
     } else if (this.state.status === this.gameStatus.showMoves) { // todo : adapt to list
       return (
         <div className="game">
+          <a href="/logout" className="logOut">LogOut</a>
           <div className="game-board">
             <Board key={1} reverseBoard={this.reverseBoard} game={this.state} />
           </div>

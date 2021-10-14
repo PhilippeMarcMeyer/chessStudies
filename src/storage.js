@@ -1,7 +1,7 @@
 
 class ManageStorage {
   constructor(props) {
-    this.url = "http://localhost:8080/"; // use only in dev stage, leave empty in prod
+    this.url = ""; // use only in dev stage, leave empty in prod http://localhost:8080/
   }
     initRemote = () => {
       const url = this.url+"games";
@@ -46,6 +46,14 @@ class ManageStorage {
           };
           xhr.send();
       });
+    }
+
+    logout = ()=> {
+      const url = this.url+ "logout";
+      var xhr = new XMLHttpRequest();
+      xhr.open("GET",url,true);
+      xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8');
+      xhr.send();
     }
 
     login = (username,pw) => {
