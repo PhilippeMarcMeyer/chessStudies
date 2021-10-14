@@ -368,83 +368,124 @@ const getAskedMove = (elem,currentMove,movesList) => {
   }
 
 
-const setRookPossiblePreviousPositions = (nextMoveData, columnsOrdered, boardPositions) => {
-  // the rooks don"t "jump" over other pieces like knights and unlike bishops they can go on both colors's squares
-  // We can check obstacles with boardPositions
-  // Same column 
-  // changing row
-  let searchedFigure = "R" + nextMoveData.moveSide.toUpperCase();
-
-  // Let's find rooks on the board before we move
-  let rooks = boardPositions.filter((x) => {
-    return x.fig === searchedFigure;
-  });
-  // put theses positions in an array of possible moves
-  if (rooks.length === 0 || rooks.length > 2) {
-    nextMoveData.isError = true;
-  } else if (rooks.length === 1) {
-    nextMoveData.possiblePositions.push({
-      "column": rooks[0].column,
-      "row": rooks[0].row
+  const setRookPossiblePreviousPositions = (nextMoveData, columnsOrdered, boardPositions) => {
+    // the rooks don"t "jump" over other pieces like knights and unlike bishops they can go on both colors's squares
+    // We can check obstacles with boardPositions
+    // Same column 
+    // changing row
+    let searchedFigure = "R" + nextMoveData.moveSide.toUpperCase();
+  
+    // Let's find rooks on the board before we move
+    let rooks = boardPositions.filter((x) => {
+      return x.fig === searchedFigure
+      // && nextMoveData.comingFromColumn !== "" ? x.column === nextMoveData.comingFromColumn : true && nextMoveData.comingFromRow !== 0 ? x.row === nextMoveData.comingFromRow : true;
     });
-  } else {
-    nextMoveData.possiblePositions.push({
-      "column": rooks[0].column,
-      "row": rooks[0].row
-    });
-    nextMoveData.possiblePositions.push({
-      "column": rooks[1].column,
-      "row": rooks[1].row
-    });
-    // If we have an indication ex Rae5 : we can find the right rook
-    // check for rows  (ex : R5e5)
-    if (nextMoveData.comingFromRow !== 0) {
-      nextMoveData.possiblePositions = nextMoveData.possiblePositions.filter((x) => {
-        return x.row === nextMoveData.comingFromRow;
-      })
+  
+    // put theses positions in an array of possible movesn
+    if (rooks.length === 0 || rooks.length > 2) {
+      nextMoveData.isError = true;
     }
-    // check for columns  (ex : Rae5)
-    if (nextMoveData.comingFromColumn !== 0) {
-      nextMoveData.possiblePositions = nextMoveData.possiblePositions.filter((x) => {
-        return x.column === nextMoveData.comingFromColumn;
-      })
+  
+    if (rooks.length === 2) {
+      if(nextMoveData.comingFromColumn !== ""){
+        rooks = rooks.filter((x) => {
+          return x.column === nextMoveData.comingFromColumn;
+        });
+      }
+      if(nextMoveData.comingFromRow !== 0){
+        rooks = rooks.filter((x) => {
+          return x.row === nextMoveData.comingFromRow;
+        });
+      }
     }
-    // If we still have 2 posible previous positions, we still don't which Rook moved
-    // We have to check if the move would be in straight line (like rooks move)
-    if (nextMoveData.possiblePositions.length > 1) {
-      nextMoveData.possiblePositions = nextMoveData.possiblePositions.filter((x) => {
-        return x.column === nextMoveData.column || x.row === nextMoveData.row;
-      })
+  
+    if (rooks.length === 1) {
+      nextMoveData.possiblePositions.push({
+        "column": rooks[0].column,
+        "row": rooks[0].row
+      });
     }
-    // If we still have 2 possible previous positions with pathes in straight line, we still don't which Rook moved
-    // We have to check if there are obstacles on one of the possible path
-    if (nextMoveData.possiblePositions.length > 1) {
-      nextMoveData.possiblePositions = nextMoveData.possiblePositions.filter((x) => {
-        if (x.column === nextMoveData.column) {
-          let Min = Math.min([x.row, nextMoveData.row]);
-          let Max = Math.max([x.row, nextMoveData.row]);
-          return boardPositions.filter((y) => {
-            return y.column === nextMoveData.column && y.row > Min && y.row < Max && y.fig === null;
-          })
-        } else {
-         let possColumn = columnsOrdered.indexOf(x.column);
-         let moveColumn = columnsOrdered.indexOf(nextMoveData.column);
-          let Min = Math.min([possColumn, moveColumn]);
-          let Max = Math.max([possColumn, moveColumn]);
-          const colToCheck = [];
-          for (let i = Min + 1; i < Max; i++) {
-            colToCheck.push(columnsOrdered[i]);
+  
+    if (rooks.length === 2) {
+      let rookPrev1 = { column: rooks[0].column, row: rooks[0].row };
+      let rookPrev2 = { column: rooks[1].column, row: rooks[1].row };
+      let rookNext = { column: nextMoveData.moveColumn, row: nextMoveData.moveRow };
+      // Test rookPrev1 towards rookNext :
+      let prev1Possible = rookPrev1.row === rookNext.row || rookPrev1.column === rookNext.column;
+      let prev2Possible = rookPrev2.row === rookNext.row || rookPrev2.column === rookNext.column;
+      if (prev1Possible) {
+        // same column : check obstacles on rows between
+        if (rookPrev1.column === rookNext.column) {
+          let from = Math.min(rookPrev1.row ,rookNext.row);
+          let to = Math.max(rookPrev1.row ,rookNext.row);
+          for(let i = from;i <= to;i++){
+            let obstacle = boardPositions.filter((x) => {
+              return x.fig != null && x.column === rookNext.column && x.row === i && x.row !== rookPrev1.row;
+            });
+            if(obstacle.length !== 0){
+              prev1Possible = false;
+              break;
+            }
           }
-          return boardPositions.filter((y) => {
-            return y.row === nextMoveData.row && colToCheck.indexOf(y.column) !== -1 && y.fig === null;
-          })
+        } else if (rookPrev1.row === rookNext.row) {
+          // same row : check obstacles on columns between
+          let from = Math.min(columnsOrdered.indexOf(rookPrev1.column) ,columnsOrdered.indexOf(rookNext.column));
+          let to = Math.max(columnsOrdered.indexOf(rookPrev1.column) ,columnsOrdered.indexOf(rookNext.column));
+          for(let i = from;i <= to;i++){
+            let obstacle = boardPositions.filter((x) => {
+              return x.fig != null && x.row === rookNext.row && columnsOrdered.indexOf(x.column) === i && x.column !== rookPrev1.column;
+            });
+            if(obstacle.length !== 0){
+              prev1Possible = false;
+              break;
+            }
+          }
         }
-      })
+      }
+      if (!prev1Possible && prev2Possible) {
+        // same column : check obstacles on rows between
+        if (rookPrev2.column === rookNext.column) {
+          let from = Math.min(rookPrev2.row ,rookNext.row) ;
+          let to = Math.max(rookPrev2.row ,rookNext.row);
+          for(let i = from;i <= to;i++){
+            let obstacle = boardPositions.filter((x) => {
+              return x.fig != null && x.column === rookNext.column && x.row === i && x.row !== rookPrev2.row;
+            });
+            if(obstacle.length !== 0){
+              prev2Possible = false;
+              break;
+            }
+          }
+        } else if (rookPrev2.row === rookNext.row) {
+          // same row : check obstacles on columns between
+          let from = Math.min(columnsOrdered.indexOf(rookPrev2.column) ,columnsOrdered.indexOf(rookNext.column));
+          let to = Math.max(columnsOrdered.indexOf(rookPrev2.column) ,columnsOrdered.indexOf(rookNext.column));
+          for(let i = from;i <= to;i++){
+            let obstacle = boardPositions.filter((x) => {
+              return x.fig != null && x.row === rookNext.row && columnsOrdered.indexOf(x.column) === i && x.column !== rookPrev2.column;
+            });
+            if(obstacle.length !== 0){
+              prev2Possible = false;
+              break;
+            }
+          }
+        }
+      }
+      if(prev1Possible){
+        nextMoveData.possiblePositions.push({
+          "column": rookPrev1.column,
+          "row": rookPrev1.row
+        });
+      }
+      if(prev2Possible){
+        nextMoveData.possiblePositions.push({
+          "column": rookPrev2.column,
+          "row": rookPrev2.row
+        });
+      }
     }
-
   }
-}
-
+  
 const setKingPossiblePreviousPositions = (nextMoveData,columnsOrdered) => {
 
   if (nextMoveData.moveType === "castle-king") {
