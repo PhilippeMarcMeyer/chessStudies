@@ -71,3 +71,22 @@
         color:white;
     }
   }
+
+  .logOut {
+    position: absolute;
+    right: 50px;
+    top: 10px;
+    color: white;
+    opacity: 0.5;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: calc(10px + 1vmin);
+  }
+
+  .logOut.hidden {
+    display: none;
+  }
+
+  .logOut:hover {
+    opacity: 1;
+  }
