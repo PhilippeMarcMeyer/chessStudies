@@ -250,7 +250,7 @@ const getAskedMove = (elem,currentMove,movesList) => {
       nextMoveData.isDone = false;
 
       let nextMove = side === "w" ? turn.w : turn.b;
-      nextMove = nextMove.replace(/\?|!/,"") // no ?! !! etc...
+      nextMove = nextMove.replace(/\?|!|#/,"") // no ?! !! etc...
       nextMoveData.moveType = "move";
       
       let take = nextMove.indexOf("x") !== -1;
@@ -420,7 +420,7 @@ const getAskedMove = (elem,currentMove,movesList) => {
           let to = Math.max(rookPrev1.row ,rookNext.row);
           for(let i = from;i <= to;i++){
             let obstacle = boardPositions.filter((x) => {
-              return x.fig != null && x.column === rookNext.column && x.row === i && x.row !== rookPrev1.row;
+              return x.fig != null && x.column === rookNext.column && x.row === i && x.row !== rookPrev1.row && x.row !== rookNext.row;
             });
             if(obstacle.length !== 0){
               prev1Possible = false;
@@ -433,7 +433,7 @@ const getAskedMove = (elem,currentMove,movesList) => {
           let to = Math.max(columnsOrdered.indexOf(rookPrev1.column) ,columnsOrdered.indexOf(rookNext.column));
           for(let i = from;i <= to;i++){
             let obstacle = boardPositions.filter((x) => {
-              return x.fig != null && x.row === rookNext.row && columnsOrdered.indexOf(x.column) === i && x.column !== rookPrev1.column;
+              return x.fig != null && x.row === rookNext.row && columnsOrdered.indexOf(x.column) === i && x.column !== rookPrev1.column && x.column !== rookNext.column;
             });
             if(obstacle.length !== 0){
               prev1Possible = false;
@@ -449,7 +449,7 @@ const getAskedMove = (elem,currentMove,movesList) => {
           let to = Math.max(rookPrev2.row ,rookNext.row);
           for(let i = from;i <= to;i++){
             let obstacle = boardPositions.filter((x) => {
-              return x.fig != null && x.column === rookNext.column && x.row === i && x.row !== rookPrev2.row;
+              return x.fig != null && x.column === rookNext.column && x.row === i && x.row !== rookPrev2.row && x.row !== rookNext.row;
             });
             if(obstacle.length !== 0){
               prev2Possible = false;
@@ -462,7 +462,7 @@ const getAskedMove = (elem,currentMove,movesList) => {
           let to = Math.max(columnsOrdered.indexOf(rookPrev2.column) ,columnsOrdered.indexOf(rookNext.column));
           for(let i = from;i <= to;i++){
             let obstacle = boardPositions.filter((x) => {
-              return x.fig != null && x.row === rookNext.row && columnsOrdered.indexOf(x.column) === i && x.column !== rookPrev2.column;
+              return x.fig != null && x.row === rookNext.row && columnsOrdered.indexOf(x.column) === i && x.column !== rookPrev2.column && x.column !== rookNext.column;
             });
             if(obstacle.length !== 0){
               prev2Possible = false;
@@ -746,7 +746,7 @@ const pngToTurns = (pgnGame) => {
       currentTurnData = pgnGame.substring(turnPrevPosition, end).replace(turn+".","").trim();
       let moves = currentTurnData.split(" ");
       let turnInfo = {"w":moves[0]};
-      if(moves.length === 2){
+      if(moves.length >= 2){
         turnInfo.b = moves[1];
       }
       turns.push(turnInfo);
