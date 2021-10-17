@@ -2,7 +2,7 @@ import React from 'react';
 import './turns.styles.css';
 const Turns = (props) => {
     return (
-        <div className="game-turns">
+        <div className={`game-turns ${props.width < 1275 ? "hidden" : ""}`}>
             <ol>
                 {
                     props.turnsList.map((turn, index) =>

@@ -47,7 +47,7 @@ const Info = (props) => {
         <GameMenu menuMove = {props.menuMove} movesLoaded={props.game.pgnHistory && props.game.pgnHistory > 1}/>
         <div className='turns-zone'>
           <Resume resume = {props.game.pgnResume}/>
-          <Turns turnsList = {props.game.pgnGame} currentMove={props.game.move} movePGN = {props.movePGN}/>
+          <Turns turnsList = {props.game.pgnGame} width={props.game.windowWidth} currentMove={props.game.move} movePGN = {props.movePGN}/>
           <MovesCommands movePGN = {props.movePGN}/> 
         </div>
         </React.Fragment>
