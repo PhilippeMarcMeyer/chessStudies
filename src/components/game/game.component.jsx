@@ -671,15 +671,15 @@ getKnowOpenings = (games) => {
       case this.gameStatus.inError:
         infos = { "title": "Error !", "message": message };
         break;
-        case this.gameStatus.unauthorized:
-          infos = { "title": "Error !", "message": "Please login in or contact philmageo on github to have an account" };
-          break; 
-          case this.gameStatus.readingError:
-          infos = { "title": "Error !", "message": "Could not load your games due to a technical issue, sorry" };
-          break; 
-          case this.gameStatus.unknownError:
-            infos = { "title": "Error !", "message": "Could not load your games due to an unknown error, sorry" };
-            break;       
+      case this.gameStatus.unauthorized:
+        infos = { "title": "Error !", "message": "Please login in or contact philmageo on github to have an account" };
+        break;
+      case this.gameStatus.readingError:
+        infos = { "title": "Error !", "message": "Could not load your games due to a technical issue, sorry" };
+        break;
+      case this.gameStatus.unknownError:
+        infos = { "title": "Error !", "message": "Could not load your games due to an unknown error, sorry" };
+        break;
       default:
         infos = { "title": "Error !", "message": "the program is in error..." };
     }
