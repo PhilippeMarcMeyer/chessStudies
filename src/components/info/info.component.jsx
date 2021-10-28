@@ -6,6 +6,7 @@ import MovesCommands from '../movesCommands/movesCommands.component';
 import GameList from '../gameList/gameList.component';
 import GameMenu from '../gameMenu/gameMenu.component';
 import GameListSearch from '../gameListSearch/gameListSearch.component';
+import OpeningList from '../OpeningList/openingList.component';
 
 const Info = (props) => {
   let status = props.game.status;
@@ -27,8 +28,9 @@ const Info = (props) => {
       <React.Fragment>
       <GameMenu menuMove = {props.menuMove} movesLoaded={props.game.pgnHistory && props.game.pgnHistory.length > 1 ? true:false}/>
       <div className='list-zone'>
-        <GameListSearch onChangePlayer={props.onChangePlayer} knownPlayers={props.knownPlayers} onChangeOpening={props.onChangeOpening} knownOpenings={props.knownOpenings}/>
-        <GameList games={props.game.games} deleteGame={props.deleteGame} loadGame={props.loadGame} knownPlayers={props.knownPlayers} knownOpenings={props.game.knownOpenings} online={props.game.isRemote}/>
+        <GameListSearch toggleShowLines={props.toggleShowLines} showLines={props.game.showLines} onChangePlayer={props.onChangePlayer} knownPlayers={props.knownPlayers} onChangeOpening={props.onChangeOpening} knownOpenings={props.knownOpenings}/>
+        <GameList games={props.game.games} deleteGame={props.deleteGame} loadGame={props.loadGame} knownPlayers={props.knownPlayers} knownOpenings={props.game.knownOpenings} showLines={props.game.showLines} online={props.game.isRemote}/>
+        <OpeningList lines={props.lines} showLines={props.game.showLines} />
       </div>
       </React.Fragment>
     )

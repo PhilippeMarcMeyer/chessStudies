@@ -5,7 +5,7 @@ import Info from '../info/info.component';
 import { getAskedMove, getNextMove, pngToTurns, pngToInfos, getMoveDataAt, getPositionsAt ,boardToScore} from '../../movesLogic.js';
 import { ManageStorage} from '../../storage.js';
 import { boardToFen, fenToBoard } from '../../fen.js';
-import {findOpeningByFen,findOpeningByCode,findGamesByFen} from '../../openingLogic.js';
+import {findOpeningByFen,findOpeningByCode,findGamesByFen,findOpeningByResume,findOpeningsByName} from '../../openingLogic.js';
 import Analysis from '../analysis/analysis.component';
 import Login from '../login/login.component';
 
@@ -25,6 +25,8 @@ class Game extends React.Component {
     };
 
     this.state = {
+      "showLines":false,
+      "lines":[],
       "windowWidth" : window.innerWidth,
       "commentIsOpen":false,
       "comments":"",
@@ -333,6 +335,9 @@ class Game extends React.Component {
       reinitData = fenToBoard(fenMove[0].fen, reinitData, columnsOrdered);
       let scores = boardToScore(reinitData);
       let openingFiltered = findOpeningByFen(fenMove[0].fen);
+      if(openingFiltered.length === 0){
+        openingFiltered = findOpeningByResume(this.state.pgnResume);
+      }
       let identicalGames = {};
       if(askedMove.number > 2){
         identicalGames = findGamesByFen(this.state,fenMove[0].fen,askedMove);
@@ -346,7 +351,7 @@ class Game extends React.Component {
         analysis = {
           title : "Opening :",
           text : currentOpening.opening,
-          move: askedMove.move,
+          move: askedMove.move ?? 0,
           moves : currentOpening.moves
         }
       }else{
@@ -393,6 +398,12 @@ class Game extends React.Component {
 
       });
     }
+  }
+
+  toggleShowLines = () => {
+    this.setState(prevState => ({
+      showLines: !prevState.showLines
+    }));
   }
 
   saveComment = (e) => {
@@ -584,8 +595,13 @@ class Game extends React.Component {
     let value = e.currentTarget.value;
     let knownOpenings = {...this.state.knownOpenings};
     knownOpenings.selected = value;
+    //      "showLines":false,
+    let lines = [];
+    if(knownOpenings.selected !== "all"){
+      lines = findOpeningsByName(knownOpenings.selected )
+    }
     this.setState((state, props) => (
-      {knownOpenings}
+      {knownOpenings,lines}
     ));
   }
 
@@ -886,7 +902,7 @@ getKnowOpenings = (games) => {
             <Board key={1} reverseBoard={this.reverseBoard} game={this.state} />
           </div>
           <div className="game-info">
-            <Info key={1} onChangePlayer={this.onChangePlayer} knownPlayers={this.state.knownPlayers} onChangeOpening={this.onChangeOpening} knownOpenings={this.state.knownOpenings} game={this.state} loadGame={this.loadGame} deleteGame={this.deleteGame} menuMove = {this.menuMove} statuses={this.gameStatus}/>
+            <Info key={1} onChangePlayer={this.onChangePlayer} lines={this.state.lines} knownPlayers={this.state.knownPlayers} onChangeOpening={this.onChangeOpening} knownOpenings={this.state.knownOpenings} game={this.state} toggleShowLines={this.toggleShowLines} loadGame={this.loadGame} deleteGame={this.deleteGame} menuMove = {this.menuMove} statuses={this.gameStatus}/>
           </div>
         </div>
       )

@@ -9,6 +9,27 @@ const findOpeningByFen = (moveFen) => {
     return possibleOpenings;
 }
 
+const findOpeningByResume = (resume) => {
+  let possibleOpenings = [];
+  if(resume.opening !== ""){
+    let possibleOpenings = ecoOpenings.filter((x) => {
+        return x.opening === resume.opening;       
+    });
+    if(possibleOpenings.length === 0){
+        possibleOpenings = [];
+        possibleOpenings.push(
+            {
+                "ecoCode": "?",
+                "opening": resume.opening,
+                "moves":"openingMoves" in resume ? resume.openingMoves : "",
+                "fen": ""
+            }
+        )
+    }
+  }
+  return possibleOpenings;
+}
+
 const findOpeningByCode = (ecoCode) => {
     let possibleOpenings = ecoOpenings.filter((x) => {
         return x.ecoCode === ecoCode;
@@ -40,4 +61,13 @@ const findGamesByFen = (state,fen,move) => {
     return result;
 }
 
-export {findOpeningByFen,findOpeningByCode,findGamesByFen};
+const findOpeningsByName = (selectedOpening) => {
+    let theOpenings = [];
+    if(selectedOpening !== "all"){
+        theOpenings = ecoOpenings.filter((x) => {
+            return x.opening.indexOf(selectedOpening) !==-1;
+        });
+    }
+    return theOpenings;
+}
+export {findOpeningByFen,findOpeningByCode,findGamesByFen,findOpeningByResume,findOpeningsByName};

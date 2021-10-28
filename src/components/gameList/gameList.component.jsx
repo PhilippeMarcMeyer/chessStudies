@@ -25,7 +25,8 @@ const GameList = (props) => {
     }
 
     return (
-        <div className="game-list"><span className="games-list-length">#{games.length}</span>
+        <div className={`game-list ${props.showLines  ? "hidden" : ""}`}>
+            <span className="game-list-length">#{games.length}</span>
             <ol>
                 { 
                     games.map((game, index) =>
