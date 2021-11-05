@@ -41,3 +41,30 @@
     position:relative;
     width:100%;
 }
+
+.opening-list li .button{
+    border: solid 1px black;
+    float:right;
+    vertical-align: top;
+    border-radius:6px;
+    cursor: pointer;
+    background-color: white;
+    margin-right:3px;
+    margin-left:3px;
+}
+
+.opening-list li .button.choose{
+    padding: 5px 12px;
+    border: solid 1px #769656;
+}
+
+.opening-list li .button.choose::after{
+    content:"✔️";
+    font-size:18px;
+    font-weight:bold;
+}
+
+.opening-list li .button:hover{
+    background-color: #EEEED2;
+    font-weight:bold;
+}

@@ -56,6 +56,7 @@ class Game extends React.Component {
       "knownPlayers" : {list:["all"],selected:"all"},
       "msg": "White to play",
       "data": [],
+      "line" : null,
       "pgnHistory": "",
       "move": { "number": 0, "side": "b" },
       "pgnResume": [],
@@ -88,11 +89,26 @@ class Game extends React.Component {
     };
   }
 
-  reverseBoard= (e) => {
+  reverseBoard = (e) => {
     let doReverse= !this.state.doReverseBoard;
     this.setState((state, props) => (
       {
         "doReverseBoard": doReverse,
+      }
+    ));
+  }
+
+  loadLine = (e) => {
+    let moves = Number(e.currentTarget.getAttribute("data-moves"));
+    let name = Number(e.currentTarget.getAttribute("data-name"));
+    let fen = Number(e.currentTarget.getAttribute("data-fen"));
+    let reinitData = JSON.parse(this.state.initialData);
+    let positions = fenToBoard(fen,reinitData);
+    let scores = boardToScore(positions);
+
+    this.setState((state, props) => (
+      {
+        "line": {moves,name,fen,positions,scores}
       }
     ));
   }
@@ -126,7 +142,8 @@ class Game extends React.Component {
       })
 
       let otherProps = {
-        games: games
+        games: games,
+        line:null
       }
 
       factory.state.storageManager.deleteRemote(id)
@@ -179,8 +196,7 @@ class Game extends React.Component {
           return x.number === atMove.number && x.side === atMove.side;
         });
         if (fenMove.length !== 0) {
-          let columnsOrdered = this.state.columns.slice(0)
-          let gamePositions = fenToBoard(fenMove[0].fen, otherProps.data, columnsOrdered);
+          let gamePositions = fenToBoard(fenMove[0].fen, otherProps.data);
           let scores = boardToScore(gamePositions);
           otherProps.data = gamePositions;
           otherProps.scores = scores;
@@ -305,11 +321,13 @@ class Game extends React.Component {
       this.setState({"windowWidth":window.innerWidth});
     })
   }
+
   componentWillUnmount() {
     window.addEventListener("resize",() => {
       this.setState({"windowWidth":window.innerWidth});
     })
   }
+
   menuMove = (e) => {
     let target = e.currentTarget.getAttribute("data-target");
     if (target in this.gameStatus) {
@@ -330,9 +348,8 @@ class Game extends React.Component {
       return x.number === askedMove.number && x.side === askedMove.side;
     });
     if (fenMove.length !== 0) {
-      let columnsOrdered = this.state.columns.slice(0)
       let reinitData = JSON.parse(this.state.initialData);
-      reinitData = fenToBoard(fenMove[0].fen, reinitData, columnsOrdered);
+      reinitData = fenToBoard(fenMove[0].fen, reinitData);
       let scores = boardToScore(reinitData);
       let openingFiltered = findOpeningByFen(fenMove[0].fen);
       if(openingFiltered.length === 0){
@@ -902,7 +919,7 @@ getKnowOpenings = (games) => {
             <Board key={1} reverseBoard={this.reverseBoard} game={this.state} />
           </div>
           <div className="game-info">
-            <Info key={1} onChangePlayer={this.onChangePlayer} lines={this.state.lines} knownPlayers={this.state.knownPlayers} onChangeOpening={this.onChangeOpening} knownOpenings={this.state.knownOpenings} game={this.state} toggleShowLines={this.toggleShowLines} loadGame={this.loadGame} deleteGame={this.deleteGame} menuMove = {this.menuMove} statuses={this.gameStatus}/>
+            <Info key={1} loadLine={this.loadLine} onChangePlayer={this.onChangePlayer} lines={this.state.lines} knownPlayers={this.state.knownPlayers} onChangeOpening={this.onChangeOpening} knownOpenings={this.state.knownOpenings} game={this.state} toggleShowLines={this.toggleShowLines} loadGame={this.loadGame} deleteGame={this.deleteGame} menuMove = {this.menuMove} statuses={this.gameStatus}/>
           </div>
         </div>
       )

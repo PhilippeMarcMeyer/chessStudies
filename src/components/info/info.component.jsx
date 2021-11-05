@@ -30,7 +30,7 @@ const Info = (props) => {
       <div className='list-zone'>
         <GameListSearch toggleShowLines={props.toggleShowLines} showLines={props.game.showLines} onChangePlayer={props.onChangePlayer} knownPlayers={props.knownPlayers} onChangeOpening={props.onChangeOpening} knownOpenings={props.knownOpenings}/>
         <GameList games={props.game.games} deleteGame={props.deleteGame} loadGame={props.loadGame} knownPlayers={props.knownPlayers} knownOpenings={props.game.knownOpenings} showLines={props.game.showLines} online={props.game.isRemote}/>
-        <OpeningList lines={props.lines} showLines={props.game.showLines} />
+        <OpeningList lines={props.lines} showLines={props.game.showLines} loadLine={props.loadLine} />
       </div>
       </React.Fragment>
     )

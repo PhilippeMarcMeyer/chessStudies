@@ -39,7 +39,7 @@ fen += " " + nextMoveData.moveSide + " - - 0 " + nextMoveData.number ;
     return fen;
 }
 
-const fenToBoard = (fen,board,columnsOrdered) => {
+const fenToBoard = (fen,board) => {
     if(!fen) return null;
     let parts = fen.split(" ");
     let colDatas = parts[0].split("/");

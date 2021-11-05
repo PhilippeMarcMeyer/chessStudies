@@ -367,7 +367,6 @@ const getAskedMove = (elem,currentMove,movesList) => {
     return nextMoveData;
   }
 
-
   const setRookPossiblePreviousPositions = (nextMoveData, columnsOrdered, boardPositions) => {
     // the rooks don"t "jump" over other pieces like knights and unlike bishops they can go on both colors's squares
     // We can check obstacles with boardPositions
@@ -485,7 +484,6 @@ const getAskedMove = (elem,currentMove,movesList) => {
       }
     }
   }
-  
 
 const setKingPossiblePreviousPositions = (nextMoveData,columnsOrdered) => {
 
@@ -729,6 +727,7 @@ const setKnightPossiblePreviousPositions = (nextMoveData,columnsOrdered) => {
         }
 
 }
+
 const pngToTurns = (pgnGame) => {
   let turns = [];
   let turn = 1;
