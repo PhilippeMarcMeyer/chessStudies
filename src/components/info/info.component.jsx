@@ -43,7 +43,7 @@ const Info = (props) => {
       </div>
     )
   }
- else if (status === statuses.showMoves) { // add proposeSave : tue|false (button to save loaded game to locaStorage or back in the future (or both))
+ else if (status === statuses.showMoves || status === statuses.showOpening) { // add proposeSave : tue|false (button to save loaded game to locaStorage or back in the future (or both))
       return(
         <React.Fragment>
         <GameMenu menuMove = {props.menuMove} movesLoaded={props.game.pgnHistory && props.game.pgnHistory > 1}/>

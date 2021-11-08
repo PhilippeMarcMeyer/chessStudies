@@ -17,6 +17,7 @@ class Game extends React.Component {
       "showList": 1,
       "showInput": 2,
       "showMoves": 3,
+      "showOpening":8,
       "showMessage": 4,
       "unauthorized": 5,
       "readingError":6,
@@ -98,19 +99,72 @@ class Game extends React.Component {
     ));
   }
 
-  loadLine = (e) => {
-    let moves = Number(e.currentTarget.getAttribute("data-moves"));
-    let name = Number(e.currentTarget.getAttribute("data-name"));
-    let fen = Number(e.currentTarget.getAttribute("data-fen"));
-    let reinitData = JSON.parse(this.state.initialData);
-    let positions = fenToBoard(fen,reinitData);
-    let scores = boardToScore(positions);
+  loadLine = (e,atMove) => {
+    if(!atMove){
+      atMove = {"number":1,"side":"w"};
+    }
+    let moves = e.currentTarget.getAttribute("data-moves");
+    let name = e.currentTarget.getAttribute("data-name");
+    let game = {}
+    game.pgnGame = pngToTurns(moves);
+    game.pgnHistory = moves;
+    game.fenGame = [];
+    game.pgnResume = {
+        Black:"",
+        BlackElo:"",
+        Date: "",
+        EndDate: "",
+        Event: "",
+        Result: "-",
+        Round: "-",
+        Site: "",
+        Termination: "",
+        TimeControl: "",
+        White: name,
+        WhiteElo: "",
+        opening: name,
+        openingMoves: moves
+    };
 
-    this.setState((state, props) => (
-      {
-        "line": {moves,name,fen,positions,scores}
+    game.fenGame = [{ "number": 0, "side": "w", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" }];
+    let positions = JSON.parse(this.state.initialData);
+    let columnsOrdered = this.state.columns.slice(0);
+    game.pgnGame.forEach((turn, i) => {
+      ["w", "b"].forEach((side) => {
+        if (side in turn) {
+          let nextMoveData = getMoveDataAt(turn, side, i + 1, positions, columnsOrdered);
+          positions = getPositionsAt(nextMoveData, positions);
+          let fen = boardToFen(positions, nextMoveData, columnsOrdered);
+          if (fen) {
+            game.fenGame.push({ "number": nextMoveData.number, "side": nextMoveData.moveSide, "fen": fen });
+          }
+        }
+      });
+    });
+
+
+    let otherProps = {
+      "comments": game.comments || "",
+      "gameKey" : -1,
+      "analysis":null,
+      "data": JSON.parse(this.state.initialData),
+      "pgnResume": game.pgnResume,
+      "pgnHistory": game.pgnHistory,
+      "pgnGame": game.pgnGame,
+      "fenGame": game.fenGame,
+      "move": {
+        "number": atMove.number,
+        "side": atMove.side
+      },
+      "scores": {
+        "whiteScore": 0,
+        "blackScore": 0,
+        "whiteJail": [],
+        "blackJail": []
       }
-    ));
+    }
+
+    this.setGameStatus(this.gameStatus.showOpening, "", otherProps);
   }
 
   deleteGame= (e) => {
@@ -331,6 +385,9 @@ class Game extends React.Component {
   menuMove = (e) => {
     let target = e.currentTarget.getAttribute("data-target");
     if (target in this.gameStatus) {
+      if(this.state.showLines && target === "showMoves"){
+        target = "showOpening";
+      }
       this.setGameStatus(this.gameStatus[target]);
     }
   }
@@ -695,6 +752,9 @@ getKnowOpenings = (games) => {
       case this.gameStatus.showMoves:
         infos = { "title": "Game's moves", "message": "" };
         break;
+        case this.gameStatus.showOpening:
+          infos = { "title": "Opening's moves", "message": "" };
+          break; 
       case this.gameStatus.showList:
         infos = { "title": "Choose from list", "message": "" };
         break;
@@ -923,7 +983,7 @@ getKnowOpenings = (games) => {
           </div>
         </div>
       )
-    } else if (this.state.status === this.gameStatus.showMoves) { // todo : adapt to list
+    } else if (this.state.status === this.gameStatus.showMoves || this.state.status === this.gameStatus.showOpening) { // todo : adapt to list
       return (
         <div className="game">
           <a href="/logout" className="logOut">LogOut</a>
@@ -938,6 +998,7 @@ getKnowOpenings = (games) => {
           </div>
         </div>
       )
+      //
     }else if (this.state.status === this.gameStatus.showMessage) { // todo : adapt to list
       return (
         <div className="general-message">
