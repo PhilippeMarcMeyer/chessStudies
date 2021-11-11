@@ -70,4 +70,7 @@ const findOpeningsByName = (selectedOpening) => {
     }
     return theOpenings;
 }
-export {findOpeningByFen,findOpeningByCode,findGamesByFen,findOpeningByResume,findOpeningsByName};
+
+
+export {findOpeningByFen,findOpeningByCode,findGamesByFen,findOpeningByResume,findOpeningsByName,ecoOpenings};
+

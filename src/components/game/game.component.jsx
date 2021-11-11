@@ -5,7 +5,7 @@ import Info from '../info/info.component';
 import { getAskedMove, getNextMove, pngToTurns, pngToInfos, getMoveDataAt, getPositionsAt ,boardToScore} from '../../movesLogic.js';
 import { ManageStorage} from '../../storage.js';
 import { boardToFen, fenToBoard } from '../../fen.js';
-import {findOpeningByFen,findOpeningByCode,findGamesByFen,findOpeningByResume,findOpeningsByName} from '../../openingLogic.js';
+import {findOpeningByFen,findOpeningByCode,findGamesByFen,findOpeningByResume,findOpeningsByName,ecoOpenings} from '../../openingLogic.js';
 import Analysis from '../analysis/analysis.component';
 import Login from '../login/login.component';
 
@@ -98,6 +98,30 @@ class Game extends React.Component {
       }
     ));
   }
+
+  completeOpenings = () => {
+    const newOpenings = [];
+    ecoOpenings.forEach((op)=>{
+        let moves = op.moves;
+        let pgnGame = pngToTurns(moves);
+        let fenGame = [{ "number": 0, "side": "w", "fen": "rnbqkbnr/pppppppp/8/8/8/8/PPPPPPPP/RNBQKBNR w KQkq - 0 1" }];
+        let positions = JSON.parse(this.state.initialData);
+        let columnsOrdered = this.state.columns.slice(0);
+        pgnGame.forEach((turn, i) => {
+          ["w", "b"].forEach((side) => {
+            if (side in turn) {
+              let nextMoveData = getMoveDataAt(turn, side, i + 1, positions, columnsOrdered);
+              positions = getPositionsAt(nextMoveData, positions);
+              let fen = boardToFen(positions, nextMoveData, columnsOrdered);
+              if (fen) {
+                fenGame.push({ "number": nextMoveData.number, "side": nextMoveData.moveSide, "fen": fen });
+              }
+            }
+          });
+        });
+        op.fenGame = fenGame;
+    }); 
+}
 
   loadLine = (e,atMove) => {
     if(!atMove){
